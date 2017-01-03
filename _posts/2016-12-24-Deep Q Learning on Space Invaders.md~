@@ -1,8 +1,73 @@
 ---
 layout: post
 published: true
-permalink: deepq
-title: Deep Q Learning on Space Invaders
+title: Deep Q Learning on Space Invaders Using Keras
 ---
-page.title
-Learning on space invaders is difficult.
+{{page.title}}
+
+Over the winter break I thought it would be fun to experiment with deep reinforcement learning. Using the ideas of reinforcement learning computers have been able to do amazing things such master the gane of [Go](https://storage.googleapis.com/deepmind-media/alphago/AlphaGoNaturePaper.pdf), play 3D racing games competitvely, and undergo complex manipulations of the environment around them that completely defy explicit programming!
+
+A little under 3 years ago, Deepmind released a Deep Q Learning reinforcement learning based learning algorithm that was able to master several games from Atari 2600 sheerly based of the pixels in the screen of the game. In this blog, we will test out the Deep Q network on the Atari game Space Invaders, encoperating a couple newer architecture changes proposed in more recent papers, Dueling Deep Q networks(DQN) and Double Deep Q networks(DDQN).
+
+# Background
+Suppose that you are located somewhere in an unknown grid. At any timestep you may only move up, right, down or left. Each resulting action will give some amount of reward. Your
+goal is to the find the optimal set of moves so that you will have the maximum amount of award after <i>T</i> timesteps. Doesn't sound that bad? Sure, but what if you were only given a limited number trials to explore moves? Furthermore, what if the rewards were very sparse? Perhaps you will only start getting rewards after the 20th move despite the fact that it was your second move that was crucial for you get a reward.
+
+The above siutation is exactly an example of a problem in reinforcement learning. In reinforcement learning, we are given a set of possible states and actions. We assume that a state will have the same set of actions regardless of our moves previosuly to get to the state. We then wish
+to find the optimum behavior such that some reward is maximized. We define  $$V_s$$ given a state $$s$$ to be equal to the amount of total award
+we can get from state $$s$$ assuming optimal movement. That is
+$$
+\begin{align*}
+V_s = \max \sum_{t=0}^T R_t
+\end{align*}
+$$
+where $R_0$ denotes the amount of award received in the first timestep and so forth. 
+
+Note however that the above equation does not generalize when we could potentially play forever. If we allow $$T$$ to approach infinity, then the sum will always approach infinity. However, we wish to differentiate between all strategies that are infinitely long. To deal with this problem we introduce a 
+discount factor $$\gamma$$ and multiply the reward we get at each future timestep by $$\gamma$$. We then have that 
+$$
+\begin{align*}
+V_s = \max \sum_{t_0}^{\infnty} \gamma^tR_t
+\end{align*}
+$$
+The discount factor decreases the value of rewards in as the future which can also be interpreted as decreased certaintity in the reward the future.
+
+# Q Value
+
+An alternative method to assigning values to states is to assign values to state, action pairs instead of just states. Specifically, we define $$Q(s,a)$$ to be equal to the total amount of discounted reward that we can get if were in initially states s and did action a. Assume to doing some action a leads to subsequent state s', then note that we have that: 
+
+$$
+\begin{align*}
+Q(s,a) = r+\gamma \max_a Q(s', a)
+\end{align*}
+$$
+
+where r is the reward received from being in state s and doing action a. The above equation is true since when we reach state s', the action with the maximum Q value will
+be the optimal to take to maximize reward. 
+
+In normal reinforcement learning under Q learning, we wish to calculate the value of $$Q(s, a)$$ for all values of s and a. In deep reinforcement learning, we take as our state
+the values of pixels on the screen. If we were to try to explicitly construct a table for all possible values of s and a, it would absolutely gigantic. If we take our state as the last 3 frames in a game with screen size 100 by 100, we would have over $$10^12$$ states.
+
+Given that we are using pixels as the states there is likely a lot of reptition in our states where two very similar states are likely to have the same Q value.
+This is exactly what convolutional neural networks(CNN) are good at! Therefore, we construct a CNN to whose input is a state of the last couple frames in a game and whose output layer is the estimated Q values for the list of possible actions. 
+
+# Code
+
+Enough explanation.
+
+{% highlight python linenos %}
+def hello_word():
+    print "Hello"
+{% endhighlight %}
+
+``` python
+def hello():
+    print "Yolanda"
+```
+
+# Conclusion
+In the above blog post, we explored how we can use Deep Q Networks to achieve decent performance on the Space Invaders game. Given additional training time, the performance on the tasks will likely. 
+As a final word, there many possible improvements we can make on the architecture described. One interesting possibility, inspired partly from cognitive science
+is prioritized replay, where we seek to preferentially replay events that are very 'different'(our estimated Q values significantly different than actual Q values)
+from what we expect. Recently, Google DeepMind released Asynchronous Advantage Actor Critic (A3C) method which generally performs better than variants of DQN on almost all games in the Atari suite, including Space Invaders.  
+
