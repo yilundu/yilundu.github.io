@@ -4,7 +4,6 @@ published: true
 comments: true
 title: Deep Q Learning on Space Invaders Using Keras
 ---
-{{page.title}}
 
 Over the winter break I thought it would be fun to experiment with deep reinforcement learning. Using the ideas of reinforcement learning computers have been able to do amazing things such master the gane of [Go](https://storage.googleapis.com/deepmind-media/alphago/AlphaGoNaturePaper.pdf), play 3D racing games competitvely, and undergo complex manipulations of the environment around them that completely defy explicit programming!
 

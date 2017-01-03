@@ -72,6 +72,7 @@ fc1 | 512 | -|- |-| 6
 where 6 is the number of actions our agent is allowed to move. 
 
 which we can implement in Keras using the following code:
+
 ``` python
     def construct_q_network(self):
         self.model = Sequential()
