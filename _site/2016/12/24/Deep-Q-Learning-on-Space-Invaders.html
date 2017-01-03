@@ -9,10 +9,10 @@
     <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0'>
 
     
-    <meta name="description" content="Deep Q Learning on Space Invaders Using Keras
+    <meta name="description" content="Over the winter break I thought it would be fun to experiment with deep reinforcement learning. Using the ideas of reinforcement learning computers have been able to do amazing things such master the gane of Go, play 3D racing games competitvely, and undergo complex manipulations of the environment around them that completely defy explicit programming!
 
 " />
-    <meta property="og:description" content="Deep Q Learning on Space Invaders Using Keras
+    <meta property="og:description" content="Over the winter break I thought it would be fun to experiment with deep reinforcement learning. Using the ideas of reinforcement learning computers have been able to do amazing things such master the gane of Go, play 3D racing games competitvely, and undergo complex manipulations of the environment around them that completely defy explicit programming!
 
 " />
     
@@ -29,6 +29,8 @@
     <![endif]-->
 
     <link rel="stylesheet" type="text/css" href="/style.css" />
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="alternate" type="application/rss+xml" title=" - " href="/feed.xml" />
 	<script type="text/javascript" async
 	  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
@@ -61,30 +63,32 @@
   <h1>Deep Q Learning on Space Invaders Using Keras</h1>
 
   <div class="entry">
-    <p>Deep Q Learning on Space Invaders Using Keras</p>
-
-<p>Over the winter break I thought it would be fun to experiment with deep reinforcement learning. Using the ideas of reinforcement learning computers have been able to do amazing things such master the gane of <a href="https://storage.googleapis.com/deepmind-media/alphago/AlphaGoNaturePaper.pdf">Go</a>, play 3D racing games competitvely, and undergo complex manipulations of the environment around them that completely defy explicit programming!</p>
+    <p>Over the winter break I thought it would be fun to experiment with deep reinforcement learning. Using the ideas of reinforcement learning computers have been able to do amazing things such master the gane of <a href="https://storage.googleapis.com/deepmind-media/alphago/AlphaGoNaturePaper.pdf">Go</a>, play 3D racing games competitvely, and undergo complex manipulations of the environment around them that completely defy explicit programming!</p>
 
 <p>A little under 3 years ago, Deepmind released a Deep Q Learning reinforcement learning based learning algorithm that was able to master several games from Atari 2600 sheerly based of the pixels in the screen of the game. In this blog, we will test out the Deep Q network on the Atari game Space Invaders, encoperating a couple newer architecture changes proposed in more recent papers, Dueling Deep Q networks(DQN) and Double Deep Q networks(DDQN).</p>
 
 <h1 id="background">Background</h1>
 <p>Suppose that you are located somewhere in an unknown grid. At any timestep you may only move up, right, down or left. Each resulting action will give some amount of reward. Your
-goal is to the find the optimal set of moves so that you will have the maximum amount of award after <i>T</i> timesteps. Doesn’t sound that bad? Sure, but what if you were only given a limited number trials to explore moves? Furthermore, what if the rewards were very sparse? Perhaps you will only start getting rewards after the 20th move despite the fact that it was your second move that was crucial for you get a reward.</p>
+goal is to the find the optimal set of moves so that you will have the maximum amount of award after <script type="math/tex">T</script> timesteps. Doesn’t sound that bad? Sure, but what if you were only given a limited number trials to explore moves? Furthermore, what if the rewards were very sparse? Perhaps you will only start getting rewards after the 20th move despite the fact that it was your second move that was crucial for you get a reward.</p>
 
 <p>The above siutation is exactly an example of a problem in reinforcement learning. In reinforcement learning, we are given a set of possible states and actions. We assume that a state will have the same set of actions regardless of our moves previosuly to get to the state. We then wish
 to find the optimum behavior such that some reward is maximized. We define  <script type="math/tex">V_s</script> given a state <script type="math/tex">s</script> to be equal to the amount of total award
-we can get from state <script type="math/tex">s</script> assuming optimal movement. That is
-<script type="math/tex">\begin{align*}
+we can get from state <script type="math/tex">s</script> assuming optimal movement. That is</p>
+
+<script type="math/tex; mode=display">\begin{align*}
 V_s = \max \sum_{t=0}^T R_t
 \end{align*}</script>
-where $R_0$ denotes the amount of award received in the first timestep and so forth.</p>
+
+<p>where $R_0$ denotes the amount of award received in the first timestep and so forth.</p>
 
 <p>Note however that the above equation does not generalize when we could potentially play forever. If we allow <script type="math/tex">T</script> to approach infinity, then the sum will always approach infinity. However, we wish to differentiate between all strategies that are infinitely long. To deal with this problem we introduce a 
-discount factor <script type="math/tex">\gamma</script> and multiply the reward we get at each future timestep by <script type="math/tex">\gamma</script>. We then have that 
-<script type="math/tex">\begin{align*}
-V_s = \max \sum_{t_0}^{\infnty} \gamma^tR_t
+discount factor <script type="math/tex">\gamma</script> and multiply the reward we get at each future timestep by <script type="math/tex">\gamma</script>. We then have that</p>
+
+<script type="math/tex; mode=display">\begin{align*}
+V_s = \max \sum_{t_0}^{\infty} \gamma^tR_t
 \end{align*}</script>
-The discount factor decreases the value of rewards in as the future which can also be interpreted as decreased certaintity in the reward the future.</p>
+
+<p>The discount factor decreases the value of rewards in as the future which can also be interpreted as decreased certaintity in the reward the future.</p>
 
 <h1 id="q-value">Q Value</h1>
 
@@ -103,19 +107,265 @@ the values of pixels on the screen. If we were to try to explicitly construct a 
 <p>Given that we are using pixels as the states there is likely a lot of reptition in our states where two very similar states are likely to have the same Q value.
 This is exactly what convolutional neural networks(CNN) are good at! Therefore, we construct a CNN to whose input is a state of the last couple frames in a game and whose output layer is the estimated Q values for the list of possible actions.</p>
 
-<h1 id="code">Code</h1>
+<h1 id="deep-q-learning">Deep Q Learning</h1>
 
-<p>Enough explanation.</p>
+<p>In deep Q learning, we construct a CNN. For the particular game of space invaders
+, we construct a  network of the following architecture.</p>
 
-<figure class="highlight"><pre><code class="language-python" data-lang="python"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
-2</pre></td><td class="code"><pre><span class="k">def</span> <span class="nf">hello_word</span><span class="p">():</span>
-    <span class="k">print</span> <span class="s">"Hello"</span><span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<table class="table-striped mbtablestyle">
+  <thead>
+    <tr>
+      <th><strong>Name</strong></th>
+      <th style="text-align: left"><strong>Input Shape</strong></th>
+      <th style="text-align: left"><strong>Filter Size</strong></th>
+      <th style="text-align: left"><strong>Filter Number</strong></th>
+      <th style="text-align: left"><strong>Stride</strong></th>
+      <th style="text-align: left"><strong>Output Shape</strong></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>conv1</td>
+      <td style="text-align: left">3x84x84</td>
+      <td style="text-align: left">8x8</td>
+      <td style="text-align: left">32</td>
+      <td style="text-align: left">4</td>
+      <td style="text-align: left">32x20x20</td>
+    </tr>
+    <tr>
+      <td>conv2</td>
+      <td style="text-align: left">32x20x20</td>
+      <td style="text-align: left">4x4</td>
+      <td style="text-align: left">64</td>
+      <td style="text-align: left">2</td>
+      <td style="text-align: left">64x9x9</td>
+    </tr>
+    <tr>
+      <td>conv3</td>
+      <td style="text-align: left">64x9x9</td>
+      <td style="text-align: left">3x3</td>
+      <td style="text-align: left">64</td>
+      <td style="text-align: left">1</td>
+      <td style="text-align: left">64x7x7</td>
+    </tr>
+    <tr>
+      <td>flatten</td>
+      <td style="text-align: left">64x7x7</td>
+      <td style="text-align: left">-</td>
+      <td style="text-align: left">-</td>
+      <td style="text-align: left">-</td>
+      <td style="text-align: left">512</td>
+    </tr>
+    <tr>
+      <td>fc1</td>
+      <td style="text-align: left">512</td>
+      <td style="text-align: left">-</td>
+      <td style="text-align: left">-</td>
+      <td style="text-align: left">-</td>
+      <td style="text-align: left">6</td>
+    </tr>
+  </tbody>
+</table>
 
-<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="k">def</span> <span class="nf">hello</span><span class="p">():</span>
-    <span class="k">print</span> <span class="s">"Yolanda"</span>
+<p>where 6 is the number of actions our agent is allowed to move.</p>
+
+<p>which we can implement in Keras using the following code:</p>
+<div class="language-python highlighter-rouge"><pre class="highlight"><code>    <span class="k">def</span> <span class="nf">construct_q_network</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">model</span> <span class="o">=</span> <span class="n">Sequential</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Convolution2D</span><span class="p">(</span><span class="mi">32</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="n">subsample</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="n">input_shape</span><span class="o">=</span><span class="p">(</span><span class="mi">84</span><span class="p">,</span> <span class="mi">84</span><span class="p">,</span> <span class="n">NUM_FRAMES</span><span class="p">)))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Activation</span><span class="p">(</span><span class="s">'relu'</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Convolution2D</span><span class="p">(</span><span class="mi">64</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="n">subsample</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Activation</span><span class="p">(</span><span class="s">'relu'</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Convolution2D</span><span class="p">(</span><span class="mi">64</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Activation</span><span class="p">(</span><span class="s">'relu'</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Flatten</span><span class="p">())</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Dense</span><span class="p">(</span><span class="mi">512</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Activation</span><span class="p">(</span><span class="s">'relu'</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Dense</span><span class="p">(</span><span class="n">NUM_ACTIONS</span><span class="p">))</span>
 </code></pre>
 </div>
+
+<p>One interesting thing to note is that we are missing a max pooling layer that is usually found in CNN for vision detection. This is because
+max pooling is primarily used to implement translational invariance – which don’t really care about in a convolution neural network.</p>
+
+<p>Another thing to note is that our CNN takes as input a image of size 84x84. This is different then the default resolution of the Atari gamescreen of
+192 by 160. This is to make training computationally easier. Furthermore, we convert each input image of 3 channels to 1 channel since color doesn’t really 
+effect gameplay. Finally, for each input image into our CNN, we stack the last three frames that have occured – this way we can sense if a bullet is 
+falling down.</p>
+
+<p>The code for converting the last three frames to one single channel image is below:</p>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code>    <span class="k">def</span> <span class="nf">convert_process_buffer</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="s">"""Converts the list of NUM_FRAMES images in the process buffer
+        into one training sample"""</span>
+        <span class="n">black_buffer</span> <span class="o">=</span> <span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">cv2</span><span class="o">.</span><span class="n">resize</span><span class="p">(</span><span class="n">cv2</span><span class="o">.</span><span class="n">cvtColor</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">COLOR_RGB2GRAY</span><span class="p">),</span> <span class="p">(</span><span class="mi">84</span><span class="p">,</span> <span class="mi">90</span><span class="p">)),</span> <span class="bp">self</span><span class="o">.</span><span class="n">process_buffer</span><span class="p">)</span>
+        <span class="n">black_buffer</span> <span class="o">=</span> <span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">85</span><span class="p">,</span> <span class="p">:,</span> <span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">],</span> <span class="n">black_buffer</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span><span class="n">black_buffer</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+</code></pre>
+</div>
+
+<p>Where self.process_buffer contains the last three full sized 192x160x3 pictures.</p>
+
+<h1 id="replay-buffer">Replay Buffer</h1>
+
+<p>A problem when we training our network is the fact that if we only train on frames of data as they come in, we would be overfitting
+on the last few frames of the data. As a result, we keep a buffer of all the last 20000 experiences we have experienced so far and
+randomly sample a batch of 64 images to learn on at each step of the game. This way, we won’t overfit on the most recent frames.
+In addition, studies in rats have shown that replay of events is also vital for rats to learn tasks. One possible improvement is
+to replay past events, but with increased emphesis on events with high temporal difference(events that are very different than
+what we expect) as done in the paper <a href="https://arxiv.org/abs/1511.05952">here</a>
+We use the following data structure for our replay.</p>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="k">class</span> <span class="nc">ReplayBuffer</span><span class="p">:</span>
+    <span class="s">"""Constructs a buffer object that stores the past moves
+    and samples a set of subsamples"""</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">buffer_size</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">buffer_size</span> <span class="o">=</span> <span class="n">buffer_size</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="nb">buffer</span> <span class="o">=</span> <span class="n">deque</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">d</span><span class="p">,</span> <span class="n">s2</span><span class="p">):</span>
+        <span class="s">"""Add an experience to the buffer"""</span>
+        <span class="c"># S represents current state, a is action,</span>
+        <span class="c"># r is reward, d is whether it is the end, </span>
+        <span class="c"># and s2 is next state</span>
+        <span class="n">experience</span> <span class="o">=</span> <span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">d</span><span class="p">,</span> <span class="n">s2</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">count</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">buffer_size</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="nb">buffer</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">experience</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="nb">buffer</span><span class="o">.</span><span class="n">popleft</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="nb">buffer</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">experience</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">size</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">count</span>
+
+    <span class="k">def</span> <span class="nf">sample</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">batch_size</span><span class="p">):</span>
+        <span class="s">"""Samples a total of elements equal to batch_size from buffer
+        if buffer contains enough elements. Otherwise return all elements"""</span>
+
+        <span class="n">batch</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">count</span> <span class="o">&lt;</span> <span class="n">batch_size</span><span class="p">:</span>
+            <span class="n">batch</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="nb">buffer</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">count</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">batch</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="nb">buffer</span><span class="p">,</span> <span class="n">batch_size</span><span class="p">)</span>
+
+        <span class="c"># Maps each experience in batch in batches of states, actions, rewards</span>
+        <span class="c"># and new states</span>
+        <span class="n">s_batch</span><span class="p">,</span> <span class="n">a_batch</span><span class="p">,</span> <span class="n">r_batch</span><span class="p">,</span> <span class="n">d_batch</span><span class="p">,</span> <span class="n">s2_batch</span> <span class="o">=</span> <span class="nb">map</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">,</span> <span class="nb">zip</span><span class="p">(</span><span class="o">*</span><span class="n">batch</span><span class="p">))</span>
+
+        <span class="k">return</span> <span class="n">s_batch</span><span class="p">,</span> <span class="n">a_batch</span><span class="p">,</span> <span class="n">r_batch</span><span class="p">,</span> <span class="n">d_batch</span><span class="p">,</span> <span class="n">s2_batch</span>
+
+</code></pre>
+</div>
+<h1 id="exploration">Exploration</h1>
+
+<p>We use an <script type="math/tex">\epsilon</script> exploration policy to play the game. This means that with probability <script type="math/tex">\epsilon</script>
+you do a random action. Otherwise, we select the action with the highest Q value from our current state.</p>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code>    <span class="k">def</span> <span class="nf">predict_movement</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">epsilon</span><span class="p">):</span>
+        <span class="s">"""Predict movement of game controler where is epsilon
+        probability randomly move."""</span>
+        <span class="n">q_actions</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">84</span><span class="p">,</span> <span class="mi">84</span><span class="p">,</span> <span class="n">NUM_FRAMES</span><span class="p">),</span> <span class="n">batch_size</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">opt_policy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">q_actions</span><span class="p">)</span>
+        <span class="n">rand_val</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">rand_val</span> <span class="o">&lt;</span> <span class="n">epsilon</span><span class="p">:</span>
+            <span class="n">opt_policy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">NUM_ACTIONS</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">opt_policy</span><span class="p">,</span> <span class="n">q_actions</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">opt_policy</span><span class="p">]</span>
+</code></pre>
+</div>
+
+<h1 id="loss-function-and-target-networks">Loss Function and Target Networks</h1>
+
+<p>As mentioned above, we wish that each of outputs of our CNN be equal to the Q value of
+a respective action. We know from that implies that</p>
+
+<script type="math/tex; mode=display">\begin{align*}
+Q(s,a) = r+\gamma \max_a Q(s', a)
+\end{align*}</script>
+
+<p>Therefore, for every <script type="math/tex">(s, a, r, s')</script> action pair in our replay buffer we minimize the the discrepency between the Q value predicted directly form the neural network and
+the Q value constructed from the subsequent reward and maximum Q value of the resultant state, if the state is non-terminal. If the state is terminal, then the expect Q value should just be the reward. I used MSE(mean square error) as a loss function. This can be implemented in Keras below</p>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code>    <span class="k">def</span> <span class="nf">train</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">s_batch</span><span class="p">,</span> <span class="n">a_batch</span><span class="p">,</span> <span class="n">r_batch</span><span class="p">,</span> <span class="n">d_batch</span><span class="p">,</span> <span class="n">s2_batch</span><span class="p">,</span> <span class="n">observation_num</span><span class="p">):</span>
+        <span class="s">"""Trains network to fit given parameters"""</span>
+        <span class="n">batch_size</span> <span class="o">=</span> <span class="n">s_batch</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">targets</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">batch_size</span><span class="p">,</span> <span class="n">NUM_ACTIONS</span><span class="p">))</span>
+
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">xrange</span><span class="p">(</span><span class="n">batch_size</span><span class="p">):</span>
+            <span class="n">targets</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">s_batch</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">84</span><span class="p">,</span> <span class="mi">84</span><span class="p">,</span> <span class="n">NUM_FRAMES</span><span class="p">),</span> <span class="n">batch_size</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+            <span class="n">fut_action</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">target_model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">s2_batch</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">84</span><span class="p">,</span> <span class="mi">84</span><span class="p">,</span> <span class="n">NUM_FRAMES</span><span class="p">),</span> <span class="n">batch_size</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+            <span class="n">targets</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">a_batch</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span> <span class="o">=</span> <span class="n">r_batch</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+            <span class="k">if</span> <span class="n">d_batch</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="bp">False</span><span class="p">:</span>
+                <span class="n">targets</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">a_batch</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span> <span class="o">+=</span> <span class="n">DECAY_RATE</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="nb">max</span><span class="p">(</span><span class="n">fut_action</span><span class="p">)</span>
+
+        <span class="n">loss</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">train_on_batch</span><span class="p">(</span><span class="n">s_batch</span><span class="p">,</span> <span class="n">targets</span><span class="p">)</span>
+</code></pre>
+</div>
+
+<p>Note that in the above code, we actually use a second “target” network to predict the
+Q values of the transitioned state s’. The second “target” network is set to the weights of the original network every so many frames but is otherwise unchanged. This allows the deep Q network to converge more quickly, since otherwise we could enter a self
+feedback loop where we continously estimate higher and higher Q values. The code for
+setting the weights of the target network is below</p>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code>    <span class="k">def</span> <span class="nf">target_train</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">model_weights</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">get_weights</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">target_model</span><span class="o">.</span><span class="n">set_weights</span><span class="p">(</span><span class="n">model_weights</span><span class="p">)</span>
+</code></pre>
+</div>
+
+<h1 id="results-for-deep-q-network">Results for Deep Q Network</h1>
+
+<p>Using all the code above we train a Double Deep Q Networks(if we remove the target network then our above code would be called a Deep Q Network) whose full code can be found
+TODO, after training for about 1,000,000 frames, we get an average score of around
+260 on the game of space invaders. Below is a video of the Double Deep Q Network playing.</p>
+
+<h1 id="dueling-q-network">Dueling Q Network</h1>
+
+<p>One problem with our above implementation of a Deep Q Network is that we currently estimate the value of being at a state and executing a specific action. However, much of the time, the value of doing any action doesn’t really influence the value of being at a specific state. In a dueling Q network architecture, we seek to seperate</p>
+
+<script type="math/tex; mode=display">\begin{align}
+Q(s,a) = A(s,a) + V(s)
+\end{align}</script>
+
+<p>where <script type="math/tex">A(s,a)</script> represents the advantage of making a certain action and <script type="math/tex">V(s)</script> represents the current value of being at a certain state.</p>
+
+<p>How do we do this? We construct two seperate two streams in our CNN - one to estimate
+the value of a state and another to estimate the advantage of each of the actions.
+Note that both streams share the same weights for the convolutional layers. We then combine these layers to predict the Q values of each action. Unfortunately, directly summing these seperate streams gives us zero guarentees that the first stream will actually predict the value of a state. Instead we combine them with criterion</p>
+
+<script type="math/tex; mode=display">\begin{align}
+Q(s,a) = V(s) + A(s,a) - \frac{1}{\|a\|}\sum\_{a'}A(s,a')
+\end{align}</script>
+
+<p>Under the above criterion, on average, the advantage stream will be on average equal to 0, leading the value stream to approximately predict the value of the state.</p>
+
+<p>We can implement this in Keras using the following code</p>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code>    <span class="k">def</span> <span class="nf">construct_q_network</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c"># Uses the network architecture found in DeepMind paper</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">model</span> <span class="o">=</span> <span class="n">Sequential</span><span class="p">()</span>
+        <span class="n">input_layer</span> <span class="o">=</span> <span class="n">Input</span><span class="p">(</span><span class="n">shape</span> <span class="o">=</span> <span class="p">(</span><span class="mi">84</span><span class="p">,</span> <span class="mi">84</span><span class="p">,</span> <span class="n">NUM_FRAMES</span><span class="p">))</span>
+        <span class="n">conv1</span> <span class="o">=</span> <span class="n">Convolution2D</span><span class="p">(</span><span class="mi">32</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="n">subsample</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="n">activation</span><span class="o">=</span><span class="s">'relu'</span><span class="p">)(</span><span class="n">input_layer</span><span class="p">)</span>
+        <span class="n">conv2</span> <span class="o">=</span> <span class="n">Convolution2D</span><span class="p">(</span><span class="mi">64</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="n">subsample</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="n">activation</span><span class="o">=</span><span class="s">'relu'</span><span class="p">)(</span><span class="n">conv1</span><span class="p">)</span>
+        <span class="n">conv3</span> <span class="o">=</span> <span class="n">Convolution2D</span><span class="p">(</span><span class="mi">64</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">activation</span> <span class="o">=</span> <span class="s">'relu'</span><span class="p">)(</span><span class="n">conv2</span><span class="p">)</span>
+        <span class="n">flatten</span> <span class="o">=</span> <span class="n">Flatten</span><span class="p">()(</span><span class="n">conv3</span><span class="p">)</span>
+        <span class="n">fc1</span> <span class="o">=</span> <span class="n">Dense</span><span class="p">(</span><span class="mi">512</span><span class="p">)(</span><span class="n">flatten</span><span class="p">)</span>
+        <span class="n">advantage</span> <span class="o">=</span> <span class="n">Dense</span><span class="p">(</span><span class="n">NUM_ACTIONS</span><span class="p">)(</span><span class="n">fc1</span><span class="p">)</span>
+        <span class="n">fc2</span> <span class="o">=</span> <span class="n">Dense</span><span class="p">(</span><span class="mi">512</span><span class="p">)(</span><span class="n">flatten</span><span class="p">)</span>
+        <span class="n">value</span> <span class="o">=</span> <span class="n">Dense</span><span class="p">(</span><span class="mi">1</span><span class="p">)(</span><span class="n">fc2</span><span class="p">)</span>
+        <span class="n">policy</span> <span class="o">=</span> <span class="n">merge</span><span class="p">([</span><span class="n">advantage</span><span class="p">,</span> <span class="n">value</span><span class="p">],</span> <span class="n">mode</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">-</span><span class="n">K</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">+</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">output_shape</span> <span class="o">=</span> <span class="p">(</span><span class="n">NUM_ACTIONS</span><span class="p">,))</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">model</span> <span class="o">=</span> <span class="n">Model</span><span class="p">(</span><span class="nb">input</span><span class="o">=</span><span class="p">[</span><span class="n">input_layer</span><span class="p">],</span> <span class="n">output</span><span class="o">=</span><span class="p">[</span><span class="n">policy</span><span class="p">])</span>
+</code></pre>
+</div>
+
+<h1 id="results-for-duel-q-network">Results for Duel Q Network</h1>
+
+<p>Under the Duel Q Network, after about 600,000 frames of training, I got an average score of around 300, better than the DDQN. Unfortunately, it appears the network appears
+to just shoot bullets without much moving around as seen in the video above.</p>
 
 <h1 id="conclusion">Conclusion</h1>
 <p>In the above blog post, we explored how we can use Deep Q Networks to achieve decent performance on the Space Invaders game. Given additional training time, the performance on the tasks will likely. 
@@ -123,6 +373,9 @@ As a final word, there many possible improvements we can make on the architectur
 is prioritized replay, where we seek to preferentially replay events that are very ‘different’(our estimated Q values significantly different than actual Q values)
 from what we expect. Recently, Google DeepMind released Asynchronous Advantage Actor Critic (A3C) method which generally performs better than variants of DQN on almost all games in the Atari suite, including Space Invaders.</p>
 
+<ul>
+  <li>There were a lot of parts of code in the above implementation and if there were any errors please let me know!*</li>
+</ul>
 
   </div>
 
