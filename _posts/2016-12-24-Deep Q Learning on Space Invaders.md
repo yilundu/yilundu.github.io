@@ -73,7 +73,7 @@ where 6 is the number of actions our agent is allowed to move.
 
 which we can implement in Keras using the following code:
 
-``` python
+```python
     def construct_q_network(self):
         self.model = Sequential()
         self.model.add(Convolution2D(32, 8, 8, subsample=(4, 4), input_shape=(84, 84, NUM_FRAMES)))
