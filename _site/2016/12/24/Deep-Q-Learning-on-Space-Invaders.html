@@ -1,77 +1,82 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Deep Q Learning on Space Invaders Using Keras –  – </title>
+    <head>
+        <title>Deep Reinforcement Learning on Space Invaders Using Keras –  – </title>
 
-        <meta charset="utf-8" />
+            <meta charset="utf-8" />
     <meta content='text/html; charset=utf-8' http-equiv='Content-Type'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0'>
 
     
-    <meta name="description" content="Over the winter break I thought it would be fun to experiment with deep reinforcement learning. Using the ideas of reinforcement learning computers have been able to do amazing things such master the gane of Go, play 3D racing games competitvely, and undergo complex manipulations of the environment around them that completely defy explicit programming!
+    <meta name="description" content="
 
 " />
-    <meta property="og:description" content="Over the winter break I thought it would be fun to experiment with deep reinforcement learning. Using the ideas of reinforcement learning computers have been able to do amazing things such master the gane of Go, play 3D racing games competitvely, and undergo complex manipulations of the environment around them that completely defy explicit programming!
+    <meta property="og:description" content="
 
 " />
     
     <meta name="author" content="" />
 
     
-    <meta property="og:title" content="Deep Q Learning on Space Invaders Using Keras" />
-    <meta property="twitter:title" content="Deep Q Learning on Space Invaders Using Keras" />
+    <meta property="og:title" content="Deep Reinforcement Learning on Space Invaders Using Keras" />
+    <meta property="twitter:title" content="Deep Reinforcement Learning on Space Invaders Using Keras" />
     
 
 
-    <!--[if lt IE 9]>
-      <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
+        <!--[if lt IE 9]>
+            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
 
-    <link rel="stylesheet" type="text/css" href="/style.css" />
-<!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <link rel="alternate" type="application/rss+xml" title=" - " href="/feed.xml" />
-	<script type="text/javascript" async
-	  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
-	</script>
+        <link rel="stylesheet" type="text/css" href="/style.css" />
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <link rel="alternate" type="application/rss+xml" title=" - " href="/feed.xml" />
+        <script type="text/javascript" async
+                src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+        </script>
 
-    <!-- Created with Jekyll Now - http://github.com/barryclark/jekyll-now -->
-  </head>
+        <!-- Created with Jekyll Now - http://github.com/barryclark/jekyll-now -->
+    </head>
 
-  <body>
-    <div class="wrapper-masthead">
-      <div class="container">
-        <header class="masthead clearfix">
-          <a href="/" class="site-avatar"><img src="" /></a>
+    <body>
+        <div class="wrapper-masthead">
+            <div class="container">
+                <header class="masthead clearfix">
+                    <a href="/" class="site-avatar"><img src="" /></a>
 
-          <div class="site-info">
-            <h1 class="site-name"><a href="/"></a></h1>
-            <p class="site-description"></p>
-          </div>
+                    <div class="site-info">
+                        <h1 class="site-name"><a href="/"></a></h1>
+                        <p class="site-description"></p>
+                    </div>
 
-          <nav>
-            <a href="/">Blog</a>
-            <a href="/about">About</a>
-          </nav>
-        </header>
-      </div>
-    </div>
+                    <nav>
+                        <a href="/">Blog</a>
+                        <a href="/about">About</a>
+                    </nav>
+                </header>
+            </div>
+        </div>
 
-    <div id="main" role="main" class="container">
-      <article class="post">
-  <h1>Deep Q Learning on Space Invaders Using Keras</h1>
+        <div id="main" role="main" class="container">
+            <article class="post">
+  <h1>Deep Reinforcement Learning on Space Invaders Using Keras</h1>
 
   <div class="entry">
-    <p>Over the winter break I thought it would be fun to experiment with deep reinforcement learning. Using the ideas of reinforcement learning computers have been able to do amazing things such master the gane of <a href="https://storage.googleapis.com/deepmind-media/alphago/AlphaGoNaturePaper.pdf">Go</a>, play 3D racing games competitvely, and undergo complex manipulations of the environment around them that completely defy explicit programming!</p>
+    <p><img src="http://localhost:4000/images/output.gif" alt="Picture space invaders" class="img-responsive center" /></p>
 
-<p>A little under 3 years ago, Deepmind released a Deep Q Learning reinforcement learning based learning algorithm that was able to master several games from Atari 2600 sheerly based of the pixels in the screen of the game. In this blog, we will test out the Deep Q network on the Atari game Space Invaders, encoperating a couple newer architecture changes proposed in more recent papers, Dueling Deep Q networks(DQN) and Double Deep Q networks(DDQN).</p>
+<p><a href="https://github.com/yilundu/DQN-DDQN-on-Space-Invaders">Full code for training Double Deep Q Network and Duel Q Network</a></p>
 
-<h1 id="background">Background</h1>
+<p>Over the winter break I thought it would be fun to experiment with deep reinforcement learning. Using the ideas of reinforcement learning computers have been able to do amazing things such master the gane of <a href="https://storage.googleapis.com/deepmind-media/alphago/AlphaGoNaturePaper.pdf">Go</a>, play 3D racing games competitvely, and undergo complex manipulations of the environment around them that completely defy explicit programming!</p>
+
+<p>A little under 3 years ago, Deepmind released a Deep Q Learning reinforcement learning based learning algorithm that was able to master several games from Atari 2600 sheerly based of the pixels in the screen of the game. In this blog, we will test out the Deep Q network on the Atari game Space Invaders, using OpenAI Gym, encoperating a couple newer architecture changes proposed in more recent papers, Dueling Deep Q networks(DQN) and Double Deep Q networks(DDQN).</p>
+
+<h2 id="background">Background</h2>
+<hr />
 <p>Suppose that you are located somewhere in an unknown grid. At any timestep you may only move up, right, down or left. Each resulting action will give some amount of reward. Your
 goal is to the find the optimal set of moves so that you will have the maximum amount of award after <script type="math/tex">T</script> timesteps. Doesn’t sound that bad? Sure, but what if you were only given a limited number trials to explore moves? Furthermore, what if the rewards were very sparse? Perhaps you will only start getting rewards after the 20th move despite the fact that it was your second move that was crucial for you get a reward.</p>
 
-<p>The above siutation is exactly an example of a problem in reinforcement learning. In reinforcement learning, we are given a set of possible states and actions. We assume that a state will have the same set of actions regardless of our moves previosuly to get to the state. We then wish
+<p>The above situation is exactly an example of a problem in reinforcement learning. In reinforcement learning, we are given a set of possible states and actions. We assume that a state will have the same set of actions regardless of our moves previosuly to get to the state. We then wish
 to find the optimum behavior such that some reward is maximized. We define  <script type="math/tex">V_s</script> given a state <script type="math/tex">s</script> to be equal to the amount of total award
 we can get from state <script type="math/tex">s</script> assuming optimal movement. That is</p>
 
@@ -79,7 +84,7 @@ we can get from state <script type="math/tex">s</script> assuming optimal moveme
 V_s = \max \sum_{t=0}^T R_t
 \end{align*}</script>
 
-<p>where $R_0$ denotes the amount of award received in the first timestep and so forth.</p>
+<p>where <script type="math/tex">R_0</script> denotes the amount of award received in the first timestep and so forth.</p>
 
 <p>Note however that the above equation does not generalize when we could potentially play forever. If we allow <script type="math/tex">T</script> to approach infinity, then the sum will always approach infinity. However, we wish to differentiate between all strategies that are infinitely long. To deal with this problem we introduce a 
 discount factor <script type="math/tex">\gamma</script> and multiply the reward we get at each future timestep by <script type="math/tex">\gamma</script>. We then have that</p>
@@ -90,8 +95,8 @@ V_s = \max \sum_{t_0}^{\infty} \gamma^tR_t
 
 <p>The discount factor decreases the value of rewards in as the future which can also be interpreted as decreased certaintity in the reward the future.</p>
 
-<h1 id="q-value">Q Value</h1>
-
+<h3 id="q-value">Q Value</h3>
+<hr />
 <p>An alternative method to assigning values to states is to assign values to state, action pairs instead of just states. Specifically, we define <script type="math/tex">Q(s,a)</script> to be equal to the total amount of discounted reward that we can get if were in initially states s and did action a. Assume to doing some action a leads to subsequent state s’, then note that we have that:</p>
 
 <script type="math/tex; mode=display">\begin{align*}
@@ -102,74 +107,75 @@ Q(s,a) = r+\gamma \max_a Q(s', a)
 be the optimal to take to maximize reward.</p>
 
 <p>In normal reinforcement learning under Q learning, we wish to calculate the value of <script type="math/tex">Q(s, a)</script> for all values of s and a. In deep reinforcement learning, we take as our state
-the values of pixels on the screen. If we were to try to explicitly construct a table for all possible values of s and a, it would absolutely gigantic. If we take our state as the last 3 frames in a game with screen size 100 by 100, we would have over <script type="math/tex">10^12</script> states.</p>
+the values of pixels on the screen. If we were to try to explicitly construct a table for all possible values of s and a, it would absolutely gigantic. If we take our state as the last 3 frames in a game with screen size 100 by 100, we would have over <script type="math/tex">10^{12}</script> states.</p>
 
 <p>Given that we are using pixels as the states there is likely a lot of reptition in our states where two very similar states are likely to have the same Q value.
 This is exactly what convolutional neural networks(CNN) are good at! Therefore, we construct a CNN to whose input is a state of the last couple frames in a game and whose output layer is the estimated Q values for the list of possible actions.</p>
 
-<h1 id="deep-q-learning">Deep Q Learning</h1>
+<h2 id="deep-q-learning">Deep Q Learning</h2>
+<hr />
 
 <p>In deep Q learning, we construct a CNN. For the particular game of space invaders
 , we construct a  network of the following architecture.</p>
 
-<table class="table-striped mbtablestyle">
+<table class="table-striped mbtablestyle pagination-centered center">
   <thead>
     <tr>
       <th><strong>Name</strong></th>
       <th style="text-align: left"><strong>Input Shape</strong></th>
-      <th style="text-align: left"><strong>Filter Size</strong></th>
-      <th style="text-align: left"><strong>Filter Number</strong></th>
-      <th style="text-align: left"><strong>Stride</strong></th>
-      <th style="text-align: left"><strong>Output Shape</strong></th>
+      <th style="text-align: center"><strong>Filter Size</strong></th>
+      <th style="text-align: center"><strong>Filter Number</strong></th>
+      <th style="text-align: center"><strong>Stride</strong></th>
+      <th style="text-align: center"><strong>Output Shape</strong></th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <td>conv1</td>
       <td style="text-align: left">3x84x84</td>
-      <td style="text-align: left">8x8</td>
-      <td style="text-align: left">32</td>
-      <td style="text-align: left">4</td>
-      <td style="text-align: left">32x20x20</td>
+      <td style="text-align: center">8x8</td>
+      <td style="text-align: center">32</td>
+      <td style="text-align: center">4</td>
+      <td style="text-align: center">32x20x20</td>
     </tr>
     <tr>
       <td>conv2</td>
       <td style="text-align: left">32x20x20</td>
-      <td style="text-align: left">4x4</td>
-      <td style="text-align: left">64</td>
-      <td style="text-align: left">2</td>
-      <td style="text-align: left">64x9x9</td>
+      <td style="text-align: center">4x4</td>
+      <td style="text-align: center">64</td>
+      <td style="text-align: center">2</td>
+      <td style="text-align: center">64x9x9</td>
     </tr>
     <tr>
       <td>conv3</td>
       <td style="text-align: left">64x9x9</td>
-      <td style="text-align: left">3x3</td>
-      <td style="text-align: left">64</td>
-      <td style="text-align: left">1</td>
-      <td style="text-align: left">64x7x7</td>
+      <td style="text-align: center">3x3</td>
+      <td style="text-align: center">64</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">64x7x7</td>
     </tr>
     <tr>
       <td>flatten</td>
       <td style="text-align: left">64x7x7</td>
-      <td style="text-align: left">-</td>
-      <td style="text-align: left">-</td>
-      <td style="text-align: left">-</td>
-      <td style="text-align: left">512</td>
+      <td style="text-align: center">-</td>
+      <td style="text-align: center">-</td>
+      <td style="text-align: center">-</td>
+      <td style="text-align: center">512</td>
     </tr>
     <tr>
       <td>fc1</td>
       <td style="text-align: left">512</td>
-      <td style="text-align: left">-</td>
-      <td style="text-align: left">-</td>
-      <td style="text-align: left">-</td>
-      <td style="text-align: left">6</td>
+      <td style="text-align: center">-</td>
+      <td style="text-align: center">-</td>
+      <td style="text-align: center">-</td>
+      <td style="text-align: center">6</td>
     </tr>
   </tbody>
 </table>
 
-<p>where 6 is the number of actions our agent is allowed to move.</p>
+<p>where we set the final output layer to be equal to 6 since this is the number of actions our agent is allowed to move.</p>
 
-<p>which we can implement in Keras using the following code:</p>
+<p>We can implement in Keras using the following code:</p>
 
 <div class="language-python highlighter-rouge"><pre class="highlight"><code>    <span class="k">def</span> <span class="nf">construct_q_network</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">model</span> <span class="o">=</span> <span class="n">Sequential</span><span class="p">()</span>
@@ -207,7 +213,8 @@ falling down.</p>
 
 <p>Where self.process_buffer contains the last three full sized 192x160x3 pictures.</p>
 
-<h1 id="replay-buffer">Replay Buffer</h1>
+<h3 id="replay-buffer">Replay Buffer</h3>
+<hr />
 
 <p>A problem when we training our network is the fact that if we only train on frames of data as they come in, we would be overfitting
 on the last few frames of the data. As a result, we keep a buffer of all the last 20000 experiences we have experienced so far and
@@ -261,10 +268,13 @@ We use the following data structure for our replay.</p>
 
 </code></pre>
 </div>
-<h1 id="exploration">Exploration</h1>
+<h3 id="exploration">Exploration</h3>
+<hr />
 
-<p>We use an <script type="math/tex">\epsilon</script> exploration policy to play the game. This means that with probability <script type="math/tex">\epsilon</script>
-you do a random action. Otherwise, we select the action with the highest Q value from our current state.</p>
+<p>How do we play the game while we are training our network? Do we continously choose what we believe is the best action? But if we do this
+, how will we be able to discover a new move? As a result, we use an <script type="math/tex">\epsilon</script> exploration policy to play the game. This means that with probability <script type="math/tex">\epsilon</script>
+you do a random action. Otherwise, we select the action with the highest Q value(what we believe is the best action) from our current state. In addition,
+since at the beginning of training, our belief in Q values is completely baseless, we slowly linearily decrease our <script type="math/tex">\epsilon</script> from <script type="math/tex">1</script> to <script type="math/tex">0.1</script>.</p>
 
 <div class="language-python highlighter-rouge"><pre class="highlight"><code>    <span class="k">def</span> <span class="nf">predict_movement</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">epsilon</span><span class="p">):</span>
         <span class="s">"""Predict movement of game controler where is epsilon
@@ -278,7 +288,8 @@ you do a random action. Otherwise, we select the action with the highest Q value
 </code></pre>
 </div>
 
-<h1 id="loss-function-and-target-networks">Loss Function and Target Networks</h1>
+<h3 id="loss-function-and-target-networks">Loss Function and Target Networks</h3>
+<hr />
 
 <p>As mentioned above, we wish that each of outputs of our CNN be equal to the Q value of
 a respective action. We know from that implies that</p>
@@ -317,13 +328,20 @@ setting the weights of the target network is below</p>
 </code></pre>
 </div>
 
-<h1 id="results-for-deep-q-network">Results for Deep Q Network</h1>
+<h2 id="results-for-double-deep-q-network">Results for Double Deep Q Network</h2>
+<hr />
 
-<p>Using all the code above we train a Double Deep Q Networks(if we remove the target network then our above code would be called a Deep Q Network) whose full code can be found
+<p>Using all the code above we train a Double Deep Q Networks(if we remove the target network then our above code would be called a Deep Q Network) bwhose full code can be found
 TODO, after training for about 1,000,000 frames, we get an average score of around
 260 on the game of space invaders. Below is a video of the Double Deep Q Network playing.</p>
 
-<h1 id="dueling-q-network">Dueling Q Network</h1>
+<p><img src="http://localhost:4000/images/output.gif" alt="Picture space invaders" class="img-responsive center" /></p>
+
+<p>We can visualize Q values of different actions as we train the DDQN, which represents how our model is learning.</p>
+
+<p><img src="http://localhost:4000/images/q-loss-graph.png" alt="Picture Average Q Loss" class="img-responsive center" /></p>
+<h2 id="dueling-q-network">Dueling Q Network</h2>
+<hr />
 
 <p>One problem with our above implementation of a Deep Q Network is that we currently estimate the value of being at a state and executing a specific action. However, much of the time, the value of doing any action doesn’t really influence the value of being at a specific state. In a dueling Q network architecture, we seek to seperate</p>
 
@@ -331,15 +349,17 @@ TODO, after training for about 1,000,000 frames, we get an average score of arou
 Q(s,a) = A(s,a) + V(s)
 \end{align}</script>
 
-<p>where <script type="math/tex">A(s,a)</script> represents the advantage of making a certain action and <script type="math/tex">V(s)</script> represents the current value of being at a certain state.</p>
+<p>where under this definition, <script type="math/tex">A(s,a)</script> will represents the advantage of making a certain action and <script type="math/tex">V(s)</script> will represents the current value of being at a certain state.</p>
 
 <p>How do we do this? We construct two seperate two streams in our CNN - one to estimate
 the value of a state and another to estimate the advantage of each of the actions.
 Note that both streams share the same weights for the convolutional layers. We then combine these layers to predict the Q values of each action. Unfortunately, directly summing these seperate streams gives us zero guarentees that the first stream will actually predict the value of a state. Instead we combine them with criterion</p>
 
 <script type="math/tex; mode=display">\begin{align}
-Q(s,a) = V(s) + A(s,a) - \frac{1}{\|a\|}\sum\_{a'}A(s,a')
+Q(s,a) = V(s) + A(s,a) - \frac{1}{\|a\|}\sum_{a'}A(s,a')
 \end{align}</script>
+
+<!---_ -->
 
 <p>Under the above criterion, on average, the advantage stream will be on average equal to 0, leading the value stream to approximately predict the value of the state.</p>
 
@@ -363,20 +383,27 @@ Q(s,a) = V(s) + A(s,a) - \frac{1}{\|a\|}\sum\_{a'}A(s,a')
 </code></pre>
 </div>
 
-<h1 id="results-for-duel-q-network">Results for Duel Q Network</h1>
+<h2 id="results-for-duel-q-network">Results for Duel Q Network</h2>
+<hr />
 
-<p>Under the Duel Q Network, after about 600,000 frames of training, I got an average score of around 300, better than the DDQN. Unfortunately, it appears the network appears
-to just shoot bullets without much moving around as seen in the video above.</p>
+<p>Under the Duel Q Network, after about 600,000 frames of training, I got an average score of  297, better than the DDQN. Interestingly, the movement is also very
+different then the Deep Q Network(I tried several different initializations of both networks and seemed to always result in these distinctive behaviors of play)!</p>
 
-<h1 id="conclusion">Conclusion</h1>
-<p>In the above blog post, we explored how we can use Deep Q Networks to achieve decent performance on the Space Invaders game. Given additional training time, the performance on the tasks will likely. 
-As a final word, there many possible improvements we can make on the architecture described. One interesting possibility, inspired partly from cognitive science
+<p><img src="http://localhost:4000/images/duelq.gif" alt="Picture space invaders" class="img-responsive center" /></p>
+
+<h2 id="conclusion">Conclusion</h2>
+<hr />
+<p>In the above blog post, we explored how we can use Deep Q Networks to achieve decent performance on the Space Invaders game. Given additional training time, the performance on the tasks will probably increase.</p>
+
+<p>As a final word, there many possible improvements we can make on the architecture described. One interesting possibility, inspired partly from cognitive science
 is prioritized replay, where we seek to preferentially replay events that are very ‘different’(our estimated Q values significantly different than actual Q values)
 from what we expect. Recently, Google DeepMind released Asynchronous Advantage Actor Critic (A3C) method which generally performs better than variants of DQN on almost all games in the Atari suite, including Space Invaders.</p>
 
-<ul>
-  <li>There were a lot of parts of code in the above implementation and if there were any errors please let me know!*</li>
-</ul>
+<h3 id="acknowledgments">Acknowledgments</h3>
+<hr />
+<p>List of blogs</p>
+
+<p><em>There were a lot of parts of code in the above implementation and if there were any errors please let me know!</em></p>
 
   </div>
 
@@ -388,14 +415,12 @@ from what we expect. Recently, Google DeepMind released Asynchronous Advantage A
 
 </article>
 
-    </div>
+        </div>
 
-    <div class="wrapper-footer">
-      <div class="container">
-        <footer class="footer">
-          
-
-
+        <div class="wrapper-footer">
+            <div class="container">
+                <footer class="footer">
+                    
 
 
 
@@ -406,35 +431,37 @@ from what we expect. Recently, Google DeepMind released Asynchronous Advantage A
 
 
 
-        </footer>
-      </div>
-    </div>
 
-    
-<div id="disqus_thread"></div>
-<script>
+
+                </footer>
+            </div>
+            
+            <div id="disqus_thread" class="container"></div>
+            <script>
 
 /**
 *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
-*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
-/*
-var disqus_config = function () {
-this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
-this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
-};
-*/
-(function() { // DON'T EDIT BELOW THIS LINE
-var d = document, s = d.createElement('script');
-s.src = '//blog-awbymgp6mk.disqus.com/embed.js';
-s.setAttribute('data-timestamp', +new Date());
-(d.head || d.body).appendChild(s);
-})();
-</script>
-<script id="dsq-count-scr" src="//blog-awbymgp6mk.disqus.com/count.js" async></script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-                                
-    
-    
+ *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+            /*
+               var disqus_config = function () {
+               this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+               this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+               };
+             */
+            (function() { // DON'T EDIT BELOW THIS LINE
+                var d = document, s = d.createElement('script');
+                s.src = '//blog-awbymgp6mk.disqus.com/embed.js';
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+            })();
+            </script>
+            <script id="dsq-count-scr" src="//blog-awbymgp6mk.disqus.com/count.js" async></script>
+            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 
-  </body>
+            
+        </div>
+
+        
+
+    </body>
 </html>
