@@ -242,7 +242,8 @@ Combining all the code above we construct a Double Deep $$Q$$ Networks(the targe
 
 ![Picture space invaders]({{site.url}}/images/output.gif){:.img-responsive .center}
 
-We can visualize $$Q$$ values of different actions as we train the DDQN, which represents how our model is learning.
+We can visualize $$Q$$ values of different actions as we train the DDQN, which is shown in the plot below. Loosely, these Q values can represent how our network is learning
+how to play this game.
 
 ![Picture Average $$Q$$ Loss]({{site.url}}/images/q-loss-graph.png){:.img-responsive .center}
 ## Dueling $$Q$$ Network

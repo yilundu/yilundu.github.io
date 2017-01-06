@@ -171,6 +171,7 @@ class ReplayBuffer:
         return s_batch, a_batch, r_batch, d_batch, s2_batch
 
 ```
+
 ### Exploration
 ---
 
