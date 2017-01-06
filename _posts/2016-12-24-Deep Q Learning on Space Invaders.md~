@@ -54,10 +54,10 @@ $$
 where $$r$$ is the reward received from being in state $$s$$ and doing action $$a$$. The above equation is true since when we reach state $$s'$$, the action with the maximum $$Q$$ value will
 be the optimal to take to maximize reward. 
 
-In normal reinforcement learning under $$Q$$ learning, we wish to calculate the value of $$Q(s, a)$$ for all values of s and a. In deep reinforcement learning, we take as our state
-the values of pixels on the screen. If we were to try to explicitly construct a table for all possible values of s and a, it would absolutely gigantic. If we take our state as the last 3 frames in a game with screen size 100 by 100, we would have over $$10^{12}$$ states.
+In normal reinforcement learning under $$Q$$ learning, we wish to calculate the value of $$Q(s, a)$$ for all values of s and a. Deep reinforcement learning is pretty similar, except that we take as our state
+the values of pixels on the screen. This allows our reinforcement learning algorithm to easy generalize to any game that can be displayed on a screen. Unfortunately, if we were to try to explicitly construct a table for all possible values of s and a, it would absolutely gigantic. If we take our state as the last 3 frames in a game with screen size 100 by 100, we would have over $$10^{12}$$ possible states!
 
-Given that we are using pixels as the possible states that we are in, there is likely a lot of repetition in our states where two very similar states are likely to have the same $$Q$$ value.
+Fortunately though, if we are using pixels as the possible states that we are in, there is likely a lot of repetition in our states where two very similar states are likely to have the same $$Q$$ value.
 This is exactly what convolutional neural networks(CNN) are good at! Therefore, we construct a CNN to whose input is a state of the last couple frames in a game and whose output layer is the estimated $$Q$$ values for the list of possible actions. 
 
 ## Deep $$Q$$ Learning
@@ -169,8 +169,8 @@ class ReplayBuffer:
         s_batch, a_batch, r_batch, d_batch, s2_batch = map(np.array, zip(*batch))
 
         return s_batch, a_batch, r_batch, d_batch, s2_batch
-
 ```
+
 ### Exploration
 ---
 

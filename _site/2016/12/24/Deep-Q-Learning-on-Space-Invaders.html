@@ -265,9 +265,9 @@ We use the following data structure for our replay.</p>
         <span class="n">s_batch</span><span class="p">,</span> <span class="n">a_batch</span><span class="p">,</span> <span class="n">r_batch</span><span class="p">,</span> <span class="n">d_batch</span><span class="p">,</span> <span class="n">s2_batch</span> <span class="o">=</span> <span class="nb">map</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">,</span> <span class="nb">zip</span><span class="p">(</span><span class="o">*</span><span class="n">batch</span><span class="p">))</span>
 
         <span class="k">return</span> <span class="n">s_batch</span><span class="p">,</span> <span class="n">a_batch</span><span class="p">,</span> <span class="n">r_batch</span><span class="p">,</span> <span class="n">d_batch</span><span class="p">,</span> <span class="n">s2_batch</span>
-
 </code></pre>
 </div>
+
 <h3 id="exploration">Exploration</h3>
 <hr />
 
@@ -337,7 +337,8 @@ setting the weights of the target network is below</p>
 
 <p><img src="http://localhost:4000/images/output.gif" alt="Picture space invaders" class="img-responsive center" /></p>
 
-<p>We can visualize <script type="math/tex">Q</script> values of different actions as we train the DDQN, which represents how our model is learning.</p>
+<p>We can visualize <script type="math/tex">Q</script> values of different actions as we train the DDQN, which is shown in the plot below. Loosely, these Q values can represent how our network is learning
+how to play this game.</p>
 
 <p><img src="http://localhost:4000/images/q-loss-graph.png" alt="Picture Average $$Q$$ Loss" class="img-responsive center" /></p>
 <h2 id="dueling-q-network">Dueling <script type="math/tex">Q</script> Network</h2>
