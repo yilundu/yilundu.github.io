@@ -4,12 +4,14 @@ title: About
 permalink: /about/
 ---
 
-Some information about you!
+Hi, I'm Yilun Du, currently a sophomore at MIT double majoring in computer science and mathematics.
 
-### More Information
+### Interests
 
-A place to include any other types of information that you'd like to include about yourself.
+One of my major interests is human cognition and perception of the environment around them. I am especially interested
+in computational models that are able to understand complicated tasks such as document sentiment, facial expression,
+or strategize complex games.
 
 ### Contact me
 
-[email@domain.com](mailto:email@domain.com)
+[yilundu@gmail.com](mailto:yilundu@gmail.com)
