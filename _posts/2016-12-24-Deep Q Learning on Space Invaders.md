@@ -9,7 +9,7 @@ title: Deep Reinforcement Learning on Space Invaders Using Keras
 
 [Full code for training Double Deep Q Network and Duel Q Network](https://github.com/yilundu/DQN-DDQN-on-Space-Invaders)
 
-Over the winter break I thought it would be fun to experiment with deep reinforcement learning. Using the ideas of reinforcement learning computers have been able to do amazing things such master the gane of [Go](https://storage.googleapis.com/deepmind-media/alphago/AlphaGoNaturePaper.pdf), play 3D racing games competitvely, and undergo complex manipulations of the environment around them that completely defy explicit programming!
+Over the winter break I thought it would be fun to experiment with deep reinforcement learning. Using the ideas of reinforcement learning computers have been able to do amazing things such master the gane of [Go](https://storage.googleapis.com/deepmind-media/alphago/AlphaGoNaturePaper.pdf), play 3D racing games [competitively](https://arxiv.org/abs/1602.01783), and undergo complex manipulations of the environment around them that completely defy explicit programming!
 
 A little under 3 years ago, Deepmind released a Deep Q Learning reinforcement learning based learning algorithm that was able to master several games from Atari 2600 sheerly based of the pixels in the screen of the game. In this blog, we will test out the Deep Q network on the Atari game Space Invaders, using OpenAI Gym, encoperating a couple newer architecture changes proposed in more recent papers, Dueling Deep Q networks(DQN) and Double Deep Q networks(DDQN).
 
@@ -236,9 +236,9 @@ setting the weights of the target network is below
 ## Results for Double Deep Q Network
 ---
 
-Using all the code above we train a Double Deep Q Networks(if we remove the target network then our above code would be called a Deep Q Network) bwhose full code can be found
-TODO, after training for about 1,000,000 frames, we get an average score of around
-260 on the game of space invaders. Below is a video of the Double Deep Q Network playing.
+Combining all the code above we construct a Double Deep Q Networks(the target network is our "second" network) , after training for about 1,000,000 frames, we get an average score of around
+260 on the game of space invaders(full code can be found
+[here](https://github.com/yilundu/DQN-DDQN-on-Space-Invaders)). Below is a video of the Double Deep Q Network playing.
 
 ![Picture space invaders]({{site.url}}/images/output.gif){:.img-responsive .center}
 
@@ -248,7 +248,7 @@ We can visualize Q values of different actions as we train the DDQN, which repre
 ## Dueling Q Network
 ---
 
-One problem with our above implementation of a Deep Q Network is that we currently estimate the value of being at a state and executing a specific action. However, much of the time, the value of doing any action doesn't really influence the value of being at a specific state. In a dueling Q network architecture, we seek to seperate 
+One problem with our above implementation of a Deep Q Network is that we currently directly estimating the value of being at a state and executing a specific action. However, much of the time, the value of doing any action doesn't really influence the value of being at a specific state. In a dueling Q network architecture, we seek to seperate 
 
 $$
 \begin{align}
@@ -311,6 +311,6 @@ from what we expect. Recently, Google DeepMind released Asynchronous Advantage A
 
 ### Acknowledgments
 ---
-List of blogs
+This blog post would not be possible without so many amazing resources online! Code from [here](http://pemami4911.github.io/blog/2016/08/21/ddpg-rl.html) and [here](https://yanpanlau.github.io/2016/10/11/Torcs-Keras.html) were used as references for the code presented above.
 
 *There were a lot of parts of code in the above implementation and if there were any errors please let me know!*
