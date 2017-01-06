@@ -7,11 +7,11 @@ title: Deep Reinforcement Learning on Space Invaders Using Keras
 
 ![Picture space invaders]({{site.url}}/images/output.gif){:.img-responsive .center}
 
-[Full code for training Double Deep Q Network and Duel Q Network](https://github.com/yilundu/DQN-DDQN-on-Space-Invaders)
+[Full code for training Double Deep $$Q$$ Network and Duel $$Q$$ Network](https://github.com/yilundu/DQN-DDQN-on-Space-Invaders)
 
 Over the winter break I thought it would be fun to experiment with deep reinforcement learning. Using the ideas of reinforcement learning computers have been able to do amazing things such master the gane of [Go](https://storage.googleapis.com/deepmind-media/alphago/AlphaGoNaturePaper.pdf), play 3D racing games [competitively](https://arxiv.org/abs/1602.01783), and undergo complex manipulations of the environment around them that completely defy explicit programming!
 
-A little under 3 years ago, Deepmind released a Deep Q Learning reinforcement learning based learning algorithm that was able to master several games from Atari 2600 sheerly based of the pixels in the screen of the game. In this blog, we will test out the Deep Q network on the Atari game Space Invaders, using OpenAI Gym, encoperating a couple newer architecture changes proposed in more recent papers, Dueling Deep Q networks(DQN) and Double Deep Q networks(DDQN).
+A little under 3 years ago, Deepmind released a Deep $$Q$$ Learning reinforcement learning based learning algorithm that was able to master several games from Atari 2600 sheerly based of the pixels in the screen of the game. In this blog, we will test out the Deep $$Q$$ network on the Atari game Space Invaders, using OpenAI Gym, encoperating a couple newer architecture changes proposed in more recent papers, Dueling Deep $$Q$$ networks (**DQN**) and Double Deep $$Q$$ networks (**DDQN**).
 
 ## Background
 ---
@@ -41,9 +41,9 @@ $$
 
 The discount factor decreases the value of rewards in as the future which can also be interpreted as decreased certaintity in the reward the future.
 
-### Q Value
+### $$Q$$ Value
 ---
-An alternative method to assigning values to states is to assign values to state, action pairs instead of just states. Specifically, we define $$Q(s,a)$$ to be equal to the total amount of discounted reward that we can get if were in initially states s and did action a. Assume to doing some action a leads to subsequent state s', then note that we have that: 
+An alternative method to assigning values to states is to assign values to state, action pairs instead of just states. Specifically, we define $$Q(s,a)$$ to be equal to the total amount of discounted reward that we can get if were in initially states $$s$$ and did action $$a$$. We refer to $$Q(s,a)$$ for an action $$a$$ as the $$Q$$ value of the action. ssume to doing some action a leads to subsequent state $$s'$$, then note that we have that: 
 
 $$
 \begin{align*}
@@ -51,19 +51,19 @@ Q(s,a) = r+\gamma \max_a Q(s', a)
 \end{align*}
 $$
 
-where r is the reward received from being in state s and doing action a. The above equation is true since when we reach state s', the action with the maximum Q value will
+where $$r$$ is the reward received from being in state $$s$$ and doing action $$a$$. The above equation is true since when we reach state $$s'$$, the action with the maximum $$Q$$ value will
 be the optimal to take to maximize reward. 
 
-In normal reinforcement learning under Q learning, we wish to calculate the value of $$Q(s, a)$$ for all values of s and a. In deep reinforcement learning, we take as our state
+In normal reinforcement learning under $$Q$$ learning, we wish to calculate the value of $$Q(s, a)$$ for all values of s and a. In deep reinforcement learning, we take as our state
 the values of pixels on the screen. If we were to try to explicitly construct a table for all possible values of s and a, it would absolutely gigantic. If we take our state as the last 3 frames in a game with screen size 100 by 100, we would have over $$10^{12}$$ states.
 
-Given that we are using pixels as the states there is likely a lot of reptition in our states where two very similar states are likely to have the same Q value.
-This is exactly what convolutional neural networks(CNN) are good at! Therefore, we construct a CNN to whose input is a state of the last couple frames in a game and whose output layer is the estimated Q values for the list of possible actions. 
+Given that we are using pixels as the possible states that we are in, there is likely a lot of repetition in our states where two very similar states are likely to have the same $$Q$$ value.
+This is exactly what convolutional neural networks(CNN) are good at! Therefore, we construct a CNN to whose input is a state of the last couple frames in a game and whose output layer is the estimated $$Q$$ values for the list of possible actions. 
 
-## Deep Q Learning
+## Deep $$Q$$ Learning
 ---
 
-In deep Q learning, we construct a CNN. For the particular game of space invaders
+As mentioned above in deep $$Q$$ learning, we construct a CNN to process input states and output $$Q$$ values for possible actions. For the particular game of space invaders
 , we construct a  network of the following architecture.
 
 **Name**     | **Input Shape**     | **Filter Size**    | **Filter Number**   |**Stride**   |**Output Shape**
@@ -114,7 +114,7 @@ The code for converting the last three frames to one single channel image is bel
 ```
 
 
-Where self.process\_buffer contains the last three full sized 192x160x3 pictures.
+In the above code,  *self.process\_buffer* contains the last three full sized 192x160x3 pictures.
 
 ### Replay Buffer
 ---
@@ -175,9 +175,9 @@ class ReplayBuffer:
 ---
 
 How do we play the game while we are training our network? Do we continously choose what we believe is the best action? But if we do this
-, how will we be able to discover a new move? As a result, we use an $$\epsilon$$ exploration policy to play the game. This means that with probability $$\epsilon$$
-you do a random action. Otherwise, we select the action with the highest Q value(what we believe is the best action) from our current state. In addition,
-since at the beginning of training, our belief in Q values is completely baseless, we slowly linearily decrease our $$\epsilon$$ from $$1$$ to $$0.1$$.
+, how will we be able to discover a new move? This general problem is known and **exploration vs explotation tradeoff**.  We remedy this problem, we use an $$\epsilon$$ exploration policy to play the game. This means that with probability $$\epsilon$$
+you do a random action. Otherwise, we select the action with the highest $$Q$$ value(what we believe is the best action) from our current state. In addition,
+since at the beginning of training, our belief in $$Q$$ values is completely baseless, we slowly linearily decrease our $$\epsilon$$ from $$1$$ to $$0.1$$. We can do this in code as follows.
 
 ``` python
     def predict_movement(self, data, epsilon):
@@ -194,7 +194,7 @@ since at the beginning of training, our belief in Q values is completely baseles
 ### Loss Function and Target Networks
 ---
 
-As mentioned above, we wish that each of outputs of our CNN be equal to the Q value of
+As mentioned above, we wish that each of outputs of our CNN be equal to the $$Q$$ value of
 a respective action. We know from that implies that  
 
 $$
@@ -203,8 +203,8 @@ Q(s,a) = r+\gamma \max_a Q(s', a)
 \end{align*}
 $$
 
-Therefore, for every $$(s, a, r, s')$$ action pair in our replay buffer we minimize the the discrepency between the Q value predicted directly form the neural network and
-the Q value constructed from the subsequent reward and maximum Q value of the resultant state, if the state is non-terminal. If the state is terminal, then the expect Q value should just be the reward. I used MSE(mean square error) as a loss function. This can be implemented in Keras below
+Therefore, for every $$(s, a, r, s')$$ action pair in our replay buffer we minimize the the discrepency between the $$Q$$ value predicted directly form the neural network and
+the $$Q$$ value constructed from the subsequent reward and maximum $$Q$$ value of the resultant state, if the state is non-terminal. If the state is terminal, then the expect $$Q$$ value should just be the reward. I used MSE(mean square error) as a loss function. This can be implemented in Keras below
 
 ``` python
     def train(self, s_batch, a_batch, r_batch, d_batch, s2_batch, observation_num):
@@ -223,8 +223,8 @@ the Q value constructed from the subsequent reward and maximum Q value of the re
 ```
 
 Note that in the above code, we actually use a second "target" network to predict the
-Q values of the transitioned state s'. The second "target" network is set to the weights of the original network every so many frames but is otherwise unchanged. This allows the deep Q network to converge more quickly, since otherwise we could enter a self
-feedback loop where we continously estimate higher and higher Q values. The code for
+Q values of the transitioned state $$s'$$. The second "target" network is set to the weights of the original network every so many frames but is otherwise unchanged. This allows the deep $$Q$$ network to converge more quickly, since otherwise we could enter a self
+feedback loop where we continously estimate higher and higher $$Q$$ values. The code for
 setting the weights of the target network is below
 
 ```python
@@ -233,22 +233,23 @@ setting the weights of the target network is below
         self.target_model.set_weights(model_weights)
 ```
 
-## Results for Double Deep Q Network
+## Results for Double Deep $$Q$$ Network
 ---
 
-Combining all the code above we construct a Double Deep Q Networks(the target network is our "second" network) , after training for about 1,000,000 frames, we get an average score of around
+Combining all the code above we construct a Double Deep $$Q$$ Networks(the target network is our "second" network) , after training for about 1,000,000 frames, we get an average score of around
 260 on the game of space invaders(full code can be found
-[here](https://github.com/yilundu/DQN-DDQN-on-Space-Invaders)). Below is a video of the Double Deep Q Network playing.
+[here](https://github.com/yilundu/DQN-DDQN-on-Space-Invaders)). Below is a video of the Double Deep $$Q$$ Network playing.
 
 ![Picture space invaders]({{site.url}}/images/output.gif){:.img-responsive .center}
 
-We can visualize Q values of different actions as we train the DDQN, which represents how our model is learning.
+We can visualize $$Q$$ values of different actions as we train the DDQN, which is shown in the plot below. Loosely, these Q values can represent how our network is learning
+how to play this game.
 
-![Picture Average Q Loss]({{site.url}}/images/q-loss-graph.png){:.img-responsive .center}
-## Dueling Q Network
+![Picture Average $$Q$$ Loss]({{site.url}}/images/q-loss-graph.png){:.img-responsive .center}
+## Dueling $$Q$$ Network
 ---
 
-One problem with our above implementation of a Deep Q Network is that we currently directly estimating the value of being at a state and executing a specific action. However, much of the time, the value of doing any action doesn't really influence the value of being at a specific state. In a dueling Q network architecture, we seek to seperate 
+One problem with our above implementation of a Deep $$Q$$ Network is that we currently directly estimating the value of being at a state and executing a specific action. However, much of the time, the value of doing any action doesn't really influence the value of being at a specific state. In a dueling $$Q$$ network architecture, we seek to seperate 
 
 $$
 \begin{align}
@@ -260,7 +261,7 @@ where under this definition, $$A(s,a)$$ will represents the advantage of making 
 
 How do we do this? We construct two seperate two streams in our CNN - one to estimate
 the value of a state and another to estimate the advantage of each of the actions.
-Note that both streams share the same weights for the convolutional layers. We then combine these layers to predict the Q values of each action. Unfortunately, directly summing these seperate streams gives us zero guarentees that the first stream will actually predict the value of a state. Instead we combine them with criterion
+Note that both streams share the same weights for the convolutional layers. We then combine these layers to predict the $$Q$$ values of each action. Unfortunately, directly summing these seperate streams gives us zero guarentees that the first stream will actually predict the value of a state. Instead we combine them with criterion
 
 $$
 \begin{align}
@@ -292,21 +293,21 @@ We can implement this in Keras using the following code
         self.model = Model(input=[input_layer], output=[policy])
 ```
 
-## Results for Duel Q Network
+## Results for Duel $$Q$$ Network
 ---
 
-Under the Duel Q Network, after about 600,000 frames of training, I got an average score of  297, better than the DDQN. Interestingly, the movement is also very
-different then the Deep Q Network(I tried several different initializations of both networks and seemed to always result in these distinctive behaviors of play)! 
+Under the Duel $$Q$$ Network, after about 600,000 frames of training, I got an average score of  297, better than the DDQN. Interestingly, the movement is also very
+different then the Deep $$Q$$ Network(I tried several different initializations of both networks and seemed to always result in these distinctive behaviors of play)! 
 
 
 ![Picture space invaders]({{site.url}}/images/duelq.gif){:.img-responsive .center}
 
 ## Conclusion
 ---
-In the above blog post, we explored how we can use Deep Q Networks to achieve decent performance on the Space Invaders game. Given additional training time, the performance on the tasks will probably increase.
+In the above blog post, we explored how we can use Deep $$Q$$ Networks to achieve decent performance on the Space Invaders game. Given additional training time, the performance on the tasks will probably increase.
 
 As a final word, there many possible improvements we can make on the architecture described. One interesting possibility, inspired partly from cognitive science
-is prioritized replay, where we seek to preferentially replay events that are very 'different'(our estimated Q values significantly different than actual Q values)
+is prioritized replay, where we seek to preferentially replay events that are very 'different'(our estimated $$Q$$ values significantly different than actual $$Q$$ values)
 from what we expect. Recently, Google DeepMind released Asynchronous Advantage Actor Critic (A3C) method which generally performs better than variants of DQN on almost all games in the Atari suite, including Space Invaders.  
 
 ### Acknowledgments
