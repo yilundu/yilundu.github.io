@@ -18,7 +18,7 @@ A little under 3 years ago, Deepmind released a Deep $$Q$$ Learning reinforcemen
 Suppose that you are located somewhere in an unknown grid. At any timestep you may only move up, right, down or left. Each resulting action will give some amount of reward. Your
 goal is to the find the optimal set of moves so that you will have the maximum amount of award after $$T$$ timesteps. Doesn't sound that bad? Sure, but what if you were only given a limited number trials to explore moves? Furthermore, what if the rewards were very sparse? Perhaps you will only start getting rewards after the 20th move despite the fact that it was your second move that was crucial for you get a reward.
 
-The above situation is exactly an example of a problem in reinforcement learning. In reinforcement learning, we are given a set of possible states and actions. We assume that a state will have the same set of actions regardless of our moves previosuly to get to the state. We then wish
+The above situation is exactly an example of a problem in reinforcement learning. In reinforcement learning, we are given a set of possible states and actions. We assume that a state will have the same set of actions regardless of our moves previously to get to the state. We then wish
 to find the optimum behavior such that some reward is maximized. We define  $$V_s$$ given a state $$s$$ to be equal to the amount of total award
 we can get from state $$s$$ assuming optimal movement. That is
 
@@ -39,7 +39,7 @@ V_s = \max \sum_{t=0}^{\infty} \gamma^tR_t
 \end{align*}
 $$
 
-further in the future, their value will then be exponentially decreased by $$\gamma$, effectively minimizing rewards in the far future. This can also be justified by decreased
+further in the future, their value will then be exponentially decreased by $$\gamma$$, effectively minimizing rewards in the far future. This can also be justified by decreased
 confidence in the future.
 
 ### $$Q$$ Value
@@ -124,8 +124,8 @@ on the last few frames of the data. As a result, we keep a buffer of all the las
 randomly sample a batch of 64 images to learn on at each step of the game. This way, we won't overfit on the most recent frames. This is
 called **experience replay**.
 
-**Experience replay** is also found biologically!  Studies in rats have shown that replay of events is vital for rats to learn tasks. Sepcifically, they
-found that selective emphasis of replay of suprising events in the past.  One possible incorperation of this fact into our network is
+**Experience replay** is also found biologically!  Studies in rats have shown that replay of events is vital for rats to learn tasks. Specifically, they
+found that selective emphasis of replay of surprising events in the past.  One possible incorporation of this fact into our network is
 to replay past events, but with increased emphasis on events with high temporal difference(events that are very different than
 what we expect) as done in the paper [here](https://arxiv.org/abs/1511.05952)
 We use the following data structure for our replay buffer.
@@ -177,10 +177,10 @@ class ReplayBuffer:
 ### Exploration
 ---
 
-How do we play the game while we are training our network? Do we continously choose what we believe is the best action? But if we do this
+How do we play the game while we are training our network? Do we continuously choose what we believe is the best action? But if we do this
 , how will we be able to discover a new move? This general problem is known and **exploration vs exploitation tradeoff**.  We remedy this problem, we use an $$\epsilon$$ exploration policy to play the game. This means that with probability $$\epsilon$$
 you do a random action. Otherwise, we select the action with the highest $$Q$$ value(what we believe is the best action) from our current state. In addition,
-since at the beginning of training, our belief in $$Q$$ values is completely baseless, we slowly linearily decrease our $$\epsilon$$ from $$1$$ to $$0.1$$. We can do this in code as follows.
+since at the beginning of training, our belief in $$Q$$ values is completely baseless, we slowly linearly decrease our $$\epsilon$$ from $$1$$ to $$0.1$$. We can do this in code as follows.
 
 ``` python
     def predict_movement(self, data, epsilon):
@@ -206,7 +206,7 @@ Q(s,a) = r+\gamma \max_a Q(s', a)
 \end{align*}
 $$
 
-Therefore, for every $$(s, a, r, s')$$ action tuple in our replay buffer we minimize the the discrepancy between the $$Q$$ value predicted directly from the neural network and
+Therefore, for every $$(s, a, r, s')$$ action tuple in our replay buffer we minimize the discrepancy between the $$Q$$ value predicted directly from the neural network and
 the $$Q$$ value constructed from the subsequent reward and maximum $$Q$$ value of the resultant state, if the state is non-terminal. If the state is terminal, then the expect $$Q$$ value should just be the reward. I used MSE(mean square error) as a loss function. This can be implemented in Keras below
 
 ``` python
@@ -227,7 +227,7 @@ the $$Q$$ value constructed from the subsequent reward and maximum $$Q$$ value o
 
 Note that in the above code, we actually use a second "target" network to predict the
 Q values of the transitioned state $$s'$$. The second "target" network is set to the weights of the original network every so many frames but is otherwise unchanged. This allows the deep $$Q$$ network to converge more quickly, since otherwise we could enter a self
-feedback loop where we continously estimate higher and higher $$Q$$ values. The code for
+feedback loop where we continuously estimate higher and higher $$Q$$ values. The code for
 setting the weights of the target network is below
 
 ```python
@@ -253,7 +253,7 @@ how to play this game.
 ## Dueling $$Q$$ Network
 ---
 
-One problem with our above implementation of a Deep $$Q$$ Network is that we are currently directly estimating the value of being at a state and executing a specific action. However, much of the time, the value of doing any action doesn't really influence the value of being at a specific state. In a dueling $$Q$$ network architecture, we seek to seperate 
+One problem with our above implementation of a Deep $$Q$$ Network is that we are currently directly estimating the value of being at a state and executing a specific action. However, much of the time, the value of doing any action doesn't really influence the value of being at a specific state. In a dueling $$Q$$ network architecture, we seek to separate 
 
 $$
 \begin{align}
@@ -265,7 +265,7 @@ where under this definition, $$A(s,a)$$ will represents the advantage of making 
 
 How do we do this? We construct two separate two streams in our CNN - one to estimate
 the value of a state and another to estimate the advantage of each of the actions.
-Note that both streams share the same weights for the convolutional layers. We then combine these layers to predict the $$Q$$ values of each action. Unfortunately, directly summing these seperate streams gives us no guarantees that the first stream will actually predict the value of a state. Instead we combine them with criterion
+Note that both streams share the same weights for the convolutional layers. We then combine these layers to predict the $$Q$$ values of each action. Unfortunately, directly summing these separate streams gives us no guarantees that the first stream will actually predict the value of a state. Instead we combine them with criterion
 
 $$
 \begin{align}
