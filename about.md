@@ -15,3 +15,7 @@ and strategizing for complex games.
 ### Contact me
 
 [yilundu@gmail.com](mailto:yilundu@gmail.com)
+
+### Resume
+
+[Here]({{site.url}}/resume.pdf)
