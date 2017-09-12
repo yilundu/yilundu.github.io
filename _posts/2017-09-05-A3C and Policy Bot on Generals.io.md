@@ -2,7 +2,7 @@
 layout: post
 published: true
 comments: true
-title: A3C and Policy Bot Generals.io on Pytorch
+title: A3C and Policy Bots on Generals.io in Pytorch
 ---
 <iframe width="100%" height="650" src="http://bot.generals.io/replays/Be0wkw2t-" frameborder="20" allowfullscreen></iframe>
 
@@ -98,7 +98,7 @@ Another thing to note is that order of magnitude of features are very different,
 
 The first network we train is the policy network based on past general games played between players found [here](https://www.dropbox.com/s/sjv2t97opheheow/generals.io%20replays.zip?dl=0). Using the code found [here]("https://github.com/yilundu/generals_a3c/blob/master/generate_data.py"), we construct a dataset containing approximately 11,000 games between 1v1 matches between players with stars over 90. 
 
-We define a model to Policy Network below:
+We define a architecture to the policy network below:
 ``` python
 
 class CNNLSTMPolicy(nn.Module):
@@ -387,9 +387,9 @@ To train each network, we step through the environment using the code below:
         torch.nn.utils.clip_grad_norm(model.parameters(), args.max_grad_norm)
 ```
 
-Where terms in the loss function are explained in above post. We add an additional term to the loss function to penalize predictions from invalid moves. The code for A3C is based off the code found [here](https://github.com/ikostrikov/pytorch-a3c)
+where terms in the loss function are explained in above post. We add an additional term to the loss function to penalize predictions from invalid moves. The code for A3C is based off the code found [here](https://github.com/ikostrikov/pytorch-a3c)
 
-In addition, we wish train multiple of these networks seperately. To do this, we use the Hogwild algorithm, where parameters are updated asynchronouses from multiple different actor critic models through race conditions. Pytorch supports Hogwild training by sharing the state.
+In addition, we wish to train multiple of these networks seperately. To do this, we use the Hogwild algorithm, where parameters are updated asynchronouses from multiple different actor critic models through race conditions. Pytorch supports Hogwild training by sharing the state.
 
 This can be done by
 ```python
@@ -413,7 +413,7 @@ This can be done by
 ### Architecture of Reinforcement Learning Network
 ---
 
-We choose to follow the same architecture for the reinforcement learning network actor-critic network as with the policy bot with shared earlier layers. We choose to not initialize the reinforcement network with weights from the policy network to allow the reinforcement network to learn independent strategies for playing games. In addition, to allow easier sampling of actions, we instead predict a tile to move and movement direction.
+We choose to follow the same architecture for the reinforcement learning network actor-critic network as with the policy bot with shared earlier layers. We choose to share early layers in both networks since it appears earlier layers are primarily for feature extraction and can be shared between networks. We choose to not initialize the reinforcement network with weights from the policy network to allow the reinforcement network to learn independent strategies for playing games. In addition, to allow easier sampling of actions, we instead predict a tile to move and movement direction.
 
 ### Reinforcement Learning Bot Performance
 ---
@@ -425,7 +425,7 @@ In behavior, it appears that the policy bot is able to use both half and full sp
 ## Conclusion 
 ---
 
-In the above blog post, we explore how to use both past databases of games and self reinforcement play to train a bot play generals.io. I believe the future for bots to play generals.io is very rich. We get bots that can somewhat play generals.io with limited parameter tuning, architecture search, and data preprocessing. Many possibilities exist to possibility improve the performance of bot networks including perhaps using a Neural Turing Machine to record states of each tile, using experience replay, and improved input preprocessing to allows inputs to be more constant in size.
+In the above blog post, we explore how to use both past databases of games and self reinforcement play to train a bot play generals.io. I believe the future for bots to play generals.io is very rich. We get bots that can somewhat play generals.io with limited parameter tuning, architecture search, and data preprocessing. Many possibilities exist to possibly improve the performance of bot networks including perhaps using a Neural Turing Machine to record states of each tile, using experience replay, and improved input preprocessing to allows inputs to be more constant in size.
 
 
 ## Acknowledgements
