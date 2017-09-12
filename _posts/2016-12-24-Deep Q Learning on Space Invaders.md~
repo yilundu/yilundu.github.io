@@ -253,7 +253,7 @@ how to play this game.
 ## Dueling $$Q$$ Network
 ---
 
-One problem with our above implementation of a Deep $$Q$$ Network is that we are currently directly estimating the value of being at a state and executing a specific action. However, much of the time, the value of doing any action doesn't really influence the value of being at a specific state. In a dueling $$Q$$ network architecture, we seek to seperate 
+One problem with our above implementation of a Deep $$Q$$ Network is that we are currently directly estimating the value of being at a state and executing a specific action. However, much of the time, the value of doing any action doesn't really influence the value of being at a specific state. In a dueling $$Q$$ network architecture, we seek to separate 
 
 $$
 \begin{align}
@@ -265,7 +265,7 @@ where under this definition, $$A(s,a)$$ will represents the advantage of making 
 
 How do we do this? We construct two separate two streams in our CNN - one to estimate
 the value of a state and another to estimate the advantage of each of the actions.
-Note that both streams share the same weights for the convolutional layers. We then combine these layers to predict the $$Q$$ values of each action. Unfortunately, directly summing these seperate streams gives us no guarantees that the first stream will actually predict the value of a state. Instead we combine them with criterion
+Note that both streams share the same weights for the convolutional layers. We then combine these layers to predict the $$Q$$ values of each action. Unfortunately, directly summing these separate streams gives us no guarantees that the first stream will actually predict the value of a state. Instead we combine them with criterion
 
 $$
 \begin{align}

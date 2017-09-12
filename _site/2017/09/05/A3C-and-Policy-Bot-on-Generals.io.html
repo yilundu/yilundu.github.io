@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>A3C and Policy Bot Generals.io on Pytorch –  – </title>
+
+            <meta charset="utf-8" />
+    <meta content='text/html; charset=utf-8' http-equiv='Content-Type'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0'>
+
+    
+    <meta name="description" content="
+
+" />
+    <meta property="og:description" content="
+
+" />
+    
+    <meta name="author" content="" />
+
+    
+    <meta property="og:title" content="A3C and Policy Bot Generals.io on Pytorch" />
+    <meta property="twitter:title" content="A3C and Policy Bot Generals.io on Pytorch" />
+    
+
+
+        <!--[if lt IE 9]>
+            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+
+        <link rel="stylesheet" type="text/css" href="/style.css" />
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <link rel="alternate" type="application/rss+xml" title=" - " href="/feed.xml" />
+        <script type="text/javascript" async
+                src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+        </script>
+
+        <!-- Created with Jekyll Now - http://github.com/barryclark/jekyll-now -->
+    </head>
+
+    <body>
+        <div class="wrapper-masthead">
+            <div class="container">
+                <header class="masthead clearfix">
+                    <a href="/" class="site-avatar"><img src="" /></a>
+
+                    <div class="site-info">
+                        <h1 class="site-name"><a href="/"></a></h1>
+                        <p class="site-description"></p>
+                    </div>
+
+                    <nav>
+                        <a href="/">Blog</a>
+                        <a href="/about">About</a>
+                    </nav>
+                </header>
+            </div>
+        </div>
+
+        <div id="main" role="main" class="container">
+            <article class="post">
+  <h1>A3C and Policy Bot Generals.io on Pytorch</h1>
+
+  <div class="entry">
+    <iframe width="100%" height="650" src="http://bot.generals.io/replays/Be0wkw2t-" frameborder="20" allowfullscreen=""></iframe>
+
+<p><a href="https://github.com/yilundu/generals_a3c">Full code for A3C training and Generals.io Processing</a></p>
+
+<p>Generals.io is a turn based incomplete information game where each player is spawned on an unknown location in the map and is tasked with expanding their land and capture cities before eventually taking out enemy generals. Over the past 8 or so months I’ve had a lot of fun playing the game. As a result, and partially inspired by the AlphaGo <a href="http://airesearch.com/wp-content/uploads/2016/01/deepmind-mastering-go.pdf">paper</a>, I decided to construct a series of networks towards playing the game of generals.io.</p>
+
+<h2 id="background">Background</h2>
+<hr />
+
+<p>Loosely, there are three different approaches towards deep reinforcement learning. The first, <em>value function</em> estimation aims to estimate the approximate value of various statesbased off the expected rewards it will get in the future. Since typically our algorithms are model-free, with just an value function estimate of a state, we are unfortunately unable to determine what action to take to actually reach a better state. As a result, a modified version of <em>value function</em> estimation is used where we estimate the <em>Q value</em> or reward of a state and action pair. At test time, we then choose the action that has the highest reward with the current state. Networks of this type include, deep Q networks, dueling Q network and many such variants. Details can be found at the previous blog <a href="http://localhost:4000/2016/12/24/Deep-Q-Learning-on-Space-Invaders.html">post</a></p>
+
+<p>A second approach towards deep reinforcement learning regards <em>policy estimation</em>. A policy <script type="math/tex">\pi</script> maps a state <script type="math/tex">s</script> to a set of actions <script type="math/tex">a</script>. Policy estimation involves directly estimating a policy for every state. In constract to value function estimation, where we estimate a policy based off values of state such as Q values, we derictly estimate policy based off discounted rewards of a particular action. Generally, we estimate a policy gradient for a particular action based off the discounted reward of the action, <em>policy estimation</em> can actually be used without computing any gradients at all by just choosing the best policy out a group of competing policies. Traditionally, policy gradient algorithms have been used for discrete action spaces with stochastic policies through the Reinforce algorithm by randomly sampling each action, the <a href="http://proceedings.mlr.press/v32/silver14.pdf">deterministic policy gradient theorem</a> allow policy gradients to be calculated even in deterministic policies, allowing estimation of policies on continuous actions in environments such as TORCS(simulated driving).</p>
+
+<p>A third approach towards deep reinforcement learning regards the <em>actor critic</em> model, where we combine both <em>policy estimation</em> and <em>value estimation</em>. This combination allows <em>actor critic</em> models to be applicable in both discrete and continuous action from <em>policy estimation</em> while <em>value estimation</em> allows us to reduce variance in training. This combination allows us to get good results on many RL environments, especially when multiple networks are trained. We describe actor critic networks in more detail below.</p>
+
+<h2 id="actor-critic-network">Actor Critic Network</h2>
+<hr />
+
+<p>The actor critic network can roughly be described in the diagram below (source)</p>
+
+<p><img src="http://localhost:4000/images/sutton-ac.png" alt="A3C Image" class="img-responsive center" /></p>
+
+<p>We approximate both policy and value functions with neural networks which we denote with <script type="math/tex">\pi_{\theta}(s, a)</script> and <script type="math/tex">V_w(s)</script>. We run value and policy networks for multiple iterations. We then choose the loss of the value network to be equal.</p>
+
+<script type="math/tex; mode=display">\begin{align*}
+L_v = \sum (R - V(s))^2
+\end{align*}</script>
+
+<p>Where we define the <script type="math/tex">R</script> equal to the discounted reward of each individual reward plus a value network estimate of the last state.</p>
+
+<script type="math/tex; mode=display">\begin{align*}
+R = \sum \gamma^i r_i + V(s_t)
+\end{align*}</script>
+
+<p>where <script type="math/tex">s_t</script> is the terminal state and the <script type="math/tex">\gamma</script> is the discount factor for subsequent states. We then train the policy network using generalized advantage of each action.</p>
+
+<p>We define advantage as <script type="math/tex">A(s) = R - V(s)</script>. To reduce the variance of advantage estimates, we use generalized advantage, which is an exponential mean of subsequent advantages defined as</p>
+
+<script type="math/tex; mode=display">\begin{align*}
+GAE(s) = (1-\tau)\sum A(s) \tau^t * \gamma^t
+\end{align*}</script>
+
+<p>where the parameter <script type="math/tex">\tau</script> specifies the contribution of future advantage estimates</p>
+
+<p>We then define the policy loss as</p>
+
+<script type="math/tex; mode=display">\begin{align*}
+L_p = \sum (-\log{a_i}*GAE(a_i) + c * H(a))
+\end{align*}</script>
+
+<p>where <script type="math/tex">a_i</script> specifies the probability of taking action <script type="math/tex">i</script> while <script type="math/tex">H(a)</script> specifies the entropy of an action choice. An entropy penalty term is added to the loss function to ensure exploration of all actions.</p>
+
+<p>In practice and in our networks, models share the same early layers with diverging final layers. Following the A3C paper published by DeepMind, we train on network asynchronously on CPU using a total 16 CPU cores.</p>
+
+<h2 id="generals-game-state-simulation-and-preprocessing">Generals Game State Simulation and Preprocessing</h2>
+<hr />
+
+<p>To allow generate datasets and to create a generals environment for bots to play against each other we construct to utility classes to simulate a replay file and to generate generals environment with another bot playing at <a href="https://github.com/yilundu/generals_a3c/blob/master/generalsim.py">here</a> and <a href="https://github.com/yilundu/generals_a3c/blob/master/generalsenv.py">here</a> respectively.</p>
+
+<p>To make the original board state more informative to a bot, we expand the original board state into multiple different seperate input channels. As I didn’t try many different feature expansions, there might be various other feature expansions that may significantly improve performance.</p>
+
+<p>We describe the features below:</p>
+
+<table class="table-striped mbtablestyle pagination-centered center">
+  <thead>
+    <tr>
+      <th>Feature Number</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0</td>
+      <td>army values on friendly tiles</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>army values on enemy tiles</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>indicators for obstacles(mountain/cities)</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>army values on neutral cities</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>indicator for mountains</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>indicator for generals</td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td>indicator for not visible locations</td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td>army values for self owned cities</td>
+    </tr>
+    <tr>
+      <td>8</td>
+      <td>army values for enemy owned cities</td>
+    </tr>
+    <tr>
+      <td>9</td>
+      <td>turn number % 50</td>
+    </tr>
+    <tr>
+      <td>10</td>
+      <td>ratio of enemy troops to own troops</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Another thing to note is that order of magnitude of features are very different, which may lead a network to prioritize certain features over other.</p>
+<h3 id="policy-network-architecture-and-training">Policy Network Architecture and Training</h3>
+<hr />
+
+<p>The first network we train is the policy network based on past general games played between players found <a href="https://www.dropbox.com/s/sjv2t97opheheow/generals.io%20replays.zip?dl=0">here</a>. Using the code found <a href="&quot;https://github.com/yilundu/generals_a3c/blob/master/generate_data.py&quot;">here</a>, we construct a dataset containing approximately 11,000 games between 1v1 matches between players with stars over 90.</p>
+
+<p>We define a model to Policy Network below:</p>
+<div class="language-python highlighter-rouge"><pre class="highlight"><code>
+<span class="k">class</span> <span class="nc">CNNLSTMPolicy</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">on_gpu</span> <span class="o">=</span> <span class="bp">False</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">CNNLSTMPolicy</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">lstm_layer</span> <span class="o">=</span> <span class="mi">3</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">hidden_dim</span> <span class="o">=</span> <span class="mi">100</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">on_gpu</span> <span class="o">=</span> <span class="n">on_gpu</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">conv1</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Conv2d</span><span class="p">(</span><span class="mi">11</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">hidden_dim</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">conv2</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Conv2d</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">hidden_dim</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">hidden_dim</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">conv3</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Conv2d</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">hidden_dim</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">hidden_dim</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">pre_lstm_bn</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">BatchNorm2d</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">hidden_dim</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">lstm</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">LSTM</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">hidden_dim</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">hidden_dim</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">lstm_layer</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">lstm_batch_norm</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">BatchNorm2d</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">hidden_dim</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">conv4</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Conv2d</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">hidden_dim</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">hidden_dim</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">conv5</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Conv2d</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">hidden_dim</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">hidden_dim</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">begin_conv</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Conv2d</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">hidden_dim</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">end_conv</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Conv2d</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">hidden_dim</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">init_hidden</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">height</span><span class="p">,</span> <span class="n">width</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">height</span> <span class="o">=</span> <span class="n">height</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">width</span> <span class="o">=</span> <span class="n">width</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">batch</span> <span class="o">=</span> <span class="n">height</span> <span class="o">*</span> <span class="n">width</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">cell_state</span> <span class="o">=</span> <span class="n">Variable</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">lstm_layer</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">batch</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">hidden_dim</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">hidden_state</span> <span class="o">=</span> <span class="n">Variable</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">lstm_layer</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">batch</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">hidden_dim</span><span class="p">))</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">on_gpu</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">cell_state</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">cell_state</span><span class="o">.</span><span class="n">cuda</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">hidden_state</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">hidden_state</span><span class="o">.</span><span class="n">cuda</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">input</span><span class="p">):</span>
+        <span class="c"># TODO perhaps add batch normalization or layer normalization</span>
+
+        <span class="n">x</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">elu</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">conv1</span><span class="p">(</span><span class="nb">input</span><span class="p">))</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">elu</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">conv2</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">elu</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">conv3</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+
+        <span class="c"># Next flatten the output to be batched into LSTM layers</span>
+        <span class="c"># The shape of x is batch_size, channels, height, width</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">pre_lstm_bn</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+        <span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">contiguous</span><span class="p">()</span>
+
+        <span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">batch</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">hidden_dim</span><span class="p">)</span>
+        <span class="n">x</span><span class="p">,</span> <span class="n">hidden</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">lstm</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">hidden_state</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">cell_state</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">hidden_state</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">cell_state</span> <span class="o">=</span> <span class="n">hidden</span>
+
+        <span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">contiguous</span><span class="p">()</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">hidden_dim</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">height</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">width</span><span class="p">)</span>
+
+        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">lstm_batch_norm</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+        <span class="n">x</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">elu</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">conv4</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">elu</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">conv5</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+
+        <span class="n">o_begin</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">begin_conv</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="n">o_end</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">end_conv</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+        <span class="n">o_begin</span> <span class="o">=</span> <span class="n">o_begin</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">o_begin</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">o_end</span> <span class="o">=</span> <span class="n">o_end</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">o_end</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+
+        <span class="n">o_begin</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">log_softmax</span><span class="p">(</span><span class="n">o_begin</span><span class="p">)</span>
+        <span class="n">o_end</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">log_softmax</span><span class="p">(</span><span class="n">o_end</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">o_begin</span><span class="p">,</span> <span class="n">o_end</span>
+</code></pre>
+</div>
+
+<h3 id="architecture-for-policy-bot">Architecture for Policy Bot</h3>
+<hr />
+
+<p>A turn of a generals.io game requires a bot to choose a tile form which we select a movement direction. Since the size of game board is variable, we choose to use a full convolutional network that predicts both the most likely start and end tiles for an army movement. We choose to use a fully convolutional architecture as opposed to variable size max-pooling to account for different sizes so that we can add an intermediate LSTM representation on each independent tile of the board to store possible states of tiles.</p>
+
+<p>Roughly our model can described as 3 5x5 padded convolutions followed by a 3 layer lstm on each individual tile followed by 2 5x5 padded convolutions leading to two indepedent map sized outputs representing the start and end tiles for moving an army.</p>
+
+<p>We choose to output start and end army movement tiles as opposed to an army tile and movement direction to reduce the number of possible actions. In addition, in this way way, 
+the bot is able to focus on the first output, the potential army locations to move and in the second output, places to move to seperately. Dependent on the situation, the first output might be important for rapid expansion movement while the second output could be useful for choosing targets for attacking or reinforcement.</p>
+
+<p>We choose to add 3 layers of LSTM encoding on each individual tile of the generals.io map to allow the network to have the ability to remember events that occured in specific locations of a tile since vision to locations on map can dissapear if nearby armies are
+wiped away. This can allow the policy network to undergo continous attacks on an enemy general location or two actively defend its own general location.</p>
+
+<p>We add batch normalization to our network to prevent covariate shift(which appeared to reduce training error significantly). I also tried adding residual connections between layers, although it appeared it increase final training loss.</p>
+
+<p>After initializing weights for networks, the network was trained by feeding the network one batch of board states from one generals game after another through a total of 2 epochs using the Adam optimizer.</p>
+
+<h3 id="performance-analysis-of-policy-bot">Performance Analysis of Policy Bot</h3>
+<hr />
+
+<p>A link to the bot playing a game of generals.io is shown <a href="http://bot.generals.io/replays/Be0wkw2t-">here</a>. To generate a move prediction given a board state we feed the expanded board state to the bot and ask it to predict the most likely tile to start a move from and to end a move from. We then find the valid move pair with the highest likelihood of moving from start to end from.</p>
+
+<p>The bot appears to be able to effectively expand and take surrounding cities. The bot was trained on greater than 90 star 1v1 generals games, which may explain city taking by the bot. Unfortunately, it does not appear that independent LSTMs on each seperate tile on the grid enabled the bot to make solid objective based choices, and the bot unable to make targeted attacks against generals. This may have been due partly to the fact the bot was only trained to predict movements one step in the future.</p>
+
+<h3 id="reinforcement-learning-training-with-a3c">Reinforcement Learning Training with A3C</h3>
+<hr />
+
+<p>Looking into the bot trained through supervised movements of players playing the bot, it appeared as if the bot had obtained a general idea of the environment around it,
+being able to effectively expand and take surrounding neutral cities. However, it does not appear as if the bot actually understand the objective of the game and was not able to follow more advanced human strategies such as concerted charges or continuous defense of ones general upon discovery by enemy generals.</p>
+
+<p>My thoughts were that if we were to reinforcement train the bot by playing it against its self, it would eventually learn long distance patterns through which it could defeat its opponent. As a result, I created an OpenAI Gym like environment for generals, with a bundled policy network movement predictor. The goal of the new network, an actor critic network, was to maximize its respecitive reward given the enviroment. I chose to give the bot rewards every time it captured either a tile, a city or an enemy general.</p>
+
+<p>To choose a network learn under the reinforcement learning general environment, I chose to use an advantage actor critic network. The code for the actor critic network is given below:</p>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="k">class</span> <span class="nc">ActorCritic</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">on_gpu</span> <span class="o">=</span> <span class="bp">False</span><span class="p">):</span>
+        <span class="c"># Current architecture for policy is 3 5x5 convolutions</span>
+        <span class="c"># followed by 2 LSTM layers followed by 2 5x5 convolutions</span>
+        <span class="c"># and a final 1x1 convolution</span>
+        <span class="c"># This architecture if fully convolutional with no max pooling</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">ActorCritic</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">lstm_layer</span> <span class="o">=</span> <span class="mi">3</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">hidden_dim</span> <span class="o">=</span> <span class="mi">150</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">on_gpu</span> <span class="o">=</span> <span class="n">on_gpu</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">conv1</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Conv2d</span><span class="p">(</span><span class="mi">11</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">hidden_dim</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">conv2</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Conv2d</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">hidden_dim</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">hidden_dim</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">conv3</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Conv2d</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">hidden_dim</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">hidden_dim</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">pre_lstm_bn</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">BatchNorm2d</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">hidden_dim</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">lstm</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">LSTM</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">hidden_dim</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">hidden_dim</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">lstm_layer</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">lstm_batch_norm</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">BatchNorm2d</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">hidden_dim</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">conv4</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Conv2d</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">hidden_dim</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">hidden_dim</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">conv5</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Conv2d</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">hidden_dim</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">hidden_dim</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">move_conv</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Conv2d</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">hidden_dim</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">value_conv</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Conv2d</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">hidden_dim</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">hidden_dim</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">value_linear</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">hidden_dim</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">init_hidden</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">height</span><span class="p">,</span> <span class="n">width</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">height</span> <span class="o">=</span> <span class="n">height</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">width</span> <span class="o">=</span> <span class="n">width</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">batch</span> <span class="o">=</span> <span class="n">height</span> <span class="o">*</span> <span class="n">width</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">cell_state</span> <span class="o">=</span> <span class="n">Variable</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">lstm_layer</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">batch</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">hidden_dim</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">hidden_state</span> <span class="o">=</span> <span class="n">Variable</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">lstm_layer</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">batch</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">hidden_dim</span><span class="p">))</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">on_gpu</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">cell_state</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">cell_state</span><span class="o">.</span><span class="n">cuda</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">hidden_state</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">hidden_state</span><span class="o">.</span><span class="n">cuda</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">reset_hidden</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c"># Zero gradients on hidden states</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cell_state</span> <span class="o">=</span> <span class="n">Variable</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">cell_state</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">hidden_state</span> <span class="o">=</span> <span class="n">Variable</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">hidden_state</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">input</span><span class="p">):</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">elu</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">conv1</span><span class="p">(</span><span class="nb">input</span><span class="p">))</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">elu</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">conv2</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">elu</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">conv3</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+
+        <span class="c"># Next flatten the output to be batched into LSTM layers</span>
+        <span class="c"># The shape of x is batch_size, channels, height, width</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">pre_lstm_bn</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+        <span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">contiguous</span><span class="p">()</span>
+
+        <span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">batch</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">hidden_dim</span><span class="p">)</span>
+        <span class="n">x</span><span class="p">,</span> <span class="n">hidden</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">lstm</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">hidden_state</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">cell_state</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">hidden_state</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">cell_state</span> <span class="o">=</span> <span class="n">hidden</span>
+
+        <span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">contiguous</span><span class="p">()</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">hidden_dim</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">height</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">width</span><span class="p">)</span>
+
+        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">lstm_batch_norm</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+        <span class="n">x</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">elu</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">conv4</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">elu</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">conv5</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+
+        <span class="n">logit</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">move_conv</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="n">logit</span> <span class="o">=</span> <span class="n">logit</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">logit</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+
+        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">value_conv</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">hidden_dim</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">batch</span><span class="p">)</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">max_pool1d</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">batch</span><span class="p">)</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">squeeze</span><span class="p">()</span>
+        <span class="n">val</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">value_linear</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">val</span><span class="p">,</span> <span class="n">logit</span>
+</code></pre>
+</div>
+
+<p>In training, we run multiple different reinforcement learning generals environment at a time, to allow an agent to simultaneously updated gradients to parameters while experiencing several different experiences.</p>
+
+<p>To train each network, we step through the environment using the code below:</p>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code>    <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+        <span class="c"># Sync with the shared model</span>
+        <span class="n">model</span><span class="o">.</span><span class="n">load_state_dict</span><span class="p">(</span><span class="n">shared_model</span><span class="o">.</span><span class="n">state_dict</span><span class="p">())</span>
+
+        <span class="n">values</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">log_probs</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">rewards</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">entropies</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">off_targets</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="k">for</span> <span class="n">step</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">num_steps</span><span class="p">):</span>
+            <span class="n">episode_length</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="n">value</span><span class="p">,</span> <span class="n">logit</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">Variable</span><span class="p">(</span><span class="n">state</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="mi">0</span><span class="p">)))</span>
+            <span class="n">prob</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">softmax</span><span class="p">(</span><span class="n">logit</span><span class="p">)</span>
+            <span class="n">old_prob</span> <span class="o">=</span> <span class="n">prob</span>
+
+            <span class="c"># Set the probability of all items that not owned by user to</span>
+            <span class="c"># 0</span>
+            <span class="n">army_map</span> <span class="o">=</span> <span class="n">state</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="o">...</span><span class="p">]</span>
+            <span class="n">label_map</span> <span class="o">=</span> <span class="p">(</span><span class="n">army_map</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>
+            <span class="n">label_map</span> <span class="o">=</span> <span class="n">label_map</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">env</span><span class="o">.</span><span class="n">map_height</span><span class="p">,</span> <span class="n">env</span><span class="o">.</span><span class="n">map_width</span><span class="p">)</span>
+            <span class="n">label_map</span> <span class="o">=</span> <span class="n">label_map</span><span class="o">.</span><span class="n">expand</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="n">env</span><span class="o">.</span><span class="n">map_height</span><span class="p">,</span> <span class="n">env</span><span class="o">.</span><span class="n">map_width</span><span class="p">)</span>
+            <span class="n">label_map</span> <span class="o">=</span> <span class="n">label_map</span><span class="o">.</span><span class="n">contiguous</span><span class="p">()</span>
+            <span class="n">label_map</span> <span class="o">=</span> <span class="n">label_map</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+            <span class="c"># prob[~label_map] = 0</span>
+            <span class="n">prob</span> <span class="o">=</span> <span class="n">old_prob</span> <span class="o">*</span> <span class="n">Variable</span><span class="p">(</span><span class="n">label_map</span><span class="o">.</span><span class="nb">float</span><span class="p">())</span>
+            <span class="c"># Penalize model for predicting off target tiles</span>
+            <span class="n">off_prob</span> <span class="o">=</span> <span class="n">old_prob</span> <span class="o">*</span> <span class="n">Variable</span><span class="p">((</span><span class="o">~</span><span class="n">label_map</span><span class="p">)</span><span class="o">.</span><span class="nb">float</span><span class="p">())</span>
+            <span class="n">off_targets</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">off_prob</span><span class="o">.</span><span class="nb">sum</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+
+            <span class="n">log_prob</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">log_softmax</span><span class="p">(</span><span class="n">logit</span><span class="p">)</span>
+            <span class="n">entropy</span> <span class="o">=</span> <span class="o">-</span><span class="p">(</span><span class="n">log_prob</span> <span class="o">*</span> <span class="n">prob</span><span class="p">)</span><span class="o">.</span><span class="nb">sum</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+            <span class="n">entropies</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">entropy</span><span class="p">)</span>
+
+            <span class="n">action</span> <span class="o">=</span> <span class="n">prob</span><span class="o">.</span><span class="n">multinomial</span><span class="p">()</span><span class="o">.</span><span class="n">data</span>
+            <span class="n">log_prob</span> <span class="o">=</span> <span class="n">log_prob</span><span class="o">.</span><span class="n">gather</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">Variable</span><span class="p">(</span><span class="n">action</span><span class="p">))</span>
+
+            <span class="n">state</span><span class="p">,</span> <span class="n">reward</span><span class="p">,</span> <span class="n">done</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">step</span><span class="p">(</span><span class="n">action</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span><span class="o">.</span><span class="n">flat</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+            <span class="n">done</span> <span class="o">=</span> <span class="n">done</span> <span class="ow">or</span> <span class="n">episode_length</span> <span class="o">&gt;=</span> <span class="n">args</span><span class="o">.</span><span class="n">max_episode_length</span>
+
+            <span class="k">if</span> <span class="n">done</span><span class="p">:</span>
+                <span class="n">episode_length</span> <span class="o">=</span> <span class="mi">0</span>
+                <span class="n">state</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
+                <span class="n">model</span><span class="o">.</span><span class="n">init_hidden</span><span class="p">(</span><span class="n">env</span><span class="o">.</span><span class="n">map_height</span><span class="p">,</span> <span class="n">env</span><span class="o">.</span><span class="n">map_width</span><span class="p">)</span>
+
+            <span class="n">state</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">(</span><span class="n">state</span><span class="p">)</span>
+            <span class="n">values</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+            <span class="n">log_probs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">log_prob</span><span class="p">)</span>
+            <span class="n">rewards</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">reward</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="n">done</span><span class="p">:</span>
+                <span class="k">break</span>
+
+        <span class="n">R</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">done</span><span class="p">:</span>
+            <span class="n">value</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">Variable</span><span class="p">(</span><span class="n">state</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="mi">0</span><span class="p">)))</span>
+            <span class="n">R</span> <span class="o">=</span> <span class="n">value</span><span class="o">.</span><span class="n">data</span>
+
+        <span class="n">values</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Variable</span><span class="p">(</span><span class="n">R</span><span class="p">))</span>
+        <span class="n">policy_loss</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">value_loss</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">R</span> <span class="o">=</span> <span class="n">Variable</span><span class="p">(</span><span class="n">R</span><span class="p">)</span>
+        <span class="n">gae</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">reversed</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">rewards</span><span class="p">))):</span>
+            <span class="n">R</span> <span class="o">=</span> <span class="n">args</span><span class="o">.</span><span class="n">gamma</span> <span class="o">*</span> <span class="n">R</span> <span class="o">+</span> <span class="n">rewards</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+            <span class="n">advantage</span> <span class="o">=</span> <span class="n">R</span> <span class="o">-</span> <span class="n">values</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+            <span class="n">value_loss</span> <span class="o">=</span> <span class="n">value_loss</span> <span class="o">+</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">advantage</span><span class="o">.</span><span class="nb">pow</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+
+            <span class="c"># Generalized Advantage Estimataion</span>
+            <span class="n">delta_t</span> <span class="o">=</span> <span class="n">rewards</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="n">args</span><span class="o">.</span><span class="n">gamma</span> <span class="o">*</span> \
+                <span class="n">values</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">data</span> <span class="o">-</span> <span class="n">values</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">data</span>
+            <span class="n">gae</span> <span class="o">=</span> <span class="n">gae</span> <span class="o">*</span> <span class="n">args</span><span class="o">.</span><span class="n">gamma</span> <span class="o">*</span> <span class="n">args</span><span class="o">.</span><span class="n">tau</span> <span class="o">+</span> <span class="n">delta_t</span>
+
+            <span class="n">policy_loss</span> <span class="o">=</span> <span class="n">policy_loss</span> <span class="o">-</span> \
+                <span class="n">log_probs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">*</span> <span class="n">Variable</span><span class="p">(</span><span class="n">gae</span><span class="p">)</span> <span class="o">-</span> <span class="n">args</span><span class="o">.</span><span class="n">entropy_coef</span> <span class="o">*</span> <span class="n">entropies</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> \
+                <span class="n">args</span><span class="o">.</span><span class="n">off_tile_coef</span> <span class="o">*</span> <span class="n">off_targets</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+
+        <span class="n">optimizer</span><span class="o">.</span><span class="n">zero_grad</span><span class="p">()</span>
+        <span class="n">loss</span> <span class="o">=</span> <span class="n">policy_loss</span> <span class="o">+</span> <span class="n">args</span><span class="o">.</span><span class="n">value_loss_coef</span> <span class="o">*</span> <span class="n">value_loss</span>
+
+        <span class="p">(</span><span class="n">loss</span><span class="p">)</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>
+        <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">clip_grad_norm</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">args</span><span class="o">.</span><span class="n">max_grad_norm</span><span class="p">)</span>
+</code></pre>
+</div>
+
+<p>Where terms in the loss function are explained in above post. We add an additional term to the loss function to penalize predictions from invalid moves. The code for A3C is based off the code found <a href="https://github.com/ikostrikov/pytorch-a3c">here</a></p>
+
+<p>In addition, we wish train multiple of these networks seperately. To do this, we use the Hogwild algorithm, where parameters are updated asynchronouses from multiple different actor critic models through race conditions. Pytorch supports Hogwild training by sharing the state.</p>
+
+<p>This can be done by</p>
+<div class="language-python highlighter-rouge"><pre class="highlight"><code>    <span class="n">shared_model</span> <span class="o">=</span> <span class="n">ActorCritic</span><span class="p">()</span>
+    <span class="n">shared_model</span><span class="o">.</span><span class="n">share_memory</span><span class="p">()</span>
+
+    <span class="n">processes</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="n">p</span> <span class="o">=</span> <span class="n">mp</span><span class="o">.</span><span class="n">Process</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">test</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">num_processes</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="n">shared_model</span><span class="p">))</span>
+    <span class="n">p</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+    <span class="n">processes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">rank</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">args</span><span class="o">.</span><span class="n">num_processes</span><span class="p">):</span>
+        <span class="n">p</span> <span class="o">=</span> <span class="n">mp</span><span class="o">.</span><span class="n">Process</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">train</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">rank</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="n">shared_model</span><span class="p">,</span> <span class="n">optimizer</span><span class="p">))</span>
+        <span class="n">p</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+        <span class="n">processes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">processes</span><span class="p">:</span>
+        <span class="n">p</span><span class="o">.</span><span class="n">join</span><span class="p">()</span>
+</code></pre>
+</div>
+
+<h3 id="architecture-of-reinforcement-learning-network">Architecture of Reinforcement Learning Network</h3>
+<hr />
+
+<p>We choose to follow the same architecture for the reinforcement learning network actor-critic network as with the policy bot with shared earlier layers. We choose to not initialize the reinforcement network with weights from the policy network to allow the reinforcement network to learn independent strategies for playing games. In addition, to allow easier sampling of actions, we instead predict a tile to move and movement direction.</p>
+
+<h3 id="reinforcement-learning-bot-performance">Reinforcement Learning Bot Performance</h3>
+<hr />
+
+<p>It appears the reinforcement learning bot is not able to effectively play the generals game compared to the policy bot. This may partially be due to limited amounts of training time, as the bot was only abled to be trained asynchronously for time period of approximately up 10 hours.</p>
+
+<p>In behavior, it appears that the policy bot is able to use both half and full split movements and also targets cities aggressively. A sample of the reinforcement learning bot playing a game can be found <a href="http://bot.generals.io/replays/Se1U3cVcW">here</a>.</p>
+
+<h2 id="conclusion">Conclusion</h2>
+<hr />
+
+<p>In the above blog post, we explore how to use both past databases of games and self reinforcement play to train a bot play generals.io. I believe the future for bots to play generals.io is very rich. We get bots that can somewhat play generals.io with limited parameter tuning, architecture search, and data preprocessing. Many possibilities exist to possibility improve the performance of bot networks including perhaps using a Neural Turing Machine to record states of each tile, using experience replay, and improved input preprocessing to allows inputs to be more constant in size.</p>
+
+<h2 id="acknowledgements">Acknowledgements</h2>
+<hr />
+
+<p>This blog post would not be possible without so many online resources. Much of the A3C code for pytorch is taken from the code repo found <a href="https://github.com/ikostrikov/pytorch-a3c">here</a> and the code to interact with the server and play the bot can be found at <a href="https://github.com/toshima/generalsio">this repo</a>.</p>
+
+  </div>
+
+  <div class="date">
+    Written on September  5, 2017
+  </div>
+
+  
+
+</article>
+
+        </div>
+
+        <div class="wrapper-footer">
+            <div class="container">
+                <footer class="footer">
+                    
+
+
+
+
+
+
+
+
+
+
+
+
+                </footer>
+            </div>
+            
+            <div id="disqus_thread" class="container"></div>
+            <script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+ *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+            /*
+               var disqus_config = function () {
+               this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+               this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+               };
+             */
+            (function() { // DON'T EDIT BELOW THIS LINE
+                var d = document, s = d.createElement('script');
+                s.src = '//blog-awbymgp6mk.disqus.com/embed.js';
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+            })();
+            </script>
+            <script id="dsq-count-scr" src="//blog-awbymgp6mk.disqus.com/count.js" async></script>
+            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+            
+        </div>
+
+        
+
+    </body>
+</html>
