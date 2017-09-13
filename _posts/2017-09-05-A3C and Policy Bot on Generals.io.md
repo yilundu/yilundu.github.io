@@ -4,7 +4,9 @@ published: true
 comments: true
 title: A3C and Policy Bots on Generals.io in Pytorch
 ---
-<iframe width="100%" height="650" src="http://bot.generals.io/replays/Be0wkw2t-" frameborder="20" allowfullscreen="allowfullscreen">Unwanted Text</iframe>
+<!---
+ <iframe width="100%" height="650" src="http://bot.generals.io/replays/Be0wkw2t-" frameborder="20" allowfullscreen="allowfullscreen">Unwanted Text</iframe>
+-->
 
 [Full code for A3C training and Generals.io Processing](https://github.com/yilundu/generals_a3c)
 
