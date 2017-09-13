@@ -7,28 +7,35 @@ title: A3C and Policy Bots on Generals.io in Pytorch
 <!---
  <iframe width="100%" height="650" src="http://bot.generals.io/replays/Be0wkw2t-" frameborder="20" allowfullscreen="allowfullscreen">Unwanted Text</iframe>
 -->
+![Generals Game]({{site.url}}/images/trimmed.gif){:.img-responsive .center}
 
-[Full code for A3C training and Generals.io Processing](https://github.com/yilundu/generals_a3c)
+[Full code for A3C training and Generals.io Processing](https://github.com/yilundu/generals_a3c) and corresponding [replay](http://bot.generals.io/replays/Be0wkw2t-). Blue player is policy bot.
 
-Generals.io is a turn based incomplete information game where each player is spawned on an unknown location in the map and is tasked with expanding their land and capture cities before eventually taking out enemy generals. Over the past 8 or so months I've had a lot of fun playing the game. As a result, and partially inspired by the AlphaGo [paper](http://airesearch.com/wp-content/uploads/2016/01/deepmind-mastering-go.pdf), I decided to construct a series of networks towards playing the game of generals.io.
+Generals.io is a game where each player is spawned on an unknown location in the map and is tasked with expanding their land and capturing cities before eventually taking out enemy generals. What makes the game of generals environment interesting is that it is a imcomplete information game where each player is unaware of the actions of other players except when boundaries collide.
+ Over the past 8 or so months I've had a lot of fun playing the game. Inspired by the AlphaGo [paper](http://airesearch.com/wp-content/uploads/2016/01/deepmind-mastering-go.pdf), I decided to construct a series of networks towards playing the game of generals.io.
 
 ## Background
 ---
 
-Loosely, there are three different approaches towards deep reinforcement learning. The first, *value function* estimation aims to estimate the approximate value of various statesbased off the expected rewards it will get in the future. Since typically our algorithms are model-free, with just an value function estimate of a state, we are unfortunately unable to determine what action to take to actually reach a better state. As a result, a modified version of *value function* estimation is used where we estimate the *Q value* or reward of a state and action pair. At test time, we then choose the action that has the highest reward with the current state. Networks of this type include, deep Q networks, dueling Q network and many such variants. Details can be found at the previous blog [post]({{site.url}}/2016/12/24/Deep-Q-Learning-on-Space-Invaders.html) 
+### Value Function Estimation
+---
+Loosely, there are three different approaches towards deep reinforcement learning. The first, *value function* estimation, aims to estimate the approximate value of various states based off the expected rewards it will get in the future. Since typically our algorithms are model-free, with just an value function estimate of a state, we are unfortunately unable to determine what action to take to actually reach a better state. As a result, a modified version of *value function* estimation is used where we estimate the *Q value* or reward of a state and action pair. At test time, we then choose the action that has the highest reward with the current state. Networks of this type include, deep Q networks, dueling Q network and many such variants. Details can be found at the previous blog [post]({{site.url}}/2016/12/24/Deep-Q-Learning-on-Space-Invaders.html) 
 
+### Policy Estimation
+---
 A second approach towards deep reinforcement learning regards *policy estimation*. A policy $$\pi$$ maps a state $$s$$ to a set of actions $$a$$. Policy estimation involves directly estimating a policy for every state. In constract to value function estimation, where we estimate a policy based off values of state such as Q values, we derictly estimate policy based off discounted rewards of a particular action. Generally, we estimate a policy gradient for a particular action based off the discounted reward of the action, *policy estimation* can actually be used without computing any gradients at all by just choosing the best policy out a group of competing policies. Traditionally, policy gradient algorithms have been used for discrete action spaces with stochastic policies through the Reinforce algorithm by randomly sampling each action, the [deterministic policy gradient theorem](http://proceedings.mlr.press/v32/silver14.pdf) allow policy gradients to be calculated even in deterministic policies, allowing estimation of policies on continuous actions in environments such as TORCS(simulated driving). 
-
-A third approach towards deep reinforcement learning regards the *actor critic* model, where we combine both *policy estimation* and *value estimation*. This combination allows *actor critic* models to be applicable in both discrete and continuous action from *policy estimation* while *value estimation* allows us to reduce variance in training. This combination allows us to get good results on many RL environments, especially when multiple networks are trained. We describe actor critic networks in more detail below.
 
 ## Actor Critic Network
 ---
 
-The actor critic network can roughly be described in the diagram below (source)
+A third approach towards deep reinforcement learning regards the *actor critic* model,used in this network, where we combine both *policy estimation* and *value estimation*. This combination allows *actor critic* models to be applicable in both discrete and continuous action from *policy estimation* while *value estimation* allows us to reduce variance in training. This combination allows us to get good results on many RL environments, especially when multiple networks are trained. We describe actor critic networks in more detail below.
+
+
+The actor critic network can roughly be described in the diagram below
 
 ![A3C Image]({{site.url}}/images/sutton-ac.png){:.img-responsive .center}
 
-We approximate both policy and value functions with neural networks which we denote with $$\pi_{\theta}(s, a)$$ and $$V_w(s)$$. We run value and policy networks for multiple iterations. We then choose the loss of the value network to be equal. 
+We approximate both policy and value functions with neural networks which we denote with $$\pi_{\theta}(s, a)$$ and $$V_w(s)$$. We run value and policy networks for multiple iterations. We then choose the loss of the value network to be equal to 
 
 $$
 \begin{align*}
@@ -36,7 +43,7 @@ L_v = \sum (R - V(s))^2
 \end{align*}
 $$
 
-Where we define the $$R$$ equal to the discounted reward of each individual reward plus a value network estimate of the last state.
+where we define the $$R$$ equal to the discounted reward of each individual reward plus a value network estimate of the last state
 
 $$
 \begin{align*}
@@ -183,9 +190,12 @@ class CNNLSTMPolicy(nn.Module):
 ### Architecture for Policy Bot
 ---
 
-A turn of a generals.io game requires a bot to choose a tile form which we select a movement direction. Since the size of game board is variable, we choose to use a full convolutional network that predicts both the most likely start and end tiles for an army movement. We choose to use a fully convolutional architecture as opposed to variable size max-pooling to account for different sizes so that we can add an intermediate LSTM representation on each independent tile of the board to store possible states of tiles.
- 
-Roughly our model can described as 3 5x5 padded convolutions followed by a 3 layer lstm on each individual tile followed by 2 5x5 padded convolutions leading to two indepedent map sized outputs representing the start and end tiles for moving an army. 
+A turn of a generals.io game requires a bot to choose a tile from which we select a movement direction for an army. Roughly our model can be described as 3 5x5 padded convolutions followed by a 3 layer LSTM on each individual tile followed by 2 5x5 padded convolutions leading to two indepedent map sized outputs representing the start and end tiles for moving an army. 
+
+
+### Architecture Design Choices
+---
+Since the size of game board is variable, we choose to use a full convolutional network that predicts both the most likely start and end tiles for an army movement. We choose to use a fully convolutional architecture as opposed to variable size max-pooling to account for different sizes so that we can add an intermediate LSTM representation on each independent tile of the board to store possible states of tiles.
 
 We choose to output start and end army movement tiles as opposed to an army tile and movement direction to reduce the number of possible actions. In addition, in this way way, 
 the bot is able to focus on the first output, the potential army locations to move and in the second output, places to move to seperately. Dependent on the situation, the first output might be important for rapid expansion movement while the second output could be useful for choosing targets for attacking or reinforcement. 
