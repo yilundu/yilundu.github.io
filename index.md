@@ -14,7 +14,7 @@ Github: [Github](https://github.com/yilundu)
 
 I am senior undergraduate at MIT majoring in computer science. I'm interested in artificial intelligence including topics in 
 unsupervised learning, reinforcement learning, and more sample efficient learning. I'm currently a research fellow at 
-[OpenAI](https://www.openai.com/)
+[OpenAI](https://www.openai.com/).
 
 In the past, I've interned at Facebook and received gold medals at the International Biology Olympiad.
 
