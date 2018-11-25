@@ -53,8 +53,8 @@
                     </div>
 
                     <nav>
-                        <a href="/">Blog</a>
-                        <a href="/about">About</a>
+                        <a href="/blog">Blog</a>
+                        <a href="/">About</a>
                     </nav>
                 </header>
             </div>
@@ -72,31 +72,36 @@
 
 <p><a href="https://github.com/yilundu/generals_a3c">Full code for A3C training and Generals.io Processing</a> and corresponding <a href="http://bot.generals.io/replays/Be0wkw2t-">replay</a>. Blue player is policy bot.</p>
 
-<p>Generals.io is a turn based incomplete information game where each player is spawned on an unknown location in the map and is tasked with expanding their land and capture cities before eventually taking out enemy generals. Over the past 8 or so months I’ve had a lot of fun playing the game. As a result, and partially inspired by the AlphaGo <a href="http://airesearch.com/wp-content/uploads/2016/01/deepmind-mastering-go.pdf">paper</a>, I decided to construct a series of networks towards playing the game of generals.io.</p>
+<p>Generals.io is a game where each player is spawned on an unknown location in the map and is tasked with expanding their land and capturing cities before eventually taking out enemy generals. What makes the game of generals environment interesting is that it is a imcomplete information game where each player is unaware of the actions of other players except when boundaries collide.
+ Over the past 8 or so months I’ve had a lot of fun playing the game. Inspired by the AlphaGo <a href="http://airesearch.com/wp-content/uploads/2016/01/deepmind-mastering-go.pdf">paper</a>, I decided to construct a series of networks towards playing the game of generals.io.</p>
 
 <h2 id="background">Background</h2>
 <hr />
 
-<p>Loosely, there are three different approaches towards deep reinforcement learning. The first, <em>value function</em> estimation aims to estimate the approximate value of various states based off the expected rewards it will get in the future. Since typically our algorithms are model-free, with just an value function estimate of a state, we are unfortunately unable to determine what action to take to actually reach a better state. As a result, a modified version of <em>value function</em> estimation is used where we estimate the <em>Q value</em> or reward of a state and action pair. At test time, we then choose the action that has the highest reward with the current state. Networks of this type include, deep Q networks, dueling Q network and many such variants. Details can be found at the previous blog <a href="http://localhost:4000/2016/12/24/Deep-Q-Learning-on-Space-Invaders.html">post</a></p>
+<h3 id="value-function-estimation">Value Function Estimation</h3>
+<hr />
+<p>Loosely, there are three different approaches towards deep reinforcement learning. The first, <em>value function</em> estimation, aims to estimate the approximate value of various states based off the expected rewards it will get in the future. Since typically our algorithms are model-free, with just an value function estimate of a state, we are unfortunately unable to determine what action to take to actually reach a better state. As a result, a modified version of <em>value function</em> estimation is used where we estimate the <em>Q value</em> or reward of a state and action pair. At test time, we then choose the action that has the highest reward with the current state. Networks of this type include, deep Q networks, dueling Q network and many such variants. Details can be found at the previous blog <a href="http://localhost:4000/2016/12/24/Deep-Q-Learning-on-Space-Invaders.html">post</a></p>
 
+<h3 id="policy-estimation">Policy Estimation</h3>
+<hr />
 <p>A second approach towards deep reinforcement learning regards <em>policy estimation</em>. A policy <script type="math/tex">\pi</script> maps a state <script type="math/tex">s</script> to a set of actions <script type="math/tex">a</script>. Policy estimation involves directly estimating a policy for every state. In constract to value function estimation, where we estimate a policy based off values of state such as Q values, we derictly estimate policy based off discounted rewards of a particular action. Generally, we estimate a policy gradient for a particular action based off the discounted reward of the action, <em>policy estimation</em> can actually be used without computing any gradients at all by just choosing the best policy out a group of competing policies. Traditionally, policy gradient algorithms have been used for discrete action spaces with stochastic policies through the Reinforce algorithm by randomly sampling each action, the <a href="http://proceedings.mlr.press/v32/silver14.pdf">deterministic policy gradient theorem</a> allow policy gradients to be calculated even in deterministic policies, allowing estimation of policies on continuous actions in environments such as TORCS(simulated driving).</p>
-
-<p>A third approach towards deep reinforcement learning regards the <em>actor critic</em> model, where we combine both <em>policy estimation</em> and <em>value estimation</em>. This combination allows <em>actor critic</em> models to be applicable in both discrete and continuous action from <em>policy estimation</em> while <em>value estimation</em> allows us to reduce variance in training. This combination allows us to get good results on many RL environments, especially when multiple networks are trained. We describe actor critic networks in more detail below.</p>
 
 <h2 id="actor-critic-network">Actor Critic Network</h2>
 <hr />
 
-<p>The actor critic network can roughly be described in the diagram below (source)</p>
+<p>A third approach towards deep reinforcement learning regards the <em>actor critic</em> model,used in this network, where we combine both <em>policy estimation</em> and <em>value estimation</em>. This combination allows <em>actor critic</em> models to be applicable in both discrete and continuous action from <em>policy estimation</em> while <em>value estimation</em> allows us to reduce variance in training. This combination allows us to get good results on many RL environments, especially when multiple networks are trained. We describe actor critic networks in more detail below.</p>
+
+<p>The actor critic network can roughly be described in the diagram below</p>
 
 <p><img src="http://localhost:4000/images/sutton-ac.png" alt="A3C Image" class="img-responsive center" /></p>
 
-<p>We approximate both policy and value functions with neural networks which we denote with <script type="math/tex">\pi_{\theta}(s, a)</script> and <script type="math/tex">V_w(s)</script>. We run value and policy networks for multiple iterations. We then choose the loss of the value network to be equal.</p>
+<p>We approximate both policy and value functions with neural networks which we denote with <script type="math/tex">\pi_{\theta}(s, a)</script> and <script type="math/tex">V_w(s)</script>. We run value and policy networks for multiple iterations. We then choose the loss of the value network to be equal to</p>
 
 <script type="math/tex; mode=display">\begin{align*}
 L_v = \sum (R - V(s))^2
 \end{align*}</script>
 
-<p>Where we define the <script type="math/tex">R</script> equal to the discounted reward of each individual reward plus a value network estimate of the last state.</p>
+<p>where we define the <script type="math/tex">R</script> equal to the discounted reward of each individual reward plus a value network estimate of the last state</p>
 
 <script type="math/tex; mode=display">\begin{align*}
 R = \sum \gamma^i r_i + V(s_t)
@@ -193,7 +198,7 @@ L_p = \sum (-\log{a_i}*GAE(a_i) + c * H(a))
 <p>The first network we train is the policy network based on past general games played between players found <a href="https://www.dropbox.com/s/sjv2t97opheheow/generals.io%20replays.zip?dl=0">here</a>. Using the code found <a href="&quot;https://github.com/yilundu/generals_a3c/blob/master/generate_data.py&quot;">here</a>, we construct a dataset containing approximately 11,000 games between 1v1 matches between players with stars over 90.</p>
 
 <p>We define a architecture to the policy network below:</p>
-<div class="language-python highlighter-rouge"><pre class="highlight"><code>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
 <span class="k">class</span> <span class="nc">CNNLSTMPolicy</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">on_gpu</span> <span class="o">=</span> <span class="bp">False</span><span class="p">):</span>
@@ -232,15 +237,15 @@ L_p = \sum (-\log{a_i}*GAE(a_i) + c * H(a))
             <span class="bp">self</span><span class="o">.</span><span class="n">hidden_state</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">hidden_state</span><span class="o">.</span><span class="n">cuda</span><span class="p">()</span>
 
     <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">input</span><span class="p">):</span>
-        <span class="c"># TODO perhaps add batch normalization or layer normalization</span>
-
+        <span class="c1"># TODO perhaps add batch normalization or layer normalization
+</span>
         <span class="n">x</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">elu</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">conv1</span><span class="p">(</span><span class="nb">input</span><span class="p">))</span>
         <span class="n">x</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">elu</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">conv2</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
         <span class="n">x</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">elu</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">conv3</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
 
-        <span class="c"># Next flatten the output to be batched into LSTM layers</span>
-        <span class="c"># The shape of x is batch_size, channels, height, width</span>
-        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">pre_lstm_bn</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="c1"># Next flatten the output to be batched into LSTM layers
+</span>        <span class="c1"># The shape of x is batch_size, channels, height, width
+</span>        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">pre_lstm_bn</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 
         <span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
         <span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
@@ -269,15 +274,16 @@ L_p = \sum (-\log{a_i}*GAE(a_i) + c * H(a))
         <span class="n">o_end</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">log_softmax</span><span class="p">(</span><span class="n">o_end</span><span class="p">)</span>
 
         <span class="k">return</span> <span class="n">o_begin</span><span class="p">,</span> <span class="n">o_end</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <h3 id="architecture-for-policy-bot">Architecture for Policy Bot</h3>
 <hr />
 
-<p>A turn of a generals.io game requires a bot to choose a tile form which we select a movement direction. Since the size of game board is variable, we choose to use a full convolutional network that predicts both the most likely start and end tiles for an army movement. We choose to use a fully convolutional architecture as opposed to variable size max-pooling to account for different sizes so that we can add an intermediate LSTM representation on each independent tile of the board to store possible states of tiles.</p>
+<p>A turn of a generals.io game requires a bot to choose a tile from which we select a movement direction for an army. Roughly our model can be described as 3 5x5 padded convolutions followed by a 3 layer LSTM on each individual tile followed by 2 5x5 padded convolutions leading to two indepedent map sized outputs representing the start and end tiles for moving an army.</p>
 
-<p>Roughly our model can described as 3 5x5 padded convolutions followed by a 3 layer lstm on each individual tile followed by 2 5x5 padded convolutions leading to two indepedent map sized outputs representing the start and end tiles for moving an army.</p>
+<h3 id="architecture-design-choices">Architecture Design Choices</h3>
+<hr />
+<p>Since the size of game board is variable, we choose to use a full convolutional network that predicts both the most likely start and end tiles for an army movement. We choose to use a fully convolutional architecture as opposed to variable size max-pooling to account for different sizes so that we can add an intermediate LSTM representation on each independent tile of the board to store possible states of tiles.</p>
 
 <p>We choose to output start and end army movement tiles as opposed to an army tile and movement direction to reduce the number of possible actions. In addition, in this way way, 
 the bot is able to focus on the first output, the potential army locations to move and in the second output, places to move to seperately. Dependent on the situation, the first output might be important for rapid expansion movement while the second output could be useful for choosing targets for attacking or reinforcement.</p>
@@ -306,14 +312,14 @@ being able to effectively expand and take surrounding neutral cities. However, i
 
 <p>To choose a network learn under the reinforcement learning general environment, I chose to use an advantage actor critic network. The code for the actor critic network is given below:</p>
 
-<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="k">class</span> <span class="nc">ActorCritic</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">ActorCritic</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">on_gpu</span> <span class="o">=</span> <span class="bp">False</span><span class="p">):</span>
-        <span class="c"># Current architecture for policy is 3 5x5 convolutions</span>
-        <span class="c"># followed by 2 LSTM layers followed by 2 5x5 convolutions</span>
-        <span class="c"># and a final 1x1 convolution</span>
-        <span class="c"># This architecture if fully convolutional with no max pooling</span>
-        <span class="nb">super</span><span class="p">(</span><span class="n">ActorCritic</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">()</span>
+        <span class="c1"># Current architecture for policy is 3 5x5 convolutions
+</span>        <span class="c1"># followed by 2 LSTM layers followed by 2 5x5 convolutions
+</span>        <span class="c1"># and a final 1x1 convolution
+</span>        <span class="c1"># This architecture if fully convolutional with no max pooling
+</span>        <span class="nb">super</span><span class="p">(</span><span class="n">ActorCritic</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">lstm_layer</span> <span class="o">=</span> <span class="mi">3</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">hidden_dim</span> <span class="o">=</span> <span class="mi">150</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">on_gpu</span> <span class="o">=</span> <span class="n">on_gpu</span>
@@ -349,8 +355,8 @@ being able to effectively expand and take surrounding neutral cities. However, i
             <span class="bp">self</span><span class="o">.</span><span class="n">hidden_state</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">hidden_state</span><span class="o">.</span><span class="n">cuda</span><span class="p">()</span>
 
     <span class="k">def</span> <span class="nf">reset_hidden</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="c"># Zero gradients on hidden states</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">cell_state</span> <span class="o">=</span> <span class="n">Variable</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">cell_state</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
+        <span class="c1"># Zero gradients on hidden states
+</span>        <span class="bp">self</span><span class="o">.</span><span class="n">cell_state</span> <span class="o">=</span> <span class="n">Variable</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">cell_state</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">hidden_state</span> <span class="o">=</span> <span class="n">Variable</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">hidden_state</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">input</span><span class="p">):</span>
@@ -358,9 +364,9 @@ being able to effectively expand and take surrounding neutral cities. However, i
         <span class="n">x</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">elu</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">conv2</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
         <span class="n">x</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">elu</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">conv3</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
 
-        <span class="c"># Next flatten the output to be batched into LSTM layers</span>
-        <span class="c"># The shape of x is batch_size, channels, height, width</span>
-        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">pre_lstm_bn</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="c1"># Next flatten the output to be batched into LSTM layers
+</span>        <span class="c1"># The shape of x is batch_size, channels, height, width
+</span>        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">pre_lstm_bn</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 
         <span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
         <span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
@@ -389,16 +395,15 @@ being able to effectively expand and take surrounding neutral cities. However, i
         <span class="n">val</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">value_linear</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 
         <span class="k">return</span> <span class="n">val</span><span class="p">,</span> <span class="n">logit</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>In training, we run multiple different reinforcement learning generals environment at a time, to allow an agent to simultaneously updated gradients to parameters while experiencing several different experiences.</p>
 
 <p>To train each network, we step through the environment using the code below:</p>
 
-<div class="language-python highlighter-rouge"><pre class="highlight"><code>    <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
-        <span class="c"># Sync with the shared model</span>
-        <span class="n">model</span><span class="o">.</span><span class="n">load_state_dict</span><span class="p">(</span><span class="n">shared_model</span><span class="o">.</span><span class="n">state_dict</span><span class="p">())</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+        <span class="c1"># Sync with the shared model
+</span>        <span class="n">model</span><span class="o">.</span><span class="n">load_state_dict</span><span class="p">(</span><span class="n">shared_model</span><span class="o">.</span><span class="n">state_dict</span><span class="p">())</span>
 
         <span class="n">values</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="n">log_probs</span> <span class="o">=</span> <span class="p">[]</span>
@@ -412,18 +417,18 @@ being able to effectively expand and take surrounding neutral cities. However, i
             <span class="n">prob</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">softmax</span><span class="p">(</span><span class="n">logit</span><span class="p">)</span>
             <span class="n">old_prob</span> <span class="o">=</span> <span class="n">prob</span>
 
-            <span class="c"># Set the probability of all items that not owned by user to</span>
-            <span class="c"># 0</span>
-            <span class="n">army_map</span> <span class="o">=</span> <span class="n">state</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="o">...</span><span class="p">]</span>
+            <span class="c1"># Set the probability of all items that not owned by user to
+</span>            <span class="c1"># 0
+</span>            <span class="n">army_map</span> <span class="o">=</span> <span class="n">state</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="o">...</span><span class="p">]</span>
             <span class="n">label_map</span> <span class="o">=</span> <span class="p">(</span><span class="n">army_map</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>
             <span class="n">label_map</span> <span class="o">=</span> <span class="n">label_map</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">env</span><span class="o">.</span><span class="n">map_height</span><span class="p">,</span> <span class="n">env</span><span class="o">.</span><span class="n">map_width</span><span class="p">)</span>
             <span class="n">label_map</span> <span class="o">=</span> <span class="n">label_map</span><span class="o">.</span><span class="n">expand</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="n">env</span><span class="o">.</span><span class="n">map_height</span><span class="p">,</span> <span class="n">env</span><span class="o">.</span><span class="n">map_width</span><span class="p">)</span>
             <span class="n">label_map</span> <span class="o">=</span> <span class="n">label_map</span><span class="o">.</span><span class="n">contiguous</span><span class="p">()</span>
             <span class="n">label_map</span> <span class="o">=</span> <span class="n">label_map</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
-            <span class="c"># prob[~label_map] = 0</span>
-            <span class="n">prob</span> <span class="o">=</span> <span class="n">old_prob</span> <span class="o">*</span> <span class="n">Variable</span><span class="p">(</span><span class="n">label_map</span><span class="o">.</span><span class="nb">float</span><span class="p">())</span>
-            <span class="c"># Penalize model for predicting off target tiles</span>
-            <span class="n">off_prob</span> <span class="o">=</span> <span class="n">old_prob</span> <span class="o">*</span> <span class="n">Variable</span><span class="p">((</span><span class="o">~</span><span class="n">label_map</span><span class="p">)</span><span class="o">.</span><span class="nb">float</span><span class="p">())</span>
+            <span class="c1"># prob[~label_map] = 0
+</span>            <span class="n">prob</span> <span class="o">=</span> <span class="n">old_prob</span> <span class="o">*</span> <span class="n">Variable</span><span class="p">(</span><span class="n">label_map</span><span class="o">.</span><span class="nb">float</span><span class="p">())</span>
+            <span class="c1"># Penalize model for predicting off target tiles
+</span>            <span class="n">off_prob</span> <span class="o">=</span> <span class="n">old_prob</span> <span class="o">*</span> <span class="n">Variable</span><span class="p">((</span><span class="o">~</span><span class="n">label_map</span><span class="p">)</span><span class="o">.</span><span class="nb">float</span><span class="p">())</span>
             <span class="n">off_targets</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">off_prob</span><span class="o">.</span><span class="nb">sum</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
 
             <span class="n">log_prob</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">log_softmax</span><span class="p">(</span><span class="n">logit</span><span class="p">)</span>
@@ -464,8 +469,8 @@ being able to effectively expand and take surrounding neutral cities. However, i
             <span class="n">advantage</span> <span class="o">=</span> <span class="n">R</span> <span class="o">-</span> <span class="n">values</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
             <span class="n">value_loss</span> <span class="o">=</span> <span class="n">value_loss</span> <span class="o">+</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">advantage</span><span class="o">.</span><span class="nb">pow</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
 
-            <span class="c"># Generalized Advantage Estimataion</span>
-            <span class="n">delta_t</span> <span class="o">=</span> <span class="n">rewards</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="n">args</span><span class="o">.</span><span class="n">gamma</span> <span class="o">*</span> \
+            <span class="c1"># Generalized Advantage Estimataion
+</span>            <span class="n">delta_t</span> <span class="o">=</span> <span class="n">rewards</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="n">args</span><span class="o">.</span><span class="n">gamma</span> <span class="o">*</span> \
                 <span class="n">values</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">data</span> <span class="o">-</span> <span class="n">values</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">data</span>
             <span class="n">gae</span> <span class="o">=</span> <span class="n">gae</span> <span class="o">*</span> <span class="n">args</span><span class="o">.</span><span class="n">gamma</span> <span class="o">*</span> <span class="n">args</span><span class="o">.</span><span class="n">tau</span> <span class="o">+</span> <span class="n">delta_t</span>
 
@@ -478,15 +483,14 @@ being able to effectively expand and take surrounding neutral cities. However, i
 
         <span class="p">(</span><span class="n">loss</span><span class="p">)</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>
         <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">clip_grad_norm</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">args</span><span class="o">.</span><span class="n">max_grad_norm</span><span class="p">)</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>where terms in the loss function are explained in above post. We add an additional term to the loss function to penalize predictions from invalid moves. The code for A3C is based off the code found <a href="https://github.com/ikostrikov/pytorch-a3c">here</a></p>
 
 <p>In addition, we wish to train multiple of these networks seperately. To do this, we use the Hogwild algorithm, where parameters are updated asynchronouses from multiple different actor critic models through race conditions. Pytorch supports Hogwild training by sharing the state.</p>
 
 <p>This can be done by</p>
-<div class="language-python highlighter-rouge"><pre class="highlight"><code>    <span class="n">shared_model</span> <span class="o">=</span> <span class="n">ActorCritic</span><span class="p">()</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="n">shared_model</span> <span class="o">=</span> <span class="n">ActorCritic</span><span class="p">()</span>
     <span class="n">shared_model</span><span class="o">.</span><span class="n">share_memory</span><span class="p">()</span>
 
     <span class="n">processes</span> <span class="o">=</span> <span class="p">[]</span>
@@ -501,8 +505,7 @@ being able to effectively expand and take surrounding neutral cities. However, i
         <span class="n">processes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">processes</span><span class="p">:</span>
         <span class="n">p</span><span class="o">.</span><span class="n">join</span><span class="p">()</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <h3 id="architecture-of-reinforcement-learning-network">Architecture of Reinforcement Learning Network</h3>
 <hr />

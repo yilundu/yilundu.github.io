@@ -288,3 +288,7 @@ footer {
 @import "highlights";
 @import "svg-icons";
 @import "base";
+
+
+// Some hacks I added to resize images that are probably bad
+img[alt=yilun] { width: 200px; }

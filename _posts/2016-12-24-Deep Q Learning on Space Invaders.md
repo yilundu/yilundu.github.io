@@ -16,7 +16,7 @@ A little under 3 years ago, Deepmind released a Deep $$Q$$ Learning reinforcemen
 ## Background
 ---
 Suppose that you are located somewhere in an unknown grid. At any timestep you may only move up, right, down or left. Each resulting action will give some amount of reward. Your
-goal is to the find the optimal set of moves so that you will have the maximum amount of award after $$T$$ timesteps. Doesn't sound that bad? Sure, but what if you were only given a limited number trials to explore moves? Furthermore, what if the rewards were very sparse? Perhaps you will only start getting rewards after the 20th move despite the fact that it was your second move that was crucial for you get a reward.
+oal is to the find the optimal set of moves so that you will have the maximum amount of award after $$T$$ timesteps. Doesn't sound that bad? Sure, but what if you were only given a limited number trials to explore moves? Furthermore, what if the rewards were very sparse? Perhaps you will only start getting rewards after the 20th move despite the fact that it was your second move that was crucial for you get a reward.
 
 The above situation is exactly an example of a problem in reinforcement learning. In reinforcement learning, we are given a set of possible states and actions. We assume that a state will have the same set of actions regardless of our moves previously to get to the state. We then wish
 to find the optimum behavior such that some reward is maximized. We define  $$V_s$$ given a state $$s$$ to be equal to the amount of total award
