@@ -17,13 +17,6 @@ unsupervised learning, reinforcement learning, and more sample efficient learnin
 [OpenAI](https://www.openai.com/)
 
 In the past, I've interned at Facebook and received gold medals at the International Biology Olympiad.
-    
-
-### Interests
-
-One of my major interests is human cognition and perception of the environment around them. I am especially interested
-in computational models that are able to carry to complicated tasks such as understanding document sentiment, analyzing facial expression,
-and strategizing for complex games.
 
 ### Publications
 
