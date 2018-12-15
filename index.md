@@ -26,7 +26,7 @@ In the past, I've interned at Facebook and received gold medals at the Internati
 2. [Neural MMO: A massively multiplayer game environment for intelligent agents](https://openreview.net/pdf?id=S1gWz2CcKX)  
    Joseph Suarez, **Yilun Du**, Philip Isola, Igor Mordatch  
    Preprint
-3. [Generative Energy Optimization]({{site.url}}/ebm.pdf)    
+3. [Generation and Generalization with Energy Based Models]({{site.url}}/ebm.pdf)    
    **Yilun Du**, Igor Mordatch    
    *NIPS 2018 Workshop on Bayesian Deep Learning*    
 4. [Learning to Exploit Stability for 3D Scene Parsing](https://papers.nips.cc/paper/7444-learning-to-exploit-stability-for-3d-scene-parsing.pdf)  
