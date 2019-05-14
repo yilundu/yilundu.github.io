@@ -20,18 +20,18 @@ In the past, I've interned at Facebook and received gold medals at the Internati
 
 ### Publications
 
-1. [Learning Physics Priors for Deep Reinforcement Learing](https://openreview.net/pdf?id=SklrrhRqFX)  
+1. [Generation and Generalization with Energy Based Models](https://arxiv.org/abs/1903.08689)    
+   **Yilun Du**, Igor Mordatch    
+   *NeurIPS 2018 Workshop on Bayesian Deep Learning (Preliminary Version)*    
+2. [Learning Physics Priors for Deep Reinforcement Learing](https://arxiv.org/pdf/1905.04819.pdf)  
    **Yilun Du**, and Karthik Narasimhan  
-   Preprint
-2. [Neural MMO: A massively multiplayer game environment for intelligent agents](https://openreview.net/pdf?id=S1gWz2CcKX)  
+   ICML 2019
+3. [Neural MMO: A massively multiplayer game environment for intelligent agents](https://openreview.net/pdf?id=S1gWz2CcKX)  
    Joseph Suarez, **Yilun Du**, Philip Isola, Igor Mordatch  
    Preprint
-3. [Generation and Generalization with Energy Based Models]({{site.url}}/ebm.pdf)    
-   **Yilun Du**, Igor Mordatch    
-   *NIPS 2018 Workshop on Bayesian Deep Learning*    
 4. [Learning to Exploit Stability for 3D Scene Parsing](https://papers.nips.cc/paper/7444-learning-to-exploit-stability-for-3d-scene-parsing.pdf)  
    **Yilun Du**, Zhijian Liu, Hector Basevi, Ales Leonardis, William T. Freeman, Joshua B. Tenenbaum, Jiajun Wu    
-   *NIPS 2018*  
+   *NeurIPS 2018*  
 5. [Thomson Reuters' Solution for Triple Ranking in the FEIII 2017 Challenge](http://delivery.acm.org/10.1145/3080000/3077253/a6-Roman.pdf?ip=18.101.24.159&id=3077253&acc=ACTIVE%20SERVICE&key=7777116298C9657D%2EDE5F786C30E1A3B4%2E4D4702B0C3E38B35%2E4D4702B0C3E38B35&__acm__=1543111837_d4aafcf58ac0fd1af61af35603311e98)   
     Elizabeth Roman, Brian Ulicny, **Yilun Du**, Srijith Poduval, Allan Ko  
    *SIGMOD Workshop on Data Science for Macro Modeling*
