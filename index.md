@@ -28,7 +28,7 @@ In the past, I've interned at Facebook, done a fellowship at OpenAI and received
    *ICML 2019 Workshop on Generative Modeling and Model-Based Reasoning for Robotics and AI (Oral)*    
 3. [Learning Physics Priors for Deep Reinforcement Learing](https://arxiv.org/pdf/1905.04819.pdf)  
    **Yilun Du**, and Karthik Narasimhan  
-   [Code](https://github.com/yilundu/task_agnostic_code_release)
+   [Code](https://github.com/yilundu/task_agnostic_dynamics_prior)
    ICML 2019
 4. [Neural MMO: A massively multiplayer game environment for intelligent agents](https://openreview.net/pdf?id=S1gWz2CcKX)  
    Joseph Suarez, **Yilun Du**, Philip Isola, Igor Mordatch  
