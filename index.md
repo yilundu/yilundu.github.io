@@ -12,19 +12,21 @@ Github: [Github](https://github.com/yilundu)
 
 ### Bio
 
-I am senior undergraduate at MIT majoring in computer science. I'm interested in artificial intelligence including topics in 
-unsupervised learning, reinforcement learning, and more sample efficient learning. I'm currently a research intern at FAIR.
+I am a first year graduate MIT coadvised by Leslie Kaelbling, Tomas Lozano-Perez and Joshua Tenenbaum. I'm interested in building intelligent general purpose agents that can model and interact with the work around them. 
 
-In the past, I've interned at Facebook, done a fellowship at OpenAI and received gold medals at the International Biology Olympiad.
+In the past, I was a visiting researcher at FAIR, a fellow at OpenAI and received gold medals at the International Biology Olympiad.
 
 ### Publications
 
 1. [Implicit Generation and Generalization with Energy Based Models](https://arxiv.org/abs/1903.08689)    
    **Yilun Du**, Igor Mordatch    
    [Code](https://www.github.com/openai/ebm_code_release)
+
+   *NeurIPS 2019 (Spotlight)*    
    *NeurIPS 2018 Workshop on Bayesian Deep Learning (Preliminary Version)*    
 2. [Model Based Planning with Energy Based Planning](https://drive.google.com/file/d/1XGYtcw4mX8zFwJmjkMPzJxbiIQm7Y5yV/view?usp=drive_open)    
    **Yilun Du**, Toru Lin, Igor Mordatch    
+   *CORL 2019*
    *ICML 2019 Workshop on Generative Modeling and Model-Based Reasoning for Robotics and AI (Oral)*    
 3. [An Empirical Study on Hyperparameters and their Interdependence for RL Generalization](https://drive.google.com/file/d/1mmKvj5AC8__wsmDfvHLMxAndMnAvfe-7/view?usp=sharing)    
    Xingyou Song, **Yilun Du**, Jacob Jackson
@@ -32,7 +34,8 @@ In the past, I've interned at Facebook, done a fellowship at OpenAI and received
 4. [Learning Physics Priors for Deep Reinforcement Learing](https://arxiv.org/pdf/1905.04819.pdf)  
    **Yilun Du**, and Karthik Narasimhan  
    [Code](https://github.com/yilundu/task_agnostic_dynamics_prior)
-   ICML 2019
+   *ICML 2019*
+   *SPiRL Workshop ICLR 2019*
 5. [Neural MMO: A massively multiplayer game environment for intelligent agents](https://openreview.net/pdf?id=S1gWz2CcKX)  
    Joseph Suarez, **Yilun Du**, Philip Isola, Igor Mordatch  
    [Code](https://github.com/openai/neural-mmo)
