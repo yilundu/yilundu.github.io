@@ -23,7 +23,7 @@ In the past, I was a visiting researcher at FAIR, a fellow at OpenAI and receive
    [Code](https://www.github.com/openai/ebm_code_release)
    *NeurIPS 2019 (Spotlight)*    
    *NeurIPS 2018 Workshop on Bayesian Deep Learning (Preliminary Version)*    
-2. [Model Based Planning with Energy Based Planning](https://drive.google.com/file/d/1XGYtcw4mX8zFwJmjkMPzJxbiIQm7Y5yV/view?usp=drive_open)    
+2. [Model Based Planning with Energy Based Planning](https://arxiv.org/abs/1909.06878)    
    **Yilun Du**, Toru Lin, Igor Mordatch    
    *CORL 2019*  
    *ICML 2019 Workshop on Generative Modeling and Model-Based Reasoning for Robotics and AI (Oral)*    
