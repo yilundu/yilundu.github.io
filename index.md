@@ -14,7 +14,7 @@ Github: [Github](https://github.com/yilundu)
 
 I am a first year graduate MIT coadvised by Leslie Kaelbling, Tomas Lozano-Perez and Joshua Tenenbaum. I'm interested in building intelligent general purpose agents that can model and interact with the work around them. 
 
-In the past, I was a visiting researcher at FAIR, a fellow at OpenAI and received gold medals at the International Biology Olympiad.
+In the past, I was a research collaborator at FAIR, a fellow at OpenAI and received gold medals at the International Biology Olympiad.
 
 ### Publications
 
@@ -35,7 +35,7 @@ In the past, I was a visiting researcher at FAIR, a fellow at OpenAI and receive
    [Code](https://github.com/yilundu/task_agnostic_dynamics_prior)
    *ICML 2019*   
    *SPiRL Workshop ICLR 2019*
-5. [Neural MMO: A massively multiplayer game environment for intelligent agents](https://openreview.net/pdf?id=S1gWz2CcKX)  
+5. [Neural MMO: A massively multiplayer game environment for intelligent agents](https://arxiv.org/abs/1903.00784)  
    Joseph Suarez, **Yilun Du**, Philip Isola, Igor Mordatch  
    [Code](https://github.com/openai/neural-mmo)
    Preprint
