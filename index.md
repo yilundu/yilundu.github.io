@@ -22,7 +22,7 @@ In the past, I was a research collaborator at FAIR, a fellow at OpenAI and recei
    **Yilun Du**, Shuang Li, Igor Mordatch    
    [Code](https://drive.google.com/file/d/138w7Oj8rQl_e40_RfZJq2WKWb41NgKn3)
 2. [Energy-based models for atomic-resolution protein conformations]({{site.url}}/pdfs/ebm_protein.pdf)    
-   **Yilun Du**, Joshua Meier, Jerry Ma, Rob Fergus, Alexander Rives.
+   **Yilun Du**, Joshua Meier, Jerry Ma, Rob Fergus, Alexander Rives
    *Machine Learning in Computional Biology Workshop (Oral)*    
 3.  [Observational Overfitting in Reinforcement Learning](https://arxiv.org/abs/1912.02975)
    Xingyou Song, Yiding Jiang, **Yilun Du**, Behnam Neyshabur
