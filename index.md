@@ -23,10 +23,12 @@ In the past, I was a research collaborator at FAIR, a fellow at OpenAI and recei
    [Code](https://drive.google.com/file/d/138w7Oj8rQl_e40_RfZJq2WKWb41NgKn3)
 2. [Energy-based models for atomic-resolution protein conformations]({{site.url}}/pdfs/ebm_protein.pdf)    
    **Yilun Du**, Joshua Meier, Jerry Ma, Rob Fergus, Alexander Rives
-   *Machine Learning in Computional Biology Workshop (Oral)*    
+   *ICLR 2020 (Spotlight)*    
+   *Machine Learning in Computional Biology Workshop (Oral / Travel Award)*    
 3.  [Observational Overfitting in Reinforcement Learning](https://arxiv.org/abs/1912.02975)
    Xingyou Song, Yiding Jiang, **Yilun Du**, Behnam Neyshabur
    *NeurIPS 2019 Workshop on Optimization Frontiers of Reinforcement Learning*
+   *ICLR 2020*    
 4. [Implicit Generation and Generalization with Energy Based Models](https://arxiv.org/abs/1903.08689)    
    **Yilun Du**, Igor Mordatch    
    [Code](https://www.github.com/openai/ebm_code_release)
