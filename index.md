@@ -27,8 +27,8 @@ In the past, I was a research collaborator at FAIR, a fellow at OpenAI and recei
    *Machine Learning in Computional Biology Workshop (Oral / Travel Award)*    
 3.  [Observational Overfitting in Reinforcement Learning](https://arxiv.org/abs/1912.02975)  
    Xingyou Song, Yiding Jiang, **Yilun Du**, Behnam Neyshabur   
-   *NeurIPS 2019 Workshop on Optimization Frontiers of Reinforcement Learning*  
    *ICLR 2020*    
+   *NeurIPS 2019 Workshop on Optimization Frontiers of Reinforcement Learning*  
 4. [Implicit Generation and Generalization with Energy Based Models](https://arxiv.org/abs/1903.08689)    
    **Yilun Du**, Igor Mordatch    
    [Code](https://www.github.com/openai/ebm_code_release)   
@@ -39,7 +39,7 @@ In the past, I was a research collaborator at FAIR, a fellow at OpenAI and recei
    *CORL 2019*  
    *ICML 2019 Workshop on Generative Modeling and Model-Based Reasoning for Robotics and AI (Oral)*    
 6. [An Empirical Study on Hyperparameters and their Interdependence for RL Generalization](https://drive.google.com/file/d/1mmKvj5AC8__wsmDfvHLMxAndMnAvfe-7/view?usp=sharing)    
-   Xingyou Song, **Yilun Du**, Jacob Jackson
+   Xingyou Song, **Yilun Du**, Jacob Jackson   
    *ICML 2019 Workshop on Understanding and Improving Generalization in Deep Learning*    
 7. [Learning Physics Priors for Deep Reinforcement Learing](https://arxiv.org/pdf/1905.04819.pdf)  
    **Yilun Du**, and Karthik Narasimhan  
