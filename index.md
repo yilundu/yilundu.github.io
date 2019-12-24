@@ -20,7 +20,7 @@ In the past, I was a research collaborator at FAIR, a fellow at OpenAI and recei
 
 1. [Compositional Visual Generation with Energy Based Models]({{site.url}}/pdfs/ebm_comb.pdf)    
    **Yilun Du**, Shuang Li, Igor Mordatch      
-   [Code](https://drive.google.com/file/d/138w7Oj8rQl_e40_RfZJq2WKWb41NgKn3)
+   [Code](https://drive.google.com/file/d/138w7Oj8rQl_e40_RfZJq2WKWb41NgKn3)  
 2. [Energy-based models for atomic-resolution protein conformations]({{site.url}}/pdfs/ebm_protein.pdf)    
    **Yilun Du**, Joshua Meier, Jerry Ma, Rob Fergus, Alexander Rives   
    *ICLR 2020 (Spotlight)*    
@@ -31,7 +31,7 @@ In the past, I was a research collaborator at FAIR, a fellow at OpenAI and recei
    *ICLR 2020*    
 4. [Implicit Generation and Generalization with Energy Based Models](https://arxiv.org/abs/1903.08689)    
    **Yilun Du**, Igor Mordatch    
-   [Code](https://www.github.com/openai/ebm_code_release)
+   [Code](https://www.github.com/openai/ebm_code_release)   
    *NeurIPS 2019 (Spotlight)*    
    *NeurIPS 2018 Workshop on Bayesian Deep Learning*    
 5. [Model Based Planning with Energy Based Planning](https://arxiv.org/abs/1909.06878)    
@@ -43,7 +43,7 @@ In the past, I was a research collaborator at FAIR, a fellow at OpenAI and recei
    *ICML 2019 Workshop on Understanding and Improving Generalization in Deep Learning*    
 7. [Learning Physics Priors for Deep Reinforcement Learing](https://arxiv.org/pdf/1905.04819.pdf)  
    **Yilun Du**, and Karthik Narasimhan  
-   [Code](https://github.com/yilundu/task_agnostic_dynamics_prior)
+   [Code](https://github.com/yilundu/task_agnostic_dynamics_prior)   
    *ICML 2019*   
    *SPiRL Workshop ICLR 2019*
 8. [Neural MMO: A massively multiplayer game environment for intelligent agents](https://arxiv.org/abs/1903.00784)  
