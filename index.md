@@ -25,9 +25,9 @@ In the past, I was a research collaborator at FAIR, a fellow at OpenAI and recei
    **Yilun Du**, Joshua Meier, Jerry Ma, Rob Fergus, Alexander Rives   
    *ICLR 2020 (Spotlight)*    
    *Machine Learning in Computional Biology Workshop (Oral / Travel Award)*    
-3.  [Observational Overfitting in Reinforcement Learning](https://arxiv.org/abs/1912.02975)
+3.  [Observational Overfitting in Reinforcement Learning](https://arxiv.org/abs/1912.02975)  
    Xingyou Song, Yiding Jiang, **Yilun Du**, Behnam Neyshabur   
-   *NeurIPS 2019 Workshop on Optimization Frontiers of Reinforcement Learning*
+   *NeurIPS 2019 Workshop on Optimization Frontiers of Reinforcement Learning*  
    *ICLR 2020*    
 4. [Implicit Generation and Generalization with Energy Based Models](https://arxiv.org/abs/1903.08689)    
    **Yilun Du**, Igor Mordatch    
