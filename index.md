@@ -18,7 +18,7 @@ In the past, I was a research collaborator at FAIR, a fellow at OpenAI and recei
 
 ### Publications
 
-1. [Compositional Visual Generation with Energy Based Models]({{site.url}}/pdfs/ebm_comb.pdf)    
+1. [Compositional Visual Generation with Energy Based Models](https://arxiv.org/pdf/2004.06030.pdf)    
    **Yilun Du**, Shuang Li, Igor Mordatch      
    [Code](https://drive.google.com/file/d/138w7Oj8rQl_e40_RfZJq2WKWb41NgKn3)  
 2. [Energy-based models for atomic-resolution protein conformations]({{site.url}}/pdfs/ebm_protein.pdf)    
@@ -49,7 +49,7 @@ In the past, I was a research collaborator at FAIR, a fellow at OpenAI and recei
 8. [Neural MMO: A massively multiplayer game environment for intelligent agents](https://arxiv.org/abs/1903.00784)  
    Joseph Suarez, **Yilun Du**, Philip Isola, Igor Mordatch  
    [Code](https://github.com/openai/neural-mmo)
-   Preprint
+   *AAMAS 2020*   
 9. [Learning to Exploit Stability for 3D Scene Parsing](https://papers.nips.cc/paper/7444-learning-to-exploit-stability-for-3d-scene-parsing.pdf)  
    **Yilun Du**, Zhijian Liu, Hector Basevi, Ales Leonardis, William T. Freeman, Joshua B. Tenenbaum, Jiajun Wu    
    *NeurIPS 2018*  
