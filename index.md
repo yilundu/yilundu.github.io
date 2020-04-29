@@ -7,12 +7,11 @@ permalink: /
 ![yilun]({{site.url}}/images/yilun.jpg){:.img-responsive}
 
 Email: [yilundu@mit.edu](mailto:yilundu@mit.edu)  
-Blog: [Blog]({{site.url}}/blog)  
 Github: [Github](https://github.com/yilundu)   
 
 ### Bio
 
-I am a first year graduate MIT coadvised by Leslie Kaelbling, Tomas Lozano-Perez and Joshua Tenenbaum. I'm interested in building intelligent general purpose agents that can model and interact with the work around them. 
+I am a first year graduate student at MIT coadvised by Leslie Kaelbling, Tomas Lozano-Perez and Joshua Tenenbaum. I'm interested in attempting to build intelligent robotic agents that can perceive and interact with the world around them. 
 
 In the past, I was a research collaborator at FAIR, a fellow at OpenAI and received gold medals at the International Biology Olympiad.
 
@@ -20,8 +19,8 @@ In the past, I was a research collaborator at FAIR, a fellow at OpenAI and recei
 
 1. [Compositional Visual Generation with Energy Based Models](https://arxiv.org/pdf/2004.06030.pdf)    
    **Yilun Du**, Shuang Li, Igor Mordatch      
-   [Code](https://drive.google.com/file/d/138w7Oj8rQl_e40_RfZJq2WKWb41NgKn3)  
-2. [Energy-based models for atomic-resolution protein conformations]({{site.url}}/pdfs/ebm_protein.pdf)    
+   [Code](https://github.com/yilundu/ebm_compositionality)  
+2. [Energy-based models for atomic-resolution protein conformations](https://arxiv.org/abs/2004.13167)    
    **Yilun Du**, Joshua Meier, Jerry Ma, Rob Fergus, Alexander Rives   
    *ICLR 2020 (Spotlight)*    
    *Machine Learning in Computional Biology Workshop (Oral / Travel Award)*    
@@ -53,10 +52,7 @@ In the past, I was a research collaborator at FAIR, a fellow at OpenAI and recei
 9. [Learning to Exploit Stability for 3D Scene Parsing](https://papers.nips.cc/paper/7444-learning-to-exploit-stability-for-3d-scene-parsing.pdf)  
    **Yilun Du**, Zhijian Liu, Hector Basevi, Ales Leonardis, William T. Freeman, Joshua B. Tenenbaum, Jiajun Wu    
    *NeurIPS 2018*  
-10. [Thomson Reuters' Solution for Triple Ranking in the FEIII 2017 Challenge](http://delivery.acm.org/10.1145/3080000/3077253/a6-Roman.pdf?ip=18.101.24.159&id=3077253&acc=ACTIVE%20SERVICE&key=7777116298C9657D%2EDE5F786C30E1A3B4%2E4D4702B0C3E38B35%2E4D4702B0C3E38B35&__acm__=1543111837_d4aafcf58ac0fd1af61af35603311e98)   
-    Elizabeth Roman, Brian Ulicny, **Yilun Du**, Srijith Poduval, Allan Ko  
-   *SIGMOD Workshop on Data Science for Macro Modeling*
-11. [Interpreting Dynamic Scenes by a Physics Engine and Bottom-Up Visual Cues](http://www.mit.edu/~ilkery/papers/aavl_yildirimetalfinal.pdf)  
+10. [Interpreting Dynamic Scenes by a Physics Engine and Bottom-Up Visual Cues](http://www.mit.edu/~ilkery/papers/aavl_yildirimetalfinal.pdf)  
    Ilker Yildirim\*, Jiajun Wu\*, **Yilun Du**, Joshua B. Tenenbaum  
    *ECCV 2016 Workshop on Action and Anticipation for Visual Learning*    
 
