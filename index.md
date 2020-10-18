@@ -18,9 +18,9 @@ In the past, I was a research collaborator at FAIR, a fellow at OpenAI and recei
 ### Publications
 
 1. [Unsupervised Discovery of 3D Physical Objects from Video](https://arxiv.org/abs/2007.12348)    
-   **Yilun Du**, Kevin Smith, Tomer Ulman, Joshua Tenenbaum, Jiajun Wu
+   **Yilun Du**, Kevin Smith, Tomer Ulman, Joshua Tenenbaum, Jiajun Wu 
 2. [A Long Horizon Planning Framework for Manipulating Rigid Pointcloud Objects](https://ipvs.informatik.uni-stuttgart.de/mlr/rss2020Workshop/papers/simeonov.pdf)    
-   Anthony Simeonov, **Yilun Du**, Beomjoon Kim, Francois Hogan, Joshua Tenenbaum, Pulkit Agrawal, Alberto Rodriguez
+   Anthony Simeonov, **Yilun Du**, Beomjoon Kim, Francois Hogan, Joshua Tenenbaum, Pulkit Agrawal, Alberto Rodriguez 
    *CORL 2020*    
 3. [Compositional Visual Generation with Energy Based Models](https://arxiv.org/pdf/2004.06030.pdf)    
    **Yilun Du**, Shuang Li, Igor Mordatch      
