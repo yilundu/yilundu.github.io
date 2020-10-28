@@ -8,10 +8,11 @@ permalink: /
 
 Email: [yilundu@mit.edu](mailto:yilundu@mit.edu)  
 Github: [Github](https://github.com/yilundu)   
+Twitter: [Twitter](https://twitter.com/du_yilun)
 
 ### Bio
 
-I am a first year graduate student at MIT coadvised by Leslie Kaelbling, Tomas Lozano-Perez and Joshua Tenenbaum. I'm interested in attempting to build intelligent robotic agents that can perceive and interact with the world around them. 
+I am a second year graduate student at MIT coadvised by Leslie Kaelbling, Tomas Lozano-Perez and Joshua Tenenbaum. I'm interested in attempting to build intelligent robotic agents that can perceive and interact with the world around them. 
 
 In the past, I was a research collaborator at FAIR, a fellow at OpenAI and received gold medals at the International Biology Olympiad.
 
