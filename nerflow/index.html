@@ -57,7 +57,7 @@ BODY {
   <a href="https://jiajunwu.com/">Jiajun Wu<sup>2</sup></a></h2></center>
 <center><h2>
   <sup>1</sup> MIT CSAIL&nbsp;&nbsp;&nbsp;
-  <sup>2</sup> SAIL
+  <sup>2</sup> Stanford AI Laboratory
 </h2></center>
 <center><h2><strong><a href="">Paper</a> | <a href="">Pytorch Code</a></strong> </h2></center>
 <br>
@@ -79,6 +79,27 @@ BODY {
     We present a method, Neural Radiance Flow (NeRFlow), to learn a 4D spatial-temporal representation of a dynamic scene from a set of RGB images. Key to our approach is the use of a neural implicit representation that learns to  capture the 3D occupancy, radiance, and dynamics of the scene. By enforcing consistency across different modalities, our representation enables multi-view rendering in diverse dynamic scenes, including water pouring, robotic interaction, and real images, outperforming state-of-the-art methods for spatial-temporal view synthesis. Our approach works even when inputs images are captured with only two separate cameras. We further demonstrate that the learned representation can serve an implicit scene prior, enabling video processing tasks such as image super-resolution and de-noising without any additional supervision.
 </div>
 </p>
+
+<!-- ---------------------------------------------------------------------------------- -->
+<a href=""><img style="float: left; padding: 10px; PADDING-RIGHT: 30px;" alt="paper thumbnail" src="fig/paper_thumbnail.png" width=170></a>
+<br>
+
+
+<h2>Paper</h2>
+<p><a href="">arxiv</a>,  2020. </p>
+
+
+<h2>Citation</h2>
+<p>Yilun Du, Yinan Zhang, Koven Yu, Joshua Tenenbaum, Jiajun Wu. "Neural Radiance Flow for 4D View Synthesis and Video Processing", arxiv.
+<a href="">Bibtex</a>
+</p>
+
+
+<h2><a href=''>Pytorch Code</a> </h2>
+
+<br><br>
+
+<!-- ---------------------------------------------------------------------------------- -->
 
 
 <h2>Full View Synthesis</h2>
@@ -103,21 +124,37 @@ We present dynamic novel view synthesis results on the Gibson robot below, with 
 
 <h2>Sparse View Synthesis</h2>
 
-<h3>Stereo Cameras </h3>
-Our approach also.  
+<p style="font-size:14px">
+Our approach allows us to render a dynamic scene given only a limited number of views across a scene.
+</p>
 
+<h3>Stereo Cameras </h3>
+<p style="font-size:14px">
+ We consider a dynamic scene captured by two stereo cameras moving over a cup pouring liquid illustrated below: 
+</p>
 <p>
 <center><a> <img src="fig/stereo_input.gif" style="float:none;width:640px"> </a></center>
 </p>
 
+<p style="font-size:14px">
+In such a set up, we are able to render the entire dynamic animation from a fixed viewpoint (illustrated below), even though cameras move across different viewpoints over time
+</p>
 <p>
 <center><a> <img src="fig/stereo_render.gif" style="float:none;width:640px"> </a></center>
 </p>
 
 <h3>Opposite Cameras </h3>
 
+<p style="font-size:14px">
+ We further consider the Gibson scene captured by two opposite cameras moving as a robot travels.
+</p>
+
 <p>
 <center><a> <img src="fig/dual_input.gif" style="float:none;width:640px"> </a></center>
+</p>
+
+<p style="font-size:14px">
+In such a set up, we are also able to render the entire dynamic animation from a fixed viewpoint (illustrated below), even though cameras move across different viewpoints over time
 </p>
 
 <p>
@@ -144,9 +181,11 @@ Our approach also allows us to synthesize images captured by a dynamic scene
 
 <h2>Video Processing</h2>
 <p style="font-size:14px">
-By capturing radiance information across different viewpoints, NeRFlow can also be used for video processing tasks. We show results on denoising below.
+NeRFlow is above to capture radiance information across different viewpoints and timesteps. By rendering from this aggregate representation, NeRFlow can serve as a scene prior for video processing tasks. We present results of denoising and super-resolution below.
+<p>
 
-<a> <img src="fig/denoise.gif" style="float:none;width:640px"> <img src="fig/superres.gif" style="float:none;width:640px"> </a>
+<center><a> <img src="fig/denoise.gif" style="float:none;width:350px"> <img src="fig/superres.gif" style="float:none;width:350px"> <img src="fig/denoise_real.gif" style="float:none;width:250px"> </a></center>
+</p>
 
 
 
