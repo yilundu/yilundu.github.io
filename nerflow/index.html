@@ -83,42 +83,70 @@ BODY {
 
 <h2>Full View Synthesis</h2>
 
+<p style="font-size:14px">
 We present dynamic novel view synthesis results on pouring scenes with rendering images on the left, inferred depth map in the midle and the inferred underlying continuous flow field on the right.
+</p>
+
+<p>
+<center><a> <img src="fig/pouring_full.gif" style="float:none;width:920px"> </a></center>
+</p>
 
 
+<p style="font-size:14px">
 We present dynamic novel view synthesis results on the Gibson robot below, with rendered images on the left and inferred depth map on the right
+</p>
+
+<p>
+<center><a> <img src="fig/gibson_full.gif" style="float:none;width:640px"> </a></center>
+</p>
 
 
 <h2>Sparse View Synthesis</h2>
 
-<p style="font-size:14px">
-We illustrate our the overall image generation process with EBMs below. We intersperse Langevin sampling with data augmentation transitions, enabling image sampling chains from our model to traverse across a large number of modes in the energy landscape. 
+<h3>Stereo Cameras </h3>
+Our approach also.  
 
+<p>
+<center><a> <img src="fig/stereo_input.gif" style="float:none;width:640px"> </a></center>
 </p>
 
 <p>
-<center><a> <img src="fig/langevin_data.gif" style="float:none;width:480px"> </a></center>
+<center><a> <img src="fig/stereo_render.gif" style="float:none;width:640px"> </a></center>
+</p>
+
+<h3>Opposite Cameras </h3>
+
+<p>
+<center><a> <img src="fig/dual_input.gif" style="float:none;width:640px"> </a></center>
 </p>
 
 <p>
-<center><a> <img src="fig/uncond_gen.gif" style="float:none;width:320px"> </a></center>
+<center><a> <img src="fig/dual_render.gif" style="float:none;width:640px"> </a></center>
 </p>
 
 
-<p style="font-size:14px">
-When comparing samples initialized from the same random noise value, we find that with data augmentation to aid sampling, we get significantly more diverse samples than without. 
-</p>
-
-<p>
-<center><a> <img src="fig/diverse_sample.gif" style="float:none;width:640px"> </a></center>
-</p>
 
 <h2>Temporal Interpolation</h2>
 
+<p style="font-size:14px">
+Our approach allows us to render intermediate timesteps inside a video. We render pouring scenes with 1 in 10 of the normal timesteps used during training.  We compare NeRFlow approach with consistency (left) compared with an approach without consistency (right) 
+</p>
+
+<p>
+<center><a> <img src="fig/joint.gif" style="float:none;width:480px"> </a></center>
+</p>
+
+<h2>Monocular Video</h2>
+
+Our approach also allows us to synthesize images captured by a dynamic scene  
+
+
+
 <h2>Video Processing</h2>
 <p style="font-size:14px">
-By capturing data across different modalities, NeRFlow can also 
-</p>
+By capturing radiance information across different viewpoints, NeRFlow can also be used for video processing tasks. We show results on denoising below.
+
+<a> <img src="fig/denoise.gif" style="float:none;width:640px"> <img src="fig/superres.gif" style="float:none;width:640px"> </a>
 
 
 
