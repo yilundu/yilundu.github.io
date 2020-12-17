@@ -5,6 +5,9 @@
 
 <meta property="og:image" content="fig/uncond_gen.gif"/>
 <meta property="og:title" content="Neural Radiance Flow for 4D View Synthesis and Video Processing" />
+<meta http-equiv=“Pragma” content=”no-cache”>
+<meta http-equiv=“Expires” content=”-1″>
+<meta http-equiv=“CACHE-CONTROL” content=”NO-CACHE”>
 
 <script src="lib.js" type="text/javascript"></script>
 <script src="popup.js" type="text/javascript"></script>
@@ -105,7 +108,7 @@ BODY {
 <h2>Full View Synthesis</h2>
 
 <p style="font-size:14px">
-We present dynamic novel view synthesis results on pouring scenes with rendering images on the left, inferred depth map in the midle and the inferred underlying continuous flow field on the right.
+We present NeRFLow, which learns a 4D spatial-temporal representation of a dynamic scene. In a scene with water pouring,  we are able to render novel images (left), infer the depth map (middle left), the underlying continuous flow field (middle right), and denoise input observations (right).
 </p>
 
 <p>
@@ -114,7 +117,7 @@ We present dynamic novel view synthesis results on pouring scenes with rendering
 
 
 <p style="font-size:14px">
-We present dynamic novel view synthesis results on the Gibson robot below, with rendered images on the left and inferred depth map on the right
+Our approach also works with synthesis results on the Gibson robot below, with rendered images on the left and inferred depth map on the right
 </p>
 
 <p>
@@ -125,7 +128,7 @@ We present dynamic novel view synthesis results on the Gibson robot below, with 
 <h2>Sparse View Synthesis</h2>
 
 <p style="font-size:14px">
-Our approach allows us to render a dynamic scene given only a limited number of views across a scene.
+Our approach is able to represent a dynamic scene when given  a limited number of views across the scene.
 </p>
 
 <h3>Stereo Cameras </h3>
@@ -137,7 +140,7 @@ Our approach allows us to render a dynamic scene given only a limited number of 
 </p>
 
 <p style="font-size:14px">
-In such a set up, we are able to render the entire dynamic animation from a fixed viewpoint (illustrated below), even though cameras move across different viewpoints over time
+In such a set up, we are able to render the entire dynamic animation from a fixed viewpoint (illustrated below), even though images are captured at opposite viewpoints over time.
 </p>
 <p>
 <center><a> <img src="fig/stereo_render.gif" style="float:none;width:640px"> </a></center>
@@ -146,7 +149,7 @@ In such a set up, we are able to render the entire dynamic animation from a fixe
 <h3>Opposite Cameras </h3>
 
 <p style="font-size:14px">
- We further consider the Gibson scene captured by two opposite cameras moving as a robot travels.
+ We further consider the Gibson scene captured by two opposite cameras moving (illustrated below) as a robot travels.
 </p>
 
 <p>
@@ -166,7 +169,7 @@ In such a set up, we are also able to render the entire dynamic animation from a
 <h2>Temporal Interpolation</h2>
 
 <p style="font-size:14px">
-Our approach allows us to render intermediate timesteps inside a video. We render pouring scenes with 1 in 10 of the normal timesteps used during training.  We compare NeRFlow approach with consistency (left) compared with an approach without consistency (right) 
+Our spatial-temporal representation allows us to interpolate and render intermediate timesteps inside a video. NeRFlow, with consistency, can generate a smooth rendering of pouring when trained on only 1 in 10 frames of the animation.  We compare NeRFlow approach with consistency (left) compared with an approach without consistency (right) 
 </p>
 
 <p>
@@ -176,7 +179,7 @@ Our approach allows us to render intermediate timesteps inside a video. We rende
 <h2>Monocular Video</h2>
 
 <p style="font-size:14px">
-Our approach also allows us to synthesize dynamic scenes captured by a monocular camera.
+Our approach also allows us to synthesize real dynamic scenes captured by a monocular camera.
 <p>
 
 <p>
@@ -187,12 +190,8 @@ Our approach also allows us to synthesize dynamic scenes captured by a monocular
 
 <h2>Video Processing</h2>
 <p style="font-size:14px">
-NeRFlow is above to capture radiance information across different viewpoints and timesteps. By rendering from this aggregate representation, NeRFlow can serve as a scene prior for video processing tasks. We present results of denoising and super-resolution below.
+NeRFlow is able to capture and aggregate radiance information across different viewpoints and timesteps. By rendering from this aggregate representation, NeRFlow can serve as a scene prior for video processing tasks. We present results where we show that when NeRFlow is fit on noisy input images, renders from NeRFlow are able to denoising and super-resolve the input images.
 <p>
 
 <center><a> <img src="fig/denoise.gif" style="float:none;width:350px"> <img src="fig/superres.gif" style="float:none;width:350px"> <img src="fig/denoise_real.gif" style="float:none;width:250px"> </a></center>
 </p>
-
-
-
-
