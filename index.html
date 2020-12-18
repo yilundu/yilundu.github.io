@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Yilun Du</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Yilun Du is a PhD student at MIT.">
+    <meta name="keywords" content="Yilun Du,Computer Vision,Robotics,Machine Learning,Cognitive Science">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="shortcut icon" href="static/img/favicon.ico">
+
+    <!--[if lt IE 9]>
+      <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <style type="text/css">
+body{margin:0;padding:0;background-color:#eee;}
+a{color:#4e613e}
+a:hover{color:#566c7f}
+#background{position:fixed;top:0;overflow:hidden;height:0}
+#wave-canvas{display:block;position:relative;top:0;left:5%;width:55%;min-width:850px;height:150px;border:0}
+#main{z-index:2;margin:0 auto;position:absolute;top:5%;width:100%;min-width:240px;text-align:center;}
+
+#main-content{background:rgba(238,238,238,0.95);padding:0;text-align:center;cursor:default;text-align:center;}
+#main-content{margin-left:6.5104167%;width:86.9791667%;}
+@media (min-width: 768px) {
+    #main-content{width:66%;min-width:668px;margin-left:50px}
+}
+@media (min-width: 1200px) {
+    #main-content{width:66%;max-width:900px;margin-left:100px}
+}
+/*#main-content {
+    width:86.9791667%;
+    margin: 0 auto;
+}
+@media (min-width: 768px) {
+    #main-content{width:66%;min-width:668px;}
+}
+@media (min-width: 1200px) {
+    #main-content{width:66%;max-width:900px;}
+}*/
+/* Avatar, Name, etc. */
+#main-content-container{margin:0 auto;padding:15px 0em 15px 0em;max-width:1080px;}
+@media (min-width: 768px) {
+    #main-content-container{padding:15px 0 15px 2em;}
+}
+#main-content-container .col-avatar{text-align:center}
+@media (min-width: 768px) {
+    #main-content-container .col-avatar{text-align:right}
+}
+#main-content-container .col-avatar .avatar{z-index:100;width:150px;height:150px;margin-top:0px;border-radius:100%;box-shadow:0 0 0 0.3em #fff;opacity:1;}
+
+#main-content-container .col-info{height:100%;align-items:center;display:-webkit-flex;height:150px}
+#main-info-container{padding-top:15px}
+#main-info-container .col-name{text-align:center}
+#main-info-container .col-name .textbox-info{display:inline-block;margin:0 auto;text-align:left}
+#main-info-container .col-name .name{margin:0;color:#566c7f;font-size:1.85em;font-family:"Source Sans Pro",Helvetica,sans-serif}
+#main-info-container .col-name .email{color:#666; font-size:14px}
+#main-info-container .col-link{text-align:center;margin:-5px 0 -25px;}
+#main-info-container .col-link ul {margin:0px auto auto;padding:0;list-style:none;text-align:center}
+#main-info-container .col-link li {display:inline-block;margin:auto;padding:0 10px;color:#ccc;line-height:10px}
+#main-info-container .col-link li a{width:45px;height:45px;color:#ccc;padding:0;font-size:45px;line-height:45px}
+#main-info-container .col-link li a:focus,
+#main-info-container .col-link li a:hover{text-decoration:none;cursor:hand}
+#main-info-container .col-link li a.border{border:1px solid #ccc;border-radius:100%;}
+#main-info-container .col-link li a.padding{padding:0px 0px;font-size:22px}
+
+/* Other */
+#main-more-container{background:#ffffff;width:100%;padding:0 30px}
+
+#main-bio-container{margin:auto;padding: 0 0em;max-width:1080px;text-align:left;padding-top:30px;max-width:1080px;font-size:1rem;line-height:1.4}
+#main-bio-container .subtitle{margin-top:30px;color:#566c7f}
+
+#main-pub-container{margin:auto;padding: 0 0em;max-width:1080px;text-align:left;padding-top:30px;max-width:1080px}
+#main-pub-container .subtitle{color:#566c7f;}
+#main-pub-container .subtitle a {font-weight:400;font-size:18px}
+#main-pub-container .subtitle a.activated {color:#333333}
+#main-pub-container .subtitle a.activated:focus,
+#main-pub-container .subtitle a.activated:hover {text-decoration:none;cursor:initial}
+
+#main-pub-container .subtitle-aux {font-size:1rem}
+#main-pub-container .subtitle-aux a.activated {color:#333333}
+#main-pub-container .subtitle-aux a.activated:focus,
+#main-pub-container .subtitle-aux a.activated:hover {text-decoration:none;cursor:initial}
+
+#main-pub-card-container{}
+#main-pub-card-container>h5{margin-bottom: 20px}
+#main-pub-card-container .pub-card{width: 100%;padding-bottom:15px;font-size:1rem}
+#main-pub-card-container .pub-card .col-l{text-align:center;padding-top:10px}
+#main-pub-card-container .pub-card .col-r{padding-top:10px}
+#main-pub-card-container .pub-card img{width:100%;margin:0 auto}
+#main-pub-card-container .pub-card-body{width:100%;background:transparent;padding-left:0px}
+#main-pub-card-container .pub-card .title{font-weight:600;font-size:1rem;margin-bottom:4px;line-height:1.4}
+#main-pub-card-container .pub-card .authors{font-weight:400;color:#666666;margin-bottom:4px;line-height:1.4}
+#main-pub-card-container .pub-card .authors a{color:#666666}
+#main-pub-card-container .pub-card .authors u{color:#333333;font-weight:600;text-decoration:none}
+#main-pub-card-container .pub-card .conference{color:#333333;font-weight:600}
+#main-pub-card-container .pub-card .note{display:block;color:#999999;text-decoration:none;font-size:14px}
+#main-pub-card-container .pub-card .info{margin-bottom:0;}
+#main-pub-card-container .row{margin:0}
+#main-pub-card-container .col-l,
+#main-pub-card-container .col-r{vertical-align:top;display:inline-block;margin:0;padding-left:0px}
+
+#footer{padding:1.5em 0 1.5em;min-width:240px;background:#f4f4f4;opacity:0.95;font-size:14px;line-height:12px;text-align:left}
+#footer .container{max-width:540px;padding:0 45px}
+#footer .row{align-items:center}
+#footer .stat{width:90px;overflow:hidden;margin:0 auto;padding:0 15px;}
+#footer .copyright{flex-grow:1;margin:5px auto 5px;text-align:left;display:block;font-size:14px;line-height:1.4}
+#footer a{color:#666666}
+#footer a:hover{color:#333333}
+
+.bold{font-weight:600}
+.highlight{color:#BB2222;font-weight:600}
+.highlight:hover{color:#BB2222;font-weight:600}
+.hide{display:none}
+    </style>
+</head>
+
+<body>
+
+<img src="static/img/background.jpeg" id="background" class="" />
+
+<div id="main">
+    <!--canvas id="wave-canvas"></canvas-->
+
+    <div id="main-content">
+        <div id="main-content-container" class="container">
+          <div class="row">
+            <div class="col-sm-12 col-md-3 col-avatar">
+                <img src="images/yilun.jpg" class="avatar" />
+            </div>
+            <div class="col-sm-12 col-md-9 col-info">
+                <div id="main-info-container" class="container">
+                    <div class="row">
+                        <div class="col-md-12 col-xl-6 col-name">
+                            <div class="textbox-info">
+                                <h1 class="name"><span>Yilun Du</span></h1>
+                                <p class="email">Email: yilundu [at] mit [dot] edu <br>
+                                Twitter:  https://twitter.com/du_yilun <br>
+                                Github: https://github.com/yilundu </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="main-more-container">
+        <div id="main-bio-container">
+            <p>
+            I am a second-year PhD student at <a href="https://www.eecs.mit.edu">MIT EECS</a>, advised by
+            Prof. <a href="http://cocosci.mit.edu/josh", target="_blank"> Josh Tenenbuam</a> and
+            Prof. <a href="https://people.csail.mit.edu/lpk/" target="_blank">Leslie Kaelbling</a> and 
+            Prof. <a href="https://people.csail.mit.edu/tlp/" target="_blank">Tomas Lozano-Perez</a> and 
+            Previously, I obtained my bachelor's degree from MIT, worked at OpenAI and FAIR, and got a gold medal at the International Biology Olympiad.
+            </p>
+
+            <h5 class="subtitle">News</h5>
+            <ul>
+                <li>Check out our new preprints on <a href="https://arxiv.org/pdf/2012.01316.pdf">improved training of EBMs</a> and its applications to <a href="https://arxiv.org/pdf/2011.12216.pdf">continual learning!</a></li>
+            </ul>
+            <h5 class="subtitle">Research Highlights</h5>
+            <ul>
+                <li><b>Generative Modeling</b>: energy based models, compositionality, generative applications </li>
+                <li><b>Physical and 3D Scene Understanding</b>: unsupervised object discovery, 3D reconstruction</li>
+                <li><b>State Estimation</b>: data association filtering </li>
+                <li><b>Robotics</b>: multi-step manipulation</li>
+                <li><b>Reinforcement Learning</b>: multi-agent/model based reinforcement learning</li>
+            </ul>
+        </div>
+
+        <div id="main-pub-container">
+            <h5 class="subtitle">Publications
+            (
+                <a id="publication-by-selected" href="javascript:;", onClick="publicationBySelected();">show selected</a> /
+                <a id="publication-by-date" href="javascript:;", onClick="publicationByDate();">show all by date</a> /
+                <a id="publication-by-topic" href="javascript:;", onClick="publicationByTopic();">show all by topic</a>
+            )
+            </h5>
+            <p class="subtitle-aux"><span class="bold">Topics:</span>
+                <a href="#topic-generative-model" onClick="return publicationByTopicSpecific(this)" data-topic="generative-model">Generative Modeling</a> /
+                <a href="#topic-physics-3d" onClick="return publicationByTopicSpecific(this)" data-topic="physics-3d">Physical and 3D Scene Understanding</a> /
+                <a href="#topic-state-estimation" onClick="return publicationByTopicSpecific(this)" data-topic="state-estimation">State Estimation</a> /
+                <a href="#topic-robotics" onClick="return publicationByTopicSpecific(this)" data-topic="robotics">Robotics</a> /
+                <a href="#topic-rl" onClick="return publicationByTopicSpecific(this)" data-topic="rl">Reinforcement Learning</a>
+                (* indicates equal contribution)
+            </p>
+
+            <div id="main-pub-card-container" class="hide">
+                <div class="pub-card" data-topic="physics-3d" data-year="2020" data-selected="true">
+                    <div class="row">
+                        <div class="col-l col-xs-12 col-lg-3">
+                            <img src="data/projects/nerflow.png" width="100%" />
+                        </div>
+                        <div class="col-r col-xs-12 col-lg-9">
+                            <div class="pub-card-body">
+                                <h5 class="title">Neural Radiance Flow for 4D View Synthesis and Video Processing</h5>
+                                <h6 class="authors">
+                                    <u>Yilun Du</u>,
+                                    <a>Yinan Zhang</a>,
+                                    <a href="https://kovenyu.com/">Hong-Xing Yu</a>,
+                                    <a href="http://cocosci.mit.edu/josh">Joshua B. Tenenbaum</a>,
+                                    <a href="http://jiajunwu.com">Jiajun Wu</a>
+                                </h6>
+                                <p class="info">
+                                    <span class="conference">ArXiv Preprint</span>
+                                    <a href="https://arxiv.org/pdf/2012.09790.pdf">Paper</a> /
+                                    <a href="https://yilundu.github.io/nerflow/">Project Page</a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="pub-card" data-topic="generative-model" data-year="2020" data-selected="false">
+                    <div class="row">
+                        <div class="col-l col-xs-12 col-lg-3">
+                            <img src="data/projects/cd.png" width="100%" />
+                        </div>
+                        <div class="col-r col-xs-12 col-lg-9">
+                            <div class="pub-card-body">
+                                <h5 class="title">Improved Contrastive Divergence Training of Energy Based Models</h5>
+                                <h6 class="authors">
+                                    <u>Yilun Du</u>,
+                                    <a href="http://www.mit.edu/~lishuang/">Shuang Li</a>,
+                                    <a href="http://cocosci.mit.edu/josh">Joshua B. Tenenbaum</a>,
+                                    <a>Igor Mordatch</a>
+                                </h6>
+                                <p class="info">
+                                    <span class="conference">ArXiv Preprint</span>
+                                    <a href="https://arxiv.org/pdf/2012.01316.pdf">Paper</a> /
+                                    <a href="https://energy-based-model.github.io/improved-contrastive-divergence/">Project Page</a> 
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="pub-card" data-topic="generative-model" data-year="2020" data-selected="false">
+                    <div class="row">
+                        <div class="col-l col-xs-12 col-lg-3">
+                            <img src="data/projects/continual.png" width="100%" />
+                        </div>
+                        <div class="col-r col-xs-12 col-lg-9">
+                            <div class="pub-card-body">
+                                <h5 class="title">Energy-Based Models for Continual Learning</h5>
+                                <h6 class="authors">
+                                    <a href="http://www.mit.edu/~lishuang/">Shuang Li</a>,
+                                    <u>Yilun Du</u>,
+                                    <a href="">Gido M. van de Ven</a>*,
+                                    <a href="https://groups.csail.mit.edu/vision/torralbalab/">Antonio Torralba</a>,
+                                    <a>Igor Mordatch</a>
+                                </h6>
+                                <p class="info">
+                                    <span class="conference">ArXiv Preprint</span>
+                                    <a href="https://arxiv.org/pdf/2011.12216.pdf">Paper</a> /
+                                    <a href="https://energy-based-model.github.io/Energy-Based-Models-for-Continual-Learning/">Project Page</a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="pub-card" data-topic="state-estimation" data-year="2020" data-selected="true">
+                    <div class="row">
+                        <div class="col-l col-xs-12 col-lg-3">
+                            <img src="data/projects/dafnet.png" width="100%" />
+                        </div>
+                        <div class="col-r col-xs-12 col-lg-9">
+                            <div class="pub-card-body">
+                                <h5 class="title">Learning Online Data Association</h5>
+                                <h6 class="authors">
+                                    <u>Yilun Du</u>,
+                                    <a href="http://cocosci.mit.edu/josh">Joshua B. Tenenbaum</a>,
+                                    <a href="https://people.csail.mit.edu/tlp/">Tomas Lozano-Perez</a>
+                                    <a href="https://people.csail.mit.edu/lpk/">Leslie Kaelbling</a>
+                                </h6>
+                                <p class="info">
+                                    <span class="conference">ArXiv Preprint</span>
+                                    <a href="https://arxiv.org/pdf/2011.03183.pdf">Paper</a> 
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="pub-card" data-topic="physics-3d" data-year="2020" data-selected="false">
+                    <div class="row">
+                        <div class="col-l col-md-12 col-lg-3">
+                            <img src="data/projects/unsupervised_3d.png" width="100%" />
+                        </div>
+                        <div class="col-r col-md-12 col-lg-9">
+                            <div class="pub-card-body">
+                                <h5 class="title">Unsupervised Discovery of 3D Physical Objects from Video</h5>
+                                <h6 class="authors">
+                                    <u>Yilun Du</u>,
+                                    <a href="http://www.mit.edu/~k2smith/">Kevin Smith</a>,
+                                    <a href="http://www.mit.edu/~tomeru/">Tomer Ulman</a>,
+                                    <a href="http://cocosci.mit.edu/josh">Joshua B. Tenenbaum</a>,
+                                    <a href="http://jiajunwu.com">Jiajun Wu</a>
+                                </h6>
+                                <p class="info">
+                                    <span class="conference">ArXiv Preprint</span>
+                                    <a href="https://arxiv.org/abs/2007.12348">Paper</a> 
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="pub-card" data-topic="robotics" data-year="2020" data-selected="true">
+                    <div class="row">
+                        <div class="col-l col-md-12 col-lg-3">
+                            <img src="data/projects/3d_manip.png" width="100%" />
+                        </div>
+                        <div class="col-r col-md-12 col-lg-9">
+                            <div class="pub-card-body">
+                                <h5 class="title">A Long Horizon Planning Framework for Manipulating Rigid Pointcloud Objects</h5>
+                                <h6 class="authors">
+                                    <a href="https://anthonysimeonov.github.io/">Anthony Simeonov</a>,
+                                    <u>Yilun Du</u>,
+                                    <a href="http://people.csail.mit.edu/beomjoon/">Beomjoon Kim</a>,
+                                    <a href="https://fhogan.github.io/">Francois Hogan</a>,
+                                    <a href="http://cocosci.mit.edu/josh">Joshua B. Tenenbaum</a>,
+                                    <a href="https://people.csail.mit.edu/pulkitag/">Pulkit Agrawal</a>,
+                                    <a href="https://mcube.mit.edu/">Alberto Rodriguez</a>,
+                                </h6>
+                                <p class="info">
+                                    <a href="https://www.robot-learning.org/" class="conference">CORL 2020</a>
+                                    <a href="https://arxiv.org/pdf/2011.08177.pdf">Paper</a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="pub-card" data-topic="generative-model" data-year="2020" data-selected="true">
+                    <div class="row">
+                        <div class="col-l col-md-12 col-lg-3">
+                            <img src="data/projects/compositional.png" width="100%" />
+                        </div>
+                        <div class="col-r col-md-12 col-lg-9">
+                            <div class="pub-card-body">
+                                <h5 class="title">Compositional Visual Generation with Energy Based Models</h5>
+                                <h6 class="authors">
+                                    <u>Yilun Du</u>,
+                                    <a href="http://www.mit.edu/~lishuang/">Shuang Li</a>,
+                                    <a>Igor Mordatch</a>
+                                </h6>
+                                <p class="info">
+                                    <a href="https://nips.cc/Conferences/2020" class="conference">NeurIPS 2020</a>
+                                    <span class="highlight">(Spotlight)</span>
+                                    <a href="https://arxiv.org/pdf/2004.06030.pdf">Paper</a> /
+                                    <a href="https://energy-based-model.github.io/compositional-generation-inference/">Project Page</a>
+                                    <a href="https://github.com/yilundu/ebm_compositionality">Code</a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="pub-card" data-topic="generative-model" data-year="2020" data-selected="true">
+                    <div class="row">
+                        <div class="col-l col-md-12 col-lg-3">
+                            <img src="data/projects/protein.png" width="100%" />
+                        </div>
+                        <div class="col-r col-md-12 col-lg-9">
+                            <div class="pub-card-body">
+                                <h5 class="title">Energy-based models for atomic-resolution protein conformations</h5>
+                                <h6 class="authors">
+                                    <u>Yilun Du</u>,
+                                    <a>Joshua Meier</a>,
+                                    <a>Jerry Ma</a>,
+                                    <a href="https://cs.nyu.edu/~fergus/pmwiki/pmwiki.php">Rob Fergus</a>
+                                    <a>Alexander Rives</a>
+                                </h6>
+                                <p class="info">
+                                    <a href="https://iclr.cc/Conferences/2020" class="conference">ICLR 2020</a>
+                                    <span class="highlight">(Spotlight)</span> /
+                                    <a href="https://sites.google.com/cs.washington.edu/mlcb2020/" class="conference">MLCB 2020</a>
+                                    <span class="highlight">(Oral / Travel Award)</span> /
+                                    <a href="https://arxiv.org/pdf/2004.13167.pdf">Paper</a> /
+                                    <a href="https://github.com/facebookresearch/protein-ebm">Code</a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="pub-card" data-topic="rl" data-year="2020" data-selected="false">
+                    <div class="row">
+                        <div class="col-l col-md-12 col-lg-3">
+                            <img src="data/projects/overfit.png" width="100%" />
+                        </div>
+                        <div class="col-r col-md-12 col-lg-9">
+                            <div class="pub-card-body">
+                                <h5 class="title">Observational Overfitting in Reinforcement Learning</h5>
+                                <h6 class="authors">
+                                    Xingyou Song,
+                                    <a>Yiding Jiang</a>,
+                                    <u>Yilun Du</u>,
+                                    Behnam Neyshabur,
+                                </h6>
+                                <p class="info">
+                                    <a href="https://iclr.cc/Conferences/2020" class="conference">ICLR 2020</a>
+                                    <a href="https://arxiv.org/pdf/2004.13167.pdf">Paper</a> 
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="pub-card" data-topic="generative-model" data-year="2019" data-selected="false">
+                    <div class="row">
+                        <div class="col-l col-md-12 col-lg-3">
+                            <img src="data/projects/ebm_plan.png" width="100%" />
+                        </div>
+                        <div class="col-r col-md-12 col-lg-9">
+                            <div class="pub-card-body">
+                                <h5 class="title">Model Based Planning with Energy Based Models</h5>
+                                <h6 class="authors">
+                                    <u>Yilun Du</u>,
+                                    <a>Toru Lin</a>,
+                                    <a>Igor Mordatch</a>
+                                </h6>
+                                <p class="info">
+                                    <a href="https://sites.google.com/robot-learning.org/corl2019" class="conference">CORL 2019</a>
+                                    <a href="https://sites.google.com/view/mbrl-icml2019/home" class="conference">ICML MBRL Workshop 2019</a>
+                                    <span class="highlight">(Oral)</span> /
+                                    <a href="https://arxiv.org/pdf/1909.06878.pdf">Paper</a> /
+                                    <a href="https://github.com/yilundu/ebm_plan">Code</a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="pub-card" data-topic="generative-model" data-year="2019" data-selected="true">
+                    <div class="row">
+                        <div class="col-l col-md-12 col-lg-3">
+                            <img src="data/projects/ebm.png" width="100%" />
+                        </div>
+                        <div class="col-r col-md-12 col-lg-9">
+                            <div class="pub-card-body">
+                                <h5 class="title">Implicit Generation and Generalization with Energy Based Models</h5>
+                                <h6 class="authors">
+                                    <u>Yilun Du</u>,
+                                    <a>Igor Mordatch</a>
+                                </h6>
+                                <p class="info">
+                                    <a href="https://nips.cc/Conferences/2019" class="conference">NeurIPS 2019</a>
+                                    <span class="highlight">(Spotlight)</span>
+                                    <a href="https://arxiv.org/pdf/1903.08689.pdf">Paper</a> /
+                                    <a href="https://github.com/openai/ebm_code_release">Code</a> /
+                                    <a href="https://openai.com/blog/energy-based-models/">OpenAI Blog</a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="pub-card" data-topic="rl" data-year="2019" data-selected="false">
+                    <div class="row">
+                        <div class="col-l col-md-12 col-lg-3">
+                            <img src="data/projects/task_agnostic.png" width="100%" />
+                        </div>
+                        <div class="col-r col-md-12 col-lg-9">
+                            <div class="pub-card-body">
+                                <h5 class="title">Task-Agnostic Dynamics Priors for Deep Reinforcement Learning</h5>
+                                <h6 class="authors">
+                                    <u>Yilun Du</u>,
+                                    <a href="https://www.cs.princeton.edu/~karthikn/">Karthik Narasimhan</a>
+                                </h6>
+                                <p class="info">
+                                    <a href="https://icml.cc/Conferences/2019" class="conference">ICML 2019</a>
+                                    <a href="https://arxiv.org/pdf/1905.04819.pdf">Paper</a> /
+                                    <a href="https://github.com/yilundu/task_agnostic_dynamics_prior">Code</a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="pub-card" data-topic="rl" data-year="2019" data-selected="false">
+                    <div class="row">
+                        <div class="col-l col-md-12 col-lg-3">
+                            <img src="data/projects/neuralmmo.png" width="100%" />
+                        </div>
+                        <div class="col-r col-md-12 col-lg-9">
+                            <div class="pub-card-body">
+                                <h5 class="title">Neural MMO: A massively multiplayer game environment for intelligent agents</h5>
+                                <h6 class="authors">
+                                    <a>Joseph Suarez</a>,
+                                    <u>Yilun Du</u>,
+                                    <a href="http://web.mit.edu/phillipi/">Phillip Isola</a>*,
+                                    <u>Igor Mordatch</u>,
+                                </h6>
+                                <p class="info">
+                                    <a href="https://aamas2020.conference.auckland.ac.nz/" class="conference">AAMAS 2020</a>
+                                    <a href="https://arxiv.org/abs/2001.12004">Paper</a> /
+                                    <a href="https://github.com/openai/neural-mmo">Code</a> /
+                                    <a href="https://openai.com/blog/neural-mmo/">OpenAI Blog</a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="pub-card" data-topic="physics-3d" data-year="2018" data-selected="false">
+                    <div class="row">
+                        <div class="col-l col-md-12 col-lg-3">
+                            <img src="data/projects/stability.png" width="100%" />
+                        </div>
+                        <div class="col-r col-md-12 col-lg-9">
+                            <div class="pub-card-body">
+                                <h5 class="title">Learning to Exploit Stability for 3D Scene Parsing</h5>
+                                <h6 class="authors">
+                                    <u>Yilun Du</u>,
+                                    <a href="http://zhijianliu.com/">Zhijian Liu</a>
+                                    <a href="https://www.cs.bham.ac.uk/~basevhra/">Hector Basevi</a>
+                                    <a href="https://www.cs.bham.ac.uk/~leonarda/">Ales Leonardis</a>
+                                    <a href="https://billf.mit.edu/">William T. Freeman</a>
+                                    <a href="http://cocosci.mit.edu/josh">Joshua B. Tenenbaum</a>
+                                    <a href="http://jiajunwu.com">Jiajun Wu</a>
+                                </h6>
+                                <p class="info">
+                                    <a href="https://nips.cc/Conferences/2018" class="conference">NeurIPS 2018</a>
+                                    <a href="https://papers.nips.cc/paper/7444-learning-to-exploit-stability-for-3d-scene-parsing.pdf">Paper</a> 
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="footer">
+        <div class="container">
+            <div class="row">
+                <div class="copyright">
+                    Background photo: Blue Spaces,
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- jQuery first, then Tether, then Bootstrap JS. -->
+<script src="https://code.jquery.com/jquery-3.1.1.min.js" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"
+        integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"
+        integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+<script type="text/javascript" src="static/js/jquery.color.min.js"></script>
+<script type="text/javascript" src="static/js/wave.js"></script>
+<script type="text/javascript">
+
+$.fn.isInViewport = function() {
+    var elementTop = $(this).offset().top;
+    var elementBottom = elementTop + $(this).outerHeight();
+    var viewportTop = $(window).scrollTop();
+    var viewportBottom = viewportTop + $(window).height();
+    return elementBottom > viewportTop && elementTop < viewportBottom;
+};
+
+var allPublications = null;
+
+function publicationBySelected() {
+    var a = $("#publication-by-selected")
+    if (a.hasClass("activated")) {
+        return ;
+    }
+
+    $("#main-pub-container .subtitle a").removeClass("activated");
+    $("#main-pub-container .subtitle-aux a").removeClass("activated");
+    a.addClass("activated");
+
+    $("#main-pub-card-container").html("");
+    for (var pubId = 0; pubId < allPublications.length; pubId++) {
+        var pub = $(allPublications[pubId]);
+        if (pub.data("selected") == true) {
+            $("#main-pub-card-container").append(pub);
+        }
+    }
+}
+
+function publicationByDate() {
+    var a = $("#publication-by-date")
+    if (a.hasClass("activated")) {
+        return ;
+    }
+
+    $("#main-pub-container .subtitle a").removeClass("activated");
+    $("#main-pub-container .subtitle-aux a").removeClass("activated");
+    a.addClass("activated");
+
+    $("#main-pub-card-container").html("");
+    for (var pubId = 0; pubId < allPublications.length; pubId++) {
+        if (pubId == 0 || $(allPublications[pubId-1]).data("year") != $(allPublications[pubId]).data("year")) {
+            var year = $(allPublications[pubId]).data("year");
+            $("#main-pub-card-container").append($("<h5 id='year-" + year.toString() + "'>" + year.toString() + "</h5>"));
+        }
+        $("#main-pub-card-container").append(allPublications[pubId]);
+    }
+}
+
+function publicationByTopicInner() {
+    var a = $("#publication-by-topic")
+    if (a.hasClass("activated")) {
+        return ;
+    }
+    $("#main-pub-container .subtitle a").removeClass("activated");
+    a.addClass("activated");
+
+    $("#main-pub-card-container").html("");
+    for (var topicId in allTopics) {
+        var topic = allTopics[topicId].name;
+        var topicTitle = allTopics[topicId].title;
+        // var topicTitle = topic.split("-").map(function (a) { return a[0].toUpperCase() + a.substr(1).toLowerCase(); }).join(" ");
+        $("#main-pub-card-container").append($("<h5 id='topic-" + topic + "'>" + topicTitle + "</h5>"));
+        for (var pubId = 0; pubId < allPublications.length; pubId++) {
+            var pub = $(allPublications[pubId]);
+            if (pub.data("topic").indexOf(topic) != -1) {
+                $("#main-pub-card-container").append(pub);
+            }
+        }
+    }
+}
+
+function publicationByTopicSpecificInner(a) {
+    if ($(a).hasClass("activated")) {
+        return false;
+    }
+
+    $("#main-pub-container .subtitle-aux a").removeClass("activated");
+    $(a).addClass("activated");
+}
+
+function publicationByTopic() {
+    publicationByTopicInner();
+    publicationByTopicSpecificInner($("#main-pub-container .subtitle-aux a:first"));
+    return true;
+}
+
+function publicationByTopicSpecific(a) {
+    publicationByTopicInner();
+    publicationByTopicSpecificInner(a);
+
+    var hash = a.hash;
+    $(hash).prop('id', hash.substr(1) + '-noscroll');
+    window.location.hash = hash;
+    $(hash + '-noscroll').prop('id', hash.substr(1));
+
+    if (!$(hash).isInViewport()) {
+        $('html, body').animate({
+            scrollTop: $(hash).offset().top
+        }, 1000, function(){
+        });
+    }
+
+    return false;
+}
+
+$(function() {
+    getRealSize = function(bgImg) {
+        var img = new Image();
+        img.src = bgImg.attr("src");
+        var width = img.width,
+            height = img.height;
+        return {
+            width: width,
+            height: height
+        }
+    };
+
+    getRealWindowSize = function() {
+        var winWidth = null,
+            winHeight = null;
+        if (window.innerWidth) winWidth = window.innerWidth;
+        else if ((document.body) && (document.body.clientWidth)) winWidth = document.body.clientWidth;
+        if (window.innerHeight) winHeight = window.innerHeight;
+        else if ((document.body) && (document.body.clientHeight)) winHeight = document.body.clientHeight;
+        if (document.documentElement && document.documentElement.clientHeight && document.documentElement.clientWidth) {
+            winHeight = document.documentElement.clientHeight;
+            winWidth = document.documentElement.clientWidth
+        }
+        return {
+            width: winWidth,
+            height: winHeight
+        }
+    };
+
+    fullBg = function() {
+        var bgImg = $("#background");
+        var mainContainer = $("#main");
+        var firstFire = null;
+
+        function resizeImg() {
+            var realSize = getRealSize(bgImg);
+            var imgWidth = realSize.width;
+            var imgHeight = realSize.height;
+
+            if (imgWidth == 0 || imgHeight == 0) {
+                setTimeout(function() {
+                    resizeImg();
+                }, 200);
+            }
+
+            console.log(realSize);
+            var realWinSize = getRealWindowSize();
+            var winWidth = realWinSize.width;
+            var winHeight = realWinSize.height;
+            var widthRatio = winWidth / imgWidth;
+            var heightRatio = winHeight / imgHeight;
+            console.log(realWinSize);
+            if (widthRatio > heightRatio) {
+                bgImg.width(imgWidth * widthRatio + 'px').height(imgHeight * widthRatio + 'px').css({'top':
+                    -(imgHeight * widthRatio - winHeight) / 10 * 5 + 'px', 'left': '0'})
+            } else {
+                bgImg.width(imgWidth * heightRatio + 'px').height(imgHeight * heightRatio + 'px').css({'left':
+                    -(imgWidth * heightRatio - winWidth) / 10 * 3 + 'px', 'top': '0'})
+            }
+            // mainContainer.css({
+            //     width: winWidth,
+            //     height: winHeight
+            // });
+        }
+
+        resizeImg();
+        window.onresize = function() {
+            if (firstFire === null) {
+                firstFire = setTimeout(function() {
+                    resizeImg();
+                    firstFire = null
+                }, 100)
+            }
+        }
+    };
+
+    targetColor = $("#main-content-container .col-info .name").css("color");
+    animatedLink = function(speed) {
+        $("#main-content-container .col-link li").hover(function() {
+            $(this).find('.icon').animate({
+                color: targetColor,
+                borderColor: targetColor
+            }, speed);
+            $(this).find('.caption').animate({
+                color: targetColor
+            })
+        }, function() {
+            $(this).find('.icon').animate({
+                borderColor: '#cccccc',
+                color: '#cccccc'
+            }, speed);
+            $(this).find('.caption').animate({
+                color: '#cccccc'
+            })
+        })
+    };
+
+    fullBg();
+    animatedLink(400);
+
+    allPublications = $("#main-pub-card-container .pub-card");
+    allTopicsLink = $("#main-pub-container .subtitle-aux a");
+    allTopics = [];
+    for (var topicId = 0; topicId < allTopicsLink.length; topicId++) {
+        allTopics.push({name: $(allTopicsLink[topicId]).data("topic"), title: $(allTopicsLink[topicId]).html()});
+    }
+
+    $("#publication-by-selected").click();
+    // $("#publication-by-date").click();
+    $("#main-pub-card-container").removeClass("hide");
+});
+</script>
+</body>
+</html>
