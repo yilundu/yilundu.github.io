@@ -1,0 +1,8 @@
+@inproceedings{du2020unsuphys,
+  title={Unsupervised Discovery of 3D Physical Objects From Video},
+  author={Du, Yilun and Smith, Kevin and Ulman, Tomer and Tenenbaum, Joshua B and Wu, Jiajun},
+  booktitle=iclr,
+  year={2020}
+}
+
+
