@@ -1,107 +1,86 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
-<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en"><head>
-  <title>Unsupervised Discovery of 3D Physical Objects From Video</title>
-<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!--suppress CheckImageSize -->
+<html xmlns="http://www.w3.org/1999/xhtml">
 
-<meta property="og:image" content="fig/uncond_gen.gif"/>
-<meta property="og:title" content="Unsupervised Discovery of 3D Physical Objects From Video" />
-<meta http-equiv=“Pragma” content=”no-cache”>
-<meta http-equiv=“Expires” content=”-1″>
-<meta http-equiv=“CACHE-CONTROL” content=”NO-CACHE”>
+  <head>
 
-<script src="lib.js" type="text/javascript"></script>
-<script src="popup.js" type="text/javascript"></script>
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    <script src="js/head.js?prefix="></script>
+    <meta name="description" content="Visual De-animation">
+    <meta name="keywords" content="MIT,Vision,Scene Understanding,Learning,Computer Science">
 
-  ga('create', 'UA-53682931-1', 'auto');
-  ga('send', 'pageview');
+    <title>Visual De-animation</title>
+    <link rel="stylesheet" href="css/font.css">
+    <link rel="stylesheet" href="css/main.css">
 
-</script>
+  </head>
 
-<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <body>
 
-<script type="text/javascript">
-// redefining default features
-var _POPUP_FEATURES = 'width=1000,height=1000,resizable=1,scrollbars=1,titlebar=1,status=1';
-</script>
-<link media="all" href="glab.css" type="text/css" rel="StyleSheet">
-<style type="text/css" media="all">
-#primarycontent {
-    MARGIN-LEFT: auto; ; WIDTH: expression(document.body.clientWidth >
-1000? "1000px": "auto" ); MARGIN-RIGHT: auto; TEXT-ALIGN: left; max-width:
-1000px }
-BODY {
-    TEXT-ALIGN: center
-}
-</style>
+    <div class="outercontainer">
+      <div class="container">
 
-<meta content="MSHTML 6.00.2800.1400" name="GENERATOR"><script src="b5m.js" id="b5mmain" type="text/javascript"></script></head>
+        <div class="content project_title">
+          <h1>Unsupervised Discovery of 3D Physical Objects From Video</h1>
+        </div>
 
-<body>
-
-<div id="primarycontent">
-<center><h1>Unsupervised Discovery of 3D Physical Objects From Video</h1></center>
-<center><h2><a href="https://yilundu.github.io/">Yilun Du<sup>1</sup></a>&nbsp;&nbsp;&nbsp;
-  <a href=http://www.mit.edu/~k2smith/"">Kevin Smith<sup>1</sup></a>&nbsp;&nbsp;&nbsp;
-  <a href="http://www.mit.edu/~tomeru/">Tomer Ulman<sup>3</sup></a>&nbsp;&nbsp;&nbsp;
-  <a href="http://web.mit.edu/cocosci/josh.html">Joshua B. Tenenbaum<sup>1</sup></a>&nbsp;&nbsp;&nbsp;
-  <a href="https://jiajunwu.com/">Jiajun Wu<sup>2</sup></a></h2></center>
-<center><h2>
-  <sup>1</sup> MIT;
-  <sup>2</sup> Stanford University;
-  <sup>3</sup> Harvard University
-</h2></center>
-<center><h2><strong><a href="https://arxiv.org/pdf/2007.12348.pdf">Paper</a> | <a href="">Code (Coming Soon)</a></strong> </h2></center>
-<br>
-
-<p>
-<center><a>
-<img src="fig/teaser.png" width="700"> 
-</a></center>
-</p>
-
-<p>
-<center><a>
-<img src="fig/method.png" width="730"> 
-</a></center>
-<br>
-</p>
+        <div class="content project_headline">
+          <div class="img">
+            <img class="img_responsive" src="fig/teaser.png" alt="POD-Net"/>
+          </div>
+          <div class="text">
+            <p>Figure 1: Motion is an important cue for object segmentation from early in development. We combine motion with an approximate understanding of physics to discover 3D objects that are physically consistent across time. In the video above, motion cues (shown with colored arrows) enable our model to modify our predictions from a single large incorrect segmentation mask to two smaller correct masks. </p>
+          </div>
+        </div>
 
 
-
-<p>
-<h2>Abstract</h2>
-
-<div style="font-size:14px"><p align="justify">
-We study the problem of unsupervised physical object discovery. While existing frameworks aim to decompose scenes into 2D segments based off each object's
+        <div class="content">
+          <div class="text">
+            <h3>Abstract</h3>
+            <p>We study the problem of unsupervised physical object discovery. While existing frameworks aim to decompose scenes into 2D segments based off each object's
 appearance, we explore how physics, especially object interactions, facilitates disentangling of 3D geometry and position of objects from video, in an unsupervised manner. Drawing inspiration from developmental psychology, our Physical Object Discovery Network (POD-Net) uses both multi-scale pixel cues and physical motion cues to accurately segment observable and partially occluded objects of varying sizes, and infer properties of those objects. Our model reliably segments objects on both synthetic and real scenes. The discovered object properties can also be used to reason about physical events.
-</div>
 </p>
+          </div>
+        </div>
 
-<!-- ---------------------------------------------------------------------------------- -->
-<a href="https://arxiv.org/pdf/2007.12348.pdf"><img style="float: left; padding: 10px; PADDING-RIGHT: 30px;" alt="paper thumbnail" src="fig/paper_thumbnail.png" width=170></a>
-<br>
+        <div class="content project_headline">
+          <div class="img">
+            <img class="img_responsive" src="fig/method.png" alt="POD-Net"/>
+          </div>
+          <div class="text">
+            <p>Figure 2: POD-Net contains four modules for discovering physical objects from video. (I) An inference model auto-regressively infers a set of candidate object masks and latents to describe each patch of an image; (II) A backprojection model maps each mask to a 3D primitive; (III) A dynamics model captures the motion of 3D physical objects; and (IV) An image generative model decodes latents and masks to reconstruct the image. </p>
+          </div>
+        </div>
+
+        <div class="content">
+          <div class="text">
+            <h3>Publication</h3>
+            <ul>
+              <li>
+                <div class="title"><a name="podnet_iclr">Unsupervised Discovery of 3D Physical Objects From Video</a></div>
+                <div class="authors">
+                  <a href="https://yilundu.github.io/">Yilun Du</a>,
+                  <a href="http://www.mit.edu/~k2smith/">Kevin Smith</a>,
+                  <a href="http://www.mit.edu/~tomeru/">Tomer Ulman</a>,
+                  <a href="http://web.mit.edu/cocosci/josh.html">Joshua B. Tenenbaum</a>,
+                  <a href="https://jiajunwu.com/">Jiajun Wu</a>,
+
+                </div>
+                <div>
+                  <span class="venue">ICLR 2021</span>
+                  <span class="tag"><a href="https://arxiv.org/pdf/2007.12348.pdf">Paper</a></span>
+                  <span class="tag"><a href="fig/poster.pdf">Poster</a></span>
+                  <span class="tag"><a href="fig/citation.txt">BibTeX</a></span>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
 
 
-<h2>Paper</h2>
-<p><a href="https://arxiv.org/pdf/2007.12348.pdf">ICLR 2021</a> </p>
+      </div>
+    </div>
 
+  </body>
 
-<h2>Citation</h2>
-<p>Yilun Du, Kevin Smith, Tomer Ulman, Joshua B. Tenenbaum, Jiajun Wu. "Unsupervised Discovery of 3D Physical Objects From Video", ICLR 2021.
-<a href="fig/citation.txt">Bibtex</a>
-</p>
-
-
-<h2><a href=''>Code (Coming Soon)</a> </h2>
-
-<br><br>
-
-<!-- ---------------------------------------------------------------------------------- -->
-
-
+</html>
