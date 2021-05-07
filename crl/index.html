@@ -1,0 +1,257 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+<script type="text/javascript">google.load("jquery", "1.3.2");</script>
+
+<style type="text/css">
+  body {
+    font-family: "Titillium Web","HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+    font-weight:300;
+    font-size:18px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 1100px;
+  }
+
+  h1 {
+    font-weight:300;
+  }
+
+  .disclaimerbox {
+    background-color: #eee;
+    border: 1px solid #eeeeee;
+    border-radius: 10px ;
+    -moz-border-radius: 10px ;
+    -webkit-border-radius: 10px ;
+    padding: 20px;
+  }
+
+  video.header-vid {
+    height: 140px;
+    border: 1px solid black;
+    border-radius: 10px ;
+    -moz-border-radius: 10px ;
+    -webkit-border-radius: 10px ;
+  }
+
+  img.header-img {
+    height: 140px;
+    border: 1px solid black;
+    border-radius: 10px ;
+    -moz-border-radius: 10px ;
+    -webkit-border-radius: 10px ;
+  }
+
+  img.rounded {
+    border: 1px solid #eeeeee;
+    border-radius: 10px ;
+    -moz-border-radius: 10px ;
+    -webkit-border-radius: 10px ;
+  }
+
+  a:link,a:visited
+  {
+    color: #1367a7;
+    text-decoration: none;
+  }
+  a:hover {
+    color: #208799;
+  }
+
+  td.dl-link {
+    height: 160px;
+    text-align: center;
+    font-size: 22px;
+  }
+
+  .layered-paper-big { /* modified from: http://css-tricks.com/snippets/css/layered-paper/ */
+    box-shadow:
+            0px 0px 1px 1px rgba(0,0,0,0.35), /* The top layer shadow */
+            5px 5px 0 0px #fff, /* The second layer */
+            5px 5px 1px 1px rgba(0,0,0,0.35), /* The second layer shadow */
+            10px 10px 0 0px #fff, /* The third layer */
+            10px 10px 1px 1px rgba(0,0,0,0.35), /* The third layer shadow */
+            15px 15px 0 0px #fff, /* The fourth layer */
+            15px 15px 1px 1px rgba(0,0,0,0.35), /* The fourth layer shadow */
+            20px 20px 0 0px #fff, /* The fifth layer */
+            20px 20px 1px 1px rgba(0,0,0,0.35), /* The fifth layer shadow */
+            25px 25px 0 0px #fff, /* The fifth layer */
+            25px 25px 1px 1px rgba(0,0,0,0.35); /* The fifth layer shadow */
+    margin-left: 10px;
+    margin-right: 45px;
+  }
+
+
+  .layered-paper { /* modified from: http://css-tricks.com/snippets/css/layered-paper/ */
+    box-shadow:
+            0px 0px 1px 1px rgba(0,0,0,0.35), /* The top layer shadow */
+            5px 5px 0 0px #fff, /* The second layer */
+            5px 5px 1px 1px rgba(0,0,0,0.35), /* The second layer shadow */
+            10px 10px 0 0px #fff, /* The third layer */
+            10px 10px 1px 1px rgba(0,0,0,0.35); /* The third layer shadow */
+    margin-top: 5px;
+    margin-left: 10px;
+    margin-right: 30px;
+    margin-bottom: 5px;
+  }
+
+  .vert-cent {
+    position: relative;
+      top: 50%;
+      transform: translateY(-50%);
+  }
+
+  hr
+  {
+    border: 0;
+    height: 1px;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+  }
+</style>
+<!-- Start : Google Analytics Code -->
+<!-- End : Google Analytics Code -->
+<script type="text/javascript" src="https://yilundu.github.io/crl/resources/hidebib.js"></script>
+<link href='https://fonts.googleapis.com/css?family=Titillium+Web:400,600,400italic,600italic,300,300italic' rel='stylesheet' type='text/css'>
+  <head>
+    <title>Curious Representation Learning for Embodied Intelligence</title>
+    <meta property='og:title' content='Curious Representation Learning for Embodied Intelligence' />
+    <meta property="og:description" content="Du, Gan, Isola. Curious Representation learning for Embodied Intelligence. arXiv, 2021.." />
+    <meta property='og:url' content='https://yilundu.github.io/crl/' />
+    <meta property='og:image' content='https://yilundu.github.io/crl/img/0.png' />
+  </head>
+
+  <body>
+        <br>
+        <center><span style="font-size:46px;font-weight:bold;">Curious Representation Learning<br/>for Embodied Intelligence</span></center>
+
+        <table align=center width=800px>
+          <tr>
+            <td align=center width=150px>
+            <center><span style="font-size:24px"><a href="https://yilundu.github.io" target="_blank">Yilun Du</a></span></center></td>
+            <td align=center width=150px>
+            <center><span style="font-size:24px"><a href="https://people.csail.mit.edu/ganchuang/" target="_blank">Chuang Gan</a></span></center></td>
+            <td align=center width=150px>
+            <center><span style="font-size:24px"><a href="http://web.mit.edu/phillipi/" target="_blank">Phillip Isola</a></span></center></td>
+          <tr/>
+         </table>
+        <table align=center width=600px>
+          <tr>
+            <td align=center width=600px><center><span style="font-size:24px">MIT</span></center></td>
+          <tr/>
+        </table>
+        <table align=center width=500px>
+          <tr>
+            <td align=center width=200px><center><span style="font-size:24px"><a href="resources/paper.pdf">[Download Paper]</a></span></center></td>
+            <td align=center width=200px><center><span style="font-size:24px"><a href='https://github.com/yilundu/crl'>[Github Code]</a></span></center></td>
+          <tr/>
+        </table><br/>
+
+        <table align=center width=1000px>
+          <tr><td width=1000px>
+            <center><a href="resources/overview.jpg"><img src = "resources/overview.png" height="400px"></img></a><br></center>
+          </td></tr>
+        </table>
+
+        <br>
+        Self-supervised representation learning has achieved remarkable success in recent years. By subverting the need for supervised labels, such approaches are able to utilize the numerous unlabeled images that exist on the Internet and in photographic datasets. Yet to build truly intelligent agents, we must construct representation learning algorithms that can learn not only from <i>datasets</i> but also learn from  <i>environments</i>. An agent in a natural environment will not typically be fed curated data. Instead, it must explore its environment to acquire the data it will learn from. We propose a framework, curious representation learning (CRL), which jointly learns a reinforcement learning policy and a visual representation model. The policy is trained to maximize the error of the representation learner, and in doing so is incentivized to explore its environment. At the same time, the learned representation becomes stronger and stronger as the policy feeds it ever harder data to learn from. Our learned representations enable promising transfer to downstream navigation tasks, performing better than or comparably to ImageNet pretraining without using any supervision at all. In addition, despite being trained in simulation, our learned representations can obtain interpretable results on real images.
+      <br>
+      <br>
+      <hr>
+
+        <center id="demoVideo"><h1>Agent Gif</h1></center>
+          <table align=center width=600px>
+            <tr><td align=center width=600px>
+            <center><a href="resources/method.png"><img src = "resources/output.gif" width="800" height="400"></img></a><br></center>
+            </td></tr>
+          </table>
+        <center>Illustration of CRL exploration policy navigating in a unseen test environment. CRL is able to effectively look around the surrounding environment.</center>
+
+      <br>
+      <hr>
+
+        <center id="sourceCode"><h1>Source Code and Demo</h1></center>
+        <center>We have released the Pytorch implementation for the paper. It builds upon Habitat lab github repository. Try our code!</center>
+        <table align=center width=900px>
+        <tr>
+          <!-- <p style="margin-top:4px;"></p> -->
+          <td width=300px align=center>
+            <span style="font-size:34px"><a href='https://github.com/yilundu/crl'>[GitHub]</a></span>
+          </td>
+        </tr>
+        </table>
+
+      <br>
+      <hr>
+
+        <center id="sourceCode"><h1>Curious Representation Learning (CRL)</h1></center>
+        <center> We introduce CRL, an approach to embodied representation learning in which a representation learning model plays a minimax game with an exploration policy. A exploration policy learns to explore the surrounding environment to maximizing contrastive loss. A representation learning model is then learned on the diverse gathered images.  For more details, refer to the <a href="https://arxiv.org/pdf/2105.01060.pdf">paper</a>.</center>
+        <table align=center width=1000px>
+          <p style="margin-top:4px;"></p>
+          <tr><td width=1000px>
+            <center><a href="resources/method.png"><img src = "resources/method.png" height="550px"></img></a><br></center>
+          </td></tr>
+        </table>
+        <br/>
+
+      <br>
+      <hr>
+
+        <table align=center width=850px>
+          <center><h1>Paper</h1></center>
+          <tr>
+          <td width=400px align=left>
+          <!-- <p style="margin-top:4px;"></p> -->
+          <a href="resources/paper.pdf"><img style="height:200px" src="resources/paper_thumbnail.png"/></a>
+          <center>
+          <span style="font-size:20pt"><a href="resources/paper.pdf">[Paper 5MB]</a>&nbsp;
+          <span style="font-size:20pt"><a href="https://arxiv.org/pdf/2105.01060.pdf">[arXiv]</a>
+          </center>
+          </td>
+          <td width=50px align=center>
+          </td>
+          <td width=450px align=left>
+          <!-- <p style="margin-top:4px;"></p> -->
+          <p style="text-align:left;"><b><span style="font-size:20pt">Citation</span></b><br/><span style="font-size:6px;">&nbsp;<br/></span> <span style="font-size:15pt">Yilun Du, Chuang Gan, and Phillip Isola. <b><br>Curious Representation Learning for Embodied Intelligence.<br/></b> <i>arXiv 2021</i>.</span></p>
+          <!-- <p style="margin-top:20px;"></p> -->
+          <span style="font-size:20pt"><a shape="rect" href="javascript:togglebib('arxiv2021_bib')" class="togglebib">[Bibtex]</a></span>
+          </td>
+          </tr>
+          <tr>
+          <td width=350px align=left>
+          </td>
+          <td width=100px align=center>
+          </td>
+          <td width=450px align=left>
+            <div class="paper" id="arxiv2021_bib">
+<pre xml:space="preserve">@article{du2021curious,
+    author = {Du, Yilun and Gan, Chuang and
+    Isola, Phillip},
+    title = {Curious Representation Learning
+    for Embodied Intelligence},
+    journal = {arXiv preprint arXiv:2105.01060},
+    year = {2021}
+}</pre>
+            </div>
+            </td>
+            </tr>
+        </table>
+
+
+      <br>
+      <hr>
+      <br>
+
+      <table align=center width=800px>
+        <tr><td width=800px><left>
+        <center><h1>Acknowledgements</h1></center>
+        We thank MIT-IBM for support that led to this project. Yilun Du is funded by an NSF graduate research fellowship
+        </left></td></tr>
+      </table>
+
+    <br><br>
+<script xml:space="preserve" language="JavaScript">
+hideallbibs();
+</script>
+</body>
+</html>
