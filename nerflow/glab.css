@@ -14,7 +14,7 @@ H2 {
     MARGIN-TOP: 12px; FONT-WEIGHT: normal; MARGIN-BOTTOM: 0px
 }
 H3 {
-    MARGIN-TOP: 6px; font-size: 18px; MARGIN-BOTTOM: 0px; FONT-WEIGHT: normal
+    MARGIN-TOP: 6px; FONT-SIZE: small; MARGIN-BOTTOM: 0px
 }
 P {
     MARGIN-TOP: 0px; font-size: 15px
@@ -26,7 +26,7 @@ A:link {
     COLOR: #990000
 }
 A:visited {
-    COLOR: #666666
+    COLOR: #990000
 }
 LI {
     MARGIN-TOP: 0px; font-size: 15px
