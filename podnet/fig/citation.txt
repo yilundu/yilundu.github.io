@@ -2,7 +2,7 @@
   title={Unsupervised Discovery of 3D Physical Objects From Video},
   author={Du, Yilun and Smith, Kevin and Ulman, Tomer and Tenenbaum, Joshua B and Wu, Jiajun},
   booktitle={International Conference on Learning Representations},
-  year={2020}
+  year={2021}
 }
 
 
