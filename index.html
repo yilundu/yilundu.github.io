@@ -156,7 +156,7 @@ a:hover{color:#566c7f}
             Prof. <a href="https://people.csail.mit.edu/lpk/" target="_blank">Leslie Kaelbling</a> and 
             Prof. <a href="https://people.csail.mit.edu/tlp/" target="_blank">Tomas Lozano-Perez</a> and 
             Prof. <a href="http://cocosci.mit.edu/josh", target="_blank"> Josh Tenenbaum</a>. 
-            I am interested in building robotics agents which may perceive and understand the world as humans do, and are able to construct generic representations of the world that enable generalizable long horizon robotic task planning and manipulation, 
+            I am interested in building robotics agents which may perceive and understand the world as humans do, and are able to construct world representations that enable long horizon robotic task planning and manipulation, 
             in settings where the world is both large and partially observable. My research is driven by the goal of constructing intelligent autonomous household robotics -
             robots which can accomplish common tasks, such as finding an object or cooking some food, tasks that are trivial for humans, but remain impossible for current AI systems. 
             <!--- I am further interested and in learning such manipulation skills in a modular manner 
@@ -168,15 +168,16 @@ a:hover{color:#566c7f}
 
             <h5 class="subtitle">News</h5>
             <ul>
+                <li>Check out our work at NeurIPS on <a href="https://energy-based-model.github.io/comet/">discovering composable concepts from images</a>, representing <a href="https://composevisualrelations.github.io/">visual relations in scenes</a>, and <a href="https://yilundu.github.io/gem/">modality independent structural discovery!</a></li>
+                <li>Check out our work at ICCV on learning <a href="https://yilundu.github.io/crl/">embodied visual representations</a>, on learning <a href="https://alexzhou907.github.io/pvd">3D generative models</a>, on learning representations of <a href="https://yilundu.github.io/nerflow/">dynamic scenes</a> and on finding interactions between <a href="https://shuangli-project.github.io/weakly-supervised-human-object-detection-video/">objects and humans!</a></li>
                 <li>Check out our new preprints on <a href="https://arxiv.org/pdf/2012.01316.pdf">improved training of EBMs</a> and its applications to <a href="https://arxiv.org/pdf/2011.12216.pdf">continual learning!</a></li>
             </ul>
+
             <h5 class="subtitle">Research Highlights</h5>
             <ul>
-                <li><b>State Estimation</b>: long term estimation of the state of mobile objects </li>
-                <li><b>Perception Grounded Manipulation</b>: visually guided multi-step manipulation of object</li>
-                <li><b>Physical and 3D Scene Understanding</b>: unsupervised object discovery, 3D reconstruction</li>
-                <li><b>Generative Modeling</b>: energy-based models, compositionality, applications of generative models </li>
-                <li><b>Reinforcement Learning</b>: multi-agent/model based/unsupervised reinforcement learning</li>
+                <li><b>Perception and Scene Understanding</b>: learning flexible representations of the world (both at the individual object level and scene level) that enable effective downstream mobile robotic manipulation. </li>
+                <li><b>Generative Modeling</b>: modeling the underlying state of the world in a composable, modular and flexible manner, as well as different applications of resultant models. </li>
+                <li><b>Interactive Learning</b>: learning to build intelligent agents which may interact in the world around them.</li>
             </ul>
         </div>
 
@@ -190,10 +191,8 @@ a:hover{color:#566c7f}
             </h5>
             <p class="subtitle-aux"><span class="bold">Topics:</span>
                 <a href="#topic-generative-model" onClick="return publicationByTopicSpecific(this)" data-topic="generative-model">Generative Modeling</a> /
-                <a href="#topic-physics-3d" onClick="return publicationByTopicSpecific(this)" data-topic="physics-3d">Physical and 3D Scene Understanding</a> /
-                <a href="#topic-state-estimation" onClick="return publicationByTopicSpecific(this)" data-topic="state-estimation">State Estimation</a> /
-                <a href="#topic-robotics" onClick="return publicationByTopicSpecific(this)" data-topic="robotics">Perception Grounded Manipulation</a> /
-                <a href="#topic-rl" onClick="return publicationByTopicSpecific(this)" data-topic="rl">Reinforcement Learning</a>
+                <a href="#topic-perception" onClick="return publicationByTopicSpecific(this)" data-topic="perception">Perception and Scene Understanding</a> /
+                <a href="#topic-rl" onClick="return publicationByTopicSpecific(this)" data-topic="rl">Interactive Learning</a>
                 (* indicates equal contribution)
             </p>
 
@@ -223,7 +222,7 @@ a:hover{color:#566c7f}
                         </div>
                     </div>
                 </div>
-                <div class="pub-card" data-topic="generative-model" data-year="2021" data-selected="false">
+                <div class="pub-card" data-topic="generative-model" data-year="2021" data-selected="true">
                     <div class="row">
                         <div class="col-l col-xs-12 col-lg-3">
                             <img src="data/projects/manifold.png" width="100%" />
@@ -340,7 +339,7 @@ a:hover{color:#566c7f}
                         </div>
                     </div>
                 </div>
-                <div class="pub-card" data-topic="physics-3d" data-year="2021" data-selected="false">
+                <div class="pub-card" data-topic="perception" data-year="2021" data-selected="false">
                     <div class="row">
                         <div class="col-l col-xs-12 col-lg-3">
                             <img src="data/projects/nerflow.png" width="100%" />
@@ -365,7 +364,7 @@ a:hover{color:#566c7f}
                         </div>
                     </div>
                 </div>
-                <div class="pub-card" data-topic="physics-3d" data-year="2021" data-selected="false">
+                <div class="pub-card" data-topic="perception" data-year="2021" data-selected="false">
                     <div class="row">
                         <div class="col-l col-xs-12 col-lg-3">
                             <img src="data/projects/vehico.png" width="100%" />
@@ -442,7 +441,7 @@ a:hover{color:#566c7f}
                         </div>
                     </div>
                 </div>
-                <div class="pub-card" data-topic="physics-3d" data-year="2021" data-selected="false">
+                <div class="pub-card" data-topic="perception" data-year="2021" data-selected="false">
                     <div class="row">
                         <div class="col-l col-md-12 col-lg-3">
                             <img src="data/projects/unsupervised_3d.png" width="100%" />
@@ -466,7 +465,7 @@ a:hover{color:#566c7f}
                         </div>
                     </div>
                 </div>
-                <div class="pub-card" data-topic="state-estimation" data-year="2020" data-selected="true">
+                <div class="pub-card" data-topic="perception" data-year="2020" data-selected="true">
                     <div class="row">
                         <div class="col-l col-xs-12 col-lg-3">
                             <img src="data/projects/dafnet.png" width="100%" />
@@ -512,7 +511,7 @@ a:hover{color:#566c7f}
                         </div>
                     </div>
                 </div>
-                <div class="pub-card" data-topic="robotics" data-year="2020" data-selected="false">
+                <div class="pub-card" data-topic="perception" data-year="2020" data-selected="false">
                     <div class="row">
                         <div class="col-l col-md-12 col-lg-3">
                             <img src="data/projects/3d_manip.png" width="100%" />
@@ -678,7 +677,7 @@ a:hover{color:#566c7f}
                         </div>
                     </div>
                 </div>
-                <div class="pub-card" data-topic="physics-3d" data-year="2018" data-selected="false">
+                <div class="pub-card" data-topic="perception" data-year="2018" data-selected="false">
                     <div class="row">
                         <div class="col-l col-md-12 col-lg-3">
                             <img src="data/projects/stability.png" width="100%" />
@@ -710,7 +709,7 @@ a:hover{color:#566c7f}
         <div class="container">
             <div class="row">
                 <div class="copyright">
-                    Background photo: Blue Spaces
+                    Background photo: Blue Spaces. Website template from <a href="https://jiayuanm.com/">Jiayuan Mao</a>
                 </div>
             </div>
         </div>
