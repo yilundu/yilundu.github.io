@@ -85,6 +85,7 @@ a:hover{color:#566c7f}
 #main-pub-container .subtitle-aux a.activated {color:#333333}
 #main-pub-container .subtitle-aux a.activated:focus,
 #main-pub-container .subtitle-aux a.activated:hover {text-decoration:none;cursor:initial}
+#main-pub-container .subtitle-aux .note{margin-left:1em;color:#999999;text-decoration:none;font-size:14px}
 
 #main-pub-card-container{}
 #main-pub-card-container>h5{margin-bottom: 20px}
@@ -98,7 +99,7 @@ a:hover{color:#566c7f}
 #main-pub-card-container .pub-card .authors a{color:#666666}
 #main-pub-card-container .pub-card .authors u{color:#333333;font-weight:600;text-decoration:none}
 #main-pub-card-container .pub-card .conference{color:#333333;font-weight:600}
-#main-pub-card-container .pub-card .note{display:block;color:#999999;text-decoration:none;font-size:14px}
+#main-pub-card-container .pub-card .note{display:block;color:#999999;text-decoration:none;font-size:12px}
 #main-pub-card-container .pub-card .info{margin-bottom:0;}
 #main-pub-card-container .row{margin:0}
 #main-pub-card-container .col-l,
@@ -155,15 +156,17 @@ a:hover{color:#566c7f}
             I am a third-year PhD student at <a href="https://www.eecs.mit.edu">MIT EECS</a>, advised by
             Prof. <a href="https://people.csail.mit.edu/lpk/" target="_blank">Leslie Kaelbling</a>,  
             Prof. <a href="https://people.csail.mit.edu/tlp/" target="_blank">Tomas Lozano-Perez</a> and 
-            Prof. <a href="http://cocosci.mit.edu/josh", target="_blank"> Josh Tenenbaum</a>. 
+            Prof. <a href="http://cocosci.mit.edu/josh", target="_blank"> Josh Tenenbaum</a>.
+            Previously, I obtained my bachelor's degree from MIT, 
+            worked at OpenAI and FAIR, and got a gold medal at the International Biology Olympiad.
+            </p>
+            <p>
             I am interested in building robotics agents which may perceive and understand the world as humans do, and are able to construct world representations that enable long horizon robotic task planning and manipulation in 
             partially observable environments. I am also interested in constructing modular systems which may be incrementally learned and composed to enable robust test time generalization. My research is driven by the goal of constructing intelligent autonomous household robotics -
             robots which can incrementally learn and accomplish common tasks, such as finding an object or cooking some food, tasks that are trivial for humans, but remain impossible for current AI systems. 
             <!--- I am further interested and in learning such manipulation skills in a modular manner 
                 which may be flexibly combined together to accomplish a task on hand. -->
             <!--My research utilizes the tools of energy-based models and implicit neural representations.-->
-            Previously, I obtained my bachelor's degree from MIT, 
-            worked at OpenAI and FAIR, and got a gold medal at the International Biology Olympiad.
             </p>
 
             <h5 class="subtitle">News</h5>
@@ -194,9 +197,64 @@ a:hover{color:#566c7f}
                 <a href="#topic-generative-model" onClick="return publicationByTopicSpecific(this)" data-topic="generative-model">Generative Modeling</a> /
                 <a href="#topic-perception" onClick="return publicationByTopicSpecific(this)" data-topic="perception">Perception and Scene Understanding</a> /
                 <a href="#topic-rl" onClick="return publicationByTopicSpecific(this)" data-topic="rl">Interactive Learning</a>
-                (* indicates equal contribution)
+                <span class="note">(* indicates equal contribution)</span>
             </p>
 
+            <div id="main-pub-card-container" class="hide">
+                <div class="pub-card" data-topic="perception" data-year="2021" data-selected="true">
+                    <div class="row">
+                        <div class="col-l col-xs-12 col-lg-3">
+                            <img src="data/projects/ndf.gif" width="100%" />
+                        </div>
+                        <div class="col-r col-xs-12 col-lg-9">
+                            <div class="pub-card-body">
+                                <h5 class="title">Neural Descriptor Fields: SE(3)-Equvariant Object Representations for Manipulation </h5>
+                                <h6 class="authors">
+                                    <a href="https://anthonysimeonov.github.io/">Anthony Simeonov*</a>,
+                                    <u>Yilun Du*</u>,
+                                    <a href="https://taiya.github.io/">Andrea Tagliasacchi</a>,
+                                    <a href="http://cocosci.mit.edu/josh">Joshua B. Tenenbaum</a>,
+                                    <a href="https://mcube.mit.edu/">Alberto Rodriguez</a>,
+                                    <a href="https://people.csail.mit.edu/pulkitag/">Pulkit Agrawal<sup>+</sup></a>,
+                                    <a href="https://vsitzmann.github.io/">Vincent Sitzmann<sup>+</sup></a>
+                                </h6>
+                                <p class="info">
+                                    <a href="https://yilundu.github.io/ndf/">Website</a> /
+                                    <a href="https://arxiv.org/abs/2112.05124">Paper</a> /
+                                    <a href="https://github.com/anthonysimeonov/ndf_robot">Code</a>  /
+                                    <a href="https://colab.research.google.com/drive/16bFIFq_E8mnAVwZ_V2qQiKp4x4D0n1sG?usp=sharing">Colab</a> 
+                                </p>
+                                <span class="note">(First two authors contributed equally; order determined by coin toss. Last two authors equal advising.)</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="pub-card" data-topic="generative-model" data-year="2021" data-selected="false">
+                    <div class="row">
+                        <div class="col-l col-xs-12 col-lg-3">
+                            <img src="data/projects/visual_compose.png" width="100%" />
+                        </div>
+                        <div class="col-r col-xs-12 col-lg-9">
+                            <div class="pub-card-body">
+                                <h5 class="title">Learning to Compose Visual Relations</h5>
+                                <h6 class="authors">
+                                    <a>Nan Liu*</a>,
+                                    <a href="http://www.mit.edu/~lishuang/">Shuang Li*</a>,
+                                    <u>Yilun Du*</u>,
+                                    <a href="http://cocosci.mit.edu/josh">Joshua B. Tenenbaum</a>,
+                                    <a href="https://groups.csail.mit.edu/vision/torralbalab/">Antonio Torralba</a>
+                                </h6>
+                                <p class="info">
+                                    <a href="https://nips.cc/Conferences/2021" class="conference">NeurIPS 2021</a> 
+                                    <span class="highlight">(Spotlight)</span>  /
+                                    <a href="https://composevisualrelations.github.io/">Website</a> /
+                                    <a href="https://arxiv.org/abs/2111.09297">Paper</a> /
+                                    <a href="https://github.com/nanlliu/compose-visual-relations">Code</a> 
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             <div id="main-pub-card-container" class="hide">
                 <div class="pub-card" data-topic="generative-model" data-year="2021" data-selected="true">
                     <div class="row">
@@ -242,32 +300,6 @@ a:hover{color:#566c7f}
                                     <a href="https://yilundu.github.io/gem/">Website</a> /
                                     <a href="https://arxiv.org/abs/2111.06387">Paper</a> /
                                     <a href="https://github.com/yilundu/gem">Code</a> 
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="pub-card" data-topic="generative-model" data-year="2021" data-selected="false">
-                    <div class="row">
-                        <div class="col-l col-xs-12 col-lg-3">
-                            <img src="data/projects/visual_compose.png" width="100%" />
-                        </div>
-                        <div class="col-r col-xs-12 col-lg-9">
-                            <div class="pub-card-body">
-                                <h5 class="title">Learning to Compose Visual Relations</h5>
-                                <h6 class="authors">
-                                    <a>Nan Liu*</a>,
-                                    <a href="http://www.mit.edu/~lishuang/">Shuang Li*</a>,
-                                    <u>Yilun Du*</u>,
-                                    <a href="http://cocosci.mit.edu/josh">Joshua B. Tenenbaum</a>,
-                                    <a href="https://groups.csail.mit.edu/vision/torralbalab/">Antonio Torralba</a>
-                                </h6>
-                                <p class="info">
-                                    <a href="https://nips.cc/Conferences/2021" class="conference">NeurIPS 2021</a> 
-                                    <span class="highlight">(Spotlight)</span>  /
-                                    <a href="https://composevisualrelations.github.io/">Website</a> /
-                                    <a href="https://arxiv.org/abs/2111.09297">Paper</a> /
-                                    <a href="https://github.com/nanlliu/compose-visual-relations">Code</a> 
                                 </p>
                             </div>
                         </div>
@@ -395,7 +427,7 @@ a:hover{color:#566c7f}
                         </div>
                     </div>
                 </div>
-                <div class="pub-card" data-topic="generative-model" data-year="2021" data-selected="true">
+                <div class="pub-card" data-topic="generative-model" data-year="2021" data-selected="false">
                     <div class="row">
                         <div class="col-l col-xs-12 col-lg-3">
                             <img src="data/projects/cd.png" width="100%" />
@@ -541,7 +573,7 @@ a:hover{color:#566c7f}
                         </div>
                     </div>
                 </div>
-                <div class="pub-card" data-topic="generative-model" data-year="2020" data-selected="true">
+                <div class="pub-card" data-topic="generative-model" data-year="2020" data-selected="false">
                     <div class="row">
                         <div class="col-l col-md-12 col-lg-3">
                             <img src="data/projects/protein.png" width="100%" />
@@ -590,7 +622,7 @@ a:hover{color:#566c7f}
                         </div>
                     </div>
                 </div>
-                <div class="pub-card" data-topic="generative-model" data-year="2019" data-selected="true">
+                <div class="pub-card" data-topic="generative-model" data-year="2019" data-selected="false">
                     <div class="row">
                         <div class="col-l col-md-12 col-lg-3">
                             <img src="data/projects/ebm_plan.png" width="100%" />
@@ -944,7 +976,7 @@ $(function() {
         allTopics.push({name: $(allTopicsLink[topicId]).data("topic"), title: $(allTopicsLink[topicId]).html()});
     }
 
-    $("#publication-by-date").click();
+    $("#publication-by-selected").click();
     // $("#publication-by-date").click();
     $("#main-pub-card-container").removeClass("hide");
 });
