@@ -161,12 +161,18 @@ a:hover{color:#566c7f}
             worked at OpenAI and FAIR, and got a gold medal at the International Biology Olympiad.
             </p>
             <p>
-            I am interested in building robotics agents which may perceive and understand the world as humans do, and are able to construct world representations that enable long horizon robotic task planning and manipulation in 
-            partially observable environments. I am also interested in constructing modular systems which may be incrementally learned and composed to enable robust test time generalization. My research is driven by the goal of constructing intelligent autonomous household robotics -
-            robots which can incrementally learn and accomplish common tasks, such as finding an object or cooking some food, tasks that are trivial for humans, but remain impossible for current AI systems. 
+            My research is driven by the goal of constructing intelligent household agents -
+            agents which can incrementally learn and accomplish common everyday tasks, such as fetching an object or 
+            making a cup of tea. While such tasks are trivial for humans, they remain impossible for AI. 
+            Towards this goal, I am first interested in building agents which may perceive and understand the world as 
+            humans do -- agents that can understand both the immediate scene they are in and the overall spatial 
+            layout of the world around them and can use such representations for downstream manipulation and planning. 
+            I am further interested in building agents that are compositional and modular in nature, enabling 
+            us to both generalize to novel combinations of inputs as well as incrementally acquire and compose
+            new modules in an online fashion.
             <!--- I am further interested and in learning such manipulation skills in a modular manner 
                 which may be flexibly combined together to accomplish a task on hand. -->
-            <!--My research utilizes the tools of energy-based models and implicit neural representations.-->
+            My research utilizes tools in energy-based modeling and neural fields.
             </p>
 
             <h5 class="subtitle">News</h5>
@@ -179,8 +185,9 @@ a:hover{color:#566c7f}
 
             <h5 class="subtitle">Research Highlights</h5>
             <ul>
-                <li><b>Perception and Scene Understanding</b>: learning flexible representations of the world (both at the individual object level and scene level) that enable effective downstream mobile robotic manipulation. </li>
-                <li><b>Generative Modeling</b>: modeling the underlying state of the world in a composable, modular and flexible manner, as well as different applications of resultant models. </li>
+                <li><b>Compositionality</b>: constructing modular / compositional models which enabling robust generalization and incremental learning. </li>
+                <li><b>Perception and Scene Understanding</b>: learning flexible representations of the world that enable effective downstream manipulation and planning. </li>
+                <li><b>Generative Modeling</b>: modeling of the underlying state of the world, as well as different applications of resultant models. </li>
                 <li><b>Interactive Learning</b>: learning to build intelligent agents which may interact in the world around them.</li>
             </ul>
         </div>
@@ -194,8 +201,9 @@ a:hover{color:#566c7f}
             )
             </h5>
             <p class="subtitle-aux"><span class="bold">Topics:</span>
-                <a href="#topic-generative-model" onClick="return publicationByTopicSpecific(this)" data-topic="generative-model">Generative Modeling</a> /
+                <a href="#topic-composition" onClick="return publicationByTopicSpecific(this)" data-topic="composition">Compositionality</a> /
                 <a href="#topic-perception" onClick="return publicationByTopicSpecific(this)" data-topic="perception">Perception and Scene Understanding</a> /
+                <a href="#topic-generative-model" onClick="return publicationByTopicSpecific(this)" data-topic="generative-model">Generative Modeling</a> /
                 <a href="#topic-rl" onClick="return publicationByTopicSpecific(this)" data-topic="rl">Interactive Learning</a>
                 <span class="note">(* indicates equal contribution)</span>
             </p>
@@ -230,7 +238,7 @@ a:hover{color:#566c7f}
                         </div>
                     </div>
                 </div>
-                <div class="pub-card" data-topic="generative-model" data-year="2021" data-selected="false">
+                <div class="pub-card" data-topic="composition" data-year="2021" data-selected="false">
                     <div class="row">
                         <div class="col-l col-xs-12 col-lg-3">
                             <img src="data/projects/visual_compose.png" width="100%" />
@@ -257,7 +265,7 @@ a:hover{color:#566c7f}
                     </div>
                 </div>
             <div id="main-pub-card-container" class="hide">
-                <div class="pub-card" data-topic="generative-model" data-year="2021" data-selected="true">
+                <div class="pub-card" data-topic="composition" data-year="2021" data-selected="true">
                     <div class="row">
                         <div class="col-l col-xs-12 col-lg-3">
                             <img src="data/projects/unsup_decomp.png" width="100%" />
@@ -330,7 +338,7 @@ a:hover{color:#566c7f}
                         </div>
                     </div>
                 </div>
-                <div class="pub-card" data-topic="generative-model" data-year="2021" data-selected="true">
+                <div class="pub-card" data-topic="perception" data-year="2021" data-selected="true">
                     <div class="row">
                         <div class="col-l col-xs-12 col-lg-3">
                             <img src="data/projects/pvd.png" width="100%" />
@@ -525,7 +533,7 @@ a:hover{color:#566c7f}
                         </div>
                     </div>
                 </div>
-                <div class="pub-card" data-topic="generative-model" data-year="2020" data-selected="true">
+                <div class="pub-card" data-topic="composition" data-year="2020" data-selected="true">
                     <div class="row">
                         <div class="col-l col-md-12 col-lg-3">
                             <img src="data/projects/compositional.png" width="100%" />
@@ -623,7 +631,7 @@ a:hover{color:#566c7f}
                         </div>
                     </div>
                 </div>
-                <div class="pub-card" data-topic="generative-model" data-year="2019" data-selected="false">
+                <div class="pub-card" data-topic="composition" data-year="2019" data-selected="false">
                     <div class="row">
                         <div class="col-l col-md-12 col-lg-3">
                             <img src="data/projects/ebm_plan.png" width="100%" />
