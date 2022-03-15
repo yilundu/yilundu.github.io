@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="Yilun Du is a PhD student at MIT.">
-    <meta name="keywords" content="Yilun Du,Computer Vision,Robotics,Machine Learning,Cognitive Science">
+    <meta name="keywords" content="Yilun Du,Artifical Intelligence,Computer Vision,Robotics,Machine Learning,Cognitive Science">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <link rel="shortcut icon" href="static/img/favicon.ico">
@@ -80,6 +80,7 @@ a:hover{color:#566c7f}
 #main-pub-container .subtitle a.activated {color:#333333}
 #main-pub-container .subtitle a.activated:focus,
 #main-pub-container .subtitle a.activated:hover {text-decoration:none;cursor:initial}
+.move-down { margin-top: 2cm}
 
 #main-pub-container .subtitle-aux {font-size:1rem}
 #main-pub-container .subtitle-aux a.activated {color:#333333}
@@ -161,17 +162,16 @@ a:hover{color:#566c7f}
             worked at OpenAI and FAIR, and got a gold medal at the International Biology Olympiad.
             </p>
             <p>
-            My research is driven by the goal of constructing intelligent household agents -
-            agents which can incrementally learn and accomplish common everyday tasks, such as fetching an object or 
-            making a cup of tea. While such tasks are trivial for humans, they remain impossible for AI. 
-            Towards this goal, I am interested in building agents which may perceive the world as 
-            humans do -- agents which may build representations of the surrounding scene and underying environment 
-            and utilize them for downstream manipulation and planning. 
-            I am further interested in building agents that are compositional and modular in nature, enabling 
-            us to both generalize to novel combinations of inputs as well as incrementally acquire and compose
-            new experiences in an online fashion.
-            <!--- I am further interested and in learning such manipulation skills in a modular manner 
-                which may be flexibly combined together to accomplish a task on hand. -->
+            I am interested in constructing intelligent household agents which can accomplish 
+            common everyday tasks, such as fetching an object or making a cup of tea. 
+            To enable agents to operate from raw sensory inputs, I am interested in 
+            extracting representations of the surrounding world from perception, which may
+            be used to facilitate both object manipulation and navigation in the world.
+            To allow agents to generalize and adapt to novel situations and goals, I am further interested in 
+            generatively representing the structure of world, allow iterative inference on our world 
+            model at test time for better generalization.
+            Finally, to construct agents that may incrementally acquire new skills and which can generalize to novel
+            combinations of inputs, I am interested in constructing system that are composable and modular in nature.
             My research utilizes tools in energy-based modeling and implicit neural representations.
             </p>
 
@@ -185,10 +185,10 @@ a:hover{color:#566c7f}
 
             <h5 class="subtitle">Research Highlights</h5>
             <ul>
-                <li><b>Compositionality</b>: constructing modular / composable models which enabling robust generalization, incremental learning, and controllability. </li>
-                <li><b>Perception and Scene Understanding</b>: learning flexible representations of the world that enable effective downstream manipulation and planning. </li>
-                <li><b>Generative Modeling</b>: modeling of the underlying state of the world, andapplications of resultant models. </li>
-                <li><b>Interactive Learning</b>: learning to build intelligent agents which may interact in the world around them.</li>
+                <li><b>Compositionality</b>: constructing modular / composable models which enable combinatorical generalization, incremental learning, and controllability. </li>
+                <li><b>Perception and Scene Understanding</b>: learning perceptual representations of the world that enable effective downstream manipulation and navigation. </li>
+                <li><b>Generative Modeling</b>: constructing models of the world's' structure. </li>
+                <li><b>Interactive Learning</b>: building intelligent agents which may interact in the surrounding world.</li>
             </ul>
         </div>
 
@@ -209,6 +209,60 @@ a:hover{color:#566c7f}
             </p>
 
             <div id="main-pub-card-container" class="hide">
+                <div class="pub-card" data-topic="perception" data-year="2022" data-selected="false">
+                    <div class="row">
+                        <div class="col-l col-xs-12 col-lg-3 move-down">
+                            <img src="data/projects/kubric.gif" width="100%" />
+                        </div>
+                        <div class="col-r col-xs-12 col-lg-9">
+                            <div class="pub-card-body">
+                                <h5 class="title">Kubric: A Scalable Dataset Generator </h5>
+                                <h6 class="authors">
+                                    <a href="">Klaus Greff</a>,
+                                    <a href="">Francois Belleetti</a>,
+                                    <a href="">Lucas Beyer</a>,
+                                    <a href="">Carl Doersch</a>,
+                                    <u>Yilun Du</u>,
+                                    <a href="">Daniel Duckworth</a>,
+                                    <a href="">David J. Fleet</a>,
+                                    <a href="">Dan Gnanapragasam</a>,
+                                    <a href="">Florian Golemo</a>,
+                                    <a href="">Charles Herrmann</a>,
+                                    <a href="">Thomas Kipf</a>,
+                                    <a href="">Abhijit Kundu</a>,
+                                    <a href="">Dmitry Lagun</a>,
+                                    <a href="">issam Laradji</a>,
+                                    <a href="">Derek Liu</a>,
+                                    <a href="">Hinning Meyer</a>,
+                                    <a href="">Yishu Miao</a>,
+                                    <a href="">Derek Nowrouzezahrai</a>,
+                                    <a href="">Cengiz Oztireli</a>,
+                                    <a href="">Etienne Pot</a>,
+                                    <a href="">Noha Radwan</a>,
+                                    <a href="">Daniel Rebain</a>,
+                                    <a href="">Sara Sabour</a>,
+                                    <a href="">Mehdi Sajjadi</a>,
+                                    <a href="">Matan Sela</a>,
+                                    <a href="">Vincent Sitzmann</a>,
+                                    <a href="">Austin Stone</a>,
+                                    <a href="">Deqing Sun</a>,
+                                    <a href="">Suhani Vora</a>,
+                                    <a href="">Ziyu Wang</a>,
+                                    <a href="">Tianhao Wu</a>,
+                                    <a href="">Kwang Moo Yi</a>,
+                                    <a href="">Fangcheng Zhong</a>,
+                                    <a href="">Andrea Tagliasacchi</a>
+                                </h6>
+                                <p class="info">
+                                    <span href="https://cvpr2022.thecvf.com/" class="conference">CVPR 2022</span> /
+                                    <a href="https://kubric.readthedocs.io/en/latest/">Website</a> /
+                                    <a href="https://arxiv.org/pdf/2203.03570.pdf">Paper</a> /
+                                    <a href="https://github.com/google-research/kubric">Code</a> 
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <div class="pub-card" data-topic="perception" data-year="2022" data-selected="true">
                     <div class="row">
                         <div class="col-l col-xs-12 col-lg-3">
@@ -241,7 +295,7 @@ a:hover{color:#566c7f}
                 <div class="pub-card" data-topic="composition" data-year="2021" data-selected="true">
                     <div class="row">
                         <div class="col-l col-xs-12 col-lg-3">
-                            <img src="data/projects/unsup_decomp.png" width="100%" />
+                            <img src="data/projects/comet_teaser.gif" width="100%" />
                         </div>
                         <div class="col-r col-xs-12 col-lg-9">
                             <div class="pub-card-body">
@@ -266,7 +320,7 @@ a:hover{color:#566c7f}
                 <div class="pub-card" data-topic="composition" data-year="2021" data-selected="true">
                     <div class="row">
                         <div class="col-l col-xs-12 col-lg-3">
-                            <img src="data/projects/visual_compose.png" width="100%" />
+                            <video src="data/projects/relation.mp4" width="100%" playsinline autoplay muted loop preload/>
                         </div>
                         <div class="col-r col-xs-12 col-lg-9">
                             <div class="pub-card-body">
@@ -295,7 +349,7 @@ a:hover{color:#566c7f}
                 <div class="pub-card" data-topic="generative-model" data-year="2021" data-selected="true">
                     <div class="row">
                         <div class="col-l col-xs-12 col-lg-3">
-                            <img src="data/projects/manifold.png" width="100%" />
+                            <video src="data/projects/gem_thumbnail.mp4" width="100%" playsinline autoplay muted loop preload/>
                         </div>
                         <div class="col-r col-xs-12 col-lg-9">
                             <div class="pub-card-body">
@@ -340,10 +394,10 @@ a:hover{color:#566c7f}
                         </div>
                     </div>
                 </div>
-                <div class="pub-card" data-topic="perception" data-year="2021" data-selected="true">
+                <div class="pub-card" data-topic="perception" data-year="2021" data-selected="false">
                     <div class="row">
                         <div class="col-l col-xs-12 col-lg-3">
-                            <img src="data/projects/pvd.png" width="100%" />
+                            <img src="data/projects/pvd.gif" width="100%" />
                         </div>
                         <div class="col-r col-xs-12 col-lg-9">
                             <div class="pub-card-body">
@@ -390,7 +444,7 @@ a:hover{color:#566c7f}
                 <div class="pub-card" data-topic="perception" data-year="2021" data-selected="false">
                     <div class="row">
                         <div class="col-l col-xs-12 col-lg-3">
-                            <img src="data/projects/nerflow.png" width="100%" />
+                            <img src="data/projects/nerflow.gif" width="100%" />
                         </div>
                         <div class="col-r col-xs-12 col-lg-9">
                             <div class="pub-card-body">
@@ -517,19 +571,19 @@ a:hover{color:#566c7f}
                 <div class="pub-card" data-topic="perception" data-year="2020" data-selected="true">
                     <div class="row">
                         <div class="col-l col-xs-12 col-lg-3">
-                            <img src="data/projects/dafnet.png" width="100%" />
+                            <img src="data/projects/dafnet2.png" width="100%" />
                         </div>
                         <div class="col-r col-xs-12 col-lg-9">
                             <div class="pub-card-body">
-                                <h5 class="title">Learning an Object Based Memory System</h5>
+                                <h5 class="title">Learning Object Based State Estimators for Household Autonomy</h5>
                                 <h6 class="authors">
                                     <u>Yilun Du</u>,
-                                    <a href="http://cocosci.mit.edu/josh">Joshua B. Tenenbaum</a>,
                                     <a href="https://people.csail.mit.edu/tlp/">Tomas Lozano-Perez</a>,
                                     <a href="https://people.csail.mit.edu/lpk/">Leslie Kaelbling</a>
                                 </h6>
                                 <p class="info">
                                     <span class="conference">ArXiv Preprint</span> /
+                                    <a href="https://yilundu.github.io/obm">Website</a> /
                                     <a href="https://arxiv.org/pdf/2011.03183.pdf">Paper</a> 
                                 </p>
                             </div>
@@ -661,7 +715,7 @@ a:hover{color:#566c7f}
                 <div class="pub-card" data-topic="generative-model" data-year="2019" data-selected="true">
                     <div class="row">
                         <div class="col-l col-md-12 col-lg-3">
-                            <img src="data/projects/ebm.png" width="100%" />
+                            <video src="data/projects/igebm.mp4" width="100%" playsinline autoplay muted loop preload/>
                         </div>
                         <div class="col-r col-md-12 col-lg-9">
                             <div class="pub-card-body">
@@ -714,7 +768,7 @@ a:hover{color:#566c7f}
                                     <a>Joseph Suarez</a>,
                                     <u>Yilun Du</u>,
                                     <a href="http://web.mit.edu/phillipi/">Phillip Isola</a>,
-                                    <u>Igor Mordatch</u>
+                                    <a>Igor Mordatch</a>
                                 </h6>
                                 <p class="info">
                                     <a href="https://aamas2020.conference.auckland.ac.nz/" class="conference">AAMAS 2020 Extended Abstract</a> /
@@ -988,8 +1042,8 @@ $(function() {
         allTopics.push({name: $(allTopicsLink[topicId]).data("topic"), title: $(allTopicsLink[topicId]).html()});
     }
 
-    // $("#publication-by-selected").click();
-    $("#publication-by-date").click();
+    $("#publication-by-selected").click();
+    // $("#publication-by-date").click();
     $("#main-pub-card-container").removeClass("hide");
 });
 </script>
