@@ -80,7 +80,7 @@ a:hover{color:#566c7f}
 #main-pub-container .subtitle a.activated {color:#333333}
 #main-pub-container .subtitle a.activated:focus,
 #main-pub-container .subtitle a.activated:hover {text-decoration:none;cursor:initial}
-.move-down { margin-top: 2cm}
+#main-pub-container .move-up {margin-top:-0.3cm}
 
 #main-pub-container .subtitle-aux {font-size:1rem}
 #main-pub-container .subtitle-aux a.activated {color:#333333}
@@ -172,7 +172,7 @@ a:hover{color:#566c7f}
             model at test time for better generalization.
             Finally, to construct agents that may incrementally acquire new skills and which can generalize to novel
             combinations of inputs, I am interested in constructing system that are composable and modular in nature.
-            My research utilizes tools in energy-based modeling and implicit neural representations.
+            My research utilizes tools in <a href="https://energy-based-model.github.io/">energy-based modeling</a> and <a href="https://yilundu.github.io/ndf/">implicit neural representations</a>.
             </p>
 
             <h5 class="subtitle">News</h5>
@@ -209,13 +209,48 @@ a:hover{color:#566c7f}
             </p>
 
             <div id="main-pub-card-container" class="hide">
-                <div class="pub-card" data-topic="perception" data-year="2022" data-selected="false">
+                <div class="pub-card" data-topic="composition" data-year="2022" data-selected="false">
                     <div class="row">
-                        <div class="col-l col-xs-12 col-lg-3 move-down">
-                            <img src="data/projects/kubric.gif" width="100%" />
+                        <div class="col-l col-xs-12 col-lg-3">
+                            <img src="data/projects/lm.gif" width="100%" />
                         </div>
                         <div class="col-r col-xs-12 col-lg-9">
                             <div class="pub-card-body">
+                                <h5 class="title">Pre-Trained Language Models for Interactive Decision-Making</h5>
+                                <h6 class="authors">
+                                    <a href="">Shuang Li</a>,
+                                    <a href="">Xavier Puig</a>,
+                                    <a href="">Chris Paxton</a>,
+                                    <u>Yilun Du</u>,
+                                    <a href="">Clinton Wang</a>,
+                                    <a href="">Linxi Fan</a>,
+                                    <a href="">Tao Chen</a>,
+                                    <a href="">De-An Huang</a>,
+                                    <a href="">Ekin Akyurek</a>,
+                                    <a href="">Anima Anandkumar<sup>+</sup></a>,
+                                    <a href="">Jacob Andreas<sup>+</sup></a>,
+                                    <a href="">Igor Mordatch<sup>+</sup></a>,
+                                    <a href="">Antonio Torralba<sup>+</sup></a>,
+                                    <a href="">Yuke Zhu<sup>+</sup></a>
+                                </h6>
+                                <p class="info">
+                                    <span class="conference">ArXiv Preprint</span> /
+                                    <a href="https://shuangli-project.github.io/Pre-Trained-Language-Models-for-Interactive-Decision-Making/">Website</a> /
+                                    <a href="https://arxiv.org/abs/2202.01771">Paper</a> /
+                                    <a href="https://github.com/ShuangLI59/Pre-Trained-Language-Models-for-Interactive-Decision-Making">Code</a> 
+                                </p>
+                                <span class="note">(Last five authors contributed equally; order determined by alphabetically.)</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="pub-card" data-topic="perception" data-year="2022" data-selected="false">
+                    <div class="row">
+                        <div class="col-l col-xs-12 col-lg-3">
+                            <img src="data/projects/kubric.gif" width="100%" />
+                        </div>
+                        <div class="col-r col-xs-12 col-lg-9">
+                            <div class="pub-card-body move-up">
                                 <h5 class="title">Kubric: A Scalable Dataset Generator </h5>
                                 <h6 class="authors">
                                     <a href="">Klaus Greff</a>,
@@ -269,7 +304,7 @@ a:hover{color:#566c7f}
                             <img src="data/projects/ndf.gif" width="100%" />
                         </div>
                         <div class="col-r col-xs-12 col-lg-9">
-                            <div class="pub-card-body">
+                            <div class="pub-card-body move-up">
                                 <h5 class="title">Neural Descriptor Fields: SE(3)-Equivariant Object Representations for Manipulation </h5>
                                 <h6 class="authors">
                                     <a href="https://anthonysimeonov.github.io/">Anthony Simeonov*</a>,
@@ -297,7 +332,7 @@ a:hover{color:#566c7f}
                         <div class="col-l col-xs-12 col-lg-3">
                             <img src="data/projects/comet_teaser.gif" width="100%" />
                         </div>
-                        <div class="col-r col-xs-12 col-lg-9">
+                        <div class="col-r col-xs-12 col-lg-9 move-up">
                             <div class="pub-card-body">
                                 <h5 class="title">Unsupervised Learning of Compositional Energy Concepts</h5>
                                 <h6 class="authors">
@@ -322,7 +357,7 @@ a:hover{color:#566c7f}
                         <div class="col-l col-xs-12 col-lg-3">
                             <video src="data/projects/relation.mp4" width="100%" playsinline autoplay muted loop preload/>
                         </div>
-                        <div class="col-r col-xs-12 col-lg-9">
+                        <div class="col-r col-xs-12 col-lg-9 move-up">
                             <div class="pub-card-body">
                                 <h5 class="title">Learning to Compose Visual Relations</h5>
                                 <h6 class="authors">
@@ -596,7 +631,7 @@ a:hover{color:#566c7f}
                             <img src="data/projects/compositional.png" width="100%" />
                         </div>
                         <div class="col-r col-md-12 col-lg-9">
-                            <div class="pub-card-body">
+                            <div class="pub-card-body move-up">
                                 <h5 class="title">Compositional Visual Generation with Energy Based Models</h5>
                                 <h6 class="authors">
                                     <u>Yilun Du</u>,
