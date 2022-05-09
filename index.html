@@ -162,17 +162,18 @@ a:hover{color:#566c7f}
             worked at OpenAI and FAIR, and got a gold medal at the International Biology Olympiad.
             </p>
             <p>
-            I am interested in constructing intelligent household agents which can accomplish 
-            common everyday tasks, such as fetching an object or making a cup of tea. 
-            To enable agents to operate from raw sensory inputs, I am interested in 
-            extracting representations of the surrounding world from perception, which may
-            be used to facilitate both object manipulation and navigation in the world.
-            To allow agents to generalize and adapt to novel situations and goals, I am further interested in 
-            generatively representing the structure of world, allow iterative inference on our world 
-            model at test time for better generalization.
-            Finally, to construct agents that may incrementally acquire new skills and which can generalize to novel
-            combinations of inputs, I am interested in constructing system that are composable and modular in nature.
-            My research utilizes tools in <a href="https://energy-based-model.github.io/">energy-based modeling</a> and <a href="https://yilundu.github.io/ndf/">implicit neural representations</a>.
+            I am interested in constructing machine learning tools that enable the development of 
+            autonomous embodied agents.
+            This setting presents unique challenges compared to standard  machine learning applications. 
+            Observations at test time are often from different distributions
+            then seen during training time and are highly multimodal in nature, potentially corresponding to visual,
+            tactile, auditory or textual information. It is further imperative for systems to incrementally learn as 
+            information is gathered from the surrounding environment. Simultaneously, there is rich ubiquitous structure across inputs, 
+            such as the underlying three-dimensional nature of the world. Towards these challenges, 
+            I am interested in using the tools of iterative <a href="https://energy-based-model.github.io/">energy-based optimization</a> as a mean to construct more composable and adaptable systems. 
+            I am furthered interested in leveraging <a href="https://yilundu.github.io/ndf/">neural fields</a> to infer structure across multimodal inputs, including the underlying three-dimensional
+            structure. I am further in broader applications
+            of these tools to other domains such as computational biology.
             </p>
 
             <h5 class="subtitle">News</h5>
@@ -186,7 +187,7 @@ a:hover{color:#566c7f}
             <h5 class="subtitle">Research Highlights</h5>
             <ul>
                 <li><b>Compositionality</b>: constructing modular / composable models which enable combinatorical generalization, incremental learning, and controllability. </li>
-                <li><b>Perception and Scene Understanding</b>: learning perceptual representations of the world that enable effective downstream manipulation and navigation. </li>
+                <li><b>Perception and Scene Understanding</b>: inferring structured representations of the world for downstream embodied tasks. </li>
                 <li><b>Generative Modeling</b>: constructing models of the world's' structure. </li>
                 <li><b>Interactive Learning</b>: building intelligent agents which may interact in the surrounding world.</li>
             </ul>
@@ -209,6 +210,33 @@ a:hover{color:#566c7f}
             </p>
 
             <div id="main-pub-card-container" class="hide">
+                <div class="pub-card" data-topic="perception" data-year="2022" data-selected="false">
+                    <div class="row">
+                        <div class="col-l col-xs-12 col-lg-3">
+                            <img src="data/projects/naf.gif" width="100%" />
+                        </div>
+                        <div class="col-r col-xs-12 col-lg-9">
+                            <div class="pub-card-body move-up">
+                                <h5 class="title">Learning Neural Acoustic Fields</h5>
+                                <h6 class="authors">
+                                    <a href="https://github.com/aluo-x/">Andrew Luo</a>,
+                                    <u>Yilun Du</u>,
+                                    <a href="https://sites.google.com/andrew.cmu.edu/tarrlab/people/michael-j-tarr">Michael J. Tarr</a>,
+                                    <a href="http://cocosci.mit.edu/josh">Joshua B. Tenenbaum</a>,
+                                    <a href="https://groups.csail.mit.edu/vision/torralbalab/">Antonio Torralba</a>,
+                                    <a href="https://people.csail.mit.edu/ganchuang/">Chuang Gan</a>
+                                </h6>
+                                <p class="info">
+                                    <span class="conference" class="conference">Arxiv Preprint</span> /
+                                    <a href="https://www.andrew.cmu.edu/user/afluo/Neural_Acoustic_Fields/">Website</a> /
+                                    <a href="https://arxiv.org/abs/2204.00628">Paper</a> /
+                                    <a href="https://github.com/aluo-x/Learning_Neural_Acoustic_Fields">Code</a>  /
+                                    <a href="https://colab.research.google.com/drive/1C1qyOMFUBlrdEiaWJQ_1Zi5UDHvWumyk?usp=sharing">Colab</a> 
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <div class="pub-card" data-topic="composition" data-year="2022" data-selected="false">
                     <div class="row">
                         <div class="col-l col-xs-12 col-lg-3">
