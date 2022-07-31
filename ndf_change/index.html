@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description"
+          content="Robust Change Detection Based on Neural Descriptor Fields">
+    <meta name="author"
+          content="Jiahui Fu, Yilun Du, Kurran Singh, Joshua B. Tenenbaum, John J. Leonard">
+
+    <title>Robust Change Detection Based on Neural Descriptor Fields</title>
+    <!-- Bootstrap core CSS -->
+    <!--link href="bootstrap.min.css" rel="stylesheet"-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <!-- Custom styles for this template -->
+    <link href="offcanvas.css" rel="stylesheet">
+</head>
+
+<style type="text/css">
+.move-up {margin-top:-1.4cm}
+.move-up-small {margin-top:-0.4cm}
+.move-up-more {margin-top:-0.7cm}
+</style>
+
+<body>
+<div class="jumbotron jumbotron-fluid">
+    <div class="container"></div>
+    <h2>Robust Change Detection Based on Neural Descriptor Fields</h2>
+    <h3>IROS 2022</h3>
+    <hr>
+    <p class="authors">
+        <a href="https://scholar.google.com/citations?user=-FqjG8kAAAAJ&hl=en">Jiahui Fu</a>,
+        <a href="https://yilundu.github.io">Yilun Du</a>,
+        <a href="https://www.linkedin.com/in/kurran-singh/">Kurran Singh</a>,
+        <a href="https://mitibmwatsonailab.mit.edu/people/joshua-tenenbaum/">Joshua B. Tenenbaum</a>,
+        <a href="https://www.csail.mit.edu/person/john-leonard">John J. Leonard</a>
+    </p>
+
+    <div class="btn-group" role="group" aria-label="Top menu">
+        <a class="btn btn-primary" href="img/PAPER.pdf">Paper</a>
+    </div>
+</div>
+
+<div class="container">
+    <div class="section move-up">
+     <h2>Abstract</h2>
+        <hr>
+        <p>
+The ability to reason about changes in the environment is crucial for robots operating over extended periods of time. Agents are expected to capture changes <b>during operation</b> so that actions can be followed to ensure a smooth progression of the working session. However, varying viewing angles and accumulated localization errors make it easy for robots to falsely detect changes in the surrounding world due to low observation overlap and drifted object associations. In this paper, based on the recently proposed category-level Neural Descriptor Fields (NDFs), we develop an object-level online change detection approach that is robust to partially overlapping observations and  noisy localization results. Utilizing the shape completion capability and SE(3)-equivariance of NDFs, we represent objects with compact shape codes encoding <b>full</b> object shapes from partial observations. The objects are then organized in a spatial tree structure based on object centers recovered from NDFs for fast queries of object neighborhoods. By associating objects via shape code similarity and comparing local object-neighbor spatial layout, our proposed approach demonstrates robustness to low observation overlap and localization noises. We conduct experiments on both synthetic and real-world sequences and achieve improved change detection results compared to multiple baseline methods.
+        </p>
+    </div>
+    
+    <div class="section">
+        <h2>Approach Overview</h2>
+        <hr>
+        <div class="row align-items-center">
+            <div class="col justify-content-center text-center">
+                <img src='img/OVERVIEW.png' class='img-overview' style="width:80%">
+            </div>
+        </div>
+        <p>
+        Given a sequence of observations as the source and the target, during streaming of the target sequence, the system takes in partial object point clouds from depth sensors and outputs changed objects on-the-fly in the target w.r.t the source.  <br>
+       <b>(a)</b>: Given each partial object point cloud, Neural Descriptor Fields (NDFs) represent the object as a shape code encoding the full object shape and recover the object center from full shape reconstruction.  <br>
+        <b>(b)</b>: Based on recovered object centers, observed objects are organized in a spatial object tree, which consists of two coordinate interval trees (T<sub>x</sub>, T<sub>y</sub>) and allows for fast query of neighboring objects.  <br>
+        <b>(c)-(d)</b>: Corresponding neighborhoods of the current object are found from the source and the target object tree using object locations, where objects of similar shape codes are matched. For each matched object pair, object graphs of the neighborhood are constructed and compared to determine if the local object layouts are different, which implies a changed object.
+		</p>
+    </div>
+    
+    <div class="section">
+        <h2>Spplementary Video</h2>
+        <hr>
+        <center>
+       <iframe width="840" height="472.5" src="https://www.youtube.com/embed/wGdLbQVATWQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+       </center>
+    </div>
+    
+        <div class="section">
+            <h2>Paper</h2>
+            <hr>
+            <div>
+                <div class="list-group">
+                    <a href=""
+                       class="list-group-item">
+                        <img src="img/THUMBNAIL.png"
+                             style="width:100%; margin-right:-20px; margin-top:-10px;">
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Bibtex</h2>
+            <hr>
+            <div class="bibtexsection">
+                @article{fu2022ndfchange,
+                  title={Robust Change Detection Based on Neural Descriptor Fields},
+                  author={Fu, Jiahui and Du, Yilun and Singh, 
+                        Kurran and Tenenbaum, Joshua B. and Leonard, John J.},
+                  booktitle={IROS},
+                  year={2022}
+                }
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Our Related Projects</h2>
+            <hr>
+            <p>
+                Check out our related projects on neural fields! <br>
+            </p>
+
+		<div class='row vspace-top'>
+		    <div class="col-sm-3">
+			<img src='../data/projects/ndf.gif' class='img-fluid'>
+		    </div>
+
+		    <div class="col">
+			<div class='paper-title'>
+			    <a href="https://arxiv.org/abs/2112.05124">Neural Descriptor Fields: SE(3)-Equivariant Object Representations for Manipulation</a>
+			</div>
+			<div>
+                We present Neural Descriptor Fields (NDFs), an SE3 equivariant object representation which enables manipulation of different categories of objects at arbitrary poses from a limited number (5-10) demonstrations.
+            </div>
+		    </div>
+		</div>
+
+            <div class='row vspace-top'>
+                <div class="col-sm-3">
+                    <img src='img/audiovisual_manifold.gif' class='img-fluid'>
+                </div>
+
+                <div class="col">
+                    <div class='paper-title'>
+                        <a href="https://yilundu.github.io/gem/">Learning Signal-Agnostic Manifolds of Neural Fields</a>
+
+                    </div>
+                    <div>
+                        We present a method to capture the underlying structure of arbitrary data signals by representing each point of data as a neural field. This enables us to interpolate and generate new samples in image, shape, audio, and audiovisual domains all using the same identical architecture.
+                    </div>
+                </div>
+            </div>
+
+        <div class='row vspace-top'>
+            <div class="col-sm-3">
+                <img src='../nerflow/fig/gibson_full.gif' class='img-fluid'>
+            </div>
+
+            <div class="col">
+                <div class='paper-title'>
+                    <a href="https://yilundu.github.io/nerflow/">Neural Radiance Flow for 4D View Synthesis and Video Processing</a>
+
+                </div>
+                <div>
+                    We present a method to capture a dynamic scene utilizing a spatial-temporal radiance field. We enforce consistency in this field utilizing a continuous flow field. We show that such an approach enables us to synthesize novel views in dynamic scenes captured using as little as a single monocular video, and further show that our radiance field can be utilized to denoise and super-resolve input images.
+                </div>
+            </div>
+        </div>
+		
+         
+        <hr>
+
+        <footer>
+            <p>Please reach out to <a href="mailto:jiahuifu@mit.edu?subject=Jiahui Fu"> Jiahui Fu</a> if you have any questions or comments.</p>
+        </footer>
+    </div>
+
+
+    
+
+</div>
+
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+        crossorigin="anonymous"></script>
+
+</body>
+</html>
