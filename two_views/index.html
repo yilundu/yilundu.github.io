@@ -74,7 +74,7 @@ section {
 }
 
 .move-down {
-    margin-top:1.2cm;
+    margin-top:0.6cm;
 }
 
 .col-4 {
@@ -607,7 +607,9 @@ pre {
 
             <div class='row vspace-top'>
                 <div class="col-sm-3">
-                    <img src='../nerflow/fig/gibson_full.gif' class='img-fluid'>
+                    <div class="move-down">
+                        <img src='../nerflow/fig/gibson_full.gif' class='img-fluid'>
+                    </div>
                 </div>
 
                 <div class="col">
@@ -617,6 +619,22 @@ pre {
                     </div>
                     <div>
                         We present a method to capture a dynamic scene utilizing a spatial-temporal radiance field. We enforce consistency in this field utilizing a continuous flow field. We show that such an approach enables us to synthesize novel views in dynamic scenes captured using as little as a single monocular video, and further show that our radiance field can be utilized to denoise and super-resolve input images.
+                    </div>
+                </div>
+            </div>
+
+            <div class='row vspace-top'>
+                <div class="col-sm-3">
+                    <img src='../data/projects/seeing3d.gif' class='img-fluid'>
+                </div>
+
+                <div class="col">
+                    <div class='paper-title'>
+                        <a href="https://prafullsharma.net/see3d/">Seeing 3D Objects in a Single Image via Self-Supervised Static-Dynamic Disentanglement</a>
+
+                    </div>
+                    <div>
+                        We propose a method  that maps a single image of a scene to a 3D neural scene representation that captures and disentangles the movable and immovable parts of the scene. Each scene component is parameterized with 2D neural ground plans, which are grids of features aligned with the ground plane that can be locally decoded into 3D neural radiance fields. We learn ground plans self-supervised through neural rendering and demonstrate the widespread utility of such ground plans such as extraction of object-centric 3D representations, novel view synthesis, instance segmentation, and 3D bounding box prediction. 
                     </div>
                 </div>
             </div>
@@ -653,18 +671,18 @@ pre {
             </div>
     <hr>
 
+    <!---
     <section id="bibtex">
         <h2>Citation</h2>
         <hr>
-        <pre><code>@article{du2022two,
-                  title={Learning to Render Novel Views from
-                    Wide-Baseline Stereo Pairs},
-                  author={Du, Yilun and Smith, Cameron and Tewari, 
-                        Ayush and Sitzmann, Vincent},
-                  journal={arXiv e-prints},
-                  year={2022}
+        <pre><code>@inproceedings{du2023cross,
+                  title={Learning to Render Novel Views from Wide-Baseline Stereo Pairs},
+                  author={Du, Yilun and Smith, Cameron and Tewari, Ayush and Sitzmann, Vincent},
+                  booktitle={CVPR},
+                  year={2023}
                 }</code></pre>
     </section>
+    --->
 
     <section>
         This webpage template was recycled from <a href='https://nv-tlabs.github.io/LION/'>here</a>.
