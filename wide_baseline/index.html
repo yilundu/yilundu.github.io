@@ -94,6 +94,10 @@ section {
      float: left;
 }
 
+.col-8{
+width: 12.5%;
+}
+
 .author-row, .affil-row {
     font-size: 26px;
 }
@@ -406,6 +410,7 @@ pre {
 
 </style>
 <link rel="stylesheet" href="bootstrap-grid.css">
+<link rel="stylesheet" href="simplegrid.css">
 
 <script type="text/javascript" src="../js/hidebib.js"></script>
     <link href='https://fonts.googleapis.com/css?family=Titillium+Web:400,600,400italic,600italic,300,300italic' rel='stylesheet' type='text/css'>
@@ -552,7 +557,7 @@ pre {
         <h2>Novel View Synthesis from Unposed Images</h2>
         <hr>
         <p>
-           Finally, we illustrate how approach can render novel views from unposed images from the internet. We utilize 2D
+           Our approach can also render novel views from unposed images from the internet. We utilize 2D
            correspondences inferred from SuperGLUE to obtain relative pose estimates between images.
         </p>
     </div>
@@ -563,6 +568,57 @@ pre {
             </video>
         </div> 
     </div>
+
+    <div class="section">
+        <h2>360 Degree Neural Rendering</h2>
+        <hr>
+        <p>
+           Finally, our approach can also do 360 degree neural rendering. Here, we illustrate object
+           renderings from the NMR dataset given a single input image.
+        </p>
+    </div>
+            <div class='grid vspace-top'>
+                <div class="col-1-8">
+                    <video width="100%" playsinline="" autoplay="" loop="" preload="" muted="">
+                        <source src="img/vid1.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="col-1-8">
+                    <video width="100%" playsinline="" autoplay="" loop="" preload="" muted="">
+                        <source src="img/vid2.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="col-1-8">
+                    <video width="100%" playsinline="" autoplay="" loop="" preload="" muted="">
+                        <source src="img/vid3.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="col-1-8">
+                    <video width="100%" playsinline="" autoplay="" loop="" preload="" muted="">
+                        <source src="img/vid4.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="col-1-8">
+                    <video width="100%" playsinline="" autoplay="" loop="" preload="" muted="">
+                        <source src="img/vid5.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="col-1-8">
+                    <video width="100%" playsinline="" autoplay="" loop="" preload="" muted="">
+                        <source src="img/vid6.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="col-1-8">
+                    <video width="100%" playsinline="" autoplay="" loop="" preload="" muted="">
+                        <source src="img/vid7.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="col-1-8">
+                    <video width="100%" playsinline="" autoplay="" loop="" preload="" muted="">
+                        <source src="img/vid8.mp4" type="video/mp4">
+                    </video>
+                </div>
+            </div>
 
     <div class="section">
         <h2>Limitations</h2>
@@ -587,6 +643,8 @@ pre {
     <div class="section">
         <h2>Paper</h2>
         <hr>
+        <p>
+        </p>
         <div>
             <div class="list-group">
                 <a href=""
