@@ -421,7 +421,7 @@ pre {
         <link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
         <meta name="twitter:card" content="summary_large_image">
         <meta name="twitter:creator" content="@du_yilun">
-        <meta name="twitter:title" content="Learning to Render Novel Views from Wide-Baseline Stereo Pairs">
+        <meta name="twitter:title" content="Multiagent debate improves the performance of language models">
         <meta name="twitter:description" content="">
         <meta name="twitter:image" content="">
     </head>
@@ -431,41 +431,40 @@ pre {
 <div class="container">
     <div class="paper-title">
     <h1> 
-        Learning to Render Novel Views from Wide-Baseline Stereo Pairs
+        Improving Factuality and Reasoning in Language Models through Multiagent Debate
     </div>
 
     <div id="authors">
         <center>
             <div class="author-row-new">
                 <a href="https://yilundu.github.io/">Yilun Du<sup>1</sup></a>,
-                <a href="https://scholar.google.com/citations?user=zrZNo3wAAAAJ&hl=en&oi=sra">Cameron Smith<sup>1</sup></a>,
-                <a href="https://ayushtewari.com/">Ayush Tewari<sup>1†</sup></a>,
-                <a href="https://vsitzmann.github.io/">Vincent Sitzmann<sup>1†</sup></a>
+                <a href="https://people.csail.mit.edu/lishuang/">Shuang Li<sup>1</sup></a>,
+                <a href="https://groups.csail.mit.edu/vision/torralbalab/">Antonio Torralba<sup>1</sup></a>,
+                <a href="https://scholar.google.com/citations?user=rRJ9wTJMUB8C&hl=en">Joshua B. Tenenbaum<sup>1</sup></a>,
+                <a href="https://scholar.google.com/citations?user=Vzr1RukAAAAJ&hl=en">Igor Mordatch<sup>1</sup></a>
             </div>
         </center>
         <center>
         <div class="affiliations">
             <span><sup>1</sup> MIT</span>
-            <span>&nbsp;&nbsp;&nbsp; <sup>†</sup> indicates equal advising.</span>
+            <span><sup>2</sup> Google Brain</span><br/>
         </div>
 
+        <!---
         <div class="affil-row">
-            <div class="venue text-center"><b>CVPR 2023 </b></div>
+            <div class="venue text-center"><b>arXiv preprint</b></div>
         </div>
+        -->
 
         </center>
 
         <div style="clear: both">
             <div class="paper-btn-parent">
-            <a class="paper-btn" href="https://arxiv.org/abs/2304.08463">
+            <a class="paper-btn" href="">
                 <span class="material-icons"> description </span> 
                  Paper
             </a>
-            <a class="paper-btn" href="https://colab.research.google.com/drive/1PeL5oJ_eraLEdzTEVPLBwoM2pyv26WcU?usp=sharing">
-                <span class="material-icons"> code </span> 
-                 Colab
-            </a>
-            <a class="paper-btn" href="https://github.com/yilundu/cross_attention_renderer">
+            <a class="paper-btn" href="">
                 <span class="material-icons"> code </span>
                 Code
             </a>
@@ -476,8 +475,8 @@ pre {
     <section id="teaser-image">
         <center>
             <figure>
-                <video class="centered" width="80%" autoplay loop muted playsinline class="video-background " >
-                    <source src="img/teaser.m4v" type="video/mp4">
+                <video class="centered" width="50%" autoplay loop muted playsinline class="video-background " >
+                    <source src="img/debate.m4v" type="video/mp4">
                     Your browser does not support the video tag.
                 </video>
             </figure>
@@ -490,18 +489,9 @@ pre {
         <h2>Abstract</h2>
         <div class="flex-row">
             <p>
-            We introduce a method for novel view synthesis given only a single wide-baseline stereo image pair.
-            In this challenging regime, 3D scene points are regularly observed only once, requiring prior-based reconstruction of scene geometry and appearance.
-
-            We find that existing approaches to novel view synthesis from sparse observations fail due to recovering incorrect 3D geometry and due to the high cost of differentiable rendering that precludes their scaling to large-scale training.
-
-            We take a step towards resolving these shortcomings by formulating a multi-view transformer encoder, proposing an efficient, image-space epipolar line sampling scheme to assemble image features for a target ray, and a lightweight cross-attention-based renderer.
-
-            Our contributions enable training of our method on a large-scale real-world dataset of indoor and outdoor scenes.
-
-            We demonstrate that our method learns powerful multi-view geometry priors while reducing both rendering time and memory footprint.
-
-            We conduct extensive comparisons on held-out test scenes across two real-world datasets, significantly outperforming prior work on novel view synthesis from sparse image observations and achieving multi-view-consistent novel view synthesis.
+            Large language models (LLMs) have demonstrated remarkable capabilities in language generation, understanding, and few-shot learning in recent years. An extensive body of work has explored how their performance may be further improved through the tools of prompting, ranging from verification, self-consistency, or intermediate scratchpads.
+    In this paper, we present a complementary approach to improve language responses  where multiple language model instances propose and debate their individual responses and reasoning processes over multiple rounds to arrive at a common final answer.  Our findings indicate that this approach significantly enhances mathematical and strategic reasoning across a number of tasks. We also demonstrate that our approach improves the factual validity of generated content, reducing fallacious answers and hallucinations that contemporary models are prone to. Our approach may be directly applied to existing black-box models and uses identical procedure and prompts for all tasks we investigate.
+    Overall, our findings suggest that such "society of minds" approach has the potential to significantly advance the capabilities of LLMs and pave the way for further breakthroughs in language generation and understanding.
             </p>
         </div>
     </section>
@@ -511,82 +501,54 @@ pre {
         <h2>Results</h2>
         <hr>
         <p>
-            Below, we illustrate novel view rendering results of our approach from different wide-baseline image
-            pairs. Our approach is able to consistently render different wide baseline novel views.
+            Below, we illustrate how  multiagent debate procedure can improve performance across a variety of different 
+            domains requiring both factual validity and reasoning.
         </p>
-        <div class="row align-items-center">
-            <div class="col justify-content-center text-center">
-                <video width="100%" playsinline="" autoplay="" loop="" preload="" muted="">
-                    <source src="img/Main_5.mp4" type="video/mp4">
-                </video>
-            </div> 
-        </div>
+        <figure>
+            <a>
+                <center>
+                <img class="centered" width="70%" src="img/accuracy_small.png"> 
+                </center>
+            </a>
+            <p class="caption">
+                <b>Multiagent Debate Improves Reasoning and Factual Accuracy.</b> Accuracy of traditional inference and our multi-agent debate over six benchmarks (chess move optimality reported as a normalized score) <br>
+        </figure>
     </div>
 
     <div class="section">
-        <h2>Indoor Scene Baseline Comparisons</h2>
+        <h2>Performance with More Agents and Rounds of Debate</h2>
         <hr>
         <p>
-            Next, we provide baseline comparisons comparisons of our approach with IBRNet, pixelNeRF, GPNR on different challenging indoor scene in Realestate10k. 
+           The underlying performance of multiagent debate further improves with either more agents or more rounds of debate (accuracy of generating the right answer on arithmetic).
         </p>
-        <div class="row align-items-center">
-            <div class="col justify-content-center text-center">
-                <video width="100%" playsinline="" autoplay="" loop="" preload="" muted="">
-                    <source src="img/Comparisons_2.mp4" type="video/mp4">
-                </video>
-            </div> 
-        </div>
+        <figure>
+            <a>
+                <center>
+                <img class="centered" width="70%" src="img/agent_round.png"> 
+                </center>
+            </a>
+            <p class="caption">
+                <b>a) Performance with Increased Agents.</b> Performance improves as the number of underlying agents involved in debate increases. <b>b) Performance with Increased Rounds.</b> Performance rises as the number of rounds of underlying debate increases. <br>
+        </figure>
     </div>
 
     <div class="section">
-        <h2>Outdoor Scene Baseline Comparisons</h2>
+        <h2>Debate Between chatGPT and Bard</h2>
         <hr>
         <p>
-            Next, we provide baseline comparisons of our approach with IBRNet, pixelNeRF, GPNR on different outdoor scenes in ACID.
-        </p>
-        <div class="row align-items-center">
-            <div class="col justify-content-center text-center">
-                <video width="100%" playsinline="" autoplay="" loop="" preload="" muted="">
-                    <source src="img/acid_comparison.mp4" type="video/mp4">
-                </video>
-            </div> 
-        </div>
-    </div>
-
-    <div class="section">
-        <h2>Novel View Synthesis from Unposed Images</h2>
-        <hr>
-        <p>
-           Our approach can also render novel views from unposed images from the internet. We utilize 2D
-           correspondences inferred from SuperGLUE to obtain relative pose estimates between images.
+           Multiagent debate also improve reasoning performance across different lanuage models. Initially, both language
+           models generate incorrect answers which can be revised based off debate.
         </p>
     </div>
-    <div class="row align-items-center">
-        <div class="col justify-content-center text-center">
-            <video width="100%" playsinline="" autoplay="" loop="" preload="" muted="">
-                <source src="img/Unposed_5.mp4" type="video/mp4">
-            </video>
-        </div> 
-    </div>
-
-    <div class="section">
-        <h2>Limitations</h2>
-        <hr>
-        <p>
-           In this paper, we've presented a new approach to render novel views from wide-baseline stereo
-           pairs. While our approach outperforms the existing state-of-the-art, this is a very challenging problem, 
-           and there are many test scenes in which our approach 
-           either fails to adequately estimate
-           the depth of the scene or fails to obtain consistent multiview renderings of these scenes. We believe 
-           both problems opens directions for future work.
-        </p>
-    </div>
-    <div class="row align-items-center">
-        <div class="col justify-content-center text-center">
-            <video width="100%" playsinline="" autoplay="" loop="" preload="" muted="">
-                <source src="img/Limitations.mp4" type="video/mp4">
-            </video>
-        </div> 
+        <figure>
+            <a>
+                <center>
+                <img class="centered" width="70%" src="img/gpt_bard.png"> 
+                </center>
+            </a>
+            <p class="caption">
+                <b>Debate Between chatGPT and Bard.</b> Illustration of debate between different models. While both models generate incorrect responses to the initial GSM8K problem, debate between the models enables them to generate the correct final answer.<br>
+        </figure>
     </div>
 
     <div class="section">
@@ -608,86 +570,86 @@ pre {
             <h2>Our Related Projects</h2>
             <hr>
             <p>
-                Check out our related projects on neural rendering and neural fields! <br>
+                Check out our related projects on combining and composing different models! A full list can be found <a href="https://energy-based-model.github.io/Energy-based-Model-MIT/">here</a>!
             </p>
 
 
             <div class='row vspace-top'>
                 <div class="col-sm-3">
-                    <div class="move-down">
-                        <img src='../nerflow/fig/gibson_full.gif' class='img-fluid'>
-                    </div>
+                    <img src='img/compose_pretrain.gif' class='img-fluid'>
                 </div>
 
                 <div class="col">
                     <div class='paper-title'>
-                        <a href="https://yilundu.github.io/nerflow/">Neural Radiance Flow for 4D View Synthesis and Video Processing</a>
+                        <a href="https://energy-based-model.github.io/composing-pretrained-models/">Composing Pretrained Models through Iterative Consensus</a>
 
                     </div>
                     <div>
-                        We present a method to capture a dynamic scene utilizing a spatial-temporal radiance field. We enforce consistency in this field utilizing a continuous flow field. We show that such an approach enables us to synthesize novel views in dynamic scenes captured using as little as a single monocular video, and further show that our radiance field can be utilized to denoise and super-resolve input images.
+                        We present a method to combine different large pretrained models together by having individual models communicate with each other through iterative consensus. We illustrate how this combination of models can do zero-shot VQA, image generation, reasoning, and image generation.
                     </div>
                 </div>
             </div>
 
-            <div class='row vspace-top'>
-                <div class="col-sm-3">
-                    <img src='../data/projects/seeing3d.gif' class='img-fluid'>
-                </div>
-
-                <div class="col">
-                    <div class='paper-title'>
-                        <a href="https://prafullsharma.net/see3d/">Seeing 3D Objects in a Single Image via Self-Supervised Static-Dynamic Disentanglement</a>
-
-                    </div>
-                    <div>
-                        We propose a method  that maps a single image of a scene to a 3D neural scene representation that captures and disentangles the movable and immovable parts of the scene. Each scene component is parameterized with 2D neural ground plans, which are grids of features aligned with the ground plane that can be locally decoded into 3D neural radiance fields. We learn ground plans self-supervised through neural rendering and demonstrate the widespread utility of such ground plans such as extraction of object-centric 3D representations, novel view synthesis, instance segmentation, and 3D bounding box prediction. 
-                    </div>
-                </div>
+        <div class="row vspace-top">
+        <div class="col-sm-3">
+            <div class="move-down">
+                <video width="100%" playsinline="" autoplay="" preload="" muted="">
+                    <source src="img/recyle.m4v" type="video/mp4">
+                </video>
+            </div>
+        </div>
+            <div class="col-sm-9">
+              <div class="paper-title">
+                <a href="https://energy-based-model.github.io/reduce-reuse-recycle/">Reduce, Reuse, Recycle: Compositional Generation with Energy-Based Diffusion Models and MCMC</a>
+            </div>
+            <div>
+                We present a method to combine different diffusion models with different probabilistic operations. To enable this, we propose new samplers, inspired by MCMC, to enable successful compositional generation. Further, we propose an energy-based parameterization of diffusion models which enables the use of new compositional operators and more sophisticated, Metropolis-corrected samplers.
+            </div>
+            </div>
             </div>
 
-		<div class='row vspace-top'>
-		    <div class="col-sm-3">
-			<img src='../data/projects/ndf.gif' class='img-fluid'>
-		    </div>
+        <div class="row vspace-top">
+        <div class="col-sm-3">
+            <video width="100%" playsinline="" autoplay="" preload="" muted="">
+                <source src="img/teaser_glide.mp4" type="video/mp4">
+            </video>
+        </div>
+        <div class="col-sm-9">
+          <div class="paper-title">
+            <a href="https://energy-based-model.github.io/Compositional-Visual-Generation-with-Composable-Diffusion-Models/">Compositional Visual Generation with Composable Diffusion Models</a>
+        </div>
+        <div>
+            We present a method to improve the compositional generalization of diffusion models by composing
+            different diffusion models together, drawing on the close connection of
+            diffusion models with EBMs. We illustrate how compositional operators enable
+            the ability to composing multiple sets of objects together as well as generate images subject to 
+            complex text prompts.
+        </div>
+        </div>
+        </div>
 
-		    <div class="col">
-			<div class='paper-title'>
-			    <a href="https://arxiv.org/abs/2112.05124">Neural Descriptor Fields: SE(3)-Equivariant Object Representations for Manipulation</a>
-			</div>
-			<div>
-                We present Neural Descriptor Fields (NDFs), an SE3 equivariant object representation which enables manipulation of different categories of objects at arbitrary poses from a limited number (5-10) demonstrations.
+        <div class="row vspace-top">
+        <div class="col-sm-3">
+            <div class="move-down">
+                <img src="img/comp_cartoon.png" class="img-fluid" alt="comp_carton" style="width:100%">
             </div>
-		    </div>
-		</div>
+        </div>
+        <div class="col-sm-9">
+          <div class="paper-title">
+            <a href="https://energy-based-model.github.io/compositional-generation-inference/">Compositional Visual Generation with Energy Based Models</a>
+        </div>
+        <div>
+            We present a set of compositional operators that enable EBMs to exhibit <b>zero-shot compositional</b> visual generation, enabling us to compose visual concepts
+            (through operators of conjunction, disjunction, or negation) together in a zero-shot manner.
+            Our approach enables us to generate faces given a  description
+            ((Smiling AND Female) OR (NOT Smiling AND Male)) or to combine several different objects together.
+        </div>
+        </div>
+        </div>
 
-            <div class='row vspace-top'>
-                <div class="col-sm-3">
-                    <img src='../ndf/img/audiovisual_manifold.gif' class='img-fluid'>
-                </div>
 
-                <div class="col">
-                    <div class='paper-title'>
-                        <a href="https://yilundu.github.io/gem/">Learning Signal-Agnostic Manifolds of Neural Fields</a>
 
-                    </div>
-                    <div>
-                        We present a method to capture the underlying structure of arbitrary data signals by representing each point of data as a neural field. This enables us to interpolate and generate new samples in image, shape, audio, and audiovisual domains all using the same identical architecture.
-                    </div>
-                </div>
-            </div>
     <hr>
-
-    <section id="bibtex">
-        <h2>Citation</h2>
-        <hr>
-        <pre><code>@inproceedings{du2023cross,
-                  title={Learning to Render Novel Views from Wide-Baseline Stereo Pairs},
-                  author={Du, Yilun and Smith, Cameron and Tewari, Ayush and Sitzmann, Vincent},
-                  booktitle={Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition},
-                  year={2023}
-                }</code></pre>
-    </section>
 
     <section>
         This webpage template was recycled from <a href='https://nv-tlabs.github.io/LION/'>here</a>.
