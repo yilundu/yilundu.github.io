@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<script src="bootstrap.js"></script>
+<script type="text/javascript" charset="utf-8" src="https://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script> 
+<!---
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+--->
+<script src="load-mathjax.js" async></script>
+
+
+<style type="text/css">
+body {
+    font-family: "Titillium Web", "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+    font-weight: 300;
+    font-size: 17px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+@media screen and (min-width: 980px){
+    body {
+        width: 980px;
+    }
+}
+
+
+h1 {
+    font-weight:300;
+    line-height: 1.15em;
+}
+
+h2 {
+    font-size: 1.75em;
+}
+a:link,a:visited {
+    color: #5364cc;
+    text-decoration: none;
+}
+a:hover {
+    color: #208799;
+}
+h1 {
+    text-align: center;
+}
+h2,h3 {
+    text-align: left;
+}
+
+h1 {
+    font-size: 40px;
+    font-weight: 500;
+}
+h2 {
+    font-weight: 400;
+    margin: 16px 0px 4px 0px;
+}
+h3 {
+    font-weight: 600;
+    margin: 16px 0px 4px 0px;
+}
+
+.paper-title {
+    padding: 1px 0px 1px 0px;
+}
+section {
+    margin: 32px 0px 32px 0px;
+    text-align: justify;
+    clear: both;
+}
+.col-5 {
+     width: 20%;
+     float: left;
+}
+
+.move-down {
+    margin-top:0.6cm;
+}
+
+.col-4 {
+     width: 25%;
+     float: left;
+}
+.col-3 {
+     width: 33%;
+     float: left;
+}
+.col-2 {
+     width: 50%;
+     float: left;
+}
+.col-1 {
+     width: 100%;
+     float: left;
+}
+
+.col-8{
+width: 12.5%;
+}
+
+.author-row, .affil-row {
+    font-size: 26px;
+}
+
+.author-row-new { 
+    text-align: center; 
+}
+
+.author-row-new a {
+    display: inline-block;
+    font-size: 20px;
+    padding: 4px;
+}
+
+.author-row-new sup {
+    color: #313436;
+    font-size: 12px;
+}
+
+.affiliations-new {
+    font-size: 18px;
+    text-align: center;
+    width: 80%;
+    margin: 0 auto;
+    margin-bottom: 20px;
+}
+
+.row {
+    margin: 16px 0px 16px 0px;
+}
+.authors {
+    font-size: 26px;
+}
+.affiliatons {
+    font-size: 18px;
+}
+.affil-row {
+    margin-top: 18px;
+}
+.teaser {
+    max-width: 100%;
+}
+.text-center {
+    text-align: center;  
+}
+.screenshot {
+    width: 256px;
+    border: 1px solid #ddd;
+}
+.screenshot-el {
+    margin-bottom: 16px;
+}
+hr {
+    height: 1px;
+    border: 0; 
+    border-top: 1px solid #ddd;
+    margin: 0;
+}
+.material-icons {
+    vertical-align: -6px;
+}
+p {
+    line-height: 1.25em;
+}
+.caption {
+    font-size: 16px;
+    color: #666;
+    margin-top: 4px;
+    margin-bottom: 10px;
+	text-align: left;
+}
+
+
+video {
+    display: block;
+    margin: auto;
+}
+
+
+figure {
+    display: block;
+    margin: auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+#bibtex pre {
+    font-size: 14px;
+    background-color: #eee;
+    padding: 16px;
+}
+.blue {
+    color: #2c82c9;
+    font-weight: bold;
+}
+.orange {
+    color: #d35400;
+    font-weight: bold;
+}
+.flex-row {
+    display: flex;
+    flex-flow: row wrap;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.paper-btn-coming-soon {
+    position: relative; 
+    top: 0;
+    left: 0;
+}
+
+.coming-soon {
+    position: absolute;
+    top: -15px;
+    right: -15px;
+}
+
+.center {
+  margin-left: 10.0%;
+  margin-right: 10.0%;
+}
+
+.paper-btn {
+  position: relative;
+  text-align: center;
+
+  display: inline-block;
+  margin: 8px;
+  padding: 8px 8px;
+
+  border-width: 0;
+  outline: none;
+  border-radius: 2px;
+  
+  background-color: #5364cc;
+  color: white !important;
+  font-size: 20px;
+  width: 100px;
+  font-weight: 600;
+}
+.paper-btn-parent {
+    display: flex;
+    justify-content: center;
+    margin: 16px 0px;
+}
+
+.paper-btn:hover {
+    opacity: 0.85;
+}
+
+.container {
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 16px;
+    padding-right: 16px;
+}
+
+.venue {
+    font-size: 23px;
+}
+
+.topnav {
+    background-color: #EEEEEE;
+    overflow: hidden;
+}
+
+.topnav div {
+    max-width: 1070px;
+    margin: 0 auto;
+}
+
+.topnav a {
+    display: inline-block;
+    color: black;
+    text-align: center;
+    vertical-align: middle;
+    padding: 16px 16px;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+.topnav img {
+    padding: 2px 0px;
+    width: 100%;
+    margin: 0.2em 0px 0.3em 0px;
+    vertical-align: middle;
+}
+
+pre {
+    font-size: 0.9em;
+    padding-left: 7px;
+    padding-right: 7px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    border-radius: 3px;
+    background-color: rgb(235, 235, 235);
+    overflow-x: auto;
+}
+
+.download-thumb {
+    display: flex;
+}
+
+@media only screen and (max-width: 620px) {
+    .download-thumb {
+        display: none;
+    }
+}
+
+.paper-stuff {
+    width: 50%;
+    font-size: 20px;
+}
+
+@media only screen and (max-width: 620px) {
+    .paper-stuff {
+        width: 100%;
+    }
+}
+* {
+  box-sizing: border-box;
+}
+
+.column {
+  text-align: center;
+  float: left;
+  width: 16.666%;
+  padding: 5px;
+}
+.column3 {
+  text-align: center;
+  float: left;
+  width: 33.333%;
+  padding: 5px;
+}
+.column4 {
+  text-align: center;
+  float: left;
+  width: 50%;
+  padding: 5px;
+}
+.column5 {
+  text-align: center;
+  float: left;
+  width: 20%;
+  padding: 5px;
+}
+.column10 {
+  text-align: center;
+  float: left;
+  width: 10%;
+  padding: 5px;
+}
+.border-right {
+    border-right: 1px solid black;
+}
+.border-bottom{
+    border-bottom: 1px solid black;
+}
+
+
+.row-center {
+    margin: 16px 0px 16px 0px;
+    text-align: center;
+}
+
+/* Clearfix (clear floats) */
+.row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+.img-fluid {
+  max-width: 100%;
+  height: auto;
+}
+.figure-img {
+  margin-bottom: 0.5rem;
+  line-height: 1;
+}
+
+
+
+
+
+
+
+
+.rounded-circle {
+  border-radius: 50% !important;
+}
+
+
+
+
+
+
+/* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 500px) {
+  .column {
+    width: 100%;
+  }
+}
+@media screen and (max-width: 500px) {
+  .column3 {
+    width: 100%;
+  }
+}
+
+</style>
+<link rel="stylesheet" href="bootstrap-grid.css">
+<link rel="stylesheet" href="simplegrid.css">
+
+<script type="text/javascript" src="../js/hidebib.js"></script>
+    <link href='https://fonts.googleapis.com/css?family=Titillium+Web:400,600,400italic,600italic,300,300italic' rel='stylesheet' type='text/css'>
+    <head>
+        <title> Learning to Render Novel Views from Wide-Baseline Stereo Pairs</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta property="og:description" content="Wide baseline novel view synthesis using learned priors"/>
+        <link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:creator" content="@du_yilun">
+        <meta name="twitter:title" content="Learning to Render Novel Views from Wide-Baseline Stereo Pairs">
+        <meta name="twitter:description" content="">
+        <meta name="twitter:image" content="">
+    </head>
+
+<body>
+
+<div class="container">
+    <div class="paper-title">
+    <h1> 
+        Learning to Render Novel Views from Wide-Baseline Stereo Pairs
+    </div>
+
+    <div id="authors">
+        <center>
+            <div class="author-row-new">
+                <a href="https://yilundu.github.io/">Yilun Du<sup>1</sup></a>,
+                <a href="https://scholar.google.com/citations?user=zrZNo3wAAAAJ&hl=en&oi=sra">Cameron Smith<sup>1</sup></a>,
+                <a href="https://ayushtewari.com/">Ayush Tewari<sup>1†</sup></a>,
+                <a href="https://vsitzmann.github.io/">Vincent Sitzmann<sup>1†</sup></a>
+            </div>
+        </center>
+        <center>
+        <div class="affiliations">
+            <span><sup>1</sup> MIT</span>
+            <span>&nbsp;&nbsp;&nbsp; <sup>†</sup> indicates equal advising.</span>
+        </div>
+
+        <div class="affil-row">
+            <div class="venue text-center"><b>CVPR 2023 </b></div>
+        </div>
+
+        </center>
+
+        <div style="clear: both">
+            <div class="paper-btn-parent">
+            <a class="paper-btn" href="https://arxiv.org/abs/2304.08463">
+                <span class="material-icons"> description </span> 
+                 Paper
+            </a>
+            <a class="paper-btn" href="https://colab.research.google.com/drive/1PeL5oJ_eraLEdzTEVPLBwoM2pyv26WcU?usp=sharing">
+                <span class="material-icons"> code </span> 
+                 Colab
+            </a>
+            <a class="paper-btn" href="https://github.com/yilundu/cross_attention_renderer">
+                <span class="material-icons"> code </span>
+                Code
+            </a>
+            </div>
+        </div>
+    </div>
+
+    <section id="teaser-image">
+        <center>
+            <figure>
+                <video class="centered" width="80%" autoplay loop muted playsinline class="video-background " >
+                    <source src="img/teaser.m4v" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </figure>
+
+        </center>
+    </section>
+
+    <section id="abstract"/>
+        <hr>
+        <h2>Abstract</h2>
+        <div class="flex-row">
+            <p>
+            We introduce a method for novel view synthesis given only a single wide-baseline stereo image pair.
+            In this challenging regime, 3D scene points are regularly observed only once, requiring prior-based reconstruction of scene geometry and appearance.
+
+            We find that existing approaches to novel view synthesis from sparse observations fail due to recovering incorrect 3D geometry and due to the high cost of differentiable rendering that precludes their scaling to large-scale training.
+
+            We take a step towards resolving these shortcomings by formulating a multi-view transformer encoder, proposing an efficient, image-space epipolar line sampling scheme to assemble image features for a target ray, and a lightweight cross-attention-based renderer.
+
+            Our contributions enable training of our method on a large-scale real-world dataset of indoor and outdoor scenes.
+
+            We demonstrate that our method learns powerful multi-view geometry priors while reducing both rendering time and memory footprint.
+
+            We conduct extensive comparisons on held-out test scenes across two real-world datasets, significantly outperforming prior work on novel view synthesis from sparse image observations and achieving multi-view-consistent novel view synthesis.
+            </p>
+        </div>
+    </section>
+
+
+    <div class="section">
+        <h2>Results</h2>
+        <hr>
+        <p>
+            Below, we illustrate novel view rendering results of our approach from different wide-baseline image
+            pairs. Our approach is able to consistently render different wide baseline novel views.
+        </p>
+        <div class="row align-items-center">
+            <div class="col justify-content-center text-center">
+                <video width="100%" playsinline="" autoplay="" loop="" preload="" muted="">
+                    <source src="img/Main_5.mp4" type="video/mp4">
+                </video>
+            </div> 
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Indoor Scene Baseline Comparisons</h2>
+        <hr>
+        <p>
+            Next, we provide baseline comparisons comparisons of our approach with IBRNet, pixelNeRF, GPNR on different challenging indoor scene in Realestate10k. 
+        </p>
+        <div class="row align-items-center">
+            <div class="col justify-content-center text-center">
+                <video width="100%" playsinline="" autoplay="" loop="" preload="" muted="">
+                    <source src="img/Comparisons_2.mp4" type="video/mp4">
+                </video>
+            </div> 
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Outdoor Scene Baseline Comparisons</h2>
+        <hr>
+        <p>
+            Next, we provide baseline comparisons of our approach with IBRNet, pixelNeRF, GPNR on different outdoor scenes in ACID.
+        </p>
+        <div class="row align-items-center">
+            <div class="col justify-content-center text-center">
+                <video width="100%" playsinline="" autoplay="" loop="" preload="" muted="">
+                    <source src="img/acid_comparison.mp4" type="video/mp4">
+                </video>
+            </div> 
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Novel View Synthesis from Unposed Images</h2>
+        <hr>
+        <p>
+           Our approach can also render novel views from unposed images from the internet. We utilize 2D
+           correspondences inferred from SuperGLUE to obtain relative pose estimates between images.
+        </p>
+    </div>
+    <div class="row align-items-center">
+        <div class="col justify-content-center text-center">
+            <video width="100%" playsinline="" autoplay="" loop="" preload="" muted="">
+                <source src="img/Unposed_5.mp4" type="video/mp4">
+            </video>
+        </div> 
+    </div>
+
+    <div class="section">
+        <h2>Limitations</h2>
+        <hr>
+        <p>
+           In this paper, we've presented a new approach to render novel views from wide-baseline stereo
+           pairs. While our approach outperforms the existing state-of-the-art, this is a very challenging problem, 
+           and there are many test scenes in which our approach 
+           either fails to adequately estimate
+           the depth of the scene or fails to obtain consistent multiview renderings of these scenes. We believe 
+           both problems opens directions for future work.
+        </p>
+    </div>
+    <div class="row align-items-center">
+        <div class="col justify-content-center text-center">
+            <video width="100%" playsinline="" autoplay="" loop="" preload="" muted="">
+                <source src="img/Limitations.mp4" type="video/mp4">
+            </video>
+        </div> 
+    </div>
+
+    <div class="section">
+        <h2>Paper</h2>
+        <hr>
+        <p>
+        </p>
+        <div>
+            <div class="list-group">
+                <a href=""
+                   class="list-group-item">
+                    <img src="img/paper_thumbnail.png" style="width:100%; margin-right:-20px; margin-top:-10px;">
+                </a>
+            </div>
+        </div>
+    </div>
+
+        <div class="section">
+            <h2>Our Related Projects</h2>
+            <hr>
+            <p>
+                Check out our related projects on neural rendering and neural fields! <br>
+            </p>
+
+
+            <div class='row vspace-top'>
+                <div class="col-sm-3">
+                    <div class="move-down">
+                        <img src='../nerflow/fig/gibson_full.gif' class='img-fluid'>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class='paper-title'>
+                        <a href="https://yilundu.github.io/nerflow/">Neural Radiance Flow for 4D View Synthesis and Video Processing</a>
+
+                    </div>
+                    <div>
+                        We present a method to capture a dynamic scene utilizing a spatial-temporal radiance field. We enforce consistency in this field utilizing a continuous flow field. We show that such an approach enables us to synthesize novel views in dynamic scenes captured using as little as a single monocular video, and further show that our radiance field can be utilized to denoise and super-resolve input images.
+                    </div>
+                </div>
+            </div>
+
+            <div class='row vspace-top'>
+                <div class="col-sm-3">
+                    <img src='../data/projects/seeing3d.gif' class='img-fluid'>
+                </div>
+
+                <div class="col">
+                    <div class='paper-title'>
+                        <a href="https://prafullsharma.net/see3d/">Seeing 3D Objects in a Single Image via Self-Supervised Static-Dynamic Disentanglement</a>
+
+                    </div>
+                    <div>
+                        We propose a method  that maps a single image of a scene to a 3D neural scene representation that captures and disentangles the movable and immovable parts of the scene. Each scene component is parameterized with 2D neural ground plans, which are grids of features aligned with the ground plane that can be locally decoded into 3D neural radiance fields. We learn ground plans self-supervised through neural rendering and demonstrate the widespread utility of such ground plans such as extraction of object-centric 3D representations, novel view synthesis, instance segmentation, and 3D bounding box prediction. 
+                    </div>
+                </div>
+            </div>
+
+		<div class='row vspace-top'>
+		    <div class="col-sm-3">
+			<img src='../data/projects/ndf.gif' class='img-fluid'>
+		    </div>
+
+		    <div class="col">
+			<div class='paper-title'>
+			    <a href="https://arxiv.org/abs/2112.05124">Neural Descriptor Fields: SE(3)-Equivariant Object Representations for Manipulation</a>
+			</div>
+			<div>
+                We present Neural Descriptor Fields (NDFs), an SE3 equivariant object representation which enables manipulation of different categories of objects at arbitrary poses from a limited number (5-10) demonstrations.
+            </div>
+		    </div>
+		</div>
+
+            <div class='row vspace-top'>
+                <div class="col-sm-3">
+                    <img src='../ndf/img/audiovisual_manifold.gif' class='img-fluid'>
+                </div>
+
+                <div class="col">
+                    <div class='paper-title'>
+                        <a href="https://yilundu.github.io/gem/">Learning Signal-Agnostic Manifolds of Neural Fields</a>
+
+                    </div>
+                    <div>
+                        We present a method to capture the underlying structure of arbitrary data signals by representing each point of data as a neural field. This enables us to interpolate and generate new samples in image, shape, audio, and audiovisual domains all using the same identical architecture.
+                    </div>
+                </div>
+            </div>
+    <hr>
+
+    <section id="bibtex">
+        <h2>Citation</h2>
+        <hr>
+        <pre><code>@inproceedings{du2023cross,
+                  title={Learning to Render Novel Views from Wide-Baseline Stereo Pairs},
+                  author={Du, Yilun and Smith, Cameron and Tewari, Ayush and Sitzmann, Vincent},
+                  booktitle={Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition},
+                  year={2023}
+                }</code></pre>
+    </section>
+
+    <section>
+        This webpage template was recycled from <a href='https://nv-tlabs.github.io/LION/'>here</a>.
+        <center><p><a href='https://accessibility.mit.edu/'><b>Accessibility</b></a></p></center>
+    </section>
+
+</div>
+
+</body>
+</html>
