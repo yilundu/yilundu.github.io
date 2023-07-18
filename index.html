@@ -161,21 +161,16 @@ a:hover{color:#566c7f}
             Prof. <a href="https://people.csail.mit.edu/tlp/" target="_blank">Tomas Lozano-Perez</a> and 
             Prof. <a href="http://cocosci.mit.edu/josh", target="_blank"> Joshua B. Tenenbaum</a>.
             Previously, I obtained my bachelor's degree from MIT, 
-            was a research fellow at OpenAI, an intern at Deepmind and FAIR, and got a gold medal at the International Biology Olympiad.
+            was a research fellow at OpenAI, an intern and visiting researcher at FAIR and Google Deepmind, and got a gold medal at the International Biology Olympiad. My research focuses on generative models, robotics, and embodied agents.
             </p>
             <p>
-            My research interests lie in developing machine learning tools to create autonomous embodied agents.
-            Two major challenges presented in the embodied setting include: high uncertainty and the rich combinatorial nature of the world. 
-            To tackle these issues, my research has focused on using <a href="https://energy-based-model.github.io/">energy-based models</a> as 
-            a method to model probability distributions and uncertainty and to <a href="https://energy-based-model.github.io/compositional-generation-inference/">construct</a> <a href=https://energy-based-model.github.io/Compositional-Visual-Generation-with-Composable-Diffusion-Models/"">composable</a> <a href="https://energy-based-model.github.io/reduce-reuse-recycle/">models</a> that can <a href="https://diffusion-planning.github.io/">flexibly</a> <a href="https://arxiv.org/pdf/1909.06878.pdf">adapted</a> to new experience.
-            I have also explored how this iterative energy optimization procedure can be used as an <a href="https://energy-based-model.github.io/iterative-reasoning-as-energy-minimization/">adjustable computational budget</a> and as a means to combine existing large <a href="https://energy-based-model.github.io/composing-pretrained-models-web/">pretrained</a> <a href="https://composable-models.github.io/llm_debate/">models</a>. 
-            Embodied learning is multimodal, and I am interested in using <a href="https://yilundu.github.io/ndf/">neural</a> <a href="https://yilundu.github.io/gem/">fields</a> as a tool to capture structure across modalities such as vision, text, sound, and touch. 
-            Finally I'm interested in broader applications of these tools to other domains such as <a href="https://www.biorxiv.org/content/10.1101/2022.12.21.521521v1">computational</a> <a href="https://arxiv.org/pdf/2004.13167.pdf">biology</a>.
+            My research is driven by the goal of developing autonomous embodied agents which can intelligently interact and learn in the physical world. My research has mainly focused on <a href="https://www.youtube.com/watch?v=As93L2pwR-E">implicit learning</a> through <a href="https://energy-based-model.github.io/">energy-based models</a>. My work has focused on how such an implicit learning learning procedure enables <a href="https://energy-based-model.github.io/compositional-generation-inference/">compositional</a> <a href="https://energy-based-model.github.io/Compositional-Visual-Generation-with-Composable-Diffusion-Models"/>generative</a> <a href="https://energy-based-model.github.io/reduce-reuse-recycle/">models</a> which can both compositionally generate <a href="https://www.biorxiv.org/content/10.1101/2022.12.21.521521v1">novel outputs</a> and <a href="https://energy-based-model.github.io/unsupervised-concept-discovery/">compositionally</a> <a href="https://energy-based-model.github.io/comet/">understand</a> the world. My work has further focused on how such compositional models may be applied to <a href="https://anuragajay.github.io/decision-diffuser/">trajectory</a> <a href="https://arxiv.org/pdf/1909.06878.pdf">planning</a>, enabling <a href="https://diffusion-planning.github.io/">flexible adaptation to novel goals and rewards</a> across both <a href="https://universal-policy.github.io/unipi/">synthesized videos</a> and on the <a href="https://diffusion-policy.cs.columbia.edu/">real robotic settings</a>. Finally, my work has focused on the interpretation of large pretrained models as energy functions, enabling flexible ad-hoc compositions of different pretrained models at prediction time, enabling both hierarchical reasoning and <a href="https://energy-based-model.github.io/composing-pretrained-models-web/">multimodal perception</a>. 
+            More broadly, I am interested in constructing a <a href="https://en.wikipedia.org/wiki/Pandemonium_architecture">decentralized autonomous architecture</a> for decision making, consisting of a <a href="https://github.com/composable-models/llm_multiagent_debate">society</a> of different multimodal models, each with separate responsibilities such as <a href="https://yilundu.github.io/ndf/">3D</a> <a href="https://yilundu.github.io/wide_baseline/">perception</a>, <a href="https://yilundu.github.io/obm">memory</a>, and <a href="https://www.andrew.cmu.edu/user/afluo/Neural_Acoustic_Fields/">auditory understanding</a>, which jointly cooperate to make decisions in an environment.
             </p>
 
             <h5 class="subtitle">News</h5>
             <ul>
-                <li>I am looking for academic positions this upcoming year! Feel free to contact me regarding any possible job openings.  </li>
+                <li>I am looking for academic positions this upcoming year! Would love to chat more if you think I would be a good fit for your department.  </li>
                 <li>I gave a recent talk at Nuro summarizing some of my recent works recorded <a href="https://www.youtube.com/watch?v=As93L2pwR-E">here</a>. </li>
                 <li>We are organizing a workshop on <a href="https://sites.google.com/view/fmdm-neurips/">large pretrained models for decision making</a> at NeurIPS 2022. </li>
                 <li>Check out a list of our work on <a href="https://energy-based-model.github.io/">energy-based models!</a></li>
@@ -205,6 +200,31 @@ a:hover{color:#566c7f}
             </p>
 
             <div id="main-pub-card-container" class="hide">
+                <div class="pub-card" data-topic="generative-model" data-year="2023" data-selected="true">
+                    <div class="row">
+                        <div class="col-l col-xs-12 col-lg-3">
+                            <video src="data/projects/debate.m4v" width="100%" playsinline autoplay muted loop preload/>
+                        </div>
+                        <div class="col-r col-xs-12 col-lg-9">
+                            <div class="pub-card-body">
+                                <h5 class="title">Improving Factuality and Reasoning in Language Models through Multiagent Debate</h5>
+                                <h6 class="authors">
+                                    <u>Yilun Du</u>,
+                                    <a href="http://www.mit.edu/~lishuang/">Shuang Li</a>,
+                                    <a href="https://groups.csail.mit.edu/vision/torralbalab/">Antonio Torralba</a>,
+                                    <a href="http://cocosci.mit.edu/josh">Joshua B. Tenenbaum</a>,
+                                    <a>Igor Mordatch</a>
+                                </h6>
+                                <p class="info">
+                                    <span class="conference">ArXiv Preprint</span> /
+                                    <a href="https://composable-models.github.io/llm_debate/">Website</a> /
+                                    <a href="https://arxiv.org/abs/2305.14325">Paper</a> /
+                                    <a href="https://github.com/composable-models/llm_multiagent_debate">Code</a> 
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <div class="pub-card" data-topic="generative-model" data-year="2023" data-selected="true">
                     <div class="row">
                         <div class="col-l col-xs-12 col-lg-3">
@@ -249,31 +269,6 @@ a:hover{color:#566c7f}
                                     <a href="https://cameronosmith.github.io/flowcam/">Website</a> /
                                     <a href="https://arxiv.org/abs/2306.00180">Paper</a> /
                                     <a href="https://github.com/cameronosmith/FlowCam">Code</a> 
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="pub-card" data-topic="generative-model" data-year="2023" data-selected="true">
-                    <div class="row">
-                        <div class="col-l col-xs-12 col-lg-3">
-                            <video src="data/projects/debate.m4v" width="100%" playsinline autoplay muted loop preload/>
-                        </div>
-                        <div class="col-r col-xs-12 col-lg-9">
-                            <div class="pub-card-body">
-                                <h5 class="title">Improving Factuality and Reasoning in Language Models through Multiagent Debate</h5>
-                                <h6 class="authors">
-                                    <u>Yilun Du</u>,
-                                    <a href="http://www.mit.edu/~lishuang/">Shuang Li</a>,
-                                    <a href="https://groups.csail.mit.edu/vision/torralbalab/">Antonio Torralba</a>,
-                                    <a href="http://cocosci.mit.edu/josh">Joshua B. Tenenbaum</a>,
-                                    <a>Igor Mordatch</a>
-                                </h6>
-                                <p class="info">
-                                    <span class="conference">ArXiv Preprint</span> /
-                                    <a href="https://composable-models.github.io/llm_debate/">Website</a> /
-                                    <a href="https://arxiv.org/abs/2305.14325">Paper</a> /
-                                    <a href="https://github.com/composable-models/llm_multiagent_debate">Code</a> 
                                 </p>
                             </div>
                         </div>
@@ -716,7 +711,7 @@ a:hover{color:#566c7f}
                         </div>
                     </div>
                 </div>
-                <div class="pub-card" data-topic="generative-model" data-year="2022" data-selected="true">
+                <div class="pub-card" data-topic="generative-model" data-year="2022" data-selected="false">
                     <div class="row">
                         <div class="col-l col-xs-12 col-lg-3">
                             <img src="data/projects/lm_design.png" width="100%" />
