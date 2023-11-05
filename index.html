@@ -80,6 +80,7 @@ a:hover{color:#566c7f}
 #main-pub-container .subtitle a.activated {color:#333333}
 #main-pub-container .subtitle a.activated:focus,
 #main-pub-container .subtitle a.activated:hover {text-decoration:none;cursor:initial}
+#main-pub-container .move-up-little {margin-top:-0.1cm}
 #main-pub-container .move-up {margin-top:-0.3cm}
 #main-pub-container .move-up-more {margin-top:-0.5cm}
 #main-pub-container .move-down {margin-top:0.8cm}
@@ -333,7 +334,7 @@ a:hover{color:#566c7f}
                         </div>
                     </div>
                 </div>
-                <div class="pub-card" data-topic="generative-model" data-year="2023" data-selected="false">
+                <div class="pub-card" data-topic="generative-model" data-year="2023" data-selected="true">
                     <div class="row">
                         <div class="col-l col-xs-12 col-lg-3">
                             <img src="data/projects/rldiffusion.png" width="100%"/>
@@ -389,10 +390,39 @@ a:hover{color:#566c7f}
                 <div class="pub-card" data-topic="generative-model" data-year="2023" data-selected="false">
                     <div class="row">
                         <div class="col-l col-xs-12 col-lg-3">
+                            <img src="data/projects/diffusebot.gif" width="100%" playsinline autoplay muted loop preload/>
+                        </div>
+                        <div class="col-r col-xs-12 col-lg-9">
+                            <div class="pub-card-body move-up">
+                                <h5 class="title">DiffuseBot: Breeding Soft Robots With Physics-Augmented Generative Diffusion Models</h5>
+                                <h6 class="authors">
+                                    <a href="https://zswang666.github.io/">Tsun-Hsuan Wang</a>,
+                                    <a href="">Juntian Zheng</a>,
+                                    <a href="https://pingchuan.ma/">Pingchuan Ma</a>,
+                                    <u>Yilun Du</u>,
+                                    <a href="https://bc-kim.github.io/">Byungchul Kim</a>,
+                                    <a href="https://www.andrewspielberg.com/">Andrew Spielberg</a>,
+                                    <a href="http://cocosci.mit.edu/josh">Joshua Tenenbaum</a>,
+                                    <a href="https://people.csail.mit.edu/ganchuang/">Chuang Gan</a>,
+                                    <a href="https://danielarus.csail.mit.edu/">Daniela Rus</a>,
+                                </h6>
+                                <p class="info">
+                                    <a href="https://nips.cc/Conferences/2023" class="conference">NeurIPS 2023</a> 
+                                    <span class="highlight">(Oral)</span> /
+                                    <a href="https://diffusebot.github.io/">Website</a> /
+                                    <a href="https://openreview.net/forum?id=1zo4iioUEs">Paper</a> 
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="pub-card" data-topic="generative-model" data-year="2023" data-selected="false">
+                    <div class="row">
+                        <div class="col-l col-xs-12 col-lg-3">
                             <img src="data/projects/replan.png" width="100%" playsinline autoplay muted loop preload/>
                         </div>
                         <div class="col-r col-xs-12 col-lg-9">
-                            <div class="pub-card-body">
+                            <div class="pub-card-body move-up">
                                 <h5 class="title">Adaptive Online Replanning with Diffusion Models</h5>
                                 <h6 class="authors">
                                     <a href="https://openreview.net/profile?id=~Siyuan_Zhou2">Siyuan Zhou</a>,
@@ -501,7 +531,7 @@ a:hover{color:#566c7f}
                             <video src="data/projects/unipi.mp4" width="100%" playsinline autoplay muted loop preload/>
                         </div>
                         <div class="col-r col-xs-12 col-lg-9">
-                            <div class="pub-card-body move-up">
+                            <div class="pub-card-body">
                                 <h5 class="title">Learning Universal Policies via Text-Guided Video Generation</h5>
                                 <h6 class="authors">
                                     <u>Yilun Du*</u>,
@@ -518,6 +548,29 @@ a:hover{color:#566c7f}
                                     <span class="highlight">(Spotlight)</span>  /
                                     <a href="https://universal-policy.github.io/unipi/">Website</a> /
                                     <a href="https://arxiv.org/abs/2302.00111">Paper</a> 
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="pub-card" data-topic="generative-model" data-year="2023" data-selected="false">
+                    <div class="row">
+                        <div class="col-l col-xs-12 col-lg-3">
+                            <img src="data/projects/ebm_ood.png" width="100%" playsinline autoplay muted loop preload/>
+                        </div>
+                        <div class="col-r col-xs-12 col-lg-9">
+                            <div class="pub-card-body">
+                                <h5 class="title">Secure Out-of-Distribution Task Generalization with Energy-Based Models</h5>
+                                <h6 class="authors">
+                                    <a href="https://openreview.net/profile?id=~Shengzhuang_Chen1">Shengzhuang Chen</a>,
+                                    <a href="https://scholar.google.com/citations?user=CaP64WUAAAAJ&hl=en">Long-Kai Huang</a>,
+                                    <a href="https://openreview.net/profile?id=~Jonathan_Richard_Schwarz1">Jonathan Schwarz</a>,
+                                    <u>Yilun Du</u>,
+                                    <a href="https://wei-ying.net/">Ying Wei</a>
+                                </h6>
+                                <p class="info">
+                                    <a href="https://nips.cc/Conferences/2023" class="conference">NeurIPS 2023</a> /
+                                    <a href="https://arxiv.org/abs/2307.12981">Paper</a> 
                                 </p>
                             </div>
                         </div>
@@ -1161,7 +1214,7 @@ a:hover{color:#566c7f}
                         </div>
                     </div>
                 </div>
-                <div class="pub-card" data-topic="perception" data-year="2022" data-selected="true">
+                <div class="pub-card" data-topic="perception" data-year="2022" data-selected="false">
                     <div class="row">
                         <div class="col-l col-xs-12 col-lg-3">
                             <img src="data/projects/dafnet2.png" width="100%" />
@@ -1465,7 +1518,7 @@ a:hover{color:#566c7f}
                         </div>
                     </div>
                 </div>
-                <div class="pub-card" data-topic="generative-model" data-year="2021" data-selected="true">
+                <div class="pub-card" data-topic="generative-model" data-year="2021" data-selected="false">
                     <div class="row">
                         <div class="col-l col-xs-12 col-lg-3">
                             <video src="data/projects/gem_thumbnail.mp4" width="100%" playsinline autoplay muted loop preload/>
@@ -1513,7 +1566,7 @@ a:hover{color:#566c7f}
                         </div>
                     </div>
                 </div>
-                <div class="pub-card" data-topic="generative-model" data-year="2021" data-selected="false">
+                <div class="pub-card" data-topic="generative-model" data-year="2021" data-selected="true">
                     <div class="row">
                         <div class="col-l col-xs-12 col-lg-3">
                             <img src="data/projects/pvd.gif" width="100%" />
@@ -1537,7 +1590,7 @@ a:hover{color:#566c7f}
                         </div>
                     </div>
                 </div>
-                <div class="pub-card" data-topic="perception" data-year="2021" data-selected="true">
+                <div class="pub-card" data-topic="perception" data-year="2021" data-selected="false">
                     <div class="row">
                         <div class="col-l col-xs-12 col-lg-3">
                             <img src="data/projects/crl.png" width="100%" />
