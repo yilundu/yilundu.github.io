@@ -83,10 +83,12 @@ a:hover{color:#566c7f}
 #main-pub-container .move-up-little {margin-top:-0.1cm}
 #main-pub-container .move-up {margin-top:-0.3cm}
 #main-pub-container .move-up-more {margin-top:-0.5cm}
+#main-pub-container .move-up-huge {margin-top:-1.0cm}
 #main-pub-container .move-down-large {margin-top:0.9cm}
 #main-pub-container .move-down {margin-top:0.8cm}
 #main-pub-container .move-down-little {margin-top:0.4cm}
 #main-pub-container .move-down-mid {margin-top:0.6cm}
+#main-pub-container .move-down-huge {margin-top:1.5cm}
 
 #main-pub-container .subtitle-aux {font-size:1rem}
 #main-pub-container .subtitle-aux a.activated {color:#333333}
@@ -98,6 +100,17 @@ a:hover{color:#566c7f}
 #main-pub-card-container>h5{margin-bottom: 20px}
 #main-pub-card-container .pub-card{width: 100%;padding-bottom:15px;font-size:1rem}
 #main-pub-card-container .pub-card .col-l{text-align:center;padding-top:10px}
+#main-pub-card-container .pub-card .col-l {
+    display: flex;          /* make the left column a flex container */
+    align-items: center;    /* vertically center its contents */
+}
+
+#main-pub-card-container .pub-card .col-l img {
+    display: block;         /* avoid extra baseline spacing */
+    max-width: 100%;
+}
+
+
 #main-pub-card-container .pub-card .col-r{padding-top:10px}
 #main-pub-card-container .pub-card img{width:100%;margin:0 auto}
 #main-pub-card-container .pub-card-body{width:100%;background:transparent;padding-left:0px}
@@ -328,7 +341,7 @@ a:hover{color:#566c7f}
                         </div>
                     </div>
                 </div>
-                <div class="pub-card" data-topic="control" data-year="2026" data-selected="true">
+                <div class="pub-card" data-topic="generative-model" data-year="2026" data-selected="true">
                     <div class="row">
                         <div class="col-l col-xs-12 col-lg-3">
                             <!-- Add a thumbnail here, e.g. crop from their framework figure -->
@@ -342,19 +355,148 @@ a:hover{color:#566c7f}
                                 <h6 class="authors">
                                     <a href="https://haldunbalim.github.io/">Haldun Balim</a>,
                                     <a href="https://nali.seas.harvard.edu/">Na Li</a>,
-                                    <u><a href="https://yilundu.github.io/">Yilun Du</a></u>
+                                    <u>Yilun Du</u>
                                 </h6>
                                 <p class="info">
-                                    <a href="https://arxiv.org/abs/2512.08280" class="conference">ICML 2026</a> /
-                                    <a href="https://arxiv.org/abs/2512.08280" target="_blank">arXiv</a> /
-                                    <a href="https://arxiv.org/pdf/2512.08280.pdf" target="_blank">Paper</a> /
-                                    <a href="https://anonymous.4open.science/r/MPD-Submission-126B" target="_blank">Code</a>
+                                    <a href="https://icml.cc/" class="conference">ICML 2026</a> /
+                                    <a href="https://arxiv.org/pdf/2512.08280.pdf" target="_blank">Paper</a> 
                                 </p>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="pub-card" data-topic="llm-eval" data-year="2026" data-selected="false">
+                <div class="pub-card" data-topic="world-model" data-year="2026" data-selected="true">
+                    <div class="row">
+                        <div class="col-l col-xs-12 col-lg-3">
+                            <!-- Add a thumbnail here, e.g. crop from their model/teaser figure -->
+                            <img src="data/projects/flowwm.png" width="100%" />
+                        </div>
+                        <div class="col-r col-xs-12 col-lg-9">
+                            <div class="pub-card-body move-down-little">
+                                <h5 class="title">
+                                    Flow Equivariant World Models: Memory for Partially Observed Dynamic Environments
+                                </h5>
+                                <h6 class="authors">
+                                    <a href="https://hansenlillemark.com/">Hansen Jin Lillemark</a>,
+                                    <a href="https://huskydoge.github.io/">Benhao Huang</a>,
+                                    <a href="https://fnzhan.com/">Fangneng Zhan</a>,
+                                    <u>Yilun Du</u>,
+                                    <a href="https://akandykeller.github.io/">T. Anderson Keller</a>
+                                </h6>
+                                <p class="info">
+                                    <a href="https://icml.cc/" class="conference">ICML 2026</a> /
+                                    <a href="https://flowequivariantworldmodels.github.io/" target="_blank">Website</a> /
+                                    <a href="https://arxiv.org/pdf/2601.01075.pdf" target="_blank">Paper</a> /
+                                    <a href="https://github.com/hlillemark/flowm" target="_blank">Code</a> /
+                                    <a href="https://huggingface.co/collections/hlillemark/flowm-6765ff9dfb20524fdbddfd5d" target="_blank">Models &amp; Datasets</a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="pub-card" data-topic="rl" data-year="2026" data-selected="true">
+                    <div class="row">
+                        <div class="col-l col-xs-12 col-lg-3">
+                            <!-- Add a thumbnail here, e.g. crop from their TTGS framework figure -->
+                            <img src="data/projects/ttgs.png" width="100%" />
+                        </div>
+                        <div class="col-r col-xs-12 col-lg-9">
+                            <div class="pub-card-body">
+                                <h5 class="title">Test-Time Graph Search for Goal-Conditioned Reinforcement Learning</h5>
+                                <h6 class="authors">
+                                    <a href="https://ktolnos.github.io/">Evgenii Opryshko*</a>,
+                                    <a href="">Junwei Quan*</a>,
+                                    <a href="https://cvoelcker.de/">Claas Voelcker</a>,
+                                    <u><a href="https://yilundu.github.io/">Yilun Du</a></u>,
+                                    <a href="https://www.gilitschenski.org/">Igor Gilitschenski</a>
+                                </h6>
+                                <p class="info">
+                                    <a href="https://icml.cc/" class="conference">ICML 2026</a> /
+                                    <a href="https://ktolnos.github.io/ttgs/" target="_blank">Website</a> /
+                                    <a href="https://arxiv.org/pdf/2510.07257.pdf" target="_blank">Paper</a> /
+                                    <a href="https://github.com/ktolnos/TTGS" target="_blank">Code</a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="pub-card" data-topic="video-reasoning" data-year="2026" data-selected="true">
+                    <div class="row">
+                        <div class="col-l col-xs-12 col-lg-3 move-down-huge">
+                            <img src="data/projects/vbvr.png" width="100%" />
+                        </div>
+                        <div class="col-r col-xs-12 col-lg-9">
+                            <div class="pub-card-body">
+                                <h5 class="title">A Very Big Video Reasoning Suite</h5>
+                                <h6 class="authors">
+                                    <a href="https://mjxwang.github.io/Maijunxian-Wang-s-Personal-Website-1-/">Maijunxian Wang</a>,
+                                    <a href="https://www.wruisi.com/">Ruisi Wang</a>,
+                                    <a href="">Juyi Lin</a>,
+                                    <a href="">Ran Ji</a>,
+                                    <a href="">Thaddaus Wiedemer</a>,
+                                    <a href="">Qingying Gao</a>,
+                                    <a href="">Dezhi Luo</a>,
+                                    <a href="">Yaoyao Qian</a>,
+                                    <a href="">Lianyu Huang</a>,
+                                    <a href="">Zelong Hong</a>,
+                                    <a href="">Jiahui Ge</a>,
+                                    <a href="">Qianli Ma</a>,
+                                    <a href="">Hang He</a>,
+                                    <a href="">Yifan Zhou</a>,
+                                    <a href="">Lingzi Guo</a>,
+                                    <a href="">Lantao Mei</a>,
+                                    <a href="">Jiachen Li</a>,
+                                    <a href="">Hanwen Xing</a>,
+                                    <a href="">Tianqi Zhao</a>,
+                                    <a href="">Fengyuan Yu</a>,
+                                    <a href="">Weihang Xiao</a>,
+                                    <a href="">Yizheng Jiao</a>,
+                                    <a href="">Jianheng Hou</a>,
+                                    <a href="">Danyang Zhang</a>,
+                                    <a href="">Pengcheng Xu</a>,
+                                    <a href="">Boyang Zhong</a>,
+                                    <a href="">Zehong Zhao</a>,
+                                    <a href="">Gaoyun Fang</a>,
+                                    <a href="">John Kitaoka</a>,
+                                    <a href="">Yile Xu</a>,
+                                    <a href="">Hua Xu</a>,
+                                    <a href="">Kenton Blacutt</a>,
+                                    <a href="">Tin Nguyen</a>,
+                                    <a href="">Siyuan Song</a>,
+                                    <a href="">Haoran Sun</a>,
+                                    <a href="">Shaoyue Wen</a>,
+                                    <a href="">Linyang He</a>,
+                                    <a href="">Runming Wang</a>,
+                                    <a href="">Yanzhi Wang</a>,
+                                    <a href="">Mengyue Yang</a>,
+                                    <a href="">Ziqiao Ma</a>,
+                                    <a href="https://raphaelmilliere.com/">Raphaël Millière</a>,
+                                    <a href="https://cs.uwaterloo.ca/~fhs/">Freda Shi</a>,
+                                    <a href="https://vision.ucsd.edu/people/vasconcelos">Nuno Vasconcelos</a>,
+                                    <a href="https://danielkhashabi.com/">Daniel Khashabi</a>,
+                                    <a href="https://www.cs.jhu.edu/~ayuille/">Alan Yuille</a>,
+                                    <u>Yilun Du</u>,
+                                    <a href="https://kindxiaoming.github.io/">Ziming Liu</a>,
+                                    <a href="https://publish.illinois.edu/boli-uiuc/">Bo Li</a>,
+                                    <a href="">Dahua Lin</a>,
+                                    <a href="https://liuziwei7.github.io/">Ziwei Liu</a>,
+                                    <a href="https://vikashplus.github.io/">Vikash Kumar</a>,
+                                    <a href="">Yijiang Li</a>,
+                                    <a href="">Lei Yang</a>,
+                                    <a href="https://caizhongang.com/">Zhongang Cai</a>,
+                                    <a href="https://hokindeng.github.io/">Hokin Deng</a>
+                                </h6>
+                                <p class="info">
+                                    <a href="https://icml.cc/" class="conference">ICML 2026</a> /
+                                    <a href="https://video-reason.com/" target="_blank">Website</a> /
+                                    <a href="https://arxiv.org/pdf/2602.20159.pdf" target="_blank">Paper</a> /
+                                    <a href="https://github.com/Video-Reason/VBVR-DataFactory" target="_blank">Code</a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="pub-card" data-topic="generative-model" data-year="2026" data-selected="false">
                     <div class="row">
                         <div class="col-l col-xs-12 col-lg-3">
                             <!-- Add a thumbnail here, e.g. crop from a key figure in the paper -->
@@ -371,7 +513,7 @@ a:hover{color:#566c7f}
                                     <a href="https://wang.hms.harvard.edu/">Mengyu Wang</a>
                                 </h6>
                                 <p class="info">
-                                    <a href="https://arxiv.org/abs/2601.05414" class="conference">ACL 2026</a> /
+                                    <a href="https://2026.aclweb.org/" class="conference">ACL 2026</a> /
                                     <a href="https://arxiv.org/pdf/2601.05414.pdf" target="_blank">Paper</a> /
                                     <a href="https://github.com/Mininda/LLM_Bad_Dice_Player" target="_blank">Code</a>
                                 </p>
