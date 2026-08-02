@@ -634,7 +634,7 @@ a:hover {
         <ul class="news-list">
           <li><span class="news-date">[2026]</span> I'm recruiting PhD students for the December 2026 application cycle through the <a href="https://embodied-minds-lab.github.io/" target="_blank" rel="noreferrer noopener">Embodied Minds Lab</a>.</li>
           <li><span class="news-date">[2026]</span> We are organizing the ICML 2026 workshop on <a href="https://compositional-learning.github.io/" target="_blank" rel="noreferrer noopener">compositional learning</a>!</li>
-          <li><span class="news-date">[Talk]</span> I presented compositional world models for embodied intelligence at the Kempner Frontiers of NeuroAI Symposium. Watch the <a href="https://www.youtube.com/watch?v=UKbLBOuHQ-0" target="_blank" rel="noreferrer noopener">talk</a> here!</li>
+          <li><span class="news-date">[Talk]</span> Presented compositional world models for embodied intelligence at the Kempner Frontiers of NeuroAI Symposium. Watch the <a href="https://www.youtube.com/watch?v=UKbLBOuHQ-0" target="_blank" rel="noreferrer noopener">talk</a>.</li>
           <li><span class="news-date">[PhD]</span> Defended my PhD at MIT EECS. View the <a href="https://www.youtube.com/watch?v=7jvWDF6ZXPc" target="_blank" rel="noreferrer noopener">defense</a> or read the <a href="https://yilundu.github.io/thesis.pdf" target="_blank" rel="noreferrer noopener">thesis</a>.</li>
         </ul>
       </section>
@@ -3061,9 +3061,38 @@ a:hover {
     const loadMore = document.getElementById("load-more");
     const searchInput = document.getElementById("publication-search");
     const yearSelect = document.getElementById("publication-year");
+    const publicationVideos = Array.from(list.querySelectorAll(".publication-card video"));
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
     const state = {view: "selected", query: "", topic: "all", year: "all", visible: 12};
     const supportsAutoLoad = "IntersectionObserver" in window;
     let autoLoadObserver = null;
+    let videoObserver = null;
+    const visibleVideos = new Set();
+
+    function playVideoPreview(video) {
+      const card = video.closest(".publication-card");
+      if (document.hidden || reducedMotion.matches || !card || card.hidden) return;
+
+      // Muted inline playback is required for reliable autoplay on mobile browsers.
+      video.muted = true;
+      video.defaultMuted = true;
+      video.playsInline = true;
+      video.loop = true;
+      const playRequest = video.play();
+      if (playRequest) playRequest.catch(() => {});
+    }
+
+    function pauseVideoPreview(video) {
+      video.pause();
+    }
+
+    function updateVideoMotionPreference() {
+      if (reducedMotion.matches) {
+        publicationVideos.forEach(pauseVideoPreview);
+      } else {
+        visibleVideos.forEach(playVideoPreview);
+      }
+    }
 
     function filteredCards() {
       const query = state.query.trim().toLowerCase();
@@ -3089,6 +3118,13 @@ a:hover {
       loadMore.hidden = supportsAutoLoad || !hasMore;
       loadSentinel.hidden = !supportsAutoLoad || !hasMore;
 
+      publicationVideos.forEach(video => {
+        if (video.closest(".publication-card").hidden) {
+          visibleVideos.delete(video);
+          pauseVideoPreview(video);
+        }
+      });
+
       if (autoLoadObserver) {
         autoLoadObserver.unobserve(loadSentinel);
         if (hasMore) {
@@ -3104,6 +3140,50 @@ a:hover {
         state.visible += 12;
         renderArchive();
       }, {rootMargin: "0px 0px 600px 0px"});
+
+      videoObserver = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          const video = entry.target;
+          if (entry.isIntersecting && entry.intersectionRatio >= 0.25) {
+            visibleVideos.add(video);
+            playVideoPreview(video);
+          } else {
+            visibleVideos.delete(video);
+            pauseVideoPreview(video);
+          }
+        });
+      }, {threshold: [0, 0.25, 0.75]});
+
+      publicationVideos.forEach(video => {
+        video.muted = true;
+        video.defaultMuted = true;
+        video.playsInline = true;
+        video.loop = true;
+        video.preload = "none";
+        videoObserver.observe(video);
+      });
+    } else {
+      publicationVideos.forEach(video => {
+        video.muted = true;
+        video.defaultMuted = true;
+        video.playsInline = true;
+        video.loop = true;
+        video.autoplay = !reducedMotion.matches;
+      });
+    }
+
+    document.addEventListener("visibilitychange", () => {
+      if (document.hidden) {
+        publicationVideos.forEach(pauseVideoPreview);
+      } else {
+        visibleVideos.forEach(playVideoPreview);
+      }
+    });
+
+    if (typeof reducedMotion.addEventListener === "function") {
+      reducedMotion.addEventListener("change", updateVideoMotionPreference);
+    } else {
+      reducedMotion.addListener(updateVideoMotionPreference);
     }
 
     document.querySelectorAll(".view-switch button").forEach(button => button.addEventListener("click", () => {
