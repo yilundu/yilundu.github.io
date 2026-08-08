@@ -3,16 +3,16 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>Yilun Du | Embodied Intelligence &amp; Generative Models</title>
-  <meta name="description" content="Yilun Du is an Assistant Professor at Harvard developing generative models, reasoning systems, and robot-learning methods for embodied intelligence.">
-  <meta name="keywords" content="Yilun Du, generative models, world models, embodied intelligence, reasoning, search, multi-agent systems, robot learning, 3D perception">
+  <title>Yilun Du | Generative Models for Reasoning &amp; Embodied Intelligence</title>
+  <meta name="description" content="Yilun Du is a Harvard professor developing iterative generative inference for reasoning, decision-making, embodied intelligence, and multi-agent systems.">
+  <meta name="keywords" content="Yilun Du, energy-based models, Langevin dynamics, diffusion models, diffusion planning, video world models, embodied intelligence, robot learning, multi-agent debate, compositional reasoning, test-time compute">
   <meta name="author" content="Yilun Du">
   <meta name="theme-color" content="#ffffff">
   <link rel="canonical" href="https://yilundu.github.io/">
   <link rel="icon" href="https://yilundu.github.io/static/img/favicon.ico">
   <meta property="og:type" content="profile">
-  <meta property="og:title" content="Yilun Du | Embodied Intelligence &amp; Generative Models">
-  <meta property="og:description" content="Research in generative and world models, reasoning and search, embodied intelligence, multi-agent systems, and multimodal understanding.">
+  <meta property="og:title" content="Yilun Du | Generative Models for Reasoning &amp; Embodied Intelligence">
+  <meta property="og:description" content="Research on iterative generative inference&mdash;from energy-based generation and diffusion planning to embodied and multi-agent intelligence.">
   <meta property="og:url" content="https://yilundu.github.io/">
   <meta property="og:image" content="https://yilundu.github.io/images/yilun8.png">
   <meta name="twitter:card" content="summary">
@@ -692,7 +692,7 @@ a:hover {
       <div class="profile-details">
         <h1>Yilun Du</h1>
         <p class="role-line">Assistant Professor · Harvard University</p>
-        <p class="research-tagline">Compositional world models for reasoning and embodied intelligence.</p>
+        <p class="research-tagline">Iterative generative inference for reasoning, decision-making, and embodied intelligence.</p>
         <div class="contact-lines">
           <p>Email: ydu [at] seas [dot] harvard [dot] edu</p>
           <p>Twitter: <a href="https://twitter.com/du_yilun" target="_blank" rel="noreferrer noopener">@du_yilun</a></p>
@@ -710,10 +710,10 @@ a:hover {
 
     <main id="main-content" class="main-content">
       <section class="content-section bio-section" id="about">
-        <p>I am an Assistant Professor at Harvard in the <a href="https://kempnerinstitute.harvard.edu/" target="_blank" rel="noreferrer noopener">Kempner Institute</a> and Computer Science, where I run the <a href="https://embodied-minds-lab.github.io/" target="_blank" rel="noreferrer noopener">Embodied Minds Lab</a>. I am also a part-time research scientist at <a href="https://research.nvidia.com/labs/avg/#about" target="_blank" rel="noreferrer noopener">NVIDIA Research</a>.</p>
-        <p>I received my PhD from MIT EECS, advised by Leslie Kaelbling, Tomas Lozano-Perez, and Joshua B. Tenenbaum. Previously, I was a research fellow at OpenAI and a senior research scientist at Google DeepMind.</p>
-        <p>My research aims to build intelligent decision-making systems that generalize reliably beyond their training distributions. I develop compositional generative models of the world, with a particular focus on <a href="https://arxiv.org/abs/1903.08689" target="_blank" rel="noreferrer noopener">energy-based models (EBMs)</a>, which encode knowledge as learned energy landscapes and provide a natural interface for composing concepts and constraints. On top of these world models, I frame reasoning and decision making as probabilistic inference, using search and planning to combine knowledge, imagine possible futures, and adapt to new goals and situations.</p>
-        <p>Representative work includes <a href="https://arxiv.org/abs/2402.01103" target="_blank" rel="noreferrer noopener">compositional generative modeling</a>, <a href="https://video-language-planning.github.io/" target="_blank" rel="noreferrer noopener">video-language planning</a>, <a href="https://arxiv.org/abs/2205.09991" target="_blank" rel="noreferrer noopener">planning with generative models</a>, <a href="https://aakaran.github.io/reasoning_with_sampling/" target="_blank" rel="noreferrer noopener">reasoning through sampling</a>, and <a href="https://alexoarga.github.io/compositional_reasoning/" target="_blank" rel="noreferrer noopener">compositional reasoning</a>. I am also interested in decentralized decision-making systems and multi-agent reasoning, including <a href="https://composable-models.github.io/llm_debate/" target="_blank" rel="noreferrer noopener">multi-agent debate</a> and <a href="https://arxiv.org/abs/2606.02859" target="_blank" rel="noreferrer noopener">economies of interacting agents</a>.</p>
+        <p>I am an Assistant Professor at Harvard in the <a href="https://kempnerinstitute.harvard.edu/" target="_blank" rel="noreferrer noopener">Kempner Institute</a> and Computer Science, where I run the <a href="https://embodied-minds-lab.github.io/" target="_blank" rel="noreferrer noopener">Embodied Minds Lab</a>. I am also a part-time research scientist at <a href="https://research.nvidia.com/labs/avg/#about" target="_blank" rel="noreferrer noopener">NVIDIA Research</a>. I received my PhD from MIT EECS, advised by Leslie Kaelbling, Tomas Lozano-Perez, and Joshua B. Tenenbaum; previously, I was a research fellow at OpenAI and a senior research scientist at Google DeepMind.</p>
+        <p>My research asks how intelligent systems can solve unfamiliar problems by iteratively generating, evaluating, and refining possible solutions. Instead of relying on a single feedforward prediction, I build generative models of possible futures, actions, and paths of reasoning, and use inference-time computation&mdash;including sampling, energy minimization, search, planning, and interaction&mdash;to adapt them to new goals. My long-term vision is to build compositional world models that support reliable reasoning and action in open-ended physical and multi-agent environments.</p>
+        <p>My work has helped shape several parts of this agenda. Early work on <a href="https://arxiv.org/abs/1903.08689" target="_blank" rel="noreferrer noopener">deep energy-based models</a> demonstrated scalable high-dimensional generation, refinement, and composition using Langevin dynamics, contributing to renewed interest in energy-based generative modeling; subsequent work showed how <a href="https://energy-based-model.github.io/compositional-generation-inference/" target="_blank" rel="noreferrer noopener">energy functions</a> and <a href="https://energy-based-model.github.io/Compositional-Visual-Generation-with-Composable-Diffusion-Models/" target="_blank" rel="noreferrer noopener">diffusion models</a> can be composed. <a href="https://diffusion-planning.github.io/" target="_blank" rel="noreferrer noopener">Diffuser</a> and <a href="https://diffusion-policy.cs.columbia.edu/" target="_blank" rel="noreferrer noopener">Diffusion Policy</a> helped establish diffusion models as tools for planning, decision-making, and robot control. <a href="https://universal-policy.github.io/unipi/" target="_blank" rel="noreferrer noopener">UniPi</a> was an early demonstration that text-conditioned video generation could serve as a policy for control. Our work on <a href="https://composable-models.github.io/llm_debate/" target="_blank" rel="noreferrer noopener">multi-agent debate</a> helped establish iterative interaction among language models as an inference-time strategy for improving reasoning and factuality.</p>
+        <p>Across these projects, the common principle is that intelligence can emerge through structured, iterative inference&mdash;over pixels, trajectories, possible futures, and the reasoning of other agents. My lab is extending this principle to <a href="https://arxiv.org/abs/2402.01103" target="_blank" rel="noreferrer noopener">compositional world models</a>, <a href="https://aakaran.github.io/reasoning_with_sampling/" target="_blank" rel="noreferrer noopener">continuous reasoning</a>, <a href="https://video-language-planning.github.io/" target="_blank" rel="noreferrer noopener">long-horizon embodied planning</a>, and <a href="https://arxiv.org/abs/2606.02859" target="_blank" rel="noreferrer noopener">economies of interacting agents</a>.</p>
       </section>
 
       <section class="content-section" id="news">
@@ -728,12 +728,12 @@ a:hover {
       </section>
 
       <section class="content-section" id="research">
-        <h2>Research Themes</h2>
+        <h2>Research Vision</h2>
         <ul class="research-list">
-          <li><a class="research-topic-link" href="#publications" data-topic-link="generative-model"><strong>Compositional World Models:</strong></a> learning generative models&mdash;especially EBMs and diffusion models&mdash;that represent worlds, concepts, and constraints compositionally.</li>
-          <li><a class="research-topic-link" href="#publications" data-topic-link="reasoning"><strong>Reasoning &amp; Planning:</strong></a> using inference, sampling, search, and planning to combine knowledge and adapt to new tasks.</li>
-          <li><a class="research-topic-link" href="#publications" data-topic-link="world-embodied"><strong>Embodied Intelligence:</strong></a> grounding world models in perception and action for robotics and interactive decision making.</li>
-          <li><a class="research-topic-link" href="#publications" data-topic-link="multi-agent"><strong>Multi-Agent Intelligence:</strong></a> developing decentralized systems that coordinate, verify, reason, and improve collectively.</li>
+          <li><a class="research-topic-link" href="#publications" data-topic-link="generative-model"><strong>Iterative Generative Inference:</strong></a> learning energy-based, diffusion, and related generative models that solve problems through sampling, refinement, and search.</li>
+          <li><a class="research-topic-link" href="#publications" data-topic-link="reasoning"><strong>Compositional Reasoning &amp; Planning:</strong></a> combining models, concepts, and constraints to solve unfamiliar problems across discrete and continuous domains.</li>
+          <li><a class="research-topic-link" href="#publications" data-topic-link="world-embodied"><strong>Generative Decision-Making &amp; Embodied Intelligence:</strong></a> using trajectory and video models to imagine futures, plan actions, and control robots.</li>
+          <li><a class="research-topic-link" href="#publications" data-topic-link="multi-agent"><strong>Collective &amp; Multi-Agent Intelligence:</strong></a> building systems of interacting agents that debate, verify, coordinate, and improve collectively.</li>
         </ul>
       </section>
 
