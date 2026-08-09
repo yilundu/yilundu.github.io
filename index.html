@@ -4,30 +4,41 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Yilun Du | Generative Models for Reasoning &amp; Embodied Intelligence</title>
-  <meta name="description" content="Yilun Du is a Harvard professor developing iterative generative inference for reasoning, decision-making, embodied intelligence, and multi-agent systems.">
+  <meta name="description" content="Yilun Du is an assistant professor at Harvard developing generative models for reasoning, planning, embodied intelligence, and multi-agent systems.">
   <meta name="keywords" content="Yilun Du, energy-based models, Langevin dynamics, diffusion models, diffusion planning, video world models, embodied intelligence, robot learning, multi-agent debate, compositional reasoning, test-time compute">
   <meta name="author" content="Yilun Du">
   <meta name="theme-color" content="#ffffff">
+  <meta name="color-scheme" content="light">
   <link rel="canonical" href="https://yilundu.github.io/">
   <link rel="icon" href="https://yilundu.github.io/static/img/favicon.ico">
   <meta property="og:type" content="profile">
   <meta property="og:title" content="Yilun Du | Generative Models for Reasoning &amp; Embodied Intelligence">
-  <meta property="og:description" content="Research on iterative generative inference&mdash;from energy-based generation and diffusion planning to embodied and multi-agent intelligence.">
+  <meta property="og:description" content="Research on generative models that solve new problems through iterative inference, from compositional reasoning to embodied and multi-agent intelligence.">
   <meta property="og:url" content="https://yilundu.github.io/">
   <meta property="og:image" content="https://yilundu.github.io/images/yilun8.png">
+  <meta property="og:image:alt" content="Portrait of Yilun Du">
   <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Yilun Du | Generative Models for Reasoning &amp; Embodied Intelligence">
+  <meta name="twitter:description" content="Generative models for reasoning, planning, and intelligent action.">
+  <meta name="twitter:image" content="https://yilundu.github.io/images/yilun8.png">
   <style>:root {
   --page-bg: #ffffff;
   --content-bg: #ffffff;
+  --surface: #f5f8f7;
+  --surface-strong: #edf3f1;
   --footer-bg: #ffffff;
-  --text: #333333;
-  --muted: #666666;
-  --quiet: #737373;
-  --heading: #566c7f;
-  --link: #4e613e;
-  --line: #dddddd;
-  --soft-line: #e8e8e8;
-  --font: var(--font-geist-sans), "Source Sans Pro", Helvetica, Arial, sans-serif;
+  --text: #283238;
+  --muted: #5e6a70;
+  --quiet: #68747a;
+  --heading: #244252;
+  --link: #356b58;
+  --link-hover: #244d40;
+  --accent: #356b58;
+  --line: #d9e2df;
+  --soft-line: #e7ecea;
+  --shadow: none;
+  --font: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  --display-font: Iowan Old Style, Palatino Linotype, Book Antiqua, Georgia, serif;
 }
 
 * {
@@ -50,8 +61,8 @@ body {
   background: var(--page-bg);
   color: var(--text);
   font-family: var(--font);
-  font-size: 17px;
-  line-height: 1.52;
+  font-size: 16px;
+  line-height: 1.58;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
 }
@@ -79,8 +90,10 @@ a {
 }
 
 a:hover {
-  color: var(--heading);
+  color: var(--link-hover);
   text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
 }
 
 :focus-visible {
@@ -106,7 +119,8 @@ a:hover {
   top: 8px;
   left: 8px;
   transform: translateY(-160%);
-  background: #333333;
+  border-radius: 7px;
+  background: #1f2a2f;
   color: #ffffff;
   padding: 8px 12px;
 }
@@ -116,78 +130,119 @@ a:hover {
 }
 
 .page-shell {
-  width: min(1080px, calc(100% - 32px));
-  margin: 24px auto 0;
+  width: min(1040px, calc(100% - 40px));
+  margin: 0 auto;
+  overflow: visible;
+  border: 0;
+  border-radius: 0;
   background: var(--content-bg);
+  box-shadow: none;
 }
 
 .profile-header {
-  min-height: 215px;
+  min-height: 0;
   display: grid;
-  grid-template-columns: 190px minmax(0, 600px);
-  justify-content: center;
-  gap: 32px;
+  grid-template-columns: 144px minmax(0, 1fr);
+  justify-content: stretch;
+  gap: 30px;
   align-items: center;
   background: var(--content-bg);
-  padding: 28px 36px;
+  padding: 36px 56px 32px;
 }
 
 .avatar {
-  width: 170px;
-  height: 170px;
-  justify-self: end;
+  width: 136px;
+  height: 136px;
+  justify-self: start;
   border-radius: 50%;
   object-fit: cover;
-  box-shadow: 0 0 0 5px #ffffff;
+  border: 0;
+  box-shadow: none;
+}
+
+.profile-kicker {
+  margin: 0 0 3px;
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0;
+  text-transform: none;
 }
 
 .profile-details h1 {
-  margin: 0 0 3px;
+  margin: 0 0 2px;
   color: var(--heading);
-  font-size: 34px;
-  font-weight: 500;
+  font-family: var(--display-font);
+  font-size: clamp(36px, 4vw, 42px);
+  font-weight: 600;
   letter-spacing: -0.02em;
-  line-height: 1.2;
+  line-height: 1.08;
 }
 
 .role-line {
-  margin: 0 0 2px;
+  margin: 0 0 14px;
   color: var(--muted);
-  font-size: 16px;
+  font-size: 15px;
 }
 
 .research-tagline {
-  margin: 0 0 12px;
+  max-width: 650px;
+  margin: 0 0 14px;
   color: var(--text);
-  font-size: 15px;
-  line-height: 1.4;
+  font-size: 17.5px;
+  font-weight: 480;
+  line-height: 1.42;
 }
 
-.contact-lines {
-  color: var(--muted);
-  font-size: 15px;
-  line-height: 1.48;
+.profile-links {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 7px 17px;
+  font-size: 14px;
+  font-weight: 650;
 }
 
-.contact-lines p {
-  margin: 1px 0;
+.profile-links a {
+  position: relative;
+}
+
+.profile-links a:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: -9px;
+  width: 2px;
+  height: 2px;
+  border-radius: 50%;
+  background: #a5afab;
+}
+
+.email-line {
+  margin: 9px 0 0;
+  color: var(--quiet);
+  font-size: 13px;
 }
 
 .simple-nav {
+  position: static;
   display: flex;
   flex-wrap: wrap;
   gap: 0;
   border-top: 1px solid var(--line);
-  border-bottom: 1px solid var(--soft-line);
+  border-bottom: 1px solid var(--line);
   background: var(--content-bg);
-  padding: 9px 32px;
-  justify-content: center;
+  padding: 10px 56px;
+  justify-content: flex-start;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
 }
 
 .simple-nav a {
   color: var(--muted);
-  font-size: 14px;
-  font-weight: 600;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.01em;
 }
 
 .simple-nav a + a::before {
@@ -198,7 +253,7 @@ a:hover {
 }
 
 .main-content {
-  padding: 32px 36px 52px;
+  padding: 48px 56px 68px;
 }
 
 .content-section {
@@ -206,13 +261,14 @@ a:hover {
 }
 
 .content-section + .content-section {
-  margin-top: 36px;
+  margin-top: 54px;
 }
 
 .bio-section {
-  color: #3f3f3f;
-  font-size: 17px;
-  line-height: 1.6;
+  max-width: 890px;
+  color: #39454a;
+  font-size: 16px;
+  line-height: 1.68;
 }
 
 .bio-section p {
@@ -223,12 +279,127 @@ a:hover {
   margin-bottom: 0;
 }
 
-.content-section h2 {
-  margin: 0 0 12px;
+.bio-lead {
+  max-width: 850px;
   color: var(--heading);
-  font-size: 21px;
+  font-family: var(--display-font);
+  font-size: clamp(21px, 2.6vw, 24px);
+  font-weight: 500;
+  letter-spacing: -0.018em;
+  line-height: 1.38;
+}
+
+.content-section h2 {
+  margin: 0 0 15px;
+  color: var(--heading);
+  font-family: var(--display-font);
+  font-size: 27px;
   font-weight: 600;
-  line-height: 1.3;
+  letter-spacing: -0.025em;
+  line-height: 1.2;
+}
+
+.section-heading-row {
+  display: block;
+  max-width: 890px;
+  margin-bottom: 22px;
+}
+
+.section-heading-row h2 {
+  margin-bottom: 12px;
+}
+
+.research-introduction p {
+  margin: 0;
+  color: #39454a;
+  font-size: 16px;
+  line-height: 1.68;
+}
+
+.research-program-title {
+  margin-bottom: 7px !important;
+  color: var(--heading) !important;
+  font-family: var(--display-font);
+  font-size: 21px !important;
+  font-weight: 600;
+  line-height: 1.35 !important;
+}
+
+.research-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0 36px;
+}
+
+.research-card {
+  position: relative;
+  min-height: 0;
+  overflow: visible;
+  border: 0;
+  border-top: 1px solid var(--line);
+  border-radius: 0;
+  background: transparent;
+  padding: 18px 0 20px;
+}
+
+.research-card h3 {
+  position: relative;
+  z-index: 1;
+  margin: 0 0 8px;
+  color: var(--heading);
+  font-size: 18px;
+  line-height: 1.35;
+}
+
+.research-card > p {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.62;
+}
+
+.research-card .representative-work {
+  margin-top: 11px;
+  border-top: 0;
+  padding-top: 0;
+  color: var(--quiet);
+  font-size: 14px;
+  line-height: 1.58;
+}
+
+.representative-work strong {
+  color: var(--muted);
+  font-weight: 700;
+}
+
+.research-topic-link {
+  color: inherit;
+}
+
+.research-topic-link::after {
+  content: none;
+}
+
+.research-topic-link:hover,
+.research-topic-link.active {
+  color: var(--link);
+}
+
+.research-synthesis {
+  max-width: 890px;
+  margin: 14px 0 0;
+  border-left: 0;
+  background: transparent;
+  padding: 0;
+  color: var(--muted);
+  font-size: 16px;
+  line-height: 1.68;
+}
+
+.research-synthesis strong {
+  color: var(--heading);
 }
 
 .news-list,
@@ -244,6 +415,8 @@ a:hover {
 }
 
 .news-date {
+  display: inline-block;
+  min-width: 61px;
   color: var(--quiet);
   font-size: 13px;
   white-space: nowrap;
@@ -251,10 +424,11 @@ a:hover {
 
 .publications-title-row {
   display: flex;
-  align-items: baseline;
+  align-items: center;
+  justify-content: space-between;
   flex-wrap: wrap;
-  gap: 8px;
-  margin-bottom: 7px;
+  gap: 12px;
+  margin-bottom: 16px;
 }
 
 .publications-title-row h2 {
@@ -264,9 +438,13 @@ a:hover {
 .view-switch {
   display: inline-flex;
   align-items: center;
-  gap: 5px;
+  gap: 12px;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  padding: 0;
   color: var(--muted);
-  font-size: 14px;
+  font-size: 13px;
 }
 
 .view-switch button,
@@ -275,69 +453,88 @@ a:hover {
 .load-more {
   border: 0;
   background: transparent;
-  padding: 0;
   color: var(--link);
 }
 
+.view-switch button {
+  min-height: 31px;
+  border-radius: 0;
+  padding: 4px 0;
+}
+
 .view-switch button:hover,
-.topic-line button:hover,
 .archive-status button:hover,
 .load-more:hover {
   color: var(--heading);
   text-decoration: underline;
 }
 
+.topic-line button:hover {
+  border-color: transparent;
+  background: transparent;
+  color: var(--link-hover);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
 .view-switch button.active,
 .topic-line button.active {
-  color: #333333;
-  font-weight: 600;
+  color: var(--heading);
+  font-weight: 700;
   text-decoration: none;
   cursor: default;
 }
 
+.view-switch button.active {
+  border-bottom: 1px solid var(--heading);
+  background: transparent;
+  box-shadow: none;
+}
+
+.publication-filter-panel {
+  border: 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  border-radius: 0;
+  background: transparent;
+  padding: 12px 0 0;
+}
+
 .topic-line {
   display: flex;
-  align-items: baseline;
+  align-items: center;
   flex-wrap: wrap;
-  gap: 0;
-  margin: 0 0 13px;
+  gap: 5px 12px;
+  margin: 0 0 12px;
   color: var(--muted);
-  font-size: 13px;
+  font-size: 16px;
 }
 
 .topic-line strong {
-  margin-right: 8px;
+  margin-right: 3px;
   color: var(--text);
 }
 
 .topic-line button {
-  min-height: 28px;
-  padding: 3px 4px;
+  min-height: 30px;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  padding: 2px 0;
 }
 
-.topic-line button:not(:last-child)::after {
-  content: "/";
-  display: inline-block;
-  margin: 0 7px;
-  color: #bbbbbb;
-  font-weight: 400;
-  text-decoration: none;
-}
-
-.research-topic-link {
-  color: inherit;
-}
-
-.research-topic-link:hover,
-.research-topic-link.active {
-  color: var(--link);
+.topic-line button.active {
+  border-color: transparent;
+  background: transparent;
+  text-decoration: underline;
+  text-underline-offset: 3px;
 }
 
 .publication-controls {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 135px;
+  grid-template-columns: minmax(0, 1fr) 155px;
   gap: 8px;
-  margin: 13px 0 7px;
+  margin: 0 0 9px;
 }
 
 .search-field,
@@ -348,9 +545,9 @@ a:hover {
 .search-field input,
 .year-field select {
   width: 100%;
-  height: 38px;
-  border: 1px solid #cccccc;
-  border-radius: 0;
+  height: 40px;
+  border: 1px solid #cbd6d2;
+  border-radius: 4px;
   background: #ffffff;
   padding: 7px 10px;
   color: var(--text);
@@ -365,12 +562,12 @@ a:hover {
 }
 
 .archive-status {
-  min-height: 27px;
+  min-height: 34px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 12px;
-  border-bottom: 1px solid var(--soft-line);
+  border-top: 1px solid var(--line);
   color: var(--quiet);
   font-size: 12px;
 }
@@ -385,11 +582,11 @@ a:hover {
 
 .publication-card {
   display: grid;
-  grid-template-columns: 205px minmax(0, 1fr);
-  gap: 20px;
+  grid-template-columns: 210px minmax(0, 1fr);
+  gap: 22px;
   align-items: center;
   border-bottom: 1px solid var(--soft-line);
-  padding: 18px 0;
+  padding: 21px 4px;
 }
 
 .publication-media {
@@ -399,7 +596,9 @@ a:hover {
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  background: #f2f2f2;
+  border: 1px solid var(--soft-line);
+  border-radius: 9px;
+  background: #f1f4f3;
 }
 
 .publication-media img,
@@ -437,8 +636,8 @@ a:hover {
 
 .publication-card h3 {
   margin: 0 0 5px;
-  color: #333333;
-  font-size: 17px;
+  color: #26343b;
+  font-size: 17.5px;
   font-weight: 650;
   line-height: 1.38;
 }
@@ -467,7 +666,7 @@ a:hover {
 }
 
 .authors strong {
-  color: #333333;
+  color: #26343b;
   font-weight: 650;
 }
 
@@ -515,7 +714,7 @@ a:hover {
 }
 
 .publication-links .conference-link {
-  color: #333333;
+  color: #26343b;
   font-weight: 650;
 }
 
@@ -540,8 +739,11 @@ a:hover {
 }
 
 .empty-state {
-  border-bottom: 1px solid var(--soft-line);
-  padding: 32px 4px;
+  margin-top: 15px;
+  border: 1px dashed var(--line);
+  border-radius: 10px;
+  background: var(--surface);
+  padding: 34px 10px;
   color: var(--muted);
   font-size: 13px;
   text-align: center;
@@ -549,8 +751,14 @@ a:hover {
 
 .load-more {
   display: block;
-  margin: 17px auto 0;
+  min-height: 36px;
+  margin: 18px auto 0;
+  border: 0;
+  border-radius: 0;
+  padding: 5px 0;
   font-size: 13px;
+  text-decoration: underline;
+  text-underline-offset: 3px;
 }
 
 .load-sentinel {
@@ -571,8 +779,9 @@ a:hover {
   align-items: center;
   justify-content: space-between;
   gap: 16px;
+  border-top: 1px solid var(--line);
   background: var(--footer-bg);
-  padding: 18px 34px;
+  padding: 20px 34px;
   color: var(--muted);
   font-size: 12px;
 }
@@ -580,6 +789,21 @@ a:hover {
 @media (max-width: 1000px) {
   .page-shell {
     margin-inline: auto;
+  }
+
+  .profile-header {
+    grid-template-columns: 144px minmax(0, 1fr);
+    gap: 28px;
+    padding-inline: 42px;
+  }
+
+  .avatar {
+    width: 136px;
+    height: 136px;
+  }
+
+  .main-content {
+    padding-inline: 42px;
   }
 }
 
@@ -590,30 +814,45 @@ a:hover {
 
   .page-shell {
     width: 100%;
-    margin-top: 0;
+    margin: 0;
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
   }
 
   .profile-header {
     grid-template-columns: 1fr;
-    gap: 19px;
-    padding: 28px 22px 24px;
+    gap: 18px;
+    padding: 30px 23px 26px;
     text-align: center;
   }
 
   .avatar {
-    width: 140px;
-    height: 140px;
+    width: 132px;
+    height: 132px;
     justify-self: center;
   }
 
   .profile-details h1 {
-    font-size: 29px;
+    font-size: 36px;
   }
 
-  .contact-lines {
-    max-width: 360px;
+  .profile-kicker {
+    font-size: 11px;
+  }
+
+  .research-tagline {
     margin-inline: auto;
-    text-align: left;
+    font-size: 16.5px;
+  }
+
+  .profile-links {
+    justify-content: center;
+    gap: 7px 14px;
+  }
+
+  .profile-links a:not(:last-child)::after {
+    display: none;
   }
 
   .simple-nav {
@@ -622,7 +861,31 @@ a:hover {
   }
 
   .main-content {
-    padding: 26px 21px 42px;
+    padding: 35px 22px 48px;
+  }
+
+  .content-section + .content-section {
+    margin-top: 44px;
+  }
+
+  .bio-lead {
+    font-size: 23px;
+  }
+
+  .research-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .research-card {
+    min-height: 0;
+  }
+
+  .publications-title-row {
+    align-items: flex-start;
+  }
+
+  .publication-filter-panel {
+    padding-inline: 0;
   }
 
   .publication-controls {
@@ -632,7 +895,7 @@ a:hover {
   .publication-card {
     grid-template-columns: 1fr;
     gap: 11px;
-    padding: 18px 0;
+    padding: 20px 0;
   }
 
   .publication-media {
@@ -656,22 +919,17 @@ a:hover {
   }
 
   .topic-line {
-    align-items: flex-start;
-    flex-direction: column;
-    gap: 4px;
+    gap: 6px;
   }
 
   .topic-line strong {
-    margin-bottom: 2px;
+    flex-basis: 100%;
+    margin-bottom: 1px;
   }
 
   .topic-line button {
-    min-height: 32px;
-    padding-block: 4px;
-  }
-
-  .topic-line button:not(:last-child)::after {
-    content: none;
+    min-height: 34px;
+    padding-inline: 9px;
   }
 }
 
@@ -682,85 +940,113 @@ a:hover {
 }
 </style>
   <style>[hidden] { display: none !important; }</style>
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"Yilun Du","url":"https://yilundu.github.io/","image":"https://yilundu.github.io/images/yilun8.png","jobTitle":"Assistant Professor","affiliation":[{"@type":"Organization","name":"Harvard University"},{"@type":"Organization","name":"NVIDIA Research"}],"alumniOf":{"@type":"CollegeOrUniversity","name":"Massachusetts Institute of Technology"},"sameAs":["https://github.com/yilundu","https://twitter.com/du_yilun","https://embodied-minds-lab.github.io/"]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"Yilun Du","url":"https://yilundu.github.io/","image":"https://yilundu.github.io/images/yilun8.png","jobTitle":"Assistant Professor","affiliation":[{"@type":"Organization","name":"Harvard University"},{"@type":"Organization","name":"NVIDIA Research"}],"alumniOf":{"@type":"CollegeOrUniversity","name":"Massachusetts Institute of Technology"},"knowsAbout":["Energy-based models","Diffusion models","Compositional reasoning","World models","Embodied intelligence","Multi-agent systems"],"sameAs":["https://scholar.google.com/citations?user=GRMMc_MAAAAJ&hl=en","https://github.com/yilundu","https://twitter.com/du_yilun","https://embodied-minds-lab.github.io/"]}</script>
 </head>
 <body>
   <a class="skip-link" href="#main-content">Skip to main content</a>
   <div class="page-shell" id="top">
     <header class="profile-header">
-      <img src="https://yilundu.github.io/images/yilun8.png" alt="Yilun Du" class="avatar">
+      <img src="https://yilundu.github.io/images/yilun8.png" alt="Yilun Du" class="avatar" width="176" height="176" decoding="async" fetchpriority="high">
       <div class="profile-details">
+        <p class="profile-kicker">Harvard University · Kempner Institute</p>
         <h1>Yilun Du</h1>
-        <p class="role-line">Assistant Professor · Harvard University</p>
-        <p class="research-tagline">Iterative generative inference for reasoning, decision-making, and embodied intelligence.</p>
-        <div class="contact-lines">
-          <p>Email: ydu [at] seas [dot] harvard [dot] edu</p>
-          <p>Twitter: <a href="https://twitter.com/du_yilun" target="_blank" rel="noreferrer noopener">@du_yilun</a></p>
-          <p>GitHub: <a href="https://github.com/yilundu" target="_blank" rel="noreferrer noopener">github.com/yilundu</a></p>
-          <p>Scholar: <a href="https://scholar.google.com/citations?user=GRMMc_MAAAAJ&amp;hl=en" target="_blank" rel="noreferrer noopener">Google Scholar</a></p>
-          <p>Lab: <a href="https://embodied-minds-lab.github.io/" target="_blank" rel="noreferrer noopener">Embodied Minds Lab</a></p>
-          <p><a href="https://yilundu.github.io/research_statement.pdf" target="_blank" rel="noreferrer noopener">Research Statement</a> · <a href="https://yilundu.github.io/cv.pdf" target="_blank" rel="noreferrer noopener">CV</a></p>
+        <p class="role-line">Assistant Professor of Computer Science</p>
+        <p class="research-tagline">Generative models for reasoning, planning, and intelligent action.</p>
+        <div class="profile-links" aria-label="Profiles and documents">
+          <a href="https://embodied-minds-lab.github.io/" target="_blank" rel="noreferrer noopener">Embodied Minds Lab</a>
+          <a href="https://scholar.google.com/citations?user=GRMMc_MAAAAJ&amp;hl=en" target="_blank" rel="noreferrer noopener">Google Scholar</a>
+          <a href="https://yilundu.github.io/cv.pdf" target="_blank" rel="noreferrer noopener">CV</a>
+          <a href="https://yilundu.github.io/research_statement.pdf" target="_blank" rel="noreferrer noopener">Research Statement</a>
+          <a href="https://github.com/yilundu" target="_blank" rel="noreferrer noopener">GitHub</a>
+          <a href="https://twitter.com/du_yilun" target="_blank" rel="noreferrer noopener">X / Twitter</a>
         </div>
+        <p class="email-line">ydu [at] seas [dot] harvard [dot] edu</p>
       </div>
     </header>
 
     <nav class="simple-nav" aria-label="Primary navigation">
-      <a href="#about">About</a><a href="#news">News</a><a href="#research">Research</a><a href="#publications">Publications</a>
+      <a href="#about">About</a><a href="#research">Research</a><a href="#news">News</a><a href="#publications">Publications</a>
     </nav>
 
     <main id="main-content" class="main-content">
       <section class="content-section bio-section" id="about">
-        <p>I am an Assistant Professor at Harvard in the <a href="https://kempnerinstitute.harvard.edu/" target="_blank" rel="noreferrer noopener">Kempner Institute</a> and Computer Science, where I run the <a href="https://embodied-minds-lab.github.io/" target="_blank" rel="noreferrer noopener">Embodied Minds Lab</a>. I am also a part-time research scientist at <a href="https://research.nvidia.com/labs/avg/#about" target="_blank" rel="noreferrer noopener">NVIDIA Research</a>. I received my PhD from MIT EECS, advised by Leslie Kaelbling, Tomas Lozano-Perez, and Joshua B. Tenenbaum; previously, I was a research fellow at OpenAI and a senior research scientist at Google DeepMind.</p>
-        <p>My research asks how intelligent systems can solve unfamiliar problems by iteratively generating, evaluating, and refining possible solutions. Instead of relying on a single feedforward prediction, I build generative models of possible futures, actions, and paths of reasoning, and use inference-time computation&mdash;including sampling, energy minimization, search, planning, and interaction&mdash;to adapt them to new goals. My long-term vision is to build compositional world models that support reliable reasoning and action in open-ended physical environments.</p>
-        <p>My work has helped shape several parts of this agenda. Early work on <a href="https://arxiv.org/abs/1903.08689" target="_blank" rel="noreferrer noopener">deep energy-based models</a> demonstrated scalable high-dimensional generation, refinement, and composition using Langevin dynamics, contributing to renewed interest in energy-based generative modeling; subsequent work showed how <a href="https://energy-based-model.github.io/compositional-generation-inference/" target="_blank" rel="noreferrer noopener">energy functions</a> and <a href="https://energy-based-model.github.io/Compositional-Visual-Generation-with-Composable-Diffusion-Models/" target="_blank" rel="noreferrer noopener">diffusion models</a> can be composed. <a href="https://diffusion-planning.github.io/" target="_blank" rel="noreferrer noopener">Diffuser</a> and <a href="https://diffusion-policy.cs.columbia.edu/" target="_blank" rel="noreferrer noopener">Diffusion Policy</a> helped establish diffusion models as tools for planning, decision-making, and robot control. <a href="https://universal-policy.github.io/unipi/" target="_blank" rel="noreferrer noopener">UniPi</a> was an early demonstration that text-conditioned video generation could serve as a policy for control. Our work on <a href="https://composable-models.github.io/llm_debate/" target="_blank" rel="noreferrer noopener">multi-agent debate</a> helped establish iterative interaction among language models as an inference-time strategy for improving reasoning and factuality.</p>
-        <p>Across these projects, the common principle is that intelligence can emerge through structured, iterative inference with reusable, composable models&mdash;over pixels, trajectories, possible futures, and the reasoning of other agents. My lab is extending this principle to <a href="https://arxiv.org/abs/2402.01103" target="_blank" rel="noreferrer noopener">compositional world models</a>, <a href="https://aakaran.github.io/reasoning_with_sampling/" target="_blank" rel="noreferrer noopener">continuous reasoning</a>, <a href="https://video-language-planning.github.io/" target="_blank" rel="noreferrer noopener">long-horizon embodied planning</a>, and <a href="https://arxiv.org/abs/2606.02859" target="_blank" rel="noreferrer noopener">economies of interacting agents</a>.</p>
-      </section>
-
-      <section class="content-section" id="news">
-        <h2>News</h2>
-        <ul class="news-list">
-          <li><span class="news-date">[2026]</span> I'm recruiting PhD students for the December 2026 application cycle through the <a href="https://embodied-minds-lab.github.io/" target="_blank" rel="noreferrer noopener">Embodied Minds Lab</a>.</li>
-          <li><span class="news-date">[2026]</span> We are organizing the ICML 2026 workshop on <a href="https://compositional-learning.github.io/" target="_blank" rel="noreferrer noopener">compositional learning</a>!</li>
-          <li><span class="news-date">[Talk]</span> Presented compositional world models for embodied intelligence at the Kempner Frontiers of NeuroAI Symposium. Watch the <a href="https://www.youtube.com/watch?v=UKbLBOuHQ-0" target="_blank" rel="noreferrer noopener">talk</a>.</li>
-          <li><span class="news-date">[Website]</span> You can see a list of our work on energy-based models  <a href="https://energy-based-model.github.io/Energy-based-Model-MIT/" target="_blank" rel="noreferrer noopener">here</a>!</li>
-          <li><span class="news-date">[PhD]</span> Defended my PhD at MIT EECS. View the <a href="https://www.youtube.com/watch?v=7jvWDF6ZXPc" target="_blank" rel="noreferrer noopener">defense</a> or read the <a href="https://yilundu.github.io/thesis.pdf" target="_blank" rel="noreferrer noopener">thesis</a>.</li>
-        </ul>
+        <h2 class="sr-only">About Yilun Du</h2>
+        <p class="bio-lead">I develop generative models that solve new problems through iterative reasoning at inference time.</p>
+        <p>My work treats sampling, optimization, search, and interaction as general-purpose mechanisms for reasoning. I study how energy-based, diffusion, and world models can be composed to meet new objectives and constraints across visual generation, planning, robotics, and multi-agent systems.</p>
+        <p>My long-term goal is to build <a href="https://arxiv.org/abs/2402.01103" target="_blank" rel="noreferrer noopener">compositional world models</a> that can reason, plan, and act reliably in unfamiliar physical and multi-agent environments.</p>
+        <p>I am an Assistant Professor at Harvard's <a href="https://kempnerinstitute.harvard.edu/" target="_blank" rel="noreferrer noopener">Kempner Institute</a> and in Computer Science, where I lead the <a href="https://embodied-minds-lab.github.io/" target="_blank" rel="noreferrer noopener">Embodied Minds Lab</a>. I am also a part-time research scientist at <a href="https://research.nvidia.com/labs/avg/#about" target="_blank" rel="noreferrer noopener">NVIDIA Research</a>. I received my PhD from MIT EECS, advised by Leslie Kaelbling, Tomas Lozano-Pérez, and Joshua B. Tenenbaum. Before joining Harvard, I was a research fellow at OpenAI and a senior research scientist at Google DeepMind.</p>
       </section>
 
       <section class="content-section" id="research">
-        <h2>Research Vision</h2>
-        <ul class="research-list">
-          <li><a class="research-topic-link" href="#publications" data-topic-link="generative-model"><strong>Iterative Generative Inference:</strong></a> learning energy-based, diffusion, and related generative models that solve problems through sampling, refinement, and search.</li>
-          <li><a class="research-topic-link" href="#publications" data-topic-link="reasoning"><strong>Compositional Reasoning &amp; Planning:</strong></a> combining models, concepts, and constraints to solve unfamiliar problems across discrete and continuous domains.</li>
-          <li><a class="research-topic-link" href="#publications" data-topic-link="world-embodied"><strong>Generative Decision-Making &amp; Embodied Intelligence:</strong></a> using trajectory and video models to imagine futures, plan actions, and control robots.</li>
-          <li><a class="research-topic-link" href="#publications" data-topic-link="multi-agent"><strong>Collective &amp; Multi-Agent Intelligence:</strong></a> building systems of interacting agents that debate, verify, coordinate, and improve collectively.</li>
+        <div class="section-heading-row">
+          <h2>Research</h2>
+          <div class="research-introduction">
+            <p class="research-program-title">Generative inference for reasoning and action</p>
+            <p>My research studies how generative models can solve problems beyond their training distribution by composing learned models with new goals and constraints, then using inference-time computation to find solutions. I develop this idea across generative modeling, reasoning and planning, embodied world models, and multi-agent intelligence.</p>
+          </div>
+        </div>
+        <div class="research-grid">
+          <article class="research-card">
+            <h3><a class="research-topic-link" href="#publications" data-topic-link="generative-model">Generative Models &amp; Iterative Inference</a></h3>
+            <p>I develop generative models that represent spaces of possible solutions and use iterative inference to find them. My work spans energy-based, diffusion, and language models across visual generation, sequence prediction, and reasoning.</p>
+            <p class="representative-work"><strong>Representative work:</strong> <a href="https://arxiv.org/abs/1903.08689" target="_blank" rel="noreferrer noopener">deep EBMs</a>, <a href="https://raywang4.github.io/equilibrium_matching/" target="_blank" rel="noreferrer noopener">equilibrium matching</a>, and <a href="https://aakaran.github.io/reasoning_with_sampling/" target="_blank" rel="noreferrer noopener">reasoning with sampling</a>.</p>
+          </article>
+          <article class="research-card">
+            <h3><a class="research-topic-link" href="#publications" data-topic-link="reasoning">Compositional Reasoning &amp; Planning</a></h3>
+            <p>I study how learned models, objectives, and constraints can be composed at inference time to solve unfamiliar reasoning and planning problems. I apply this idea to abstract reasoning, long-horizon trajectory generation, and decision-making.</p>
+            <p class="representative-work"><strong>Representative work:</strong> <a href="https://alexoarga.github.io/compositional_reasoning/" target="_blank" rel="noreferrer noopener">compositional energy minimization</a>, <a href="https://diffusion-planning.github.io/" target="_blank" rel="noreferrer noopener">Diffuser</a>, and <a href="https://comp-diffuser.github.io/" target="_blank" rel="noreferrer noopener">generative trajectory stitching</a>.</p>
+          </article>
+          <article class="research-card">
+            <h3><a class="research-topic-link" href="#publications" data-topic-link="world-embodied">World Models &amp; Embodied Intelligence</a></h3>
+            <p>I build generative world models that predict possible futures and use inference over those futures to guide action. My work uses large video and trajectory models for long-horizon planning, robot control, and generalization across tasks and environments.</p>
+            <p class="representative-work"><strong>Representative work:</strong> <a href="https://diffusion-policy.cs.columbia.edu/" target="_blank" rel="noreferrer noopener">Diffusion Policy</a>, <a href="https://universal-policy.github.io/unipi/" target="_blank" rel="noreferrer noopener">UniPi</a>, <a href="https://video-language-planning.github.io/" target="_blank" rel="noreferrer noopener">Video Language Planning</a>, and <a href="https://www.boyuan.space/large-video-planner/" target="_blank" rel="noreferrer noopener">Large Video Planner</a>.</p>
+          </article>
+          <article class="research-card">
+            <h3><a class="research-topic-link" href="#publications" data-topic-link="multi-agent">Multi-Agent Intelligence</a></h3>
+            <p>I study how multiple language models can be composed into an intelligent system. Their interactions provide inference-time computation for proposing, critiquing, verifying, and coordinating solutions.</p>
+            <p class="representative-work"><strong>Representative work:</strong> <a href="https://composable-models.github.io/llm_debate/" target="_blank" rel="noreferrer noopener">multi-agent debate</a>, <a href="https://ardalabs.ai/MultiAgentVerification/" target="_blank" rel="noreferrer noopener">multi-agent verification</a>, and <a href="https://zhentingqi.github.io/internal/projects/EoM/" target="_blank" rel="noreferrer noopener">Economy of Minds</a>.</p>
+          </article>
+        </div>
+        <p class="research-synthesis"><strong>Common thread.</strong> By composing learned models and searching for solutions at inference time, we can build intelligent systems that generalize reliably to new tasks, goals, and environments.</p>
+      </section>
+
+      <section class="content-section" id="news">
+        <h2>News &amp; updates</h2>
+        <ul class="news-list">
+          <li><span class="news-date">[2026]</span> I am recruiting PhD students for the December 2026 application cycle through the <a href="https://embodied-minds-lab.github.io/" target="_blank" rel="noreferrer noopener">Embodied Minds Lab</a>.</li>
+          <li><span class="news-date">[2026]</span> We are organizing the ICML 2026 workshop on <a href="https://compositional-learning.github.io/" target="_blank" rel="noreferrer noopener">compositional learning</a>.</li>
+          <li><span class="news-date">[Talk]</span> Presented compositional world models for embodied intelligence at the Kempner Frontiers of NeuroAI Symposium. Watch the <a href="https://www.youtube.com/watch?v=UKbLBOuHQ-0" target="_blank" rel="noreferrer noopener">talk</a>.</li>
+          <li><span class="news-date">[Website]</span> A collection of our work on energy-based models is available <a href="https://energy-based-model.github.io/Energy-based-Model-MIT/" target="_blank" rel="noreferrer noopener">here</a>.</li>
+          <li><span class="news-date">[PhD]</span> Defended my PhD at MIT EECS. View the <a href="https://www.youtube.com/watch?v=7jvWDF6ZXPc" target="_blank" rel="noreferrer noopener">defense</a> or read the <a href="https://yilundu.github.io/thesis.pdf" target="_blank" rel="noreferrer noopener">thesis</a>.</li>
         </ul>
       </section>
 
       <section class="content-section publications-section" id="publications">
         <div class="publications-title-row">
           <h2>Publications</h2>
-          <div class="view-switch" aria-label="Publication view">
-            <span>(</span><button type="button" class="active" aria-pressed="true" data-view="selected">selected</button><span>/</span><button type="button" aria-pressed="false" data-view="all">all by date</button><span>)</span>
+          <div class="view-switch" role="group" aria-label="Publication view">
+            <button type="button" class="active" aria-pressed="true" data-view="selected">Selected</button><button type="button" aria-pressed="false" data-view="all">All by date</button>
           </div>
         </div>
 
-        <div class="topic-line" aria-label="Filter publications by topic">
-          <strong>Topics:</strong>
-          <button type="button" class="active" aria-pressed="true" data-topic="all">All</button>
-          <button type="button" aria-pressed="false" data-topic="generative-model">Generative Models</button>
-          <button type="button" aria-pressed="false" data-topic="world-embodied">World Models &amp; Embodied AI</button>
-          <button type="button" aria-pressed="false" data-topic="reasoning">Reasoning &amp; Search</button>
-          <button type="button" aria-pressed="false" data-topic="multi-agent">Multi-Agent Intelligence</button>
-          <button type="button" aria-pressed="false" data-topic="perception">3D &amp; Multimodal Understanding</button>
-        </div>
+        <div class="publication-filter-panel">
+          <div class="topic-line" aria-label="Filter publications by topic">
+            <strong>Topics:</strong>
+            <button type="button" class="active" aria-pressed="true" data-topic="all">All</button>
+            <button type="button" aria-pressed="false" data-topic="generative-model">Generative Models</button>
+            <button type="button" aria-pressed="false" data-topic="world-embodied">World Models &amp; Embodied AI</button>
+            <button type="button" aria-pressed="false" data-topic="reasoning">Reasoning &amp; Search</button>
+            <button type="button" aria-pressed="false" data-topic="multi-agent">Multi-Agent Intelligence</button>
+            <button type="button" aria-pressed="false" data-topic="perception">3D &amp; Multimodal Understanding</button>
+          </div>
 
-        <div class="publication-controls" role="search">
-          <label class="search-field"><span class="sr-only">Search publications</span><input id="publication-search" type="search" placeholder="Search title, author, or venue"></label>
-          <label class="year-field"><span class="sr-only">Filter by year</span><select id="publication-year"><option value="all">All years</option><option value="2026">2026</option><option value="2025">2025</option><option value="2024">2024</option><option value="2023">2023</option><option value="2022">2022</option><option value="2021">2021</option><option value="2020">2020</option><option value="2019">2019</option><option value="2018">2018</option></select></label>
-        </div>
+          <div class="publication-controls" role="search">
+            <label class="search-field"><span class="sr-only">Search publications</span><input id="publication-search" type="search" placeholder="Search all publications" aria-describedby="publication-search-help"><span class="sr-only" id="publication-search-help">Searching automatically opens the full publication archive.</span></label>
+            <label class="year-field"><span class="sr-only">Filter by year</span><select id="publication-year"><option value="all">All years</option><option value="2026">2026</option><option value="2025">2025</option><option value="2024">2024</option><option value="2023">2023</option><option value="2022">2022</option><option value="2021">2021</option><option value="2020">2020</option><option value="2019">2019</option><option value="2018">2018</option></select></label>
+          </div>
 
-        <div class="archive-status" aria-live="polite"><span id="archive-status-text">Showing 12 of 50 publications</span><button id="clear-filters" type="button" hidden>clear filters</button></div>
+          <div class="archive-status" aria-live="polite"><span id="archive-status-text">Showing 12 of 24 selected publications</span><button id="clear-filters" type="button" hidden>Clear filters</button></div>
+        </div>
         <div id="publication-list" class="publication-list">
       <!-- data-topics accepts space-separated topic IDs; the first is the card's primary theme. -->
       <article
@@ -785,6 +1071,7 @@ a:hover {
         data-year="2026"
         data-topics="generative-model"
         data-featured="false"
+        hidden
       >
         <div class="publication-media"><a class="publication-media-link" href="https://lambertae.github.io/projects/drifting/" target="_blank" rel="noreferrer noopener" tabindex="-1" aria-label="Open Generative Modeling via Drifting"><img src="data/projects/drifting.png" alt="" loading="lazy" decoding="async"></a></div>
         <div class="publication-card-body">
@@ -801,6 +1088,7 @@ a:hover {
         data-year="2026"
         data-topics="world-embodied generative-model"
         data-featured="false"
+        hidden
       >
         <div class="publication-media"><a class="publication-media-link" href="https://dreamzero0.github.io/" target="_blank" rel="noreferrer noopener" tabindex="-1" aria-label="Open DreamZero: World Action Models are Zero-shot Policies"><img src="data/projects/dreamzero.png" alt="" loading="lazy" decoding="async"></a></div>
         <div class="publication-card-body">
@@ -897,6 +1185,7 @@ a:hover {
         data-year="2026"
         data-topics="world-embodied reasoning perception"
         data-featured="false"
+        hidden
       >
         <div class="publication-media"><a class="publication-media-link" href="https://structured-4d-model.github.io/" target="_blank" rel="noreferrer noopener" tabindex="-1" aria-label="Open Structured 4D Latent Predictive Model for Robot Planning"><video muted playsinline preload="none" aria-hidden="true"><source src="https://structured-4d-model.github.io/static/media/method_overview.mp4" type="video/mp4"></video></a></div>
         <div class="publication-card-body">
@@ -929,6 +1218,7 @@ a:hover {
         data-year="2026"
         data-topics="world-embodied reasoning generative-model"
         data-featured="false"
+        hidden
       >
         <div class="publication-media"><a class="publication-media-link" href="https://arxiv.org/pdf/2512.08280.pdf" target="_blank" rel="noreferrer noopener" tabindex="-1" aria-label="Open Model-Based Diffusion Sampling for Predictive Control in Offline Decision Making"><img src="data/projects/mpdiffuser.png" alt="" loading="lazy" decoding="async"></a></div>
         <div class="publication-card-body">
@@ -1121,6 +1411,7 @@ a:hover {
         data-year="2026"
         data-topics="reasoning multi-agent"
         data-featured="false"
+        hidden
       >
         <div class="publication-media"><a class="publication-media-link" href="https://slm-mux.github.io/" target="_blank" rel="noreferrer noopener" tabindex="-1" aria-label="Open SLM-MUX: Orchestrating Small Language Models for Reasoning"><img src="data/projects/slm.png" alt="" loading="lazy" decoding="async"></a></div>
         <div class="publication-card-body">
@@ -1232,7 +1523,7 @@ a:hover {
         data-publication-id="energy-based-transformers-are-scalable-learners-and-thinkers"
         data-year="2026"
         data-topics="reasoning generative-model"
-        data-featured="true" hidden
+        data-featured="true"
       >
         <div class="publication-media"><a class="publication-media-link" href="https://energy-based-transformers.github.io/" target="_blank" rel="noreferrer noopener" tabindex="-1" aria-label="Open Energy-Based Transformers are Scalable Learners and Thinkers"><img src="data/projects/ebt.png" alt="" loading="lazy" decoding="async"></a></div>
         <div class="publication-card-body">
@@ -1376,7 +1667,7 @@ a:hover {
         data-publication-id="generalizable-reasoning-through-compositional-energy-minimization"
         data-year="2025"
         data-topics="reasoning generative-model"
-        data-featured="true" hidden
+        data-featured="true"
       >
         <div class="publication-media"><a class="publication-media-link" href="https://alexoarga.github.io/compositional_reasoning/" target="_blank" rel="noreferrer noopener" tabindex="-1" aria-label="Open Generalizable Reasoning through Compositional Energy Minimization"><video muted playsinline preload="none" aria-hidden="true"><source src="data/projects/comp_reasoning_preview.mp4" type="video/mp4"></video></a></div>
         <div class="publication-card-body">
@@ -1584,7 +1875,7 @@ a:hover {
         data-publication-id="compositional-scene-understanding-through-inverse-generative-modeling"
         data-year="2025"
         data-topics="perception generative-model"
-        data-featured="true" hidden
+        data-featured="true"
       >
         <div class="publication-media"><a class="publication-media-link" href="https://energy-based-model.github.io/compositional-inference/" target="_blank" rel="noreferrer noopener" tabindex="-1" aria-label="Open Compositional Scene Understanding through Inverse Generative Modeling"><img src="data/projects/comp_igm.png" alt="" loading="lazy" decoding="async"></a></div>
         <div class="publication-card-body">
@@ -1712,7 +2003,7 @@ a:hover {
         data-publication-id="multiagent-finetuning-self-improvement-with-diverse-reasoning-chains"
         data-year="2025"
         data-topics="multi-agent reasoning"
-        data-featured="true" hidden
+        data-featured="true"
       >
         <div class="publication-media"><a class="publication-media-link" href="https://llm-multiagent-ft.github.io/" target="_blank" rel="noreferrer noopener" tabindex="-1" aria-label="Open Multiagent Finetuning: Self Improvement with Diverse Reasoning Chains"><img src="data/projects/multiagent_ft.png" alt="" loading="lazy" decoding="async"></a></div>
         <div class="publication-card-body">
@@ -3167,6 +3458,7 @@ a:hover {
     const loadMore = document.getElementById("load-more");
     const searchInput = document.getElementById("publication-search");
     const yearSelect = document.getElementById("publication-year");
+    const viewButtons = Array.from(document.querySelectorAll(".view-switch button"));
     const topicFilterButtons = Array.from(document.querySelectorAll(".topic-line button"));
     const topicShortcutLinks = Array.from(document.querySelectorAll("[data-topic-link]"));
     const publicationVideos = Array.from(list.querySelectorAll(".publication-card video"));
@@ -3219,10 +3511,20 @@ a:hover {
       });
     }
 
-    function selectTopic(topic, scrollToPublications = false) {
+    function updateViewControls() {
+      viewButtons.forEach(button => {
+        const active = button.dataset.view === state.view;
+        button.classList.toggle("active", active);
+        button.setAttribute("aria-pressed", String(active));
+      });
+    }
+
+    function selectTopic(topic, scrollToPublications = false, openFullArchive = false) {
       state.topic = topic;
+      if (openFullArchive) state.view = "all";
       state.visible = 12;
       updateTopicControls();
+      updateViewControls();
       renderArchive();
       if (scrollToPublications) {
         document.getElementById("publications").scrollIntoView({
@@ -3250,7 +3552,8 @@ a:hover {
       cards.forEach(card => { card.hidden = !visibleCards.has(card); });
       list.hidden = visible.length === 0;
       emptyState.hidden = visible.length !== 0;
-      statusText.textContent = `Showing ${visible.length} of ${filtered.length} publications`;
+      const archiveLabel = state.view === "selected" ? "selected publications" : "publications";
+      statusText.textContent = `Showing ${visible.length} of ${filtered.length} ${archiveLabel}`;
       clearFilters.hidden = !(state.query || state.topic !== "all" || state.year !== "all");
       const hasMore = visible.length < filtered.length;
       loadMore.hidden = supportsAutoLoad || !hasMore;
@@ -3324,14 +3627,10 @@ a:hover {
       reducedMotion.addListener(updateVideoMotionPreference);
     }
 
-    document.querySelectorAll(".view-switch button").forEach(button => button.addEventListener("click", () => {
+    viewButtons.forEach(button => button.addEventListener("click", () => {
       state.view = button.dataset.view;
       state.visible = 12;
-      document.querySelectorAll(".view-switch button").forEach(item => {
-        const active = item === button;
-        item.classList.toggle("active", active);
-        item.setAttribute("aria-pressed", String(active));
-      });
+      updateViewControls();
       renderArchive();
     }));
 
@@ -3341,12 +3640,14 @@ a:hover {
 
     topicShortcutLinks.forEach(link => link.addEventListener("click", event => {
       event.preventDefault();
-      selectTopic(link.dataset.topicLink, true);
+      selectTopic(link.dataset.topicLink, true, true);
     }));
 
     searchInput.addEventListener("input", event => {
       state.query = event.target.value;
+      if (state.query.trim()) state.view = "all";
       state.visible = 12;
+      updateViewControls();
       renderArchive();
     });
 
@@ -3360,10 +3661,12 @@ a:hover {
       state.query = "";
       state.topic = "all";
       state.year = "all";
+      state.view = "selected";
       state.visible = 12;
       searchInput.value = "";
       yearSelect.value = "all";
       updateTopicControls();
+      updateViewControls();
       renderArchive();
     });
 
@@ -3373,6 +3676,7 @@ a:hover {
     });
 
     updateTopicControls();
+    updateViewControls();
     renderArchive();
   </script>
 </body>
