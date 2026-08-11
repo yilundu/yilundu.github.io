@@ -142,56 +142,44 @@ a:hover {
 .profile-header {
   min-height: 0;
   display: grid;
-  grid-template-columns: 144px minmax(0, 1fr);
+  grid-template-columns: 136px minmax(0, 1fr);
   justify-content: stretch;
-  gap: 30px;
+  gap: 28px;
   align-items: center;
   background: var(--content-bg);
-  padding: 36px 56px 32px;
+  padding: 38px 56px 32px;
 }
 
 .avatar {
   width: 136px;
   height: 136px;
   justify-self: start;
-  border-radius: 50%;
+  border-radius: 5px;
   object-fit: cover;
   border: 0;
   box-shadow: none;
 }
 
-.profile-kicker {
-  margin: 0 0 3px;
-  color: var(--muted);
-  font-size: 13px;
-  font-weight: 600;
-  letter-spacing: 0;
-  text-transform: none;
-}
-
 .profile-details h1 {
-  margin: 0 0 2px;
+  margin: 0 0 7px;
   color: var(--heading);
   font-family: var(--display-font);
-  font-size: clamp(36px, 4vw, 42px);
+  font-size: clamp(34px, 4vw, 39px);
   font-weight: 600;
   letter-spacing: -0.02em;
   line-height: 1.08;
 }
 
 .role-line {
-  margin: 0 0 14px;
-  color: var(--muted);
+  margin: 0 0 13px;
+  color: var(--text);
   font-size: 15px;
+  line-height: 1.5;
 }
 
-.research-tagline {
-  max-width: 650px;
-  margin: 0 0 14px;
-  color: var(--text);
-  font-size: 17.5px;
-  font-weight: 480;
-  line-height: 1.42;
+.role-line .institution {
+  display: block;
+  color: var(--muted);
 }
 
 .profile-links {
@@ -200,7 +188,7 @@ a:hover {
   align-items: center;
   gap: 7px 17px;
   font-size: 14px;
-  font-weight: 650;
+  font-weight: 600;
 }
 
 .profile-links a {
@@ -216,12 +204,6 @@ a:hover {
   height: 2px;
   border-radius: 50%;
   background: #a5afab;
-}
-
-.email-line {
-  margin: 9px 0 0;
-  color: var(--quiet);
-  font-size: 13px;
 }
 
 .simple-nav {
@@ -314,15 +296,6 @@ a:hover {
   color: #39454a;
   font-size: 16px;
   line-height: 1.68;
-}
-
-.research-program-title {
-  margin-bottom: 7px !important;
-  color: var(--heading) !important;
-  font-family: var(--display-font);
-  font-size: 21px !important;
-  font-weight: 600;
-  line-height: 1.35 !important;
 }
 
 .research-grid {
@@ -837,15 +810,6 @@ a:hover {
     font-size: 36px;
   }
 
-  .profile-kicker {
-    font-size: 11px;
-  }
-
-  .research-tagline {
-    margin-inline: auto;
-    font-size: 16.5px;
-  }
-
   .profile-links {
     justify-content: center;
     gap: 7px 14px;
@@ -948,19 +912,17 @@ a:hover {
     <header class="profile-header">
       <img src="https://yilundu.github.io/images/yilun8.png" alt="Yilun Du" class="avatar" width="176" height="176" decoding="async" fetchpriority="high">
       <div class="profile-details">
-        <p class="profile-kicker">Harvard University · Kempner Institute</p>
         <h1>Yilun Du</h1>
-        <p class="role-line">Assistant Professor of Computer Science</p>
-        <p class="research-tagline">Generative models for reasoning, planning, and intelligent action.</p>
+        <p class="role-line">Assistant Professor of Computer Science<span class="institution">Harvard University · Kempner Institute</span></p>
         <div class="profile-links" aria-label="Profiles and documents">
-          <a href="https://embodied-minds-lab.github.io/" target="_blank" rel="noreferrer noopener">Embodied Minds Lab</a>
+          <a href="mailto:ydu@seas.harvard.edu">Email</a>
           <a href="https://scholar.google.com/citations?user=GRMMc_MAAAAJ&amp;hl=en" target="_blank" rel="noreferrer noopener">Google Scholar</a>
           <a href="https://yilundu.github.io/cv.pdf" target="_blank" rel="noreferrer noopener">CV</a>
+          <a href="https://embodied-minds-lab.github.io/" target="_blank" rel="noreferrer noopener">Lab</a>
           <a href="https://yilundu.github.io/research_statement.pdf" target="_blank" rel="noreferrer noopener">Research Statement</a>
           <a href="https://github.com/yilundu" target="_blank" rel="noreferrer noopener">GitHub</a>
           <a href="https://twitter.com/du_yilun" target="_blank" rel="noreferrer noopener">X / Twitter</a>
         </div>
-        <p class="email-line">ydu [at] seas [dot] harvard [dot] edu</p>
       </div>
     </header>
 
@@ -981,7 +943,6 @@ a:hover {
         <div class="section-heading-row">
           <h2>Research</h2>
           <div class="research-introduction">
-            <p class="research-program-title">Generative inference for reasoning and action</p>
             <p>My research studies how generative models can solve problems beyond their training distribution by composing learned models with new goals and constraints, then using inference-time computation to find solutions. I develop this idea across generative modeling, reasoning and planning, embodied world models, and multi-agent intelligence.</p>
           </div>
         </div>
