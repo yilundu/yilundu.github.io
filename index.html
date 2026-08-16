@@ -3,23 +3,23 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>Yilun Du | Generative Models for Reasoning &amp; Embodied Intelligence</title>
-  <meta name="description" content="Yilun Du is an assistant professor at Harvard developing generative models for reasoning, planning, embodied intelligence, and multi-agent systems.">
-  <meta name="keywords" content="Yilun Du, energy-based models, Langevin dynamics, diffusion models, diffusion planning, video world models, embodied intelligence, robot learning, multi-agent debate, compositional reasoning, test-time compute">
+  <title>Yilun Du | Learning &amp; Inference for Generalizable Intelligence</title>
+  <meta name="description" content="Yilun Du studies how intelligent systems learn reusable knowledge and reason with it at inference time to solve problems not anticipated during training.">
+  <meta name="keywords" content="Yilun Du, amortized inference, inference-time reasoning, knowledge and reasoning, inference-time computation, learned representations, model composition, energy-based models, Langevin dynamics, diffusion models, diffusion planning, video world models, embodied intelligence, robot learning, multi-agent debate, compositional reasoning, test-time compute">
   <meta name="author" content="Yilun Du">
   <meta name="theme-color" content="#ffffff">
   <meta name="color-scheme" content="light">
   <link rel="canonical" href="https://yilundu.github.io/">
   <link rel="icon" href="https://yilundu.github.io/static/img/favicon.ico">
   <meta property="og:type" content="profile">
-  <meta property="og:title" content="Yilun Du | Generative Models for Reasoning &amp; Embodied Intelligence">
-  <meta property="og:description" content="Research on generative models that solve new problems through iterative inference, from compositional reasoning to embodied and multi-agent intelligence.">
+  <meta property="og:title" content="Yilun Du | Learning &amp; Inference for Generalizable Intelligence">
+  <meta property="og:description" content="Research on how intelligent systems can learn reusable knowledge and reason with it at inference time to solve new problems.">
   <meta property="og:url" content="https://yilundu.github.io/">
   <meta property="og:image" content="https://yilundu.github.io/images/yilun8.png">
   <meta property="og:image:alt" content="Portrait of Yilun Du">
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Yilun Du | Generative Models for Reasoning &amp; Embodied Intelligence">
-  <meta name="twitter:description" content="Generative models for reasoning, planning, and intelligent action.">
+  <meta name="twitter:title" content="Yilun Du | Learning &amp; Inference for Generalizable Intelligence">
+  <meta name="twitter:description" content="Learning reusable knowledge and reasoning with it at inference time to solve new problems.">
   <meta name="twitter:image" content="https://yilundu.github.io/images/yilun8.png">
   <style>:root {
   --page-bg: #ffffff;
@@ -261,14 +261,58 @@ a:hover {
   margin-bottom: 0;
 }
 
+.bio-credentials {
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.62;
+}
+
 .bio-lead {
   max-width: 850px;
+  text-wrap: balance;
   color: var(--heading);
   font-family: var(--display-font);
   font-size: clamp(21px, 2.6vw, 24px);
   font-weight: 500;
   letter-spacing: -0.018em;
   line-height: 1.38;
+}
+
+.guiding-question {
+  max-width: 850px;
+  margin: 21px 0 19px;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  padding: 16px 0 17px;
+}
+
+.guiding-question .guiding-question-label {
+  margin: 0 0 6px;
+  color: var(--accent);
+  font-size: 12px;
+  font-weight: 750;
+  letter-spacing: 0.08em;
+  line-height: 1.4;
+  text-transform: uppercase;
+}
+
+.guiding-question .guiding-question-text {
+  margin: 0 0 7px;
+  text-wrap: balance;
+  color: var(--heading);
+  font-family: var(--display-font);
+  font-size: clamp(24px, 3.1vw, 30px);
+  font-weight: 600;
+  letter-spacing: -0.025em;
+  line-height: 1.25;
+}
+
+.guiding-question .guiding-question-explanation {
+  max-width: 820px;
+  margin: 0;
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.62;
 }
 
 .content-section h2 {
@@ -284,7 +328,7 @@ a:hover {
 .section-heading-row {
   display: block;
   max-width: 890px;
-  margin-bottom: 22px;
+  margin-bottom: 18px;
 }
 
 .section-heading-row h2 {
@@ -296,6 +340,73 @@ a:hover {
   color: #39454a;
   font-size: 16px;
   line-height: 1.68;
+}
+
+.research-framework {
+  width: 100%;
+  max-width: 890px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(200px, 216px) minmax(0, 1fr);
+  align-items: center;
+  gap: 14px;
+  margin: 0 0 23px;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  padding: 16px 0;
+}
+
+.framework-stage {
+  min-width: 0;
+  display: grid;
+  gap: 4px;
+}
+
+.framework-label {
+  color: var(--accent);
+  font-size: 12px;
+  font-weight: 750;
+  letter-spacing: 0.08em;
+  line-height: 1.4;
+  text-transform: uppercase;
+}
+
+.framework-stage strong {
+  color: var(--heading);
+  font-family: var(--display-font);
+  font-size: 19px;
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  line-height: 1.3;
+}
+
+.framework-detail {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.framework-bridge {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  color: var(--quiet);
+  text-align: center;
+}
+
+.framework-bridge-label {
+  white-space: nowrap;
+  font-size: 12px;
+  letter-spacing: 0.005em;
+  line-height: 1.4;
+}
+
+.framework-arrow {
+  color: var(--accent);
+  font-family: var(--display-font);
+  font-size: 25px;
+  line-height: 1;
 }
 
 .research-grid {
@@ -317,6 +428,7 @@ a:hover {
 
 .research-card h3 {
   position: relative;
+  text-wrap: balance;
   z-index: 1;
   margin: 0 0 8px;
   color: var(--heading);
@@ -554,6 +666,8 @@ a:hover {
 }
 
 .publication-card {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 175px;
   display: grid;
   grid-template-columns: 210px minmax(0, 1fr);
   gap: 22px;
@@ -780,6 +894,26 @@ a:hover {
   }
 }
 
+@media (max-width: 760px) {
+  .research-framework {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    padding: 17px 0;
+  }
+
+  .framework-bridge {
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: 8px;
+    text-align: left;
+  }
+
+  .framework-arrow {
+    transform: rotate(90deg);
+    font-size: 21px;
+  }
+}
+
 @media (max-width: 680px) {
   body {
     background: var(--content-bg);
@@ -834,6 +968,15 @@ a:hover {
 
   .bio-lead {
     font-size: 23px;
+  }
+
+  .guiding-question {
+    margin: 22px 0 21px;
+    padding: 17px 0 18px;
+  }
+
+  .guiding-question .guiding-question-text {
+    font-size: 26px;
   }
 
   .research-grid {
@@ -904,7 +1047,7 @@ a:hover {
 }
 </style>
   <style>[hidden] { display: none !important; }</style>
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"Yilun Du","url":"https://yilundu.github.io/","image":"https://yilundu.github.io/images/yilun8.png","jobTitle":"Assistant Professor","affiliation":[{"@type":"Organization","name":"Harvard University"},{"@type":"Organization","name":"NVIDIA Research"}],"alumniOf":{"@type":"CollegeOrUniversity","name":"Massachusetts Institute of Technology"},"knowsAbout":["Energy-based models","Diffusion models","Compositional reasoning","World models","Embodied intelligence","Multi-agent systems"],"sameAs":["https://scholar.google.com/citations?user=GRMMc_MAAAAJ&hl=en","https://github.com/yilundu","https://twitter.com/du_yilun","https://embodied-minds-lab.github.io/"]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"Yilun Du","url":"https://yilundu.github.io/","image":"https://yilundu.github.io/images/yilun8.png","jobTitle":"Assistant Professor","affiliation":[{"@type":"Organization","name":"Harvard University"},{"@type":"Organization","name":"NVIDIA Research"}],"alumniOf":{"@type":"CollegeOrUniversity","name":"Massachusetts Institute of Technology"},"knowsAbout":["Energy-based models","Diffusion models","Amortized inference","Inference-time reasoning","Knowledge and reasoning","Inference-time computation","Model composition","Compositional reasoning","World models","Embodied intelligence","Multi-agent systems"],"sameAs":["https://scholar.google.com/citations?user=GRMMc_MAAAAJ&hl=en","https://github.com/yilundu","https://twitter.com/du_yilun","https://embodied-minds-lab.github.io/"]}</script>
 </head>
 <body>
   <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -933,44 +1076,61 @@ a:hover {
     <main id="main-content" class="main-content">
       <section class="content-section bio-section" id="about">
         <h2 class="sr-only">About Yilun Du</h2>
-        <p class="bio-lead">I develop compositional generative reasoning methods that enable physical agents to solve tasks beyond those encountered during training.</p>
-        <p>My work studies how generative models, composition, and search can serve as general-purpose mechanisms for solving complex unseen tasks. We study these techniques across scene understanding, natural language reasoning, and robotics.</p>
-        <p>My long-term goal is to build <a href="https://arxiv.org/abs/2402.01103" target="_blank" rel="noreferrer noopener">compositional world models</a> that enable agents to reason, plan, and act reliably in unfamiliar physical environments.</p>
-        <p>I am an Assistant Professor at Harvard's <a href="https://kempnerinstitute.harvard.edu/" target="_blank" rel="noreferrer noopener">Kempner Institute</a> and in Computer Science, where I lead the <a href="https://embodied-minds-lab.github.io/" target="_blank" rel="noreferrer noopener">Embodied Minds Lab</a>. I am also a part-time research scientist at <a href="https://research.nvidia.com/labs/avg/#about" target="_blank" rel="noreferrer noopener">NVIDIA Research</a>. I received my PhD from MIT EECS, advised by Leslie Kaelbling, Tomas Lozano-Pérez, and Joshua B. Tenenbaum. Before joining Harvard, I was a research fellow at OpenAI and a senior research scientist at Google DeepMind.</p>
+        <p class="bio-lead">I study how intelligent systems can learn reusable knowledge and reason with it at inference time to solve problems not anticipated during training.</p>
+        <aside class="guiding-question" aria-labelledby="guiding-question-text">
+          <p class="guiding-question-label">Central question</p>
+          <p class="guiding-question-text" id="guiding-question-text">What should be learned, and what should be inferred?</p>
+          <p class="guiding-question-explanation">Most neural networks are trained to map inputs directly to answers. This <em>amortizes</em> problem solving: training compiles knowledge from data—and much of how to use it—into the model's weights. It is fast and effective when new problems resemble training, but can be brittle when goals, constraints, or environments change. My work asks what should be stored as reusable knowledge and what should be reasoned out for each new problem.</p>
+        </aside>
+        <p>I study this question across generative models, language and multi-agent reasoning, perception, and robotics. My long-term goal is to build physical agents that use <a href="https://arxiv.org/abs/2402.01103" target="_blank" rel="noreferrer noopener">compositional world models</a> to imagine possible futures, plan, and act reliably in unfamiliar environments.</p>
+        <p class="bio-credentials">I lead the <a href="https://embodied-minds-lab.github.io/" target="_blank" rel="noreferrer noopener">Embodied Minds Lab</a> at Harvard and am a part-time research scientist at <a href="https://research.nvidia.com/labs/avg/#about" target="_blank" rel="noreferrer noopener">NVIDIA Research</a>. I received my PhD from MIT EECS, advised by Leslie Kaelbling, Tomas Lozano-Pérez, and Joshua B. Tenenbaum. Before Harvard, I held research roles at OpenAI and Google DeepMind.</p>
       </section>
 
       <section class="content-section" id="research">
         <div class="section-heading-row">
           <h2>Research</h2>
           <div class="research-introduction">
-              <!---
-            <p>My research studies how generative models can solve problems beyond their training distribution through model composition and inference-time search and planning. I develop this idea across perception, reasoning  and decision-making.</p>
-            --->
+            <p>Across these areas, learning captures reusable structure and knowledge; inference adapts it to the problem at hand.</p>
+          </div>
+        </div>
+        <div class="research-framework" aria-label="During training, build reusable knowledge. At inference time, sample, optimize, search, and plan to solve the problem at hand.">
+          <div class="framework-stage">
+            <span class="framework-label">During training</span>
+            <strong>Build reusable knowledge</strong>
+            <span class="framework-detail">Concepts, dynamics, and possible solutions</span>
+          </div>
+          <div class="framework-bridge" aria-hidden="true">
+            <span class="framework-bridge-label">sample&nbsp;·&nbsp;optimize&nbsp;·&nbsp;search&nbsp;·&nbsp;plan</span>
+            <span class="framework-arrow">→</span>
+          </div>
+          <div class="framework-stage">
+            <span class="framework-label">At inference time</span>
+            <strong>Solve the problem at hand</strong>
+            <span class="framework-detail">Adapt to new goals, constraints, and environments</span>
           </div>
         </div>
         <div class="research-grid">
           <article class="research-card">
             <h3><a class="research-topic-link" href="#publications" data-topic-link="generative-model">Generative Models &amp; Iterative Inference</a></h3>
-            <p>I explore how iterative inference and search can be combined with generative models to solve complex tasks. My work spans energy-based, diffusion, and language models across visual generation, sequence prediction, and reasoning.</p>
-            <p class="representative-work"><strong>Representative work:</strong> <a href="https://arxiv.org/abs/1903.08689" target="_blank" rel="noreferrer noopener">deep EBMs</a>, <a href="https://raywang4.github.io/equilibrium_matching/" target="_blank" rel="noreferrer noopener">equilibrium matching</a>, and <a href="https://aakaran.github.io/reasoning_with_sampling/" target="_blank" rel="noreferrer noopener">reasoning with sampling</a>.</p>
+            <p>Instead of producing one answer in a single pass, generative models represent many possible solutions. I develop iterative methods that search and refine these possibilities, so additional test-time computation can improve results or satisfy new constraints.</p>
+            <p class="representative-work"><strong>Examples:</strong> <a href="https://arxiv.org/abs/1903.08689" target="_blank" rel="noreferrer noopener">deep EBMs</a>, <a href="https://energy-based-model.github.io/reduce-reuse-recycle/" target="_blank" rel="noreferrer noopener">Reduce, Reuse, Recycle</a>, and <a href="https://aakaran.github.io/reasoning_with_sampling/" target="_blank" rel="noreferrer noopener">reasoning with sampling</a>.</p>
           </article>
           <article class="research-card">
             <h3><a class="research-topic-link" href="#publications" data-topic-link="reasoning">Compositional Reasoning &amp; Planning</a></h3>
-            <p>I study how learned models, objectives, and constraints can be composed at inference time to solve unfamiliar reasoning and planning problems. I apply this idea to abstract reasoning, long-horizon trajectory generation, and decision-making.</p>
-            <p class="representative-work"><strong>Representative work:</strong> <a href="https://alexoarga.github.io/compositional_reasoning/" target="_blank" rel="noreferrer noopener">compositional energy minimization</a>, <a href="https://diffusion-planning.github.io/" target="_blank" rel="noreferrer noopener">Diffuser</a>, and <a href="https://comp-diffuser.github.io/" target="_blank" rel="noreferrer noopener">generative trajectory stitching</a>.</p>
+            <p>Rather than train a separate predictor for every combination of goals and constraints, I compose reusable models at inference time and search for solutions that satisfy them together.</p>
+            <p class="representative-work"><strong>Examples:</strong> <a href="https://energy-based-model.github.io/Compositional-Visual-Generation-with-Composable-Diffusion-Models/" target="_blank" rel="noreferrer noopener">composable diffusion models</a>, <a href="https://diffusion-planning.github.io/" target="_blank" rel="noreferrer noopener">Diffuser</a>, and <a href="https://alexoarga.github.io/compositional_reasoning/" target="_blank" rel="noreferrer noopener">compositional energy minimization</a>.</p>
           </article>
           <article class="research-card">
             <h3><a class="research-topic-link" href="#publications" data-topic-link="world-embodied">World Models &amp; Embodied Intelligence</a></h3>
-            <p>I build generative world models that predict possible futures, then use inference and planning over those futures to extract actions. My work uses large video and trajectory models for long-horizon planning, robot control, and generalization across tasks and environments.</p>
-            <p class="representative-work"><strong>Representative work:</strong> <a href="https://diffusion-policy.cs.columbia.edu/" target="_blank" rel="noreferrer noopener">Diffusion Policy</a>, <a href="https://universal-policy.github.io/unipi/" target="_blank" rel="noreferrer noopener">UniPi</a>, <a href="https://video-language-planning.github.io/" target="_blank" rel="noreferrer noopener">Video Language Planning</a>, and <a href="https://www.boyuan.space/large-video-planner/" target="_blank" rel="noreferrer noopener">Large Video Planner</a>.</p>
+            <p>World models learn how environments can evolve. Planning over their predicted futures lets robots choose actions for new goals and adapt when the environment changes.</p>
+            <p class="representative-work"><strong>Examples:</strong> <a href="https://universal-policy.github.io/unipi/" target="_blank" rel="noreferrer noopener">UniPi</a>, <a href="https://video-language-planning.github.io/" target="_blank" rel="noreferrer noopener">Video Language Planning</a>, and <a href="https://www.boyuan.space/large-video-planner/" target="_blank" rel="noreferrer noopener">Large Video Planner</a>.</p>
           </article>
           <article class="research-card">
             <h3><a class="research-topic-link" href="#publications" data-topic-link="multi-agent">Multi-Agent Intelligence</a></h3>
-            <p>I study how multiple language models can be composed into an intelligent system. Their interactions enable inference-time reasoning through proposing, verifying, recombining, and refining solutions.</p>
-            <p class="representative-work"><strong>Representative work:</strong> <a href="https://composable-models.github.io/llm_debate/" target="_blank" rel="noreferrer noopener">multi-agent debate</a>, <a href="https://ardalabs.ai/MultiAgentVerification/" target="_blank" rel="noreferrer noopener">multi-agent verification</a>, and <a href="https://zhentingqi.github.io/internal/projects/EoM/" target="_blank" rel="noreferrer noopener">Economy of Minds</a>.</p>
+            <p>When the reusable components are entire language models, their interactions can serve as an inference procedure. I study how debate, verification, and decentralized coordination allocate test-time computation to propose, evaluate, and refine candidate solutions.</p>
+            <p class="representative-work"><strong>Examples:</strong> <a href="https://composable-models.github.io/llm_debate/" target="_blank" rel="noreferrer noopener">multi-agent debate</a>, <a href="https://ardalabs.ai/MultiAgentVerification/" target="_blank" rel="noreferrer noopener">multi-agent verification</a>, and <a href="https://zhentingqi.github.io/internal/projects/EoM/" target="_blank" rel="noreferrer noopener">Economy of Minds</a>.</p>
           </article>
         </div>
-        <p class="research-synthesis"><strong>Common thread.</strong> By composing learned models and searching for solutions at inference time, we can build intelligent systems that generalize reliably to new tasks, goals, and environments.</p>
       </section>
 
       <section class="content-section" id="news">
@@ -978,7 +1138,7 @@ a:hover {
         <ul class="news-list">
           <li><span class="news-date">[2026]</span> I am recruiting PhD students for the December 2026 application cycle through the <a href="https://embodied-minds-lab.github.io/" target="_blank" rel="noreferrer noopener">Embodied Minds Lab</a>.</li>
           <li><span class="news-date">[2026]</span> We are organizing the ICML 2026 workshop on <a href="https://compositional-learning.github.io/" target="_blank" rel="noreferrer noopener">compositional learning</a>.</li>
-          <li><span class="news-date">[Talk]</span> Presented compositional world models for embodied intelligence at the Kempner Frontiers of NeuroAI Symposium. Watch the <a href="https://www.youtube.com/watch?v=UKbLBOuHQ-0" target="_blank" rel="noreferrer noopener">talk</a>.</li>
+          <li><span class="news-date">[Talk]</span> Presented compositional world models at the Kempner Frontiers of NeuroAI Symposium. Watch the <a href="https://www.youtube.com/watch?v=UKbLBOuHQ-0" target="_blank" rel="noreferrer noopener">talk</a>.</li>
           <li><span class="news-date">[Website]</span> A collection of our work on energy-based models is available <a href="https://energy-based-model.github.io/Energy-based-Model-MIT/" target="_blank" rel="noreferrer noopener">here</a>.</li>
           <li><span class="news-date">[PhD]</span> Defended my PhD at MIT EECS. View the <a href="https://www.youtube.com/watch?v=7jvWDF6ZXPc" target="_blank" rel="noreferrer noopener">defense</a> or read the <a href="https://yilundu.github.io/thesis.pdf" target="_blank" rel="noreferrer noopener">thesis</a>.</li>
         </ul>
