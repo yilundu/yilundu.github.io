@@ -28,8 +28,8 @@
   --surface-strong: #edf3f1;
   --footer-bg: #ffffff;
   --text: #283238;
-  --muted: #5e6a70;
-  --quiet: #68747a;
+  --muted: #536168;
+  --quiet: #637178;
   --heading: #244252;
   --link: #356b58;
   --link-hover: #244d40;
@@ -49,6 +49,7 @@ html {
   width: 100%;
   scroll-behavior: smooth;
   scroll-padding-top: 18px;
+  scrollbar-gutter: stable;
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
 }
@@ -61,8 +62,8 @@ body {
   background: var(--page-bg);
   color: var(--text);
   font-family: var(--font);
-  font-size: 16px;
-  line-height: 1.58;
+  font-size: 17px;
+  line-height: 1.62;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
 }
@@ -173,7 +174,7 @@ a:hover {
 .role-line {
   margin: 0 0 13px;
   color: var(--text);
-  font-size: 15px;
+  font-size: 16px;
   line-height: 1.5;
 }
 
@@ -187,7 +188,7 @@ a:hover {
   flex-wrap: wrap;
   align-items: center;
   gap: 7px 17px;
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 600;
 }
 
@@ -222,7 +223,7 @@ a:hover {
 
 .simple-nav a {
   color: var(--muted);
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 700;
   letter-spacing: 0.01em;
 }
@@ -249,8 +250,8 @@ a:hover {
 .bio-section {
   max-width: 890px;
   color: #39454a;
-  font-size: 16px;
-  line-height: 1.68;
+  font-size: 17px;
+  line-height: 1.67;
 }
 
 .bio-section p {
@@ -261,65 +262,65 @@ a:hover {
   margin-bottom: 0;
 }
 
-.bio-credentials {
-  color: var(--muted);
-  font-size: 15px;
-  line-height: 1.62;
+.bio-section p,
+.research-introduction p,
+.research-card > p,
+.news-list li,
+.publication-card h3 {
+  text-wrap: pretty;
 }
 
-.bio-lead {
+.bio-credentials {
+  color: var(--muted);
+  font-size: inherit;
+  line-height: inherit;
+}
+
+.bio-lead,
+.guiding-question .guiding-question-text {
   max-width: 850px;
   text-wrap: balance;
   color: var(--heading);
-  font-family: var(--display-font);
-  font-size: clamp(21px, 2.6vw, 24px);
-  font-weight: 500;
-  letter-spacing: -0.018em;
-  line-height: 1.38;
+  font-family: var(--font);
+  font-size: clamp(21px, 2.25vw, 23px);
+  font-weight: 650;
+  letter-spacing: -0.012em;
+  line-height: 1.42;
 }
 
 .guiding-question {
   max-width: 850px;
-  margin: 21px 0 19px;
+  margin: 22px 0 20px;
   border-top: 1px solid var(--line);
   border-bottom: 1px solid var(--line);
-  padding: 16px 0 17px;
+  padding: 18px 0;
 }
 
 .guiding-question .guiding-question-label {
-  margin: 0 0 6px;
   color: var(--accent);
-  font-size: 12px;
-  font-weight: 750;
-  letter-spacing: 0.08em;
-  line-height: 1.4;
-  text-transform: uppercase;
+  font: inherit;
+  font-weight: 700;
+  letter-spacing: inherit;
+  text-transform: none;
 }
 
 .guiding-question .guiding-question-text {
-  margin: 0 0 7px;
-  text-wrap: balance;
-  color: var(--heading);
-  font-family: var(--display-font);
-  font-size: clamp(24px, 3.1vw, 30px);
-  font-weight: 600;
-  letter-spacing: -0.025em;
-  line-height: 1.25;
+  margin: 0 0 11px;
 }
 
 .guiding-question .guiding-question-explanation {
-  max-width: 820px;
+  max-width: 850px;
   margin: 0;
-  color: var(--muted);
-  font-size: 15px;
-  line-height: 1.62;
+  color: #39454a;
+  font-size: inherit;
+  line-height: inherit;
 }
 
 .content-section h2 {
   margin: 0 0 15px;
   color: var(--heading);
   font-family: var(--display-font);
-  font-size: 27px;
+  font-size: 29px;
   font-weight: 600;
   letter-spacing: -0.025em;
   line-height: 1.2;
@@ -338,32 +339,35 @@ a:hover {
 .research-introduction p {
   margin: 0;
   color: #39454a;
-  font-size: 16px;
-  line-height: 1.68;
+  font-size: 17px;
+  line-height: 1.67;
 }
 
 .research-framework {
   width: 100%;
   max-width: 890px;
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(200px, 216px) minmax(0, 1fr);
+  grid-template-columns: minmax(0, 1fr) clamp(190px, 25vw, 232px) minmax(0, 1fr);
   align-items: center;
-  gap: 14px;
-  margin: 0 0 23px;
+  gap: 24px;
+  margin: 0 0 25px;
   border-top: 1px solid var(--line);
   border-bottom: 1px solid var(--line);
-  padding: 16px 0;
+  padding: 20px 0 21px;
 }
 
 .framework-stage {
   min-width: 0;
   display: grid;
+  justify-items: center;
+  align-content: center;
   gap: 4px;
+  text-align: center;
 }
 
 .framework-label {
   color: var(--accent);
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 750;
   letter-spacing: 0.08em;
   line-height: 1.4;
@@ -373,41 +377,88 @@ a:hover {
 .framework-stage strong {
   color: var(--heading);
   font-family: var(--display-font);
-  font-size: 19px;
+  font-size: 21px;
   font-weight: 600;
   letter-spacing: -0.015em;
   line-height: 1.3;
+  text-wrap: balance;
 }
 
 .framework-detail {
   color: var(--muted);
-  font-size: 13px;
+  font-size: 16px;
   line-height: 1.5;
+  text-wrap: balance;
 }
 
 .framework-bridge {
-  display: flex;
-  flex-direction: column;
+  min-width: 0;
+  display: grid;
+  grid-template-rows: auto 30px;
+  justify-items: center;
   align-items: center;
-  justify-content: center;
-  gap: 4px;
-  color: var(--quiet);
+  gap: 6px;
+  color: var(--accent);
   text-align: center;
 }
 
 .framework-bridge-label {
+  display: block;
+  max-width: 100%;
   white-space: nowrap;
-  font-size: 12px;
+  color: var(--muted);
+  font-size: 15px;
+  font-weight: 650;
   letter-spacing: 0.005em;
   line-height: 1.4;
+  text-align: center;
 }
 
 .framework-arrow {
+  display: block;
   color: var(--accent);
-  font-family: var(--display-font);
-  font-size: 25px;
-  line-height: 1;
+  opacity: 0.82;
 }
+
+.framework-arrow--horizontal {
+  width: min(218px, 100%);
+  height: 30px;
+}
+
+.framework-arrow--vertical {
+  display: none;
+}
+
+.framework-arrow svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.framework-arrow-line,
+.framework-arrow-head {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.6;
+  stroke-linecap: round;
+  vector-effect: non-scaling-stroke;
+}
+
+.framework-arrow-head {
+  stroke-linejoin: round;
+}
+
+.framework-arrow-line--soft,
+.framework-arrow-line--strong {
+  opacity: 1;
+}
+
+.framework-arrow-origin {
+  fill: currentColor;
+  opacity: 1;
+}
+
 
 .research-grid {
   display: grid;
@@ -417,6 +468,7 @@ a:hover {
 
 .research-card {
   position: relative;
+  min-width: 0;
   min-height: 0;
   overflow: visible;
   border: 0;
@@ -432,7 +484,7 @@ a:hover {
   z-index: 1;
   margin: 0 0 8px;
   color: var(--heading);
-  font-size: 18px;
+  font-size: 19px;
   line-height: 1.35;
 }
 
@@ -441,7 +493,7 @@ a:hover {
   z-index: 1;
   margin: 0;
   color: var(--muted);
-  font-size: 15px;
+  font-size: 16px;
   line-height: 1.62;
 }
 
@@ -450,7 +502,7 @@ a:hover {
   border-top: 0;
   padding-top: 0;
   color: var(--quiet);
-  font-size: 14px;
+  font-size: 15px;
   line-height: 1.58;
 }
 
@@ -479,8 +531,8 @@ a:hover {
   background: transparent;
   padding: 0;
   color: var(--muted);
-  font-size: 16px;
-  line-height: 1.68;
+  font-size: 17px;
+  line-height: 1.67;
 }
 
 .research-synthesis strong {
@@ -502,8 +554,9 @@ a:hover {
 .news-date {
   display: inline-block;
   min-width: 61px;
+  font-variant-numeric: tabular-nums;
   color: var(--quiet);
-  font-size: 13px;
+  font-size: 14px;
   white-space: nowrap;
 }
 
@@ -529,7 +582,7 @@ a:hover {
   background: transparent;
   padding: 0;
   color: var(--muted);
-  font-size: 13px;
+  font-size: 14px;
 }
 
 .view-switch button,
@@ -636,7 +689,7 @@ a:hover {
   background: #ffffff;
   padding: 7px 10px;
   color: var(--text);
-  font-size: 14px;
+  font-size: 15px;
 }
 
 .search-field input:focus,
@@ -648,17 +701,18 @@ a:hover {
 
 .archive-status {
   min-height: 34px;
+  font-variant-numeric: tabular-nums;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 12px;
   border-top: 1px solid var(--line);
   color: var(--quiet);
-  font-size: 12px;
+  font-size: 13px;
 }
 
 .archive-status button {
-  font-size: 12px;
+  font-size: 13px;
 }
 
 .publication-list {
@@ -724,7 +778,7 @@ a:hover {
 .publication-card h3 {
   margin: 0 0 5px;
   color: #26343b;
-  font-size: 17.5px;
+  font-size: 18.5px;
   font-weight: 650;
   line-height: 1.38;
 }
@@ -740,7 +794,7 @@ a:hover {
 .authors {
   margin: 0 0 4px;
   color: var(--muted);
-  font-size: 14px;
+  font-size: 15px;
   line-height: 1.45;
 }
 
@@ -764,7 +818,7 @@ a:hover {
   gap: 0 5px;
   margin: 0 0 3px;
   color: var(--quiet);
-  font-size: 12px;
+  font-size: 13px;
 }
 
 .publication-topic-tag {
@@ -785,7 +839,7 @@ a:hover {
   flex-wrap: wrap;
   align-items: baseline;
   margin: 0;
-  font-size: 14px;
+  font-size: 15px;
 }
 
 .publication-links a {
@@ -808,7 +862,7 @@ a:hover {
 .publication-distinction {
   display: inline-block;
   color: #716b64;
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 600;
   white-space: nowrap;
 }
@@ -832,7 +886,7 @@ a:hover {
   background: var(--surface);
   padding: 34px 10px;
   color: var(--muted);
-  font-size: 13px;
+  font-size: 14px;
   text-align: center;
 }
 
@@ -843,7 +897,7 @@ a:hover {
   border: 0;
   border-radius: 0;
   padding: 5px 0;
-  font-size: 13px;
+  font-size: 14px;
   text-decoration: underline;
   text-underline-offset: 3px;
 }
@@ -856,7 +910,7 @@ a:hover {
 .contribution-note {
   margin: 17px 0 0;
   color: var(--quiet);
-  font-size: 12px;
+  font-size: 13px;
   text-align: center;
 }
 
@@ -870,7 +924,7 @@ a:hover {
   background: var(--footer-bg);
   padding: 20px 34px;
   color: var(--muted);
-  font-size: 12px;
+  font-size: 13px;
 }
 
 @media (max-width: 1000px) {
@@ -894,23 +948,36 @@ a:hover {
   }
 }
 
-@media (max-width: 760px) {
+@media (max-width: 860px) {
   .research-framework {
-    grid-template-columns: 1fr;
-    gap: 12px;
-    padding: 17px 0;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 14px;
+    padding: 18px 0 20px;
+  }
+
+  .framework-stage {
+    width: min(100%, 560px);
+    margin-inline: auto;
   }
 
   .framework-bridge {
-    flex-direction: row;
-    justify-content: flex-start;
-    gap: 8px;
-    text-align: left;
+    grid-template-rows: auto 60px;
+    gap: 5px;
+    margin: 2px 0;
   }
 
-  .framework-arrow {
-    transform: rotate(90deg);
-    font-size: 21px;
+  .framework-bridge-label {
+    font-size: 14px;
+  }
+
+  .framework-arrow--horizontal {
+    display: none;
+  }
+
+  .framework-arrow--vertical {
+    width: 30px;
+    height: 60px;
+    display: block;
   }
 }
 
@@ -966,17 +1033,14 @@ a:hover {
     margin-top: 44px;
   }
 
-  .bio-lead {
-    font-size: 23px;
+  .bio-lead,
+  .guiding-question .guiding-question-text {
+    font-size: 22px;
   }
 
   .guiding-question {
     margin: 22px 0 21px;
     padding: 17px 0 18px;
-  }
-
-  .guiding-question .guiding-question-text {
-    font-size: 26px;
   }
 
   .research-grid {
@@ -1078,11 +1142,10 @@ a:hover {
         <h2 class="sr-only">About Yilun Du</h2>
         <p class="bio-lead">I study how intelligent systems can learn reusable knowledge and reason with it at inference time to solve problems not anticipated during training.</p>
         <aside class="guiding-question" aria-labelledby="guiding-question-text">
-          <p class="guiding-question-label">Central question</p>
-          <p class="guiding-question-text" id="guiding-question-text">What should be learned, and what should be inferred?</p>
-          <p class="guiding-question-explanation">Most neural networks are trained to map inputs directly to answers. This <em>amortizes</em> problem solving: training compiles knowledge from data—and much of how to use it—into the model's weights. It is fast and effective when new problems resemble training, but can be brittle when goals, constraints, or environments change. My work asks what should be stored as reusable knowledge and what should be reasoned out for each new problem.</p>
+          <p class="guiding-question-text" id="guiding-question-text"><span class="guiding-question-label">Central question:</span> What should be learned, and what should be inferred?</p>
+          <p class="guiding-question-explanation">Most neural networks are trained to map inputs directly to answers. This amortizes problem solving: training compiles knowledge from data—and much of how to use it—into the model's weights. It is fast and effective when new problems resemble training, but can be brittle when goals, constraints, or environments change. My work asks what should be stored as reusable knowledge and what should be reasoned out for each new problem.</p>
         </aside>
-        <p>I study this question across generative models, language and multi-agent reasoning, perception, and robotics. My long-term goal is to build physical agents that use <a href="https://arxiv.org/abs/2402.01103" target="_blank" rel="noreferrer noopener">compositional world models</a> to imagine possible futures, plan, and act reliably in unfamiliar environments.</p>
+        <p>I pursue this question across generative models, language and multi-agent reasoning, and robotics. My long-term goal is to build physical agents that use <a href="https://arxiv.org/abs/2402.01103" target="_blank" rel="noreferrer noopener">compositional world models</a> to imagine possible futures, plan, and act reliably in unfamiliar environments.</p>
         <p class="bio-credentials">I lead the <a href="https://embodied-minds-lab.github.io/" target="_blank" rel="noreferrer noopener">Embodied Minds Lab</a> at Harvard and am a part-time research scientist at <a href="https://research.nvidia.com/labs/avg/#about" target="_blank" rel="noreferrer noopener">NVIDIA Research</a>. I received my PhD from MIT EECS, advised by Leslie Kaelbling, Tomas Lozano-Pérez, and Joshua B. Tenenbaum. Before Harvard, I held research roles at OpenAI and Google DeepMind.</p>
       </section>
 
@@ -1090,23 +1153,38 @@ a:hover {
         <div class="section-heading-row">
           <h2>Research</h2>
           <div class="research-introduction">
-            <p>Across these areas, learning captures reusable structure and knowledge; inference adapts it to the problem at hand.</p>
+            <p>This division between learning and inference shapes four areas of my work.</p>
           </div>
         </div>
-        <div class="research-framework" aria-label="During training, build reusable knowledge. At inference time, sample, optimize, search, and plan to solve the problem at hand.">
-          <div class="framework-stage">
+        <div class="research-framework" role="img" aria-label="During training, learn reusable knowledge. At inference time, use sampling, optimization, search, and planning to solve new problems.">
+          <div class="framework-stage framework-stage--training">
             <span class="framework-label">During training</span>
-            <strong>Build reusable knowledge</strong>
-            <span class="framework-detail">Concepts, dynamics, and possible solutions</span>
+            <strong>Learn reusable knowledge</strong>
+            <span class="framework-detail">Concepts, dynamics, and solution spaces</span>
           </div>
           <div class="framework-bridge" aria-hidden="true">
             <span class="framework-bridge-label">sample&nbsp;·&nbsp;optimize&nbsp;·&nbsp;search&nbsp;·&nbsp;plan</span>
-            <span class="framework-arrow">→</span>
+            <span class="framework-arrow framework-arrow--horizontal">
+              <svg viewBox="0 0 220 30" preserveAspectRatio="none" focusable="false" aria-hidden="true">
+                <circle class="framework-arrow-origin" cx="7" cy="15" r="3.2"></circle>
+                <path class="framework-arrow-line framework-arrow-line--soft" d="M10 15H108"></path>
+                <path class="framework-arrow-line framework-arrow-line--strong" d="M108 15H208"></path>
+                <path class="framework-arrow-head" d="M198 6L208 15L198 24"></path>
+              </svg>
+            </span>
+            <span class="framework-arrow framework-arrow--vertical">
+              <svg viewBox="0 0 30 64" preserveAspectRatio="none" focusable="false" aria-hidden="true">
+                <circle class="framework-arrow-origin" cx="15" cy="5" r="3.1"></circle>
+                <path class="framework-arrow-line framework-arrow-line--soft" d="M15 8V31"></path>
+                <path class="framework-arrow-line framework-arrow-line--strong" d="M15 31V55"></path>
+                <path class="framework-arrow-head" d="M7 47L15 56L23 47"></path>
+              </svg>
+            </span>
           </div>
-          <div class="framework-stage">
+          <div class="framework-stage framework-stage--inference">
             <span class="framework-label">At inference time</span>
-            <strong>Solve the problem at hand</strong>
-            <span class="framework-detail">Adapt to new goals, constraints, and environments</span>
+            <strong>Solve new problems</strong>
+            <span class="framework-detail">New goals, constraints, and environments</span>
           </div>
         </div>
         <div class="research-grid">
@@ -1138,7 +1216,7 @@ a:hover {
         <ul class="news-list">
           <li><span class="news-date">[2026]</span> I am recruiting PhD students for the December 2026 application cycle through the <a href="https://embodied-minds-lab.github.io/" target="_blank" rel="noreferrer noopener">Embodied Minds Lab</a>.</li>
           <li><span class="news-date">[2026]</span> We are organizing the ICML 2026 workshop on <a href="https://compositional-learning.github.io/" target="_blank" rel="noreferrer noopener">compositional learning</a>.</li>
-          <li><span class="news-date">[Talk]</span> Presented compositional world models at the Kempner Frontiers of NeuroAI Symposium. Watch the <a href="https://www.youtube.com/watch?v=UKbLBOuHQ-0" target="_blank" rel="noreferrer noopener">talk</a>.</li>
+          <li><span class="news-date">[Talk]</span> Presented compositional world models for embodied intelligence at the Kempner Frontiers of NeuroAI Symposium. Watch the <a href="https://www.youtube.com/watch?v=UKbLBOuHQ-0" target="_blank" rel="noreferrer noopener">talk</a>.</li>
           <li><span class="news-date">[Website]</span> A collection of our work on energy-based models is available <a href="https://energy-based-model.github.io/Energy-based-Model-MIT/" target="_blank" rel="noreferrer noopener">here</a>.</li>
           <li><span class="news-date">[PhD]</span> Defended my PhD at MIT EECS. View the <a href="https://www.youtube.com/watch?v=7jvWDF6ZXPc" target="_blank" rel="noreferrer noopener">defense</a> or read the <a href="https://yilundu.github.io/thesis.pdf" target="_blank" rel="noreferrer noopener">thesis</a>.</li>
         </ul>
