@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Yilun Du | Learning &amp; Inference for Generalizable Intelligence</title>
-  <meta name="description" content="Yilun Du studies how intelligent systems learn reusable knowledge and reason with it at inference time to solve problems not anticipated during training.">
+  <meta name="description" content="Yilun Du studies four interfaces between learned knowledge and inference: generative models, model composition, world models, and multi-agent systems.">
   <meta name="keywords" content="Yilun Du, amortized inference, inference-time reasoning, knowledge and reasoning, inference-time computation, learned representations, model composition, energy-based models, Langevin dynamics, diffusion models, diffusion planning, video world models, embodied intelligence, robot learning, multi-agent debate, compositional reasoning, test-time compute">
   <meta name="author" content="Yilun Du">
   <meta name="theme-color" content="#ffffff">
@@ -13,13 +13,13 @@
   <link rel="icon" href="https://yilundu.github.io/static/img/favicon.ico">
   <meta property="og:type" content="profile">
   <meta property="og:title" content="Yilun Du | Learning &amp; Inference for Generalizable Intelligence">
-  <meta property="og:description" content="Research on how intelligent systems can learn reusable knowledge and reason with it at inference time to solve new problems.">
+  <meta property="og:description" content="Yilun Du studies four interfaces between learned knowledge and inference: generative models, model composition, world models, and multi-agent systems.">
   <meta property="og:url" content="https://yilundu.github.io/">
   <meta property="og:image" content="https://yilundu.github.io/images/yilun8.png">
   <meta property="og:image:alt" content="Portrait of Yilun Du">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Yilun Du | Learning &amp; Inference for Generalizable Intelligence">
-  <meta name="twitter:description" content="Learning reusable knowledge and reasoning with it at inference time to solve new problems.">
+  <meta name="twitter:description" content="Yilun Du studies four interfaces between learned knowledge and inference: generative models, model composition, world models, and multi-agent systems.">
   <meta name="twitter:image" content="https://yilundu.github.io/images/yilun8.png">
   <style>:root {
   --page-bg: #ffffff;
@@ -92,6 +92,15 @@ a {
 
 a:hover {
   color: var(--link-hover);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+
+.bio-section p:not(.bio-lead) a,
+.research-card > p a,
+.news-list a,
+.noscript-note a {
   text-decoration: underline;
   text-decoration-thickness: 1px;
   text-underline-offset: 3px;
@@ -497,6 +506,32 @@ a:hover {
   line-height: 1.62;
 }
 
+.research-card .research-division {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  margin: 0 0 9px;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.42;
+}
+
+.research-division span + span {
+  border-left: 1px solid var(--soft-line);
+  padding-left: 10px;
+}
+
+.research-division strong {
+  display: block;
+  margin-bottom: 1px;
+  color: var(--accent);
+  font-size: 12px;
+  font-weight: 750;
+  letter-spacing: 0.075em;
+  line-height: 1.35;
+  text-transform: uppercase;
+}
+
 .research-card .representative-work {
   margin-top: 11px;
   border-top: 0;
@@ -699,6 +734,12 @@ a:hover {
   box-shadow: 0 0 0 2px rgba(86, 108, 127, 0.12);
 }
 
+.search-field input:focus-visible,
+.year-field select:focus-visible {
+  outline: 2px solid #8b6325;
+  outline-offset: 2px;
+}
+
 .archive-status {
   min-height: 34px;
   font-variant-numeric: tabular-nums;
@@ -717,6 +758,12 @@ a:hover {
 
 .publication-list {
   display: grid;
+}
+
+.noscript-note {
+  margin: 14px 0 0;
+  color: var(--muted);
+  font-size: 14px;
 }
 
 .publication-card {
@@ -1111,7 +1158,7 @@ a:hover {
 }
 </style>
   <style>[hidden] { display: none !important; }</style>
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"Yilun Du","url":"https://yilundu.github.io/","image":"https://yilundu.github.io/images/yilun8.png","jobTitle":"Assistant Professor","affiliation":[{"@type":"Organization","name":"Harvard University"},{"@type":"Organization","name":"NVIDIA Research"}],"alumniOf":{"@type":"CollegeOrUniversity","name":"Massachusetts Institute of Technology"},"knowsAbout":["Energy-based models","Diffusion models","Amortized inference","Inference-time reasoning","Knowledge and reasoning","Inference-time computation","Model composition","Compositional reasoning","World models","Embodied intelligence","Multi-agent systems"],"sameAs":["https://scholar.google.com/citations?user=GRMMc_MAAAAJ&hl=en","https://github.com/yilundu","https://twitter.com/du_yilun","https://embodied-minds-lab.github.io/"]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","@id":"https://yilundu.github.io/#person","name":"Yilun Du","url":"https://yilundu.github.io/","image":"https://yilundu.github.io/images/yilun8.png","jobTitle":"Assistant Professor","affiliation":[{"@type":"Organization","name":"Harvard University","url":"https://www.harvard.edu/"},{"@type":"Organization","name":"NVIDIA Research","url":"https://research.nvidia.com/"}],"memberOf":{"@type":"Organization","name":"Embodied Minds Lab","url":"https://embodied-minds-lab.github.io/"},"alumniOf":{"@type":"CollegeOrUniversity","name":"Massachusetts Institute of Technology"},"knowsAbout":["Energy-based models","Diffusion models","Amortized inference","Inference-time reasoning","Knowledge and reasoning","Inference-time computation","Model composition","Compositional reasoning","World models","Embodied intelligence","Multi-agent systems"],"sameAs":["https://scholar.google.com/citations?user=GRMMc_MAAAAJ&hl=en","https://github.com/yilundu","https://twitter.com/du_yilun"]}</script>
 </head>
 <body>
   <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -1140,12 +1187,12 @@ a:hover {
     <main id="main-content" class="main-content">
       <section class="content-section bio-section" id="about">
         <h2 class="sr-only">About Yilun Du</h2>
-        <p class="bio-lead">I study how intelligent systems can learn reusable knowledge and reason with it at inference time to solve problems not anticipated during training.</p>
+        <p class="bio-lead">I study how intelligent systems can combine reusable knowledge with inference-time reasoning to solve problems not anticipated during training.</p>
         <aside class="guiding-question" aria-labelledby="guiding-question-text">
           <p class="guiding-question-text" id="guiding-question-text"><span class="guiding-question-label">Central question:</span> What should be learned, and what should be inferred?</p>
-          <p class="guiding-question-explanation">Most neural networks are trained to map inputs directly to answers. This amortizes problem solving: training compiles knowledge from data—and much of how to use it—into the model's weights. It is fast and effective when new problems resemble training, but can be brittle when goals, constraints, or environments change. My work asks what should be stored as reusable knowledge and what should be reasoned out for each new problem.</p>
+          <p class="guiding-question-explanation">Classical AI often separated knowledge representation from inference and planning. Modern neural networks often compile both knowledge and reasoning into their weights. This is efficient for familiar problems, but can generalize poorly to novel tasks. My work seeks a modern synthesis: learn reusable knowledge from data, then reason over and combine it at inference time.</p>
         </aside>
-        <p>I pursue this question across generative models, language and multi-agent reasoning, perception, and robotics. My long-term goal is to build physical agents that use <a href="https://arxiv.org/abs/2402.01103" target="_blank" rel="noreferrer noopener">compositional world models</a> to imagine possible futures, plan, and act reliably in unfamiliar environments.</p>
+        <p>I explore this boundary through four interfaces: search over generative solution spaces, composition of reusable models, planning with world models, and reasoning through multi-agent interaction. My long-term goal is to build physical agents that adapt reliably in unfamiliar environments.</p>
         <p class="bio-credentials">I lead the <a href="https://embodied-minds-lab.github.io/" target="_blank" rel="noreferrer noopener">Embodied Minds Lab</a> at Harvard and am a part-time research scientist at <a href="https://research.nvidia.com/labs/avg/#about" target="_blank" rel="noreferrer noopener">NVIDIA Research</a>. I received my PhD from MIT EECS, advised by Leslie Kaelbling, Tomas Lozano-Pérez, and Joshua B. Tenenbaum. Before Harvard, I held research roles at OpenAI and Google DeepMind.</p>
       </section>
 
@@ -1153,17 +1200,17 @@ a:hover {
         <div class="section-heading-row">
           <h2>Research</h2>
           <div class="research-introduction">
-            <p>This division between learning and inference shapes four areas of my work.</p>
+            <p>There is no single boundary between learning and inference. Our group explores four distinct interfaces between them.</p>
           </div>
         </div>
-        <div class="research-framework" role="img" aria-label="During training, learn reusable knowledge. At inference time, use sampling, optimization, search, and planning to solve new problems.">
+        <div class="research-framework" role="img" aria-label="During training, learn solution spaces, reusable models, world dynamics, and agent expertise. At inference time, use sampling, composition, planning, and interaction to solve new problems.">
           <div class="framework-stage framework-stage--training">
             <span class="framework-label">During training</span>
             <strong>Learn reusable knowledge</strong>
-            <span class="framework-detail">Concepts, dynamics, and solution spaces</span>
+            <span class="framework-detail">Solution spaces, reusable models, world dynamics, and agent expertise</span>
           </div>
           <div class="framework-bridge" aria-hidden="true">
-            <span class="framework-bridge-label">sample&nbsp;·&nbsp;optimize&nbsp;·&nbsp;search&nbsp;·&nbsp;plan</span>
+            <span class="framework-bridge-label">sample&nbsp;·&nbsp;compose&nbsp;·&nbsp;plan&nbsp;·&nbsp;interact</span>
             <span class="framework-arrow framework-arrow--horizontal">
               <svg viewBox="0 0 220 30" preserveAspectRatio="none" focusable="false" aria-hidden="true">
                 <circle class="framework-arrow-origin" cx="7" cy="15" r="3.2"></circle>
@@ -1190,22 +1237,26 @@ a:hover {
         <div class="research-grid">
           <article class="research-card">
             <h3><a class="research-topic-link" href="#publications" data-topic-link="generative-model">Generative Models &amp; Iterative Inference</a></h3>
-            <p>Instead of producing one answer in a single pass, generative models represent many possible solutions. I develop iterative methods that search and refine these possibilities, so additional test-time computation can improve results or satisfy new constraints.</p>
+            <p class="research-division"><span><strong>Knowledge</strong>Solution spaces</span><span><strong>Reasoning</strong>Sample and refine</span></p>
+            <p>Generative models represent a space of possible solutions. Iterative inference lets us search that space and refine candidate solutions to improve results or meet new constraints.</p>
             <p class="representative-work"><strong>Examples:</strong> <a href="https://arxiv.org/abs/1903.08689" target="_blank" rel="noreferrer noopener">deep EBMs</a>, <a href="https://energy-based-model.github.io/reduce-reuse-recycle/" target="_blank" rel="noreferrer noopener">Reduce, Reuse, Recycle</a>, and <a href="https://aakaran.github.io/reasoning_with_sampling/" target="_blank" rel="noreferrer noopener">reasoning with sampling</a>.</p>
           </article>
           <article class="research-card">
             <h3><a class="research-topic-link" href="#publications" data-topic-link="reasoning">Compositional Reasoning &amp; Planning</a></h3>
-            <p>Rather than train a separate predictor for every combination of goals and constraints, I compose reusable models at inference time and search for solutions that satisfy them together.</p>
+            <p class="research-division"><span><strong>Knowledge</strong>Reusable models</span><span><strong>Reasoning</strong>Compose and search</span></p>
+            <p>Reusable models capture different sources of knowledge. Composing them at inference time lets us adapt to new combinations of goals and constraints.</p>
             <p class="representative-work"><strong>Examples:</strong> <a href="https://energy-based-model.github.io/Compositional-Visual-Generation-with-Composable-Diffusion-Models/" target="_blank" rel="noreferrer noopener">composable diffusion models</a>, <a href="https://diffusion-planning.github.io/" target="_blank" rel="noreferrer noopener">Diffuser</a>, and <a href="https://alexoarga.github.io/compositional_reasoning/" target="_blank" rel="noreferrer noopener">compositional energy minimization</a>.</p>
           </article>
           <article class="research-card">
             <h3><a class="research-topic-link" href="#publications" data-topic-link="world-embodied">World Models &amp; Embodied Intelligence</a></h3>
-            <p>World models learn how environments can evolve. Planning over their predicted futures lets robots choose actions for new goals and adapt when the environment changes.</p>
+            <p class="research-division"><span><strong>Knowledge</strong>World dynamics</span><span><strong>Reasoning</strong>Predict and plan</span></p>
+            <p>World models capture how environments evolve. Planning over possible futures lets physical agents pursue new goals and adapt to change.</p>
             <p class="representative-work"><strong>Examples:</strong> <a href="https://universal-policy.github.io/unipi/" target="_blank" rel="noreferrer noopener">UniPi</a>, <a href="https://video-language-planning.github.io/" target="_blank" rel="noreferrer noopener">Video Language Planning</a>, and <a href="https://www.boyuan.space/large-video-planner/" target="_blank" rel="noreferrer noopener">Large Video Planner</a>.</p>
           </article>
           <article class="research-card">
             <h3><a class="research-topic-link" href="#publications" data-topic-link="multi-agent">Multi-Agent Intelligence</a></h3>
-            <p>When the reusable components are entire language models, their interactions can serve as an inference procedure. I study how debate, verification, and decentralized coordination allocate test-time computation to propose, evaluate, and refine candidate solutions.</p>
+            <p class="research-division"><span><strong>Knowledge</strong>Distributed across agents</span><span><strong>Reasoning</strong>Interact and coordinate</span></p>
+            <p>Language models capture complementary knowledge and perspectives. Their interactions at inference time let them evaluate and refine candidate solutions.</p>
             <p class="representative-work"><strong>Examples:</strong> <a href="https://composable-models.github.io/llm_debate/" target="_blank" rel="noreferrer noopener">multi-agent debate</a>, <a href="https://ardalabs.ai/MultiAgentVerification/" target="_blank" rel="noreferrer noopener">multi-agent verification</a>, and <a href="https://zhentingqi.github.io/internal/projects/EoM/" target="_blank" rel="noreferrer noopener">Economy of Minds</a>.</p>
           </article>
         </div>
@@ -1248,6 +1299,7 @@ a:hover {
 
           <div class="archive-status" aria-live="polite"><span id="archive-status-text">Showing 12 of 24 selected publications</span><button id="clear-filters" type="button" hidden>Clear filters</button></div>
         </div>
+        <noscript><p class="noscript-note">JavaScript is needed to filter the complete archive. Browse all publications on <a href="https://scholar.google.com/citations?user=GRMMc_MAAAAJ&amp;hl=en" target="_blank" rel="noreferrer noopener">Google Scholar</a>.</p></noscript>
         <div id="publication-list" class="publication-list">
       <!-- data-topics accepts space-separated topic IDs; the first is the card's primary theme. -->
       <article
@@ -3664,7 +3716,15 @@ a:hover {
     const topicShortcutLinks = Array.from(document.querySelectorAll("[data-topic-link]"));
     const publicationVideos = Array.from(list.querySelectorAll(".publication-card video"));
     const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
-    const state = {view: "selected", query: "", topic: "all", year: "all", visible: 12};
+    const PAGE_SIZE = 12;
+    const searchText = new Map(cards.map(card => [
+      card,
+      Array.from(card.querySelectorAll("h3, .authors, .publication-meta, .conference-link"))
+        .map(element => element.textContent)
+        .join(" ")
+        .toLowerCase()
+    ]));
+    const state = {view: "selected", query: "", topic: "all", year: "all", visible: PAGE_SIZE};
     const supportsAutoLoad = "IntersectionObserver" in window;
     let autoLoadObserver = null;
     let videoObserver = null;
@@ -3723,7 +3783,7 @@ a:hover {
     function selectTopic(topic, scrollToPublications = false, openFullArchive = false) {
       state.topic = topic;
       if (openFullArchive) state.view = "all";
-      state.visible = 12;
+      state.visible = PAGE_SIZE;
       updateTopicControls();
       updateViewControls();
       renderArchive();
@@ -3741,7 +3801,7 @@ a:hover {
         const matchesView = state.view === "all" || card.dataset.featured === "true";
         const matchesTopic = state.topic === "all" || card.dataset.topics.split(/\s+/).includes(state.topic);
         const matchesYear = state.year === "all" || card.dataset.year === state.year;
-        const matchesQuery = !query || card.textContent.toLowerCase().includes(query);
+        const matchesQuery = !query || searchText.get(card).includes(query);
         return matchesView && matchesTopic && matchesYear && matchesQuery;
       });
     }
@@ -3779,7 +3839,7 @@ a:hover {
       autoLoadObserver = new IntersectionObserver(entries => {
         if (!entries.some(entry => entry.isIntersecting) || loadSentinel.hidden) return;
         autoLoadObserver.unobserve(loadSentinel);
-        state.visible += 12;
+        state.visible += PAGE_SIZE;
         renderArchive();
       }, {rootMargin: "0px 0px 600px 0px"});
 
@@ -3830,7 +3890,7 @@ a:hover {
 
     viewButtons.forEach(button => button.addEventListener("click", () => {
       state.view = button.dataset.view;
-      state.visible = 12;
+      state.visible = PAGE_SIZE;
       updateViewControls();
       renderArchive();
     }));
@@ -3847,14 +3907,14 @@ a:hover {
     searchInput.addEventListener("input", event => {
       state.query = event.target.value;
       if (state.query.trim()) state.view = "all";
-      state.visible = 12;
+      state.visible = PAGE_SIZE;
       updateViewControls();
       renderArchive();
     });
 
     yearSelect.addEventListener("change", event => {
       state.year = event.target.value;
-      state.visible = 12;
+      state.visible = PAGE_SIZE;
       renderArchive();
     });
 
@@ -3863,7 +3923,7 @@ a:hover {
       state.topic = "all";
       state.year = "all";
       state.view = "selected";
-      state.visible = 12;
+      state.visible = PAGE_SIZE;
       searchInput.value = "";
       yearSelect.value = "all";
       updateTopicControls();
@@ -3872,7 +3932,7 @@ a:hover {
     });
 
     loadMore.addEventListener("click", () => {
-      state.visible += 12;
+      state.visible += PAGE_SIZE;
       renderArchive();
     });
 
