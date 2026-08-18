@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Yilun Du | Learning &amp; Inference for Generalizable Intelligence</title>
-  <meta name="description" content="Yilun Du studies generative models, model composition, inference-time reasoning, world models, and robotics.">
+  <meta name="description" content="Yilun Du studies reusable models and inference-time reasoning for unfamiliar problems in generative modeling, robotics, and multi-agent systems.">
   <meta name="keywords" content="Yilun Du, amortized inference, inference-time reasoning, knowledge and reasoning, inference-time computation, learned representations, model composition, energy-based models, Langevin dynamics, diffusion models, diffusion planning, video world models, embodied intelligence, robotics, robot learning, multi-agent debate, compositional reasoning, test-time compute">
   <meta name="author" content="Yilun Du">
   <meta name="theme-color" content="#ffffff">
@@ -13,13 +13,13 @@
   <link rel="icon" href="https://yilundu.github.io/static/img/favicon.ico">
   <meta property="og:type" content="profile">
   <meta property="og:title" content="Yilun Du | Learning &amp; Inference for Generalizable Intelligence">
-  <meta property="og:description" content="Yilun Du studies generative models, model composition, inference-time reasoning, world models, and robotics.">
+  <meta property="og:description" content="Yilun Du studies reusable models and inference-time reasoning for unfamiliar problems in generative modeling, robotics, and multi-agent systems.">
   <meta property="og:url" content="https://yilundu.github.io/">
   <meta property="og:image" content="https://yilundu.github.io/images/yilun8.png">
   <meta property="og:image:alt" content="Portrait of Yilun Du">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Yilun Du | Learning &amp; Inference for Generalizable Intelligence">
-  <meta name="twitter:description" content="Yilun Du studies generative models, model composition, inference-time reasoning, world models, and robotics.">
+  <meta name="twitter:description" content="Yilun Du studies reusable models and inference-time reasoning for unfamiliar problems in generative modeling, robotics, and multi-agent systems.">
   <meta name="twitter:image" content="https://yilundu.github.io/images/yilun8.png">
   <style>:root {
   --page-bg: #ffffff;
@@ -1187,12 +1187,12 @@ a:hover {
     <main id="main-content" class="main-content">
       <section class="content-section bio-section" id="about">
         <h2 class="sr-only">About Yilun Du</h2>
-        <p class="bio-lead">I study how intelligent systems can compose learned models and reason with them to solve unfamiliar problems.</p>
+        <p class="bio-lead">I study how intelligent systems can learn reusable models, then compose and reason with them at inference time.</p>
         <aside class="guiding-question" aria-labelledby="guiding-question-text">
-          <p class="guiding-question-text" id="guiding-question-text"><span class="guiding-question-label">Central question:</span> What should be learned, and what should be inferred?</p>
-          <p class="guiding-question-explanation">Classical AI often separated knowledge representation from inference and planning. Modern neural networks often compile both knowledge and reasoning into their weights. This amortization is efficient for familiar problems, but can generalize poorly to novel tasks. My work seeks a modern synthesis: learn reusable models from data, then compose and reason with them at inference time to solve unfamiliar tasks.</p>
+          <p class="guiding-question-text" id="guiding-question-text"><span class="guiding-question-label">Central question:</span> What should models represent so that inference-time reasoning can solve unfamiliar problems?</p>
+          <p class="guiding-question-explanation">Classical AI designed representations to support explicit inference and planning. Modern neural networks often compile both knowledge and reasoning into their weights. This amortization is efficient for familiar problems, but can generalize poorly to novel tasks. My work seeks a modern synthesis: learn models that represent reusable knowledge, then search, compose, and plan with them at inference time.</p>
         </aside>
-        <p>I explore this boundary through four interfaces: search over generative solution spaces, composition of reusable models, planning with world models, and reasoning through multi-agent interaction.</p>
+        <p>I explore this question through four interfaces between representation and inference: search over generative solution spaces, composition of reusable models, planning with world models, and reasoning through multi-agent interaction.</p>
         <p>Across these directions, a central focus of my work is building robots that can plan, adapt, and act reliably in unfamiliar environments.</p>
         <p class="bio-credentials">I lead the <a href="https://embodied-minds-lab.github.io/" target="_blank" rel="noreferrer noopener">Embodied Minds Lab</a> at Harvard and am a part-time research scientist at <a href="https://research.nvidia.com/labs/avg/#about" target="_blank" rel="noreferrer noopener">NVIDIA Research</a>. I received my PhD from MIT EECS, advised by Leslie Kaelbling, Tomas Lozano-Pérez, and Joshua B. Tenenbaum. Before Harvard, I held research roles at OpenAI and Google DeepMind.</p>
       </section>
@@ -1201,7 +1201,7 @@ a:hover {
         <div class="section-heading-row">
           <h2>Research</h2>
           <div class="research-introduction">
-            <p>There is no single boundary between learning and inference. Our group explores four distinct interfaces between them.</p>
+            <p>Different representations support different forms of inference. Our group studies four interfaces between what models learn and how they reason at inference time.</p>
           </div>
         </div>
         <div class="research-framework" role="img" aria-label="During training, learn solution spaces, reusable models, world dynamics, and agent expertise. At inference time, use sampling, composition, planning, and interaction to solve new problems.">
@@ -1211,7 +1211,7 @@ a:hover {
             <span class="framework-detail">Solution spaces, reusable models, world dynamics, and agent expertise</span>
           </div>
           <div class="framework-bridge" aria-hidden="true">
-            <span class="framework-bridge-label">sample&nbsp;·&nbsp;compose&nbsp;·&nbsp;plan&nbsp;·&nbsp;interact</span>
+            <span class="framework-bridge-label">sample&nbsp;·&nbsp;compose&nbsp;·&nbsp;plan</span>
             <span class="framework-arrow framework-arrow--horizontal">
               <svg viewBox="0 0 220 30" preserveAspectRatio="none" focusable="false" aria-hidden="true">
                 <circle class="framework-arrow-origin" cx="7" cy="15" r="3.2"></circle>
@@ -1257,7 +1257,7 @@ a:hover {
           <article class="research-card">
             <h3><a class="research-topic-link" href="#publications" data-topic-link="multi-agent">Multi-Agent Intelligence</a></h3>
             <p class="research-division"><span><strong>Knowledge</strong>Distributed across agents</span><span><strong>Reasoning</strong>Interact and coordinate</span></p>
-            <p>Language models capture complementary knowledge and capabilities. Their interactions at inference time let them evaluate and refine candidate solutions.</p>
+            <p>Different language models capture complementary knowledge and capabilities. Composing their interactions at inference time lets them function as a unified system that evaluates and refines candidate solutions.</p>
             <p class="representative-work"><strong>Examples:</strong> <a href="https://composable-models.github.io/llm_debate/" target="_blank" rel="noreferrer noopener">multi-agent debate</a>, <a href="https://ardalabs.ai/MultiAgentVerification/" target="_blank" rel="noreferrer noopener">multi-agent verification</a>, and <a href="https://zhentingqi.github.io/internal/projects/EoM/" target="_blank" rel="noreferrer noopener">Economy of Minds</a>.</p>
           </article>
         </div>
