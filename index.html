@@ -285,8 +285,7 @@ a:hover {
   line-height: inherit;
 }
 
-.bio-lead,
-.guiding-question .guiding-question-text {
+.bio-lead {
   max-width: 850px;
   text-wrap: balance;
   color: var(--heading);
@@ -311,10 +310,6 @@ a:hover {
   font-weight: 700;
   letter-spacing: inherit;
   text-transform: none;
-}
-
-.guiding-question .guiding-question-text {
-  margin: 0 0 11px;
 }
 
 .guiding-question .guiding-question-explanation {
@@ -1080,8 +1075,7 @@ a:hover {
     margin-top: 44px;
   }
 
-  .bio-lead,
-  .guiding-question .guiding-question-text {
+  .bio-lead {
     font-size: 22px;
   }
 
@@ -1189,8 +1183,8 @@ a:hover {
         <h2 class="sr-only">About Yilun Du</h2>
         <p class="bio-lead">I study how intelligent systems can learn reusable models, then compose and reason with them at inference time.</p>
         <aside class="guiding-question" aria-labelledby="guiding-question-text">
-          <p class="guiding-question-text" id="guiding-question-text"><span class="guiding-question-label">Central question:</span> What should models represent so that inference-time reasoning can solve unfamiliar problems?</p>
-          <p class="guiding-question-explanation">Classical AI designed representations to support explicit inference and planning. Modern neural networks often compile both knowledge and reasoning into their weights. This amortization is efficient for familiar problems, but can generalize poorly to novel tasks. My work seeks a modern synthesis: learn models that represent reusable knowledge, then search, compose, and plan with them at inference time.</p>
+          <p class="bio-lead guiding-question-text" id="guiding-question-text"><span class="guiding-question-label">Central question:</span> What should models represent so that inference-time reasoning can solve unfamiliar problems?</p>
+          <p class="guiding-question-explanation">Classical AI designed representations to support explicit inference and planning. Modern neural networks often compile both knowledge and reasoning into their weights. This amortization is efficient for familiar problems, but can generalize poorly to novel tasks. My work seeks a modern combination: learn models that represent reusable knowledge, then search, compose, and plan with them at inference time.</p>
         </aside>
         <p>I explore this question through four interfaces between representation and inference: search over generative solution spaces, composition of reusable models, planning with world models, and reasoning through multi-agent interaction.</p>
         <p>Across these directions, a central focus of my work is building robots that can plan, adapt, and act reliably in unfamiliar environments.</p>
