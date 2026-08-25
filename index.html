@@ -557,85 +557,16 @@ a:hover {
 .research-synthesis {
   max-width: 890px;
   margin: 14px 0 0;
-  border-left: 0;
-  background: transparent;
-  padding: 0;
   color: var(--muted);
-  font-size: 17px;
-  line-height: 1.67;
-}
-
-.research-synthesis strong {
-  color: var(--heading);
-}
-
-.thesis-callout {
-  width: 100%;
-  max-width: 890px;
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  align-items: center;
-  gap: 22px;
-  margin-top: 14px;
-  border-top: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
-  padding: 20px 0 21px;
-}
-
-.thesis-callout-copy {
-  min-width: 0;
-}
-
-.thesis-kicker {
-  margin: 0 0 3px;
-  color: var(--accent);
-  font-size: 12px;
-  font-weight: 750;
-  letter-spacing: 0.075em;
-  line-height: 1.4;
-  text-transform: uppercase;
-}
-
-.thesis-callout h3 {
-  margin: 0 0 4px;
-  color: var(--heading);
-  font-family: var(--display-font);
-  font-size: 21px;
-  font-weight: 600;
-  letter-spacing: -0.015em;
-  line-height: 1.35;
-  text-wrap: balance;
-}
-
-.thesis-callout h3 a {
-  color: inherit;
-}
-
-.thesis-summary {
-  margin: 0;
-  color: var(--muted);
-  font-size: 15px;
-  line-height: 1.58;
+  font-size: 16px;
+  line-height: 1.62;
   text-wrap: pretty;
 }
 
-.thesis-links {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-end;
-  gap: 7px 15px;
-  margin: 0;
-  font-size: 14px;
-  font-weight: 650;
-  white-space: nowrap;
-}
-
-.thesis-links a + a::before {
-  content: "/";
-  display: inline-block;
-  margin-right: 15px;
-  color: #bbbbbb;
-  font-weight: 400;
+.research-synthesis a {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
 }
 
 .news-list,
@@ -1161,15 +1092,6 @@ a:hover {
     min-height: 0;
   }
 
-  .thesis-callout {
-    grid-template-columns: 1fr;
-    gap: 12px;
-  }
-
-  .thesis-links {
-    justify-content: flex-start;
-  }
-
   .publications-title-row {
     align-items: flex-start;
   }
@@ -1329,14 +1251,7 @@ a:hover {
             <p class="representative-work"><strong>Examples:</strong> <a href="https://composable-models.github.io/llm_debate/" target="_blank" rel="noreferrer noopener">multi-agent debate</a>, <a href="https://ardalabs.ai/MultiAgentVerification/" target="_blank" rel="noreferrer noopener">multi-agent verification</a>, and <a href="https://zhentingqi.github.io/internal/projects/EoM/" target="_blank" rel="noreferrer noopener">Economy of Minds</a>.</p>
           </article>
         </div>
-        <aside class="thesis-callout" aria-labelledby="thesis-callout-title">
-          <div class="thesis-callout-copy">
-            <p class="thesis-kicker">PhD thesis · MIT EECS, 2024</p>
-            <h3 id="thesis-callout-title"><a href="https://yilundu.github.io/thesis.pdf" target="_blank" rel="noreferrer noopener">Learning Generalizable Systems by Learning Composable Energy Landscapes</a></h3>
-            <p class="thesis-summary">A unified account of my work on energy-based modeling, compositional inference, planning, and generalization.</p>
-          </div>
-          <p class="thesis-links" aria-label="PhD thesis links"><a href="https://yilundu.github.io/thesis.pdf" target="_blank" rel="noreferrer noopener">Read thesis</a><a href="https://www.youtube.com/watch?v=7jvWDF6ZXPc" target="_blank" rel="noreferrer noopener">Watch defense</a></p>
-        </aside>
+        <p class="research-synthesis">My <a href="https://yilundu.github.io/thesis.pdf" target="_blank" rel="noreferrer noopener">PhD thesis</a> and <a href="https://www.youtube.com/watch?v=7jvWDF6ZXPc" target="_blank" rel="noreferrer noopener">thesis defense</a> provide a unified account of my work on energy-based modeling, compositional inference, planning, and generalization.</p>
       </section>
 
       <section class="content-section" id="news">
