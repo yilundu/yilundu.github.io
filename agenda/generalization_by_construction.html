@@ -1,0 +1,1104 @@
+<!doctype html>
+<!-- Verified revision: new subtitle, MAV under reasoner organization, revised reasoner-organization opening. -->
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="color-scheme" content="light">
+  <meta name="theme-color" content="#ffffff">
+  <meta name="description" content="Yilun Du's research agenda on generalization by construction: what learning should leave open for inference.">
+  <meta name="author" content="Yilun Du">
+  <link rel="canonical" href="https://yilundu.github.io/research-agenda/">
+  <link rel="icon" href="../static/img/favicon.ico">
+  <meta property="og:type" content="article">
+  <meta property="article:published_time" content="2026-08-29">
+  <meta property="og:url" content="https://yilundu.github.io/research-agenda/">
+  <meta property="og:title" content="Generalization by Construction — Yilun Du">
+  <meta property="og:description" content="What learning should leave open for inference.">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Generalization by Construction — Yilun Du">
+  <meta name="twitter:description" content="What learning should leave open for inference.">
+  <title>Generalization by Construction | Yilun Du</title>
+  <style>
+    :root {
+      --page-bg: #ffffff;
+      --content-bg: #ffffff;
+      --surface: #f5f8f7;
+      --surface-strong: #edf3f1;
+      --text: #283238;
+      --muted: #536168;
+      --quiet: #637178;
+      --heading: #244252;
+      --link: #356b58;
+      --link-hover: #244d40;
+      --accent: #356b58;
+      --line: #d9e2df;
+      --soft-line: #e7ecea;
+      --font: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+      --display-font: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Georgia, serif;
+    }
+
+    * { box-sizing: border-box; }
+
+    html {
+      width: 100%;
+      scroll-behavior: smooth;
+      scroll-padding-top: 24px;
+      scrollbar-gutter: stable;
+      -webkit-text-size-adjust: 100%;
+      text-size-adjust: 100%;
+    }
+
+    body {
+      width: 100%;
+      min-width: 0;
+      margin: 0;
+      overflow-x: hidden;
+      background: var(--page-bg);
+      color: var(--text);
+      font-family: var(--font);
+      font-size: 17px;
+      line-height: 1.67;
+      text-rendering: optimizeLegibility;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: var(--link);
+      text-decoration: none;
+    }
+
+    a:hover {
+      color: var(--link-hover);
+      text-decoration: underline;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 3px;
+    }
+
+    .hero-opening a,
+    .essay-section p a,
+    .work-list a {
+      text-decoration: underline;
+      text-decoration-color: #9bada7;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 3px;
+    }
+
+    .hero-opening a:hover,
+    .essay-section p a:hover,
+    .work-list a:hover { text-decoration-thickness: 1.5px; }
+
+    :focus-visible {
+      outline: 2px solid #8b6325;
+      outline-offset: 3px;
+    }
+
+    .skip-link {
+      position: fixed;
+      z-index: 100;
+      top: 8px;
+      left: 8px;
+      transform: translateY(-160%);
+      border-radius: 7px;
+      background: #1f2a2f;
+      color: #fff;
+      padding: 8px 12px;
+    }
+
+    .skip-link:focus { transform: translateY(0); }
+
+    .page-shell {
+      width: min(1040px, calc(100% - 40px));
+      margin: 0 auto;
+      background: var(--content-bg);
+    }
+
+    .article-masthead {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 24px;
+      padding: 31px 56px 24px;
+    }
+
+    .masthead-identity {
+      display: flex;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px 13px;
+    }
+
+    .masthead-name {
+      color: var(--heading);
+      font-family: var(--display-font);
+      font-size: 27px;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      line-height: 1.15;
+    }
+
+    .masthead-name:hover { text-decoration: none; }
+
+    .masthead-context {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .masthead-note {
+      color: var(--quiet);
+      font-size: 13px;
+      white-space: nowrap;
+    }
+
+    .simple-nav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-start;
+      gap: 0;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      padding: 10px 56px;
+    }
+
+    .simple-nav a {
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.01em;
+    }
+
+    .simple-nav a + a::before {
+      content: "/";
+      display: inline-block;
+      margin: 0 11px;
+      color: #bbb;
+    }
+
+    .main-content { padding: 52px 56px 72px; }
+
+    .hero {
+      max-width: 890px;
+      padding-bottom: 46px;
+    }
+
+    .section-label,
+    .level-kicker,
+    .rail-kicker {
+      color: var(--accent);
+      font-size: 13px;
+      font-weight: 750;
+      letter-spacing: 0.085em;
+      line-height: 1.4;
+      text-transform: uppercase;
+    }
+
+    .hero h1 {
+      max-width: 820px;
+      margin: 0 0 13px;
+      color: var(--heading);
+      font-family: var(--display-font);
+      font-size: clamp(38px, 5vw, 49px);
+      font-weight: 600;
+      letter-spacing: -0.035em;
+      line-height: 1.03;
+      text-wrap: balance;
+    }
+
+    .hero-deck {
+      max-width: 760px;
+      margin: 0;
+      color: var(--heading);
+      font-size: clamp(20px, 2.4vw, 23px);
+      font-weight: 650;
+      letter-spacing: -0.012em;
+      line-height: 1.44;
+      text-wrap: balance;
+    }
+
+    .hero-date {
+      margin: 8px 0 0;
+      color: var(--quiet);
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0.01em;
+    }
+
+    .hero-opening {
+      max-width: 820px;
+      margin-top: 30px;
+      color: #39454a;
+    }
+
+    .hero-opening p { margin: 0 0 14px; }
+
+    .central-question {
+      max-width: 850px;
+      margin: 25px 0 0;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      padding: 18px 0 19px;
+      color: var(--heading);
+      font-size: clamp(19px, 2.2vw, 22px);
+      font-weight: 680;
+      line-height: 1.45;
+      text-wrap: balance;
+    }
+
+    .central-question span { color: var(--accent); }
+
+    .article-layout {
+      max-width: 890px;
+      display: grid;
+      grid-template-columns: 214px minmax(0, 1fr);
+      gap: 50px;
+      align-items: start;
+    }
+
+    .hierarchy-rail {
+      position: sticky;
+      top: 24px;
+      min-width: 0;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      padding: 17px 0 8px;
+    }
+
+    .rail-title {
+      margin: 3px 0 13px;
+      color: var(--heading);
+      font-family: var(--display-font);
+      font-size: 20px;
+      font-weight: 600;
+      line-height: 1.25;
+    }
+
+    .rail-intro {
+      margin: 0 0 12px;
+      color: var(--quiet);
+      font-size: 13px;
+      line-height: 1.48;
+    }
+
+    .rail-list {
+      position: relative;
+      list-style: none;
+      margin: 0;
+      padding: 0 0 0 17px;
+    }
+
+    .rail-list::before {
+      content: "";
+      position: absolute;
+      top: 13px;
+      bottom: 14px;
+      left: 3px;
+      width: 1px;
+      background: var(--line);
+    }
+
+    .rail-link {
+      position: relative;
+      display: block;
+      border-top: 1px solid var(--soft-line);
+      padding: 9px 0 10px;
+      color: var(--muted);
+      line-height: 1.35;
+    }
+
+    .rail-groups { min-width: 0; }
+    .rail-group + .rail-group { margin-top: 11px; }
+
+    .rail-family {
+      margin: 4px 0 2px;
+      padding-left: 17px;
+      color: var(--accent);
+      font-size: 10px;
+      font-weight: 780;
+      letter-spacing: 0.08em;
+      line-height: 1.35;
+      text-transform: uppercase;
+    }
+
+    .rail-list li:first-child .rail-link { border-top: 0; }
+
+    .rail-link::before {
+      content: "";
+      position: absolute;
+      top: 17px;
+      left: -17px;
+      width: 7px;
+      height: 7px;
+      border: 1px solid #9baba5;
+      border-radius: 50%;
+      background: #fff;
+      transition: border-color 160ms ease, background-color 160ms ease;
+    }
+
+    .rail-object {
+      display: block;
+      color: inherit;
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .rail-question {
+      display: block;
+      color: var(--quiet);
+      font-size: 12px;
+    }
+
+    .rail-link:hover { text-decoration: none; }
+
+    .rail-link[aria-current] { color: var(--heading); }
+    .rail-link[aria-current]::before {
+      border-color: var(--accent);
+      background: var(--accent);
+    }
+
+    .essay { min-width: 0; }
+
+    .essay-section {
+      scroll-margin-top: 24px;
+      border-top: 1px solid var(--line);
+      padding-top: 27px;
+    }
+
+    .essay-section + .essay-section { margin-top: 51px; }
+
+    .essay-section h2 {
+      margin: 6px 0 15px;
+      color: var(--heading);
+      font-family: var(--display-font);
+      font-size: clamp(27px, 3vw, 31px);
+      font-weight: 600;
+      letter-spacing: -0.026em;
+      line-height: 1.17;
+      text-wrap: balance;
+    }
+
+    .essay-section h3 {
+      margin: 26px 0 9px;
+      color: var(--heading);
+      font-size: 16px;
+      font-weight: 700;
+      line-height: 1.4;
+    }
+
+    .essay-section p {
+      margin: 0 0 15px;
+      color: #39454a;
+      text-wrap: pretty;
+    }
+
+    .essay-section p:last-child { margin-bottom: 0; }
+
+    .claim {
+      margin: 0 0 18px !important;
+      color: var(--heading) !important;
+      font-size: 19px;
+      font-weight: 680;
+      letter-spacing: -0.008em;
+      line-height: 1.48;
+    }
+
+    .maxim {
+      margin: 23px 0 24px;
+      border-left: 3px solid var(--accent);
+      background: var(--surface);
+      padding: 17px 20px 18px;
+      color: var(--heading);
+      font-family: var(--display-font);
+      font-size: 24px;
+      font-weight: 600;
+      letter-spacing: -0.015em;
+      line-height: 1.35;
+    }
+
+    .hierarchy-table {
+      margin: 24px 0 3px;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .hierarchy-group + .hierarchy-group { border-top: 1px solid var(--line); }
+
+    .hierarchy-family {
+      display: grid;
+      grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.3fr);
+      gap: 20px;
+      padding: 14px 0 9px;
+    }
+
+    .essay-section .hierarchy-family h3 {
+      margin: 0;
+      color: var(--accent);
+      font-size: 12px;
+      font-weight: 780;
+      letter-spacing: 0.075em;
+      line-height: 1.4;
+      text-transform: uppercase;
+    }
+
+    .hierarchy-family span {
+      color: var(--quiet);
+      font-size: 13px;
+      line-height: 1.45;
+    }
+
+    .hierarchy-row {
+      display: grid;
+      grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.3fr);
+      gap: 20px;
+      align-items: start;
+      border-top: 1px solid var(--soft-line);
+      padding: 13px 0 14px;
+    }
+
+    .hierarchy-object strong,
+    .hierarchy-decision strong {
+      display: block;
+      color: var(--heading);
+      font-size: 14px;
+      font-weight: 700;
+      line-height: 1.4;
+    }
+
+    .hierarchy-object span,
+    .hierarchy-decision span {
+      display: block;
+      margin-top: 2px;
+      color: var(--quiet);
+      font-size: 13px;
+      line-height: 1.45;
+    }
+
+    .level-header {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 16px;
+      align-items: start;
+    }
+
+    .level-object {
+      margin-top: 4px;
+      color: var(--quiet);
+      font-size: 13px;
+      font-weight: 650;
+      line-height: 1.35;
+      text-align: right;
+    }
+
+    .level-object span {
+      display: block;
+      color: var(--accent);
+      font-size: 11px;
+      font-weight: 750;
+      letter-spacing: 0.075em;
+      text-transform: uppercase;
+    }
+
+    .selected-work {
+      margin-top: 27px;
+      border-top: 1px solid var(--line);
+    }
+
+    .selected-work summary {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin: 0;
+      padding: 12px 0;
+      color: var(--muted);
+      cursor: pointer;
+      font-size: 12px;
+      font-weight: 750;
+      letter-spacing: 0.075em;
+      list-style: none;
+      text-transform: uppercase;
+    }
+
+    .selected-work summary::-webkit-details-marker { display: none; }
+
+    .selected-work summary::after {
+      content: "+";
+      color: var(--accent);
+      font-size: 18px;
+      font-weight: 500;
+      line-height: 1;
+    }
+
+    .selected-work[open] summary::after { content: "−"; }
+
+    .work-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .work-list li {
+      border-top: 1px solid var(--soft-line);
+      padding: 10px 0 11px;
+      font-size: 14px;
+      line-height: 1.46;
+    }
+
+    .work-list a {
+      color: var(--heading);
+      font-weight: 680;
+    }
+
+    .work-list a::after {
+      content: " ↗";
+      color: var(--accent);
+      font-size: 0.88em;
+    }
+
+    .work-note {
+      display: block;
+      margin-top: 2px;
+      color: var(--quiet);
+      font-size: 13px;
+    }
+
+    .design-recipe {
+      margin: 20px 0 0;
+      padding: 0;
+      list-style: none;
+      counter-reset: recipe;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .design-recipe li {
+      counter-increment: recipe;
+      display: grid;
+      grid-template-columns: 31px minmax(0, 1fr);
+      gap: 10px;
+      border-top: 1px solid var(--soft-line);
+      padding: 11px 0 12px;
+      color: #39454a;
+    }
+
+    .design-recipe li:first-child { border-top: 0; }
+
+    .design-recipe li::before {
+      content: "0" counter(recipe);
+      color: var(--accent);
+      font-size: 12px;
+      font-weight: 750;
+      font-variant-numeric: tabular-nums;
+      letter-spacing: 0.05em;
+    }
+
+    .closing {
+      margin-top: 56px;
+      border-top: 2px solid var(--heading);
+      padding-top: 28px;
+    }
+
+    .closing h2 { font-size: clamp(31px, 4vw, 39px); }
+
+    .article-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      border-top: 1px solid var(--line);
+      padding: 20px 34px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 16px;
+    }
+
+    @media (max-width: 900px) {
+      .main-content { padding-inline: 42px; }
+      .article-masthead { padding-inline: 42px; }
+      .simple-nav { padding-inline: 42px; }
+      .article-layout { grid-template-columns: 190px minmax(0, 1fr); gap: 38px; }
+    }
+
+    @media (max-width: 760px) {
+      .article-layout { grid-template-columns: 1fr; gap: 42px; }
+      .hierarchy-rail {
+        position: static;
+        display: grid;
+        grid-template-columns: minmax(0, 165px) minmax(0, 1fr);
+        gap: 18px;
+        padding-bottom: 12px;
+      }
+      .rail-intro { margin-bottom: 0; }
+      .rail-list { padding-left: 17px; }
+      .essay-section:first-child { border-top: 0; padding-top: 0; }
+    }
+
+    @media (max-width: 680px) {
+      .page-shell { width: 100%; }
+      .article-masthead {
+        align-items: flex-start;
+        padding: 25px 22px 21px;
+      }
+      .masthead-note { display: none; }
+      .simple-nav {
+        justify-content: center;
+        gap: 4px 14px;
+        padding: 7px 18px;
+      }
+      .simple-nav a { padding-block: 5px; }
+      .simple-nav a + a::before { content: none; }
+      .main-content { padding: 37px 22px 52px; }
+      .hero { padding-bottom: 39px; }
+      .hero h1 { font-size: 38px; }
+      .hero-deck { font-size: 21px; }
+      .hierarchy-rail { grid-template-columns: 1fr; gap: 6px; }
+      .level-header { grid-template-columns: 1fr; gap: 0; }
+      .level-object { margin: -7px 0 15px; text-align: left; }
+      .level-object span { display: inline; margin-right: 5px; }
+      .hierarchy-family,
+      .hierarchy-row { grid-template-columns: 1fr; gap: 6px; }
+      .hierarchy-decision { grid-column: auto; }
+      .article-footer { padding-inline: 22px; }
+    }
+
+    @media (max-width: 420px) {
+      .hero h1 { font-size: 34px; }
+      .masthead-context { flex-basis: 100%; }
+      .article-footer { align-items: flex-start; flex-direction: column; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .rail-link::before { transition: none; }
+    }
+
+    @media print {
+      body { color: #000; font-size: 11pt; }
+      .page-shell { width: 100%; }
+      .simple-nav, .hierarchy-rail, .article-footer { display: none; }
+      .article-masthead, .main-content { padding-inline: 0; }
+      .article-layout { display: block; max-width: none; }
+      .essay-section { break-inside: avoid; }
+      a { color: inherit; }
+      a[href^="http"]::after { content: " (" attr(href) ")"; font-size: 0.8em; }
+    }
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ScholarlyArticle",
+    "headline": "Generalization by Construction",
+    "alternativeHeadline": "What learning should leave open for inference",
+    "description": "A research agenda on generalization by construction: what learning should leave open for inference.",
+    "author": {
+      "@type": "Person",
+      "name": "Yilun Du",
+      "url": "https://yilundu.github.io/",
+      "affiliation": {
+        "@type": "Organization",
+        "name": "Harvard University"
+      }
+    },
+    "mainEntityOfPage": "https://yilundu.github.io/research-agenda/",
+    "dateModified": "2026-08-29",
+    "keywords": [
+      "generalization",
+      "inference-time reasoning",
+      "compositional generative models",
+      "world models",
+      "embodied intelligence",
+      "multi-agent intelligence",
+      "energy-based models"
+    ]
+  }
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <div class="page-shell">
+    <header class="article-masthead">
+      <div class="masthead-identity">
+        <a class="masthead-name" href="../">Yilun Du</a>
+        <span class="masthead-context">Research agenda</span>
+      </div>
+      <span class="masthead-note">Generalizable intelligence</span>
+    </header>
+
+    <nav class="simple-nav" aria-label="Site navigation">
+      <a href="../">Home</a>
+      <a href="#thesis">The thesis</a>
+      <a href="#hierarchy">The framework</a>
+      <a href="#embodiment">Embodiment</a>
+      <a href="../#publications">Publications</a>
+    </nav>
+
+    <main class="main-content" id="main-content" tabindex="-1">
+      <header class="hero">
+        <h1>Generalization by Construction</h1>
+        <p class="hero-deck">What learning should leave open for inference</p>
+        <p class="hero-date"><time datetime="2026-08-29">August 29, 2026</time></p>
+
+        <div class="hero-opening">
+          <p>The ultimate goal of artificial intelligence is to build systems that can act effectively in situations they have not encountered before. This is especially important in robotics, where a robot may face new combinations of environments, objects, goals, constraints, and other agents. No dataset can cover every such combination. Yet the dominant approach is to collect broader datasets and train end-to-end neural networks to map situations directly to behavior. This has produced powerful systems, but collecting more examples cannot be the whole solution when the space of possible situations is open-ended.</p>
+          <p>An important strand of symbolic AI began from a different premise. It separated knowledge from the procedure used to reason with it. Facts, relations, rules, actions, and goals were represented as explicit objects that could be reused and recombined after a goal was specified. A planner could pursue a new goal or incorporate a new constraint without training a new model. McCarthy's <a href="https://jmc.stanford.edu/articles/mcc59.html"><em>Programs with Common Sense</em></a> and the <a href="https://doi.org/10.1016/0004-3702%2871%2990010-5">STRIPS</a> planning system are early examples of this approach.</p>
+          <p>The difficulty was not the separation itself, but the representation and search it assumed. In many such systems, people had to choose the symbols, predicates, and operators, connect perception to them, and decide which details of the world to ignore. Search also became difficult in large, continuous, and partially observed spaces. These problems are especially severe for images, video, language, and physical interaction, where the right vocabulary is difficult to specify in advance.</p>
+          <p>Deep learning addressed a central limitation of symbolic AI by making powerful representations learnable directly from large, high-dimensional datasets. Its dominant end-to-end use, however, couples the representation to a learned procedure for producing an output. Task-dependent alternatives are often hidden inside this mapping rather than exposed as variables that a new goal or constraint can compare, compose, or revise.</p>
+          <p>My research starts from the claim that a globally unfamiliar problem can often be constructed from locally familiar structure. A robot may never have encountered a particular environment, goal, and obstruction together, yet it may already know the relevant objects, dynamics, constraints, and skills separately. Learning should capture this recurring structure; inference should assemble and search it according to the current goal, constraints, and observations. I therefore study representations of solution spaces, reusable concepts and constraints, and action-conditioned world dynamics that remain searchable and composable after training. Generalization comes from preserving the variables that a future problem may need to reconsider, not simply from running a fixed mapping for longer.</p>
+          <p>I use <strong>construction</strong> broadly: inference may search for and revise a candidate, compose the task model that judges it, plan actions through the world, choose a reasoning procedure, or organize differentiated reasoners.</p>
+        </div>
+
+        <p class="central-question"><span>Central question:</span> What reusable structure should a system learn so that inference can construct solutions to problems not anticipated during training?</p>
+      </header>
+
+      <div class="article-layout">
+        <aside class="hierarchy-rail" aria-label="Five scopes in two families">
+          <div>
+            <div class="rail-kicker">The framework</div>
+            <h2 class="rail-title">Five scopes of inference</h2>
+            <p class="rail-intro">The problem and its solution, and the computation that constructs them.</p>
+          </div>
+          <div class="rail-groups">
+            <div class="rail-group">
+              <h3 class="rail-family">Constructing the problem and its solution</h3>
+              <ul class="rail-list">
+                <li>
+                  <a class="rail-link" href="#level-1" data-rail="level-1">
+                    <span class="rail-object">Solution inference</span>
+                    <span class="rail-question">Which candidate?</span>
+                  </a>
+                </li>
+                <li>
+                  <a class="rail-link" href="#level-2" data-rail="level-2">
+                    <span class="rail-object">Model composition</span>
+                    <span class="rail-question">Which task model?</span>
+                  </a>
+                </li>
+                <li>
+                  <a class="rail-link" href="#level-3" data-rail="level-3">
+                    <span class="rail-object">Action planning</span>
+                    <span class="rail-question">Which actions reach the goal?</span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <div class="rail-group">
+              <h3 class="rail-family">Constructing the computation</h3>
+              <ul class="rail-list">
+                <li>
+                  <a class="rail-link" href="#level-4" data-rail="level-4">
+                    <span class="rail-object">Procedure control</span>
+                    <span class="rail-question">Which operation, for how long?</span>
+                  </a>
+                </li>
+                <li>
+                  <a class="rail-link" href="#level-5" data-rail="level-5">
+                    <span class="rail-object">Reasoner organization</span>
+                    <span class="rail-question">Which reasoners, and how?</span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </aside>
+
+        <article class="essay">
+          <section class="essay-section" id="thesis">
+            <div class="section-label">The thesis</div>
+            <h2>Drawing the amortization boundary</h2>
+            <p>Every learned system divides problem solving between choices absorbed into reusable computation during training and choices resolved for the problem at hand. I call the placement of this division the <strong>amortization boundary</strong>. Choices that recur, including choices whose dependence on the input can be learned reliably, can be amortized. Choices that a future problem may need to reconsider must remain explicitly addressable. Here I use <strong>inference</strong> to mean problem-specific search, selection, or refinement over choices that learning deliberately left open.</p>
+
+            <p>The boundary trades computation for flexibility. If a recurring decision remains open even though the current problem provides no new information about it, inference wastes work. If nearly every decision is fixed during training, a new goal or constraint may have nowhere to enter. The aim is therefore not to maximize inference, but to leave open the choices whose values cannot safely be determined in advance.</p>
+
+            <p>A useful analogy is program specialization. Assumptions known in advance can be compiled into an efficient executable. When those assumptions change, however, the system must return to a higher-level program in which the relevant functions and variables are still explicit. A direct neural policy resembles an aggressively specialized executable: it is fast to run, but difficult to adapt when a new problem violates the assumptions compiled into it. An energy function or world model can preserve a higher-level description of solutions or futures, leaving sampling, optimization, or planning to specialize that description for the current problem.</p>
+
+            <p>The boundary concerns not only whether a choice remains open, but also the level at which it is represented. A planner need not search over every motor command. It can search over task-dependent states, subgoals, or trajectories while learned skills handle familiar local transitions. A useful representation leaves the distinctions that the current problem may change explicit without forcing inference to reconstruct every recurring detail.</p>
+
+            <p>This leads to a practical design procedure:</p>
+
+            <ol class="design-recipe">
+              <li>Identify the choice that depends on the current goal, constraint, observation, or resource.</li>
+              <li>Choose a level of representation at which that choice can be inspected and revised.</li>
+              <li>Learn reusable criteria, components, or local procedures around it, rather than a single mapping that fixes it.</li>
+              <li>Use inference to resolve it for the current problem.</li>
+            </ol>
+
+            <p>My <a href="https://dspace.mit.edu/entities/publication/7165045b-d9de-4fa7-a9de-8507f0c2908c">PhD thesis</a> developed this view for planning and the composition of learned energy functions. The framework below extends it to the computation and organization of reasoning.</p>
+          </section>
+
+          <section class="essay-section" id="hierarchy">
+            <div class="section-label">The framework</div>
+            <h2>Hierarchical inference</h2>
+            <p>The amortization boundary can be drawn at different scopes. At the narrowest, inference searches for a solution under a fixed model. It may also construct the model itself, plan actions that change the world, choose the procedure used to reason, or decide which reasoners participate. These scopes form a hierarchy because each leaves a broader part of problem solving open for the current problem. Across the hierarchy, the principle is the same: learn reusable structure and use inference to resolve what cannot be fixed in advance. I group the five scopes into two families: the first three construct the problem and its solution, while the final two construct the computation used to solve it. A system can use any subset; they are not mandatory stages.</p>
+
+            <div class="hierarchy-table" aria-label="Five scopes in two families">
+              <section class="hierarchy-group" aria-labelledby="family-solution">
+                <div class="hierarchy-family">
+                  <h3 id="family-solution">Constructing the problem and its solution</h3>
+                  <span>These scopes leave open what must be constructed for the current problem: a candidate, the model that judges it, or the actions that change the world.</span>
+                </div>
+                <div class="hierarchy-rows" role="list">
+                  <div class="hierarchy-row" role="listitem">
+                    <div class="hierarchy-object"><strong>Solution inference</strong><span>Reusable structure: evaluator or distribution that guides search</span></div>
+                    <div class="hierarchy-decision"><strong>Open choice: which candidate under the fixed model?</strong><span>Inference: sample, compare, search, and refine</span></div>
+                  </div>
+                  <div class="hierarchy-row" role="listitem">
+                    <div class="hierarchy-object"><strong>Model composition</strong><span>Reusable structure: compatible factors and interfaces</span></div>
+                    <div class="hierarchy-decision"><strong>Open choice: which model defines the problem?</strong><span>Inference: select, compose, infer, then search</span></div>
+                  </div>
+                  <div class="hierarchy-row" role="listitem">
+                    <div class="hierarchy-object"><strong>Action planning</strong><span>Reusable structure: action-conditioned dynamics, goals, constraints, and skills</span></div>
+                    <div class="hierarchy-decision"><strong>Open choice: which interventions reach the desired outcome?</strong><span>Inference: search consequences, act, and replan when needed</span></div>
+                  </div>
+                </div>
+              </section>
+              <section class="hierarchy-group" aria-labelledby="family-computation">
+                <div class="hierarchy-family">
+                  <h3 id="family-computation">Constructing the computation</h3>
+                  <span>These scopes leave open how the answer is produced: the next reasoning operation or the participating reasoners and the connections among them.</span>
+                </div>
+                <div class="hierarchy-rows" role="list">
+                  <div class="hierarchy-row" role="listitem">
+                    <div class="hierarchy-object"><strong>Procedure control</strong><span>Reusable structure: solvers, proposals, verifiers, and competence signals</span></div>
+                    <div class="hierarchy-decision"><strong>Open choice: which operation, and for how long?</strong><span>Inference: choose, allocate, verify, and stop</span></div>
+                  </div>
+                  <div class="hierarchy-row" role="listitem">
+                    <div class="hierarchy-object"><strong>Reasoner organization</strong><span>Reusable structure: differentiated knowledge, tools, and state</span></div>
+                    <div class="hierarchy-decision"><strong>Open choice: which reasoners, and how?</strong><span>Inference: select, assign, route, and reorganize</span></div>
+                  </div>
+                </div>
+              </section>
+            </div>
+
+            <p>Together, these scopes move from choosing a solution to organizing the system that finds it. Solution inference searches for a candidate under a fixed model. Model composition constructs the model that judges candidates. Action planning uses that model to choose actions and replans as the world changes. Procedure control chooses how these computations are carried out, while reasoner organization chooses who participates and how information moves among them. A system can use any subset of the five scopes.</p>
+
+            <p>The scopes classify the choice left open, not the kind of model being used. A world model can therefore appear at several scopes: searching among possible futures under a fixed model is solution inference; combining the model with a new goal or constraint is model composition; and comparing action-conditioned futures to choose what to do is action planning. The same distinction applies to computation. Procedure control changes what the currently assembled system does next: which solver or check to run, what intermediate state to preserve, and when to stop. This remains procedure control even when the system contains specialized modules, as long as the participants and their connections stay fixed. Reasoner organization changes the assembled system itself: which differentiated reasoners participate, what roles they take, or how information moves among them. The scope is determined by what inference can reconfigure, not by whether a component is called a model, solver, or agent.</p>
+
+            <p>The hierarchy becomes especially concrete in robotics, where an agent must construct both a desired outcome and a way to reach it while its own actions change the problem. Even a task that is easy to state can leave choices open at several different scopes. A single episode can therefore show how the scopes depend on one another.</p>
+
+            <p>Consider a household robot asked to bring a mug of coffee from a crowded kitchen counter to someone at the table. It must lift the mug without disturbing the surrounding dishes, carry it without spilling, and set it within easy reach. The robot may have encountered every object and practiced every skill involved without having faced this particular combination. Solution inference searches for a stable placement. Model composition combines support, uprightness, clearance, and reachability into the model that judges it. Action planning searches for actions whose consequences reach that outcome. Procedure control decides when to inspect, verify, repair, or act, while reasoner organization brings in a perception or grasping specialist when the current system lacks the required knowledge.</p>
+
+          </section>
+
+          <section class="essay-section level-section" id="level-1" data-level-section="level-1">
+            <div class="level-header">
+              <div>
+                <div class="level-kicker">Solution inference</div>
+                <h2 aria-label="Solution inference: Search a learned solution space">Search a learned solution space</h2>
+              </div>
+              <div class="level-object"><span>Deferred decision</span>Which candidate?</div>
+            </div>
+            <p>Solution inference leaves the learned model fixed while keeping the candidate open. Learning specifies what makes a candidate good without fixing the candidate itself. A direct predictor has to learn both what makes an answer appropriate and a fixed computation for producing it. An energy function or learned evaluator separates these roles: the model scores proposed answers, while a sampler or optimizer constructs one that scores well. The important property is not stochasticity or iteration by itself. The candidate must remain an explicit object of inference—sampled, compared, or revised under the fixed model—rather than being fixed by a single learned input–output pass. An externally supplied proposal can initialize that search; adding a separately addressable constraint or evaluator changes the model and crosses into model composition.</p>
+            <p>Holding the task model fixed, the robot can search over candidate placements and revise one that is unstable or difficult for the person to reach rather than accept its first proposal. For some problems, learning to judge such a candidate may be easier than learning to produce a correct one in a single pass. A graded criterion can also indicate how the candidate should change. Learning builds a landscape that distinguishes better from worse solutions; inference searches it.</p>
+            <p>We first explored this separation in <a href="https://arxiv.org/abs/1903.08689">Implicit Generation and Generalization in Energy-Based Models</a>. The learned object was a landscape rather than a fixed generator: Langevin dynamics, an iterative stochastic sampler, could search it without imposing a fixed generation order. The sampler could also start from an external proposal or run for different numbers of steps. <a href="https://arxiv.org/abs/2206.15448">Learning Iterative Reasoning through Energy Minimization</a> then treated reasoning itself as minimization over a conditional landscape. Its verifier-generator analysis makes the tradeoff explicit: a criterion for recognizing a valid solution can be smaller than a procedure that constructs one, although the resulting search may still be hard.</p>
+            <p>Subsequent work asks what geometry makes this separation useful in practice. <a href="https://arxiv.org/abs/2406.11179">Learning Iterative Reasoning through Energy Diffusion</a> moves through a sequence of landscapes, from broad, smooth basins toward sharper constraints. <a href="https://arxiv.org/abs/2510.14901">Reasoning with Sampling</a> applies the same separation to a frozen language model, using its likelihood as the target of an iterative sampler that can revisit earlier choices. These settings differ, but they pose the same question: which learned representation makes revisable inference reliable?</p>
+            <details class="selected-work">
+              <summary>Selected work</summary>
+              <ul class="work-list">
+                <li><a href="https://arxiv.org/abs/1903.08689">Implicit Generation and Generalization in Energy-Based Models</a><span class="work-note">One learned landscape supports generation, refinement, and variable inference effort.</span></li>
+                <li><a href="https://arxiv.org/abs/2206.15448">Learning Iterative Reasoning through Energy Minimization</a><span class="work-note">Answers are represented as minima, with computation adjustable to problem difficulty.</span></li>
+                <li><a href="https://arxiv.org/abs/2406.11179">Learning Iterative Reasoning through Energy Diffusion</a><span class="work-note">A sequence of learned landscapes supports continuous, discrete, and planning problems.</span></li>
+                <li><a href="https://arxiv.org/abs/2507.02092">Energy-Based Transformers are Scalable Learners and Thinkers</a><span class="work-note">Input-candidate compatibility is learned across modalities and solved by energy minimization.</span></li>
+                <li><a href="https://arxiv.org/abs/2510.02300">Equilibrium Matching</a><span class="work-note">A time-independent implicit landscape supports optimization-based generation.</span></li>
+                <li><a href="https://arxiv.org/abs/2510.14901">Reasoning with Sampling</a><span class="work-note">A frozen language model's likelihood becomes the target of an iterative sampler.</span></li>
+                <li><a href="https://arxiv.org/abs/2602.04770">Generative Modeling via Drifting</a><span class="work-note">Iterative distribution refinement is moved into training when one-step generation is sufficient.</span></li>
+              </ul>
+            </details>
+          </section>
+
+          <section class="essay-section level-section" id="level-2" data-level-section="level-2">
+            <div class="level-header">
+              <div>
+                <div class="level-kicker">Model composition</div>
+                <h2 aria-label="Model composition: Compose the model required by the problem">Compose the model required by the problem</h2>
+              </div>
+              <div class="level-object"><span>Deferred decision</span>Which model?</div>
+            </div>
+            <p>Solution inference searches for a candidate under a fixed model. Model composition changes the model that defines this search. The current task determines which pieces of learned knowledge—such as a relation, goal, physical constraint, or reward—should constrain the answer. Inference selects, composes, or infers these factors. What composition produces is not yet an answer, but a problem-specific criterion or distribution that solution inference can search. A new task need not be reduced to an input for a monolithic predictor; it can become a new inference problem assembled from reusable knowledge.</p>
+            <p>The task model used to judge those placements need not be learned as a whole for this exact kitchen scene. The robot can construct it by combining learned factors for keeping the mug upright, avoiding nearby dishes, resting it securely on the table, and leaving it within the person's reach. The complete arrangement is globally unfamiliar, but each factor expresses locally familiar structure. Generalization comes from constructing a new global model from these reusable local judgments, not from asking one model to extrapolate across the entire combination at once.</p>
+            <p>Symbolic systems obtained much of their flexibility by composing reusable predicates and operators. The aim is not to recover a particular symbolic vocabulary, but the operational separation these systems exploited: reusable pieces remain addressable after the task is known, while their continuous semantics can be learned from data. The components need not share an architecture or modality, but they must agree on the object being constructed, how each component can evaluate or guide it, and an inference procedure capable of reconciling their constraints.</p>
+            <p>Our early visual work began by composing learned concept distributions through <a href="https://arxiv.org/abs/2004.06030">conjunction, disjunction, and negation</a>. It then moved from assembling <a href="https://arxiv.org/abs/2111.09297">named spatial relations</a> to combining <a href="https://arxiv.org/abs/2206.01714">independently trained score models</a> during denoising. <a href="https://arxiv.org/abs/2210.11522">Iterative consensus</a> broadened the same idea beyond a common architecture: a generator and independently trained vision, language, or task-specific scorers communicate through a shared candidate.</p>
+            <p>A compositional system must also learn the pieces it will later reuse. <a href="https://arxiv.org/abs/2111.03042">Unsupervised Learning of Compositional Energy Concepts</a> discovers reusable factors without concept labels, while <a href="https://arxiv.org/abs/2411.04987">Few-Shot Task Learning through Inverse Generative Modeling</a> infers a new task factor from demonstrations without changing the pretrained generator. Learning therefore need not determine the final task model in advance; it can instead produce a vocabulary of factors whose selection and combination remain open. Once learned, a new factor should compose with earlier factors without retraining them, enlarging the family of tasks the system can construct.</p>
+            <p>Composition must be grounded and matched to an inference procedure. <a href="https://arxiv.org/abs/2405.11928">Set It Up!</a> uses a symbolic relation graph to select learned continuous factors and ground them into object poses. <a href="https://arxiv.org/abs/2302.11552">Reduce, Reuse, Recycle</a> shows why the solver cannot be treated as an afterthought: standard reverse diffusion need not realize the product distribution implied by composed scores. <a href="https://arxiv.org/abs/2510.20607">Generalizable Reasoning through Compositional Energy Minimization</a> carries the same principle into reasoning, where local learned criteria become reusable verifiers inside a larger problem. The factors, their interface, and the procedure that reconciles them must therefore be designed together.</p>
+            <p>Decision making is a particularly important instance of model composition. A model of the desired future represents what outcomes matter; action-conditioned dynamics represent what proposed interventions could cause. Both sides can themselves be composed: dynamics from reusable models of objects, agents, and interactions, and objectives from goals, rewards, and constraints. Model composition brings these pieces together to define the decision problem. Action planning then searches for interventions whose predicted consequences reach the desired outcome.</p>
+
+            <details class="selected-work">
+              <summary>Selected work</summary>
+              <ul class="work-list">
+                <li><a href="https://arxiv.org/abs/2004.06030">Compositional Visual Generation and Inference with Energy-Based Models</a><span class="work-note">Concept distributions are composed through logical operations.</span></li>
+                <li><a href="https://arxiv.org/abs/2111.09297">Learning to Compose Visual Relations</a><span class="work-note">Named relations are represented as reusable energy functions.</span></li>
+                <li><a href="https://arxiv.org/abs/2206.01714">Compositional Visual Generation with Composable Diffusion Models</a><span class="work-note">Separate diffusion models are combined during denoising.</span></li>
+                <li><a href="https://arxiv.org/abs/2111.03042">Unsupervised Learning of Compositional Energy Concepts</a><span class="work-note">Reusable energy factors are discovered without concept labels.</span></li>
+                <li><a href="https://arxiv.org/abs/2411.04987">Few-Shot Task Learning through Inverse Generative Modeling</a><span class="work-note">A new task representation is inferred from demonstrations without changing pretrained model weights.</span></li>
+                <li><a href="https://arxiv.org/abs/2210.11522">Composing Ensembles of Pre-trained Models via Iterative Consensus</a><span class="work-note">Pretrained generators and heterogeneous scorers are coupled through iterative feedback.</span></li>
+                <li><a href="https://arxiv.org/abs/2401.13171">Compositional Generative Inverse Design</a><span class="work-note">Globally unfamiliar designs are constructed from locally familiar constraints.</span></li>
+                <li><a href="https://arxiv.org/abs/2506.08894">Product of Experts for Visual Generation</a><span class="work-note">Generators, learned rewards, and simulators are reconciled in one target.</span></li>
+                <li><a href="https://arxiv.org/abs/2405.11928">Set It Up!</a><span class="work-note">Symbolic relation graphs select learned continuous factors that are grounded into object poses.</span></li>
+                <li><a href="https://arxiv.org/abs/2402.02511">PoCo</a><span class="work-note">Heterogeneous robot policies and analytic costs compose at inference time.</span></li>
+                <li><a href="https://arxiv.org/abs/2302.11552">Reduce, Reuse, Recycle</a><span class="work-note">Sampler design recovers behavior already present in composed distributions.</span></li>
+                <li><a href="https://arxiv.org/abs/2402.01103">Compositional Generative Modeling: A Single Model Is Not All You Need</a><span class="work-note">New task distributions are programmed from reusable learned models.</span></li>
+                <li><a href="https://arxiv.org/abs/2510.20607">Generalizable Reasoning through Compositional Energy Minimization</a><span class="work-note">Small learned energies compose into larger reasoning problems and new constraints.</span></li>
+              </ul>
+            </details>
+          </section>
+
+          <section class="essay-section level-section" id="level-3" data-level-section="level-3">
+            <div class="level-header">
+              <div>
+                <div class="level-kicker">Action planning</div>
+                <h2 aria-label="Action planning: Plan through possible futures">Plan through possible futures</h2>
+              </div>
+              <div class="level-object"><span>Deferred decision</span>Which actions reach the goal?</div>
+            </div>
+            <p>Composing a desired outcome with a model of what can happen defines a decision problem, but it does not yet determine the actions an agent should take to reach the outcome. In the coffee task, the robot must still choose a grasp, lift clear of nearby dishes, carry the mug without spilling, and place it at the selected location. Through planning, we infer the action sequence to execute. The planner compares the predicted consequences of possible actions until it finds an action sequence expected to reach the desired state.</p>
+            <p>A direct policy instead compiles the use of dynamics and objectives into a mapping from observations and goals to actions. This makes action selection efficient, but commits in advance to how the agent will use its knowledge. Such a policy can generalize when a new situation is covered by regularities captured in the learned mapping. When the situation demands a combination the mapping does not support, however, the policy itself exposes neither queryable dynamics nor a search process with which to construct a new behavior. The distinction is therefore not policy versus planning as permanent alternatives, but which decisions should be compiled and which must remain open.</p>
+            <p>Planning does not always operate directly on individual motor commands. It can search over subgoals, intermediate states, or complete trajectories, depending on what must be decided for the current task. <a href="https://arxiv.org/abs/1909.06878">Model-Based Planning with Energy-Based Models</a> inferred intermediate states under learned dynamics, allowing a planner to route around obstacles not encountered during training. <a href="https://arxiv.org/abs/2205.09991">Planning with Diffusion for Flexible Behavior Synthesis</a> instead represented complete state-action trajectories as a generative solution space, so new rewards, endpoints, or constraints could guide the same learned model. In both cases, learning captures what recurs across tasks while search resolves the route required by the task at hand.</p>
+            <p>Predictive control repeats this search as the world changes. <a href="https://arxiv.org/abs/2510.04234">Flexible Locomotion Learning with Diffusion Model Predictive Control</a> combines a learned trajectory prior with new rewards and constraints, while <a href="https://arxiv.org/abs/2512.08280">Model-Based Diffusion Sampling for Predictive Control in Offline Decision Making</a> composes a task planner with action-conditioned dynamics so that task-aligned trajectories remain feasible.</p>
+            <p>For longer-horizon tasks, video provides an intermediate representation between a high-level goal and low-level control. It can represent what should happen in the scene while leaving an embodiment-specific model to determine how a particular robot makes it happen. <a href="https://arxiv.org/abs/2302.00111">Learning Universal Policies via Text-Guided Video Generation</a> learns a task-level visual trajectory that can serve as a proposal from which actions are extracted. <a href="https://arxiv.org/abs/2310.10625">Video Language Planning</a> shows how search can compare and connect such proposals into longer-horizon plans. Video is useful because it exposes an intermediate future that subsequent search or control can compare, extend, reject, or re-ground before execution.</p>
+            <p>Different models can also divide the problem across levels of abstraction. <a href="https://arxiv.org/abs/2309.08587">Compositional Foundation Models for Hierarchical Planning</a> uses language to propose high-level steps, video to ground them in a scene, and an action model to test their physical executability. Planning becomes a search for a course of action supported at every level. This is how planning grows out of model composition: the components provide complementary views of the same evolving future.</p>
+            <p><a href="https://arxiv.org/abs/2607.27599">World Action Planner</a> makes the separation between action proposal, consequence prediction, and search explicit. A vision-language model proposes actions, an action-conditioned world model predicts their consequences, and global correction and local search revise the proposal for the current task. The same verification–generation separation that motivates solution inference therefore reappears over time: judging whether an imagined consequence makes progress can be easier than generating the entire successful behavior at once. Perceptual realism alone is not enough; a planning world model must preserve the distinctions that change a decision, including controllability, contact, object persistence, and progress toward the goal.</p>
+            <p>Planning and policy can therefore occupy different points on a moving amortization boundary. Unfamiliar behavior can initially be constructed through search; behavior that recurs can later be compiled into a reusable policy or skill. Once the robot begins executing a plan, however, the world may still depart from its predictions: the mug may shift in its grasp or a dish may block the route. The planner can use the resulting state to search again rather than continue an obsolete action sequence. Replanning changes the action sequence, but it may still use the same search procedure each time.</p>
+
+            <details class="selected-work">
+              <summary>Selected work</summary>
+              <ul class="work-list">
+                <li><a href="https://arxiv.org/abs/1909.06878">Model-Based Planning with Energy-Based Models</a><span class="work-note">Intermediate state trajectories are inferred through learned dynamics.</span></li>
+                <li><a href="https://arxiv.org/abs/2205.09991">Planning with Diffusion for Flexible Behavior Synthesis</a><span class="work-note">Whole trajectories are generated and guided as a planning representation.</span></li>
+                <li><a href="https://arxiv.org/abs/2309.08587">Compositional Foundation Models for Hierarchical Planning</a><span class="work-note">Language, video, and action models are composed across abstraction levels.</span></li>
+                <li><a href="https://arxiv.org/abs/2502.00622">Inference-Time Enhancement of Generative Robot Policies via Predictive World Modeling</a><span class="work-note">A frozen policy proposes actions that a predictive model ranks or refines.</span></li>
+                <li><a href="https://arxiv.org/abs/2607.15065">DriftWorld: Fast World Modeling through Drifting</a><span class="work-note">One-step action-conditioned rollouts let a planner compare many policy proposals.</span></li>
+                <li><a href="https://arxiv.org/abs/2510.07257">Test-Time Graph Search for Goal-Conditioned Reinforcement Learning</a><span class="work-note">Graph search turns a frozen local policy into a long-horizon planning tool.</span></li>
+                <li><a href="https://arxiv.org/abs/2510.04234">Flexible Locomotion Learning with Diffusion Model Predictive Control</a><span class="work-note">A learned trajectory prior is optimized under new rewards and projected constraints.</span></li>
+                <li><a href="https://arxiv.org/abs/2512.08280">Model-Based Diffusion Sampling for Predictive Control in Offline Decision Making</a><span class="work-note">A diffusion planner and dynamics model are composed during predictive control.</span></li>
+                <li><a href="https://arxiv.org/abs/2302.00111">Learning Universal Policies via Text-Guided Video Generation</a><span class="work-note">Language goals become visual plans from which actions are extracted.</span></li>
+                <li><a href="https://arxiv.org/abs/2310.10625">Video Language Planning</a><span class="work-note">Tree search composes short predicted videos into long-horizon visual plans.</span></li>
+                <li><a href="https://arxiv.org/abs/2512.15840">Large Video Planner</a><span class="work-note">Large-scale video pretraining supports zero-shot plans retargeted to robots.</span></li>
+                <li><a href="https://arxiv.org/abs/2602.15922">World Action Models are Zero-shot Policies (DreamZero)</a><span class="work-note">Joint video–action prediction provides a closed-loop proposal policy at the compiled end of the planning boundary.</span></li>
+                <li><a href="https://arxiv.org/abs/2607.27599">World Action Planner: Generalizable Decision-Making with Action-Conditioned World Models</a><span class="work-note">Action proposals are revised through search over imagined consequences.</span></li>
+                <li><a href="https://arxiv.org/abs/2510.18135">World-in-World</a><span class="work-note">Closed-loop evaluation separates visual realism from controllability and decision utility.</span></li>
+                <li><a href="https://arxiv.org/abs/2607.01166">Structured 4D Latent Predictive Model for Robot Planning</a><span class="work-note">Structured three-dimensional latents preserve geometry for prediction and control.</span></li>
+                <li><a href="https://arxiv.org/abs/2506.06658">Self-Improving Loops for Visual Robotic Planning</a><span class="work-note">Trajectories produced by a visual planner are consolidated into improved behavior.</span></li>
+                <li><a href="https://arxiv.org/abs/2404.10775">COMBO</a><span class="work-note">Per-agent action conditions compose into a video world model whose predicted consequences guide cooperative planning under partial observation.</span></li>
+              </ul>
+            </details>
+          </section>
+
+          <section class="essay-section level-section" id="level-4" data-level-section="level-4">
+            <div class="level-header">
+              <div>
+                <div class="level-kicker">Procedure control</div>
+                <h2 aria-label="Procedure control: Control the reasoning process">Control the reasoning process</h2>
+              </div>
+              <div class="level-object"><span>Deferred decision</span>Which operation, and for how long?</div>
+            </div>
+            <p>The first three scopes leave an object of inference open—a candidate, a task model, or a course of action—but may still run a fixed outer procedure. The same construction principle can be applied to that procedure. The need to replan, for example, raises a further question: what part of the current computation should be preserved, and what should run next? Procedure control leaves this next reasoning operation open. It does not require inventing a new algorithm at test time; the outer controller may remain fixed. What remains unresolved is which member of an explicit repertoire—sample, expand, verify, repair, switch methods, or stop—should be applied next to the current reasoning state, and how much computation it deserves. If every problem receives the same solver for a preset number of steps, only the object is being inferred; the procedure remains fixed.</p>
+            <p><a href="https://arxiv.org/abs/2606.13861">Temporal Backtracking Search for Test-time Generative Video Reasoning</a> makes this distinction concrete for generative video. The video model is trained to resume from an arbitrary valid prefix. After each rollout, a process verifier localizes the first failure, identifies a safe restart point, and ranks the surviving prefixes. The outer generate–verify–restart loop remains fixed, but evidence from the current rollout determines where generation resumes, which prefix receives the next computation, and whether search stops. This kind of procedure control is possible because the model exposes the intermediate state that the controller needs to preserve and revise.</p>
+            <p>Procedure control must also decide how much of an existing solution to preserve and how much computation the situation permits. <a href="https://arxiv.org/abs/2310.09629">Adaptive Online Replanning with Diffusion Models</a> uses evidence from execution to choose whether a plan should be retained, repaired, or regenerated. <a href="https://arxiv.org/abs/2505.19481">Win Fast or Lose Slow</a> dynamically selects model size and quantization according to real-time demands, showing that the best procedure depends on the cost of delay as well as answer quality. A controller therefore needs signals about both what can be recovered and how much time the current problem allows.</p>
+            <p>For the robot, this means that a poor view of the mug or a slight shift in its grasp need not trigger a complete restart. The controller may move the camera, resample the grasp, check that the mug is still upright, repair only the affected part of the plan, switch methods, or stop deliberating and continue.</p>
+            <p>Procedure control assumes that the sources of knowledge available to the system are already fixed. When the next computation also depends on which differentiated generator, verifier, or specialist participates and how their outputs are connected, the organization itself remains open.</p>
+
+            <details class="selected-work">
+              <summary>Selected work</summary>
+              <ul class="work-list">
+                <li><a href="https://arxiv.org/abs/2310.09629">Adaptive Online Replanning with Diffusion Models</a><span class="work-note">Plan likelihood determines whether a plan is reused, repaired, or regenerated.</span></li>
+                <li><a href="https://arxiv.org/abs/2606.13861">Temporal Backtracking Search for Test-time Generative Video Reasoning</a><span class="work-note">Verifier evidence determines which valid prefix is preserved, expanded, or abandoned.</span></li>
+                <li><a href="https://arxiv.org/abs/2505.23614">Inference-Time Scaling of Diffusion Models through Classical Search</a><span class="work-note">Adaptive backtracking allocates computation across diffusion paths.</span></li>
+                <li><a href="https://arxiv.org/abs/2505.19481">Win Fast or Lose Slow</a><span class="work-note">Dynamic model and precision choices balance answer quality against latency.</span></li>
+              </ul>
+            </details>
+          </section>
+
+          <section class="essay-section level-section" id="level-5" data-level-section="level-5">
+            <div class="level-header">
+              <div>
+                <div class="level-kicker">Reasoner organization</div>
+                <h2 aria-label="Reasoner organization: Organize multiple reasoners">Organize multiple reasoners</h2>
+              </div>
+              <div class="level-object"><span>Deferred decision</span>Which reasoners, and how?</div>
+            </div>
+            <p>Learning can create a population of reasoners with different knowledge, tools, local state, and procedures. Reasoner organization leaves open how those members are assembled for the current problem: who participates, what roles they play, and how their outputs are connected.</p>
+            <p>Procedure control asks what operation the available system should run next. Reasoner organization asks which differentiated sources should contribute and how their outputs should be connected. Running the same verifier again changes the procedure; adding or replacing a verifier changes the organization because it changes the evidence brought to bear. Running several copies of the same model and voting does not cross this boundary, nor does packaging a scorer or solver as an “agent.”</p>
+            <p>Changing the procedure is not always enough: if the robot encounters an unfamiliar, fragile mug and lacks a reliable model of safe contact, another search step cannot supply that knowledge. It can consult a grasp specialist, pass the proposed contact geometry to the motion planner, and invoke a perception specialist if additional visual evidence is needed.</p>
+            <p>Earlier work established the value of multiple reasoners while keeping their organization fixed. <a href="https://arxiv.org/abs/2305.14325">Multiagent Debate</a> made identical model instances expose and challenge one another's reasoning through a fixed interaction pattern. <a href="https://arxiv.org/abs/2502.20379">Multi-Agent Verification</a> combined a fixed, domain-specific set of aspect verifiers whose different prompts, strategies, or base models supplied complementary judgments. These systems expose organizational variables—who participates, what each reasoner checks, and how their outputs are combined—even though those choices remain fixed within a deployment.</p>
+            <p><a href="https://arxiv.org/abs/2510.05077">SLM-MUX</a> makes group composition an explicit design variable. It searches before deployment for a complementary subset of small language models. The selected group remains fixed across test problems within a benchmark, but the result shows why choosing complementary participants can matter more than simply adding more interaction.</p>
+            <p><a href="https://arxiv.org/abs/2501.05707">Multiagent Finetuning</a> asks how learning can create useful differences among reasoners. Starting from the same base model, separate generation and critic agents are fine-tuned on distinct data produced through multiagent interaction. This preserves diverse reasoning chains across repeated rounds of self-improvement. Its participant set and debate protocol remain fixed at test time; its contribution here is to learn the differentiated population that organization can later draw upon.</p>
+            <p><a href="https://arxiv.org/abs/2606.02859">Economy of Minds</a> makes the organization itself adaptive. At each step, eligible agents compete for the right to act, producing a problem-dependent sequence of specialists without a central scheduler. Over longer timescales, wealth, bankruptcy, and mutation reshape the population according to the downstream value its members create.</p>
+            <details class="selected-work">
+              <summary>Selected work</summary>
+              <ul class="work-list">
+                <li><a href="https://arxiv.org/abs/2305.14325">Improving Factuality and Reasoning in Language Models through Multiagent Debate</a><span class="work-note">Identical model instances reason through a fixed debate protocol, establishing interaction as a reasoning substrate.</span></li>
+                <li><a href="https://arxiv.org/abs/2502.20379">Multi-Agent Verification</a><span class="work-note">A fixed, domain-specific set of aspect verifiers combines complementary judgments at test time.</span></li>
+                <li><a href="https://arxiv.org/abs/2501.05707">Multiagent Finetuning: Self Improvement with Diverse Reasoning Chains</a><span class="work-note">Separate generation and critic agents are trained on different interaction data to preserve diverse reasoning chains.</span></li>
+                <li><a href="https://arxiv.org/abs/2510.05077">SLM-MUX: Orchestrating Small Language Models for Reasoning</a><span class="work-note">Pre-deployment search identifies a complementary model subset, showing why participant choice matters.</span></li>
+                <li><a href="https://arxiv.org/abs/2606.02859">Economy of Minds</a><span class="work-note">Agents compete to act at each step while economic selection reshapes the population.</span></li>
+              </ul>
+            </details>
+          </section>
+
+          <section class="essay-section" id="embodiment">
+            <div class="section-label">Integration test</div>
+            <h2>Why embodiment is central</h2>
+            <p>The ultimate goal of AI is to build systems that can act reliably in the physical world. Robotics is therefore the natural integration test for generalization by construction: the entire hierarchy of inference must work together while every action changes the next problem. In the coffee task, an unreachable placement leaves planning with no feasible route, a failed grasp changes the next observation, and persistent uncertainty may require a different procedure or specialist. A robot cannot infer everything from scratch before every action, but it also cannot compile away choices that an unfamiliar goal, constraint, or failure may require it to reconsider. The amortization boundary must be placed across the full system so that action remains both timely and adaptable.</p>
+          </section>
+
+          <section class="essay-section closing" id="conclusion">
+            <div class="section-label">Conclusion</div>
+            <h2>Generalization as construction</h2>
+            <p>Logic- and planning-based symbolic systems preserved a separation between knowledge and inference, but relied on representations built by hand. Neural models made representations learnable from data, but often compiled away flexibility in how those representations could be used. The synthesis proposed here is to learn representations that preserve the choices inference may need to make as the current problem unfolds.</p>
+            <p>A problem can be globally unfamiliar even when the structure needed to solve it is locally familiar. If learning preserves that structure in reusable form, inference can assemble it for a problem whose exact solution was never encountered during training. Across the five scopes, what gets constructed expands: a candidate, the model defining the problem, a course of action, a problem-specific computation, or an organization of reasoners.</p>
+            <p>The boundary between training and inference is not fixed. Computation that repeatedly proves useful at test time can later be absorbed into training. <a href="https://arxiv.org/abs/2602.04770">Generative Modeling via Drifting</a> illustrates this idea by learning to perform in one step what would otherwise require iterative sampling. Inference can therefore handle unfamiliar problems first, while learning later makes recurring computation fast.</p>
+            <p>In conclusion, generalization by construction is not an argument for leaving every decision open. It is an argument for learning representations that keep the right decisions revisable until the goal, world state, resources, and available expertise are known.</p>
+          </section>
+        </article>
+      </div>
+    </main>
+
+    <footer class="article-footer">
+      <span>© 2026 Yilun Du</span>
+      <span class="footer-links"><a href="../">Home</a><a href="../#publications">Publications</a></span>
+    </footer>
+  </div>
+
+  <script>
+    (() => {
+      const links = [...document.querySelectorAll("[data-rail]")];
+      const sections = [...document.querySelectorAll("[data-level-section]")];
+      if (!links.length || !sections.length) return;
+
+      const clearCurrent = () => links.forEach((link) => link.removeAttribute("aria-current"));
+      const setCurrent = (id) => {
+        links.forEach((link) => {
+          if (link.dataset.rail === id) link.setAttribute("aria-current", "location");
+          else link.removeAttribute("aria-current");
+        });
+      };
+
+      const updateCurrent = () => {
+        const readingLine = Math.min(window.innerHeight * 0.28, 240);
+        const active = sections.find((section) => {
+          const bounds = section.getBoundingClientRect();
+          return bounds.top <= readingLine && bounds.bottom > readingLine;
+        });
+        if (active) setCurrent(active.id);
+        else clearCurrent();
+      };
+
+      let queued = false;
+      const scheduleUpdate = () => {
+        if (queued) return;
+        queued = true;
+        requestAnimationFrame(() => {
+          queued = false;
+          updateCurrent();
+        });
+      };
+
+      window.addEventListener("scroll", scheduleUpdate, { passive: true });
+      window.addEventListener("resize", scheduleUpdate);
+      updateCurrent();
+    })();
+  </script>
+</body>
+</html>
