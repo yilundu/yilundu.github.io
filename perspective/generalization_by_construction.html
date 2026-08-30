@@ -1,5 +1,5 @@
 <!doctype html>
-<!-- Verified revision: new subtitle, MAV under reasoner organization, revised reasoner-organization opening. -->
+<!-- Research perspective revision: field-facing framing, broader amortization boundary, and claim-first examples. -->
 <html lang="en">
 <head>
   <meta charset="utf-8">
@@ -8,11 +8,12 @@
   <meta name="theme-color" content="#ffffff">
   <meta name="description" content="Yilun Du's research perspective on generalization by construction: what learning should leave open for inference.">
   <meta name="author" content="Yilun Du">
-  <link rel="canonical" href="https://yilundu.github.io/perspective/generalization_by_construction.html">
+  <link rel="canonical" href="https://yilundu.github.io/agenda/generalization_by_construction.html">
   <link rel="icon" href="../static/img/favicon.ico">
   <meta property="og:type" content="article">
   <meta property="article:published_time" content="2026-08-29">
-  <meta property="og:url" content="https://yilundu.github.io/perspective/generalization_by_construction.html">
+  <meta property="article:modified_time" content="2026-08-30">
+  <meta property="og:url" content="https://yilundu.github.io/agenda/generalization_by_construction.html">
   <meta property="og:title" content="Generalization by Construction — Yilun Du">
   <meta property="og:description" content="What learning should leave open for inference.">
   <meta name="twitter:card" content="summary">
@@ -752,7 +753,8 @@
       }
     },
     "mainEntityOfPage": "https://yilundu.github.io/agenda/generalization_by_construction.html",
-    "dateModified": "2026-08-29",
+    "datePublished": "2026-08-29",
+    "dateModified": "2026-08-30",
     "keywords": [
       "generalization",
       "inference-time reasoning",
@@ -787,12 +789,12 @@
           <p>The ultimate goal of artificial intelligence is to build systems that can act effectively in situations they have not encountered before. This is especially important in robotics, where a robot may face new combinations of environments, objects, goals, constraints, and other agents. No dataset can cover every such combination. Yet the dominant approach is to collect broader datasets and train end-to-end neural networks to map situations directly to behavior. This has produced powerful systems, but collecting more examples cannot be the whole solution when the space of possible situations is open-ended.</p>
           <p>An important strand of symbolic AI began from a different premise. It separated knowledge from the procedure used to reason with it. Facts, relations, rules, actions, and goals were represented as explicit objects that could be reused and recombined after a goal was specified. A planner could pursue a new goal or incorporate a new constraint without training a new model. McCarthy's <a href="https://jmc.stanford.edu/articles/mcc59.html"><em>Programs with Common Sense</em></a> and the <a href="https://doi.org/10.1016/0004-3702%2871%2990010-5">STRIPS</a> planning system are early examples of this approach.</p>
           <p>The difficulty was not the separation itself, but the representation and search it assumed. In many such systems, people had to choose the symbols, predicates, and operators, connect perception to them, and decide which details of the world to ignore. Search also became difficult in large, continuous, and partially observed spaces. These problems are especially severe for images, video, language, and physical interaction, where the right vocabulary is difficult to specify in advance.</p>
-          <p>Deep learning addressed a central limitation of symbolic AI by making powerful representations learnable directly from large, high-dimensional datasets. Its dominant end-to-end use, however, couples the representation to a learned procedure for producing an output. Task-dependent alternatives are often hidden inside this mapping rather than exposed as variables that a new goal or constraint can compare, compose, or revise.</p>
-          <p>My research starts from the claim that a globally unfamiliar problem can often be constructed from locally familiar structure. A robot may never have encountered a particular environment, goal, and obstruction together, yet it may already know the relevant objects, dynamics, constraints, and skills separately. Learning should capture this recurring structure; inference should assemble and search it according to the current goal, constraints, and observations. I therefore study representations of solution spaces, reusable concepts and constraints, and action-conditioned world dynamics that remain searchable and composable after training. Generalization depends not only on how much computation is available at test time, but on whether learning has left the right choices open for inference to resolve.</p>
-          <p>I use <strong>construction</strong> broadly: inference may search for and revise a candidate, compose the task model that judges it, plan actions through the world, choose a reasoning procedure, or organize differentiated reasoners.</p>
+          <p>Deep learning addressed a central limitation of symbolic AI by making powerful representations learnable directly from large, high-dimensional datasets. Its dominant end-to-end use, however, couples the representation to a learned procedure for producing an output. Amortizing most of problem solving into this fixed mapping makes it difficult for the network to generalize to problems it was not explicitly trained to solve.</p>
+          <p>I argue that a globally unfamiliar problem can often be constructed from locally familiar structure. A robot may never have encountered a particular environment, goal, and obstruction together, yet it may already know the relevant objects, dynamics, constraints, and skills separately. Learning should capture this recurring structure; inference should assemble and search it according to the current goal, constraints, and observations. This points toward representations of solution spaces, reusable concepts and constraints, and action-conditioned world dynamics that remain searchable and composable after training. Generalization depends not only on how much computation is available at test time, but on which choices learning has left open for search to find.</p>
+          <p>In this essay, <strong>construction</strong> means keeping a problem-dependent choice explicit enough to be searched, compared, revised, or recombined as the problem unfolds. The object being constructed may be a candidate, a task model, a course of action, a reasoning procedure, or an organization of reasoners.</p>
         </div>
 
-        <p class="central-question"><span>Central question:</span> What reusable structure should a system learn so that inference can construct solutions to problems not anticipated during training?</p>
+        <p class="central-question"><span>Core claim:</span> A system generalizes by learning reusable structure while leaving problem-dependent choices open to revision at test time.</p>
       </header>
 
       <div class="article-layout">
@@ -815,7 +817,7 @@
                 <li>
                   <a class="rail-link" href="#level-2" data-rail="level-2">
                     <span class="rail-object">Model composition</span>
-                    <span class="rail-question">Which task model?</span>
+                    <span class="rail-question">Which model set?</span>
                   </a>
                 </li>
                 <li>
@@ -838,7 +840,7 @@
                 <li>
                   <a class="rail-link" href="#level-5" data-rail="level-5">
                     <span class="rail-object">Reasoner organization</span>
-                    <span class="rail-question">Which reasoners, and how?</span>
+                    <span class="rail-question">Which reasoners and connections?</span>
                   </a>
                 </li>
               </ul>
@@ -850,15 +852,15 @@
           <section class="essay-section" id="thesis">
             <div class="section-label">The thesis</div>
             <h2>Drawing the amortization boundary</h2>
-            <p>Every learned system divides problem solving between choices absorbed into reusable computation during training and choices resolved for the problem at hand. I call the placement of this division the <strong>amortization boundary</strong>. Choices that recur, including choices whose dependence on the input can be learned reliably, can be amortized. Choices that a future problem may need to reconsider must remain explicitly addressable. Here I use <strong>inference</strong> to mean problem-specific search, selection, or refinement over choices that learning deliberately left open.</p>
+            <p>Every system divides problem solving between choices fixed in reusable structure before the current problem is known and choices resolved for the problem at hand. In a learned system, training can absorb recurring choices into reusable computation. I call the placement of this division the <strong>amortization boundary</strong>. Choices that recur, including choices whose dependence on the input can be learned reliably, can be amortized. Choices that a future problem may need to reconsider must remain explicitly addressable. Here I use <strong>inference</strong> to mean problem-specific search, selection, or refinement over choices left open until the problem is known.</p>
 
-            <p>The boundary trades computation for flexibility. If a recurring decision remains open even though the current problem provides no new information about it, inference wastes work. If nearly every decision is fixed during training, a new goal or constraint may have nowhere to enter. The aim is therefore not to maximize inference, but to leave open the choices whose values cannot safely be determined in advance.</p>
+            <p>The boundary trades computation for flexibility. If a recurring decision remains open even though the current problem provides no new information about it, inference wastes work. If nearly every decision is fixed in advance, a new goal or constraint may have nowhere to enter. The aim is therefore not to maximize inference, but to leave open the choices whose values cannot safely be determined in advance.</p>
 
             <p>A useful analogy is program specialization. Assumptions known in advance can be compiled into an efficient executable. When those assumptions change, however, the system must return to a higher-level program in which the relevant functions and variables are still explicit. A direct neural policy resembles an aggressively specialized executable: it is fast to run, but difficult to adapt when a new problem violates the assumptions compiled into it. An energy function or world model can preserve a higher-level description of solutions or futures, leaving sampling, optimization, or planning to specialize that description for the current problem.</p>
 
             <p>The boundary concerns not only whether a choice remains open, but also the level at which it is represented. A planner need not search over every motor command. It can search over task-dependent states, subgoals, or trajectories while learned skills handle familiar local transitions. A useful representation leaves the distinctions that the current problem may change explicit without forcing inference to reconstruct every recurring detail.</p>
 
-            <p>This leads to a practical design procedure:</p>
+            <p>This suggests a practical way to apply the distinction:</p>
 
             <ol class="design-recipe">
               <li>Identify the choice that depends on the current goal, constraint, observation, or resource.</li>
@@ -867,13 +869,13 @@
               <li>Use inference to resolve it for the current problem.</li>
             </ol>
 
-            <p>My <a href="https://dspace.mit.edu/entities/publication/7165045b-d9de-4fa7-a9de-8507f0c2908c">PhD thesis</a> developed this view for planning and the composition of learned energy functions. The framework below extends it to the computation and organization of reasoning.</p>
+            <p>My <a href="https://dspace.mit.edu/entities/publication/7165045b-d9de-4fa7-a9de-8507f0c2908c">PhD thesis</a> developed this view for planning and the composition of learned energy functions. The same distinction also applies to the computation and organization of reasoning.</p>
           </section>
 
           <section class="essay-section" id="hierarchy">
             <div class="section-label">The framework</div>
             <h2>Hierarchical inference</h2>
-            <p>The amortization boundary can be drawn at different scopes. At the narrowest, inference searches for a solution under a fixed model. It may also construct the model itself, plan actions that change the world, choose the procedure used to reason, or decide which reasoners participate. These scopes form a hierarchy because each leaves a broader part of problem solving open for the current problem. Across the hierarchy, the principle is the same: learn reusable structure and use inference to resolve what cannot be fixed in advance. I group the five scopes into two families: the first three construct the problem and its solution, while the final two construct the computation used to solve it. A system can use any subset; they are not mandatory stages.</p>
+            <p>The amortization boundary can be drawn at five recurring scopes. At the narrowest, inference searches for a solution under a fixed model. It may also construct the model itself, plan actions that change the world, choose the procedure used to reason, or decide which reasoners participate. I organize these scopes by what inference is allowed to reconfigure: a candidate, the model that judges it, behavior in the world, the solving procedure, or the participating reasoners. The ordering describes control reach, not a mandatory pipeline or a set of disjoint algorithm classes. Across the hierarchy, the principle is the same: learn reusable structure and use inference to resolve what cannot be fixed in advance. The first three scopes construct the problem and its solution; the final two construct the computation used to solve it. A system can use any subset.</p>
 
             <div class="hierarchy-table" aria-label="Five scopes in two families">
               <section class="hierarchy-group" aria-labelledby="family-solution">
@@ -884,22 +886,22 @@
                 <div class="hierarchy-grid" role="table" aria-label="Scopes that construct the problem and its solution">
                   <div class="hierarchy-columns" role="row">
                     <div role="columnheader">Inference scope</div>
-                    <div role="columnheader">Reusable structure<small>Learned in advance</small></div>
+                    <div role="columnheader">Reusable structure<small>Available in advance</small></div>
                     <div role="columnheader">Constructed for this problem<small>Resolved at test time</small></div>
                   </div>
                   <div class="hierarchy-row" role="row">
                     <div class="hierarchy-scope" role="rowheader">Solution inference</div>
-                    <div class="hierarchy-cell" role="cell" data-label="Learned in advance">An evaluator or distribution that guides search</div>
+                    <div class="hierarchy-cell" role="cell" data-label="Available in advance">An evaluator or distribution that guides search</div>
                     <div class="hierarchy-cell hierarchy-constructed" role="cell" data-label="Constructed at test time"><strong>A candidate under the fixed model</strong><span><b>How:</b> Sample, compare, search, and refine</span></div>
                   </div>
                   <div class="hierarchy-row" role="row">
                     <div class="hierarchy-scope" role="rowheader">Model composition</div>
-                    <div class="hierarchy-cell" role="cell" data-label="Learned in advance">Compatible models, factors, and interfaces</div>
+                    <div class="hierarchy-cell" role="cell" data-label="Available in advance">Compatible models, factors, and interfaces</div>
                     <div class="hierarchy-cell hierarchy-constructed" role="cell" data-label="Constructed at test time"><strong>The model that defines the current problem</strong><span><b>How:</b> Select and compose factors, then search</span></div>
                   </div>
                   <div class="hierarchy-row" role="row">
                     <div class="hierarchy-scope" role="rowheader">Action planning</div>
-                    <div class="hierarchy-cell" role="cell" data-label="Learned in advance">Action-conditioned dynamics, goals, constraints, and skills</div>
+                    <div class="hierarchy-cell" role="cell" data-label="Available in advance">Action-conditioned dynamics, goals, constraints, and skills</div>
                     <div class="hierarchy-cell hierarchy-constructed" role="cell" data-label="Constructed at test time"><strong>An action sequence that reaches the desired outcome</strong><span><b>How:</b> Predict consequences, search for actions, and replan as needed</span></div>
                   </div>
                 </div>
@@ -912,24 +914,22 @@
                 <div class="hierarchy-grid" role="table" aria-label="Scopes that construct the computation">
                   <div class="hierarchy-columns" role="row">
                     <div role="columnheader">Inference scope</div>
-                    <div role="columnheader">Reusable structure<small>Learned in advance</small></div>
+                    <div role="columnheader">Reusable structure<small>Available in advance</small></div>
                     <div role="columnheader">Constructed for this problem<small>Resolved at test time</small></div>
                   </div>
                   <div class="hierarchy-row" role="row">
                     <div class="hierarchy-scope" role="rowheader">Procedure control</div>
-                    <div class="hierarchy-cell" role="cell" data-label="Learned in advance">Solvers, proposals, verifiers, and competence signals</div>
+                    <div class="hierarchy-cell" role="cell" data-label="Available in advance">Solvers, proposals, verifiers, and competence signals</div>
                     <div class="hierarchy-cell hierarchy-constructed" role="cell" data-label="Constructed at test time"><strong>The next reasoning operation and when to stop</strong><span><b>How:</b> Choose, allocate computation, verify, and stop</span></div>
                   </div>
                   <div class="hierarchy-row" role="row">
                     <div class="hierarchy-scope" role="rowheader">Reasoner organization</div>
-                    <div class="hierarchy-cell" role="cell" data-label="Learned in advance">Reasoners with differentiated knowledge, tools, and state</div>
+                    <div class="hierarchy-cell" role="cell" data-label="Available in advance">Differentiated reasoners and reusable coordination mechanisms</div>
                     <div class="hierarchy-cell hierarchy-constructed" role="cell" data-label="Constructed at test time"><strong>The participating reasoners, their roles, and their connections</strong><span><b>How:</b> Select, assign, route information, and reorganize</span></div>
                   </div>
                 </div>
               </section>
             </div>
-
-            <p>Together, these scopes move from choosing a solution to organizing the system that finds it. Solution inference searches for a candidate under a fixed model. Model composition constructs the model that judges candidates. Action planning uses that model to choose actions and replans as the world changes. Procedure control chooses how these computations are carried out, while reasoner organization chooses who participates and how information moves among them. A system can use any subset of the five scopes.</p>
 
             <p>The scopes classify the choice left open, not the kind of model being used. A world model can therefore appear at several scopes: searching among possible futures under a fixed model is solution inference; combining the model with a new goal or constraint is model composition; and comparing action-conditioned futures to choose what to do is action planning. The same distinction applies to computation. Procedure control changes what the currently assembled system does next: which solver or check to run, what intermediate state to preserve, and when to stop. This remains procedure control even when the system contains specialized modules, as long as the participants and their connections stay fixed. Reasoner organization changes the assembled system itself: which differentiated reasoners participate, what roles they take, or how information moves among them. The scope is determined by what inference can reconfigure, not by whether a component is called a model, solver, or agent.</p>
 
@@ -949,10 +949,10 @@
             </div>
             <p>Solution inference leaves the learned model fixed while keeping the candidate open. Learning specifies what makes a candidate good without fixing the candidate itself. A direct predictor has to learn both what makes an answer appropriate and a fixed computation for producing it. An energy function or learned evaluator separates these roles: the model scores proposed answers, while a sampler or optimizer constructs one that scores well. The important property is not stochasticity or iteration by itself. The candidate must remain an explicit object of inference—sampled, compared, or revised under the fixed model—rather than being fixed by a single learned input–output pass. An externally supplied proposal can initialize that search; adding a separately addressable constraint or evaluator changes the model and crosses into model composition.</p>
             <p>Holding the task model fixed, the robot can search over candidate placements and revise one that is unstable or difficult for the person to reach rather than accept its first proposal. For some problems, learning to judge such a candidate may be easier than learning to produce a correct one in a single pass. A graded criterion can also indicate how the candidate should change. Learning builds a landscape that distinguishes better from worse solutions; inference searches it.</p>
-            <p>We first explored this separation in <a href="https://arxiv.org/abs/1903.08689">Implicit Generation and Generalization in Energy-Based Models</a>. The learned object was a landscape rather than a fixed generator: Langevin dynamics, an iterative stochastic sampler, could search it without imposing a fixed generation order. The sampler could also start from an external proposal or run for different numbers of steps. <a href="https://arxiv.org/abs/2206.15448">Learning Iterative Reasoning through Energy Minimization</a> then treated reasoning itself as minimization over a conditional landscape. Its verifier-generator analysis makes the tradeoff explicit: a criterion for recognizing a valid solution can be smaller than a procedure that constructs one, although the resulting search may still be hard.</p>
-            <p>Subsequent work asks what geometry makes this separation useful in practice. <a href="https://arxiv.org/abs/2406.11179">Learning Iterative Reasoning through Energy Diffusion</a> moves through a sequence of landscapes, from broad, smooth basins toward sharper constraints. <a href="https://arxiv.org/abs/2510.14901">Reasoning with Sampling</a> applies the same separation to a frozen language model, using its likelihood as the target of an iterative sampler that can revisit earlier choices. These settings differ, but they pose the same question: which learned representation makes revisable inference reliable?</p>
+            <p>Energy-based models make this separation concrete. In <a href="https://arxiv.org/abs/1903.08689">Implicit Generation and Generalization in Energy-Based Models</a>, the learned object is a landscape rather than a fixed generator: Langevin dynamics, an iterative stochastic sampler, can search it without imposing a fixed generation order. The sampler can also start from an external proposal or run for different numbers of steps. <a href="https://arxiv.org/abs/2206.15448">Learning Iterative Reasoning through Energy Minimization</a> applies the same idea to reasoning by minimizing a conditional landscape. Its verifier-generator analysis makes the tradeoff explicit: a criterion for recognizing a valid solution can be smaller than a procedure that constructs one, although the resulting search may still be hard.</p>
+            <p>The practical question is what geometry makes revisable inference reliable. <a href="https://arxiv.org/abs/2406.11179">Learning Iterative Reasoning through Energy Diffusion</a> moves through a sequence of landscapes, from broad, smooth basins toward sharper constraints. <a href="https://arxiv.org/abs/2510.14901">Reasoning with Sampling</a> applies the same separation to a frozen language model, using its likelihood as the target of an iterative sampler that can revisit earlier choices. Across both settings, additional inference is useful only when the learned geometry supports reliable revision.</p>
             <details class="selected-work">
-              <summary>Selected work</summary>
+              <summary>Illustrative work</summary>
               <ul class="work-list">
                 <li><a href="https://arxiv.org/abs/1903.08689">Implicit Generation and Generalization in Energy-Based Models</a><span class="work-note">One learned landscape supports generation, refinement, and variable inference effort.</span></li>
                 <li><a href="https://arxiv.org/abs/2206.15448">Learning Iterative Reasoning through Energy Minimization</a><span class="work-note">Answers are represented as minima, with computation adjustable to problem difficulty.</span></li>
@@ -971,18 +971,18 @@
                 <div class="level-kicker">Model composition</div>
                 <h2 aria-label="Model composition: Compose the model required by the problem">Compose the model required by the problem</h2>
               </div>
-              <div class="level-object"><span>Deferred decision</span>Which models?</div>
+              <div class="level-object"><span>Deferred decision</span>Which model set?</div>
             </div>
             <p>Solution inference searches for a candidate under a fixed model. Model composition changes the model that defines this search. The current task determines which pieces of learned knowledge—such as a relation, goal, physical constraint, or reward—should constrain the answer. Inference selects, composes, or infers these factors. What composition produces is not yet an answer, but a problem-specific criterion or distribution that solution inference can search. A new task need not be reduced to an input for a monolithic predictor; it can become a new inference problem assembled from reusable knowledge.</p>
             <p>The task model used to judge those placements need not be learned as a whole for this exact kitchen scene. The robot can construct it by combining learned factors for keeping the mug upright, avoiding nearby dishes, resting it securely on the table, and leaving it within the person's reach. The complete arrangement is globally unfamiliar, but each factor expresses locally familiar structure. Generalization comes from constructing a new global model from these reusable local judgments, not from asking one model to extrapolate across the entire combination at once.</p>
-            <p>Symbolic systems obtained much of their flexibility by composing reusable predicates and operators. The aim is not to recover a particular symbolic vocabulary, but the operational separation these systems exploited: reusable pieces remain addressable after the task is known, while their continuous semantics can be learned from data. The components need not share an architecture or modality, but they must agree on the object being constructed, how each component can evaluate or guide it, and an inference procedure capable of reconciling their constraints.</p>
-            <p>Our early visual work began by composing learned concept distributions through <a href="https://arxiv.org/abs/2004.06030">conjunction, disjunction, and negation</a>. It then moved from assembling <a href="https://arxiv.org/abs/2111.09297">named spatial relations</a> to combining <a href="https://arxiv.org/abs/2206.01714">independently trained score models</a> during denoising. <a href="https://arxiv.org/abs/2210.11522">Iterative consensus</a> broadened the same idea beyond a common architecture: a generator and independently trained vision, language, or task-specific scorers communicate through a shared candidate.</p>
+            <p>Symbolic systems obtained much of their flexibility by composing reusable predicates and operators. The aim is not to recover a particular symbolic vocabulary, but the operational separation these systems exploited: reusable pieces remain addressable after the task is known, while their continuous semantics can be learned from data. The components need not share an architecture or modality, but they need compatible interfaces: a shared object being constructed, a way for each component to evaluate or guide it, and an inference procedure capable of reconciling their constraints.</p>
+            <p>Composition can operate across several kinds of learned structure. Concept distributions can be combined through <a href="https://arxiv.org/abs/2004.06030">conjunction, disjunction, and negation</a>; <a href="https://arxiv.org/abs/2111.09297">named spatial relations</a> can be assembled into a scene; and <a href="https://arxiv.org/abs/2206.01714">independently trained score models</a> can be combined during denoising. <a href="https://arxiv.org/abs/2210.11522">Iterative consensus</a> extends the same principle across architectures by letting a generator and independently trained vision, language, or task-specific scorers communicate through a shared candidate.</p>
             <p>A compositional system must also learn the pieces it will later reuse. <a href="https://arxiv.org/abs/2111.03042">Unsupervised Learning of Compositional Energy Concepts</a> discovers reusable factors without concept labels, while <a href="https://arxiv.org/abs/2411.04987">Few-Shot Task Learning through Inverse Generative Modeling</a> infers a new task factor from demonstrations without changing the pretrained generator. Learning therefore need not determine the final task model in advance; it can instead produce a vocabulary of factors whose selection and combination remain open. Once learned, a new factor should compose with earlier factors without retraining them, enlarging the family of tasks the system can construct.</p>
             <p>Composition must be grounded and matched to an inference procedure. <a href="https://arxiv.org/abs/2405.11928">Set It Up!</a> uses a symbolic relation graph to select learned continuous factors and ground them into object poses. <a href="https://arxiv.org/abs/2302.11552">Reduce, Reuse, Recycle</a> shows why the solver cannot be treated as an afterthought: standard reverse diffusion need not realize the product distribution implied by composed scores. <a href="https://arxiv.org/abs/2510.20607">Generalizable Reasoning through Compositional Energy Minimization</a> carries the same principle into reasoning, where local learned criteria become reusable verifiers inside a larger problem. The factors, their interface, and the procedure that reconciles them must therefore be designed together.</p>
             <p>Decision making is a particularly important instance of model composition. A model of the desired future represents what outcomes matter; action-conditioned dynamics represent what proposed interventions could cause. Both sides can themselves be composed: dynamics from reusable models of objects, agents, and interactions, and objectives from goals, rewards, and constraints. Model composition brings these pieces together to define the decision problem. Action planning then searches for interventions whose predicted consequences reach the desired outcome.</p>
 
             <details class="selected-work">
-              <summary>Selected work</summary>
+              <summary>Illustrative work</summary>
               <ul class="work-list">
                 <li><a href="https://arxiv.org/abs/2004.06030">Compositional Visual Generation and Inference with Energy-Based Models</a><span class="work-note">Concept distributions are composed through logical operations.</span></li>
                 <li><a href="https://arxiv.org/abs/2111.09297">Learning to Compose Visual Relations</a><span class="work-note">Named relations are represented as reusable energy functions.</span></li>
@@ -1019,7 +1019,7 @@
             <p>Planning and policy can therefore occupy different points on a moving amortization boundary. Unfamiliar behavior can initially be constructed through search; behavior that recurs can later be compiled into a reusable policy or skill. Once the robot begins executing a plan, however, the world may still depart from its predictions: the mug may shift in its grasp or a dish may block the route. The planner can use the resulting state to search again rather than continue an obsolete action sequence. Replanning changes the action sequence, but it may still use the same search procedure each time.</p>
 
             <details class="selected-work">
-              <summary>Selected work</summary>
+              <summary>Illustrative work</summary>
               <ul class="work-list">
                 <li><a href="https://arxiv.org/abs/1909.06878">Model-Based Planning with Energy-Based Models</a><span class="work-note">Intermediate state trajectories are inferred through learned dynamics.</span></li>
                 <li><a href="https://arxiv.org/abs/2205.09991">Planning with Diffusion for Flexible Behavior Synthesis</a><span class="work-note">Whole trajectories are generated and guided as a planning representation.</span></li>
@@ -1053,11 +1053,11 @@
             <p>The first three scopes leave an object of inference open—a candidate, a task model, or a course of action—but may still run a fixed outer procedure. The same construction principle can be applied to that procedure. The need to replan, for example, raises a further question: what part of the current computation should be preserved, and what should run next? Procedure control leaves this next reasoning operation open. It does not require inventing a new algorithm at test time; the outer controller may remain fixed. What remains unresolved is which member of an explicit repertoire—sample, expand, verify, repair, switch methods, or stop—should be applied next to the current reasoning state, and how much computation it deserves. If every problem receives the same solver for a preset number of steps, only the object is being inferred; the procedure remains fixed.</p>
             <p><a href="https://arxiv.org/abs/2606.13861">Temporal Backtracking Search for Test-time Generative Video Reasoning</a> makes this distinction concrete for generative video. The video model is trained to resume from an arbitrary valid prefix. After each rollout, a process verifier localizes the first failure, identifies a safe restart point, and ranks the surviving prefixes. The outer generate–verify–restart loop remains fixed, but evidence from the current rollout determines where generation resumes, which prefix receives the next computation, and whether search stops. This kind of procedure control is possible because the model exposes the intermediate state that the controller needs to preserve and revise.</p>
             <p>Procedure control must also decide how much of an existing solution to preserve and how much computation the situation permits. <a href="https://arxiv.org/abs/2310.09629">Adaptive Online Replanning with Diffusion Models</a> uses evidence from execution to choose whether a plan should be retained, repaired, or regenerated. <a href="https://arxiv.org/abs/2505.19481">Win Fast or Lose Slow</a> dynamically selects model size and quantization according to real-time demands, showing that the best procedure depends on the cost of delay as well as answer quality. A controller therefore needs signals about both what can be recovered and how much time the current problem allows.</p>
-            <p>For the robot, this means that a poor view of the mug or a slight shift in its grasp need not trigger a complete restart. The controller may move the camera, resample the grasp, check that the mug is still upright, repair only the affected part of the plan, switch methods, or stop deliberating and continue.</p>
-            <p>Procedure control assumes that the sources of knowledge available to the system are already fixed. When the next computation also depends on which differentiated generator, verifier, or specialist participates and how their outputs are connected, the organization itself remains open.</p>
+            <p>For the robot, this means that a poor view of the mug or a slight shift in its grasp need not trigger a complete restart. The controller may rerun perception, resample the grasp, check that the mug is still upright, repair only the affected part of the plan, switch methods, or stop deliberating and continue.</p>
+            <p>Procedure control assumes that the sources of knowledge available to the system are already fixed. When the current problem must also determine which differentiated generators, verifiers, or specialists participate—and how their outputs are connected—the organization itself becomes an object of inference.</p>
 
             <details class="selected-work">
-              <summary>Selected work</summary>
+              <summary>Illustrative work</summary>
               <ul class="work-list">
                 <li><a href="https://arxiv.org/abs/2310.09629">Adaptive Online Replanning with Diffusion Models</a><span class="work-note">Plan likelihood determines whether a plan is reused, repaired, or regenerated.</span></li>
                 <li><a href="https://arxiv.org/abs/2606.13861">Temporal Backtracking Search for Test-time Generative Video Reasoning</a><span class="work-note">Verifier evidence determines which valid prefix is preserved, expanded, or abandoned.</span></li>
@@ -1071,24 +1071,20 @@
             <div class="level-header">
               <div>
                 <div class="level-kicker">Reasoner organization</div>
-                <h2 aria-label="Reasoner organization: Organize multiple reasoners">Organize multiple reasoners</h2>
+                <h2 aria-label="Reasoner organization: Assemble the reasoning system">Assemble the reasoning system</h2>
               </div>
-              <div class="level-object"><span>Deferred decision</span>Which reasoners, and how?</div>
+              <div class="level-object"><span>Deferred decision</span>Which reasoners and connections?</div>
             </div>
-            <p>Learning can create a population of reasoners with different knowledge, tools, local state, and procedures. Reasoner organization leaves open how those members are assembled for the current problem: who participates, what roles they play, and how their outputs are connected.</p>
-            <p>Procedure control asks what operation the available system should run next. Reasoner organization asks which differentiated sources should contribute and how their outputs should be connected. Running the same verifier again changes the procedure; adding or replacing a verifier changes the organization because it changes the evidence brought to bear. Running several copies of the same model and voting does not cross this boundary, nor does packaging a scorer or solver as an “agent.”</p>
-            <p>Changing the procedure is not always enough: if the robot encounters an unfamiliar, fragile mug and lacks a reliable model of safe contact, another search step cannot supply that knowledge. It can consult a grasp specialist, pass the proposed contact geometry to the motion planner, and invoke a perception specialist if additional visual evidence is needed.</p>
-            <p>Earlier work established the value of multiple reasoners while keeping their organization fixed. <a href="https://arxiv.org/abs/2305.14325">Multiagent Debate</a> made identical model instances expose and challenge one another's reasoning through a fixed interaction pattern. <a href="https://arxiv.org/abs/2502.20379">Multi-Agent Verification</a> combined a fixed, domain-specific set of aspect verifiers whose different prompts, strategies, or base models supplied complementary judgments. These systems expose organizational variables—who participates, what each reasoner checks, and how their outputs are combined—even though those choices remain fixed within a deployment.</p>
-            <p><a href="https://arxiv.org/abs/2510.05077">SLM-MUX</a> makes group composition an explicit design variable. It searches before deployment for a complementary subset of small language models. The selected group remains fixed across test problems within a benchmark, but the result shows why choosing complementary participants can matter more than simply adding more interaction.</p>
-            <p><a href="https://arxiv.org/abs/2501.05707">Multiagent Finetuning</a> asks how learning can create useful differences among reasoners. Starting from the same base model, separate generation and critic agents are fine-tuned on distinct data produced through multiagent interaction. This preserves diverse reasoning chains across repeated rounds of self-improvement. Its participant set and debate protocol remain fixed at test time; its contribution here is to learn the differentiated population that organization can later draw upon.</p>
-            <p><a href="https://arxiv.org/abs/2606.02859">Economy of Minds</a> makes the organization itself adaptive. At each step, eligible agents compete for the right to act, producing a problem-dependent sequence of specialists without a central scheduler. Over longer timescales, wealth, bankruptcy, and mutation reshape the population according to the downstream value its members create.</p>
+            <p>Procedure control chooses the next operation within an already assembled system. Reasoner organization leaves the assembly itself open: which sources of knowledge, tools, and state participate, what roles they take, and how information moves among them. This also differs from model composition. Model composition constructs the task model that defines what counts as a solution; reasoner organization assembles the specialists that supply and evaluate the relevant information. The two can work together. If the robot encounters an unfamiliar, fragile mug, for example, organization may bring in a grasp specialist and route its judgment to perception and planning.</p>
+            <p>Organizational choices can lie at different points on the amortization boundary. <a href="https://arxiv.org/abs/2305.14325">Multiagent Debate</a> and <a href="https://arxiv.org/abs/2502.20379">Multi-Agent Verification</a> fix the participants, roles, and communication protocol in advance. <a href="https://arxiv.org/abs/2501.05707">Multiagent Finetuning</a> instead learns complementary generator and critic behaviors from their interaction, but it too uses a fixed organization at deployment. These approaches show how recurring protocols and roles can be fixed or learned before test time. Inference then operates within the resulting organization rather than deciding how to assemble it for the current problem.</p>
+            <p>When organization must adapt to the current problem, a reusable coordination mechanism can specify incentives and local rules. These allow reasoners to decide when to participate and how their contributions are valued, so that a task-specific organization emerges without a central scheduler. <a href="https://arxiv.org/abs/2606.02859">Economy of Minds</a> follows this pattern: specialists compete to act at each step, producing a problem-dependent sequence, while longer-term economic selection reshapes the population over time. The coordination mechanism is reusable; the organization it produces is problem-dependent. These systems occupy different positions on the amortization boundary: a protocol may be fixed by design, roles may be learned, or the organization may be constructed for the current problem.</p>
             <details class="selected-work">
-              <summary>Selected work</summary>
+              <summary>Illustrative work</summary>
               <ul class="work-list">
                 <li><a href="https://arxiv.org/abs/2305.14325">Improving Factuality and Reasoning in Language Models through Multiagent Debate</a><span class="work-note">Identical model instances reason through a fixed debate protocol, establishing interaction as a reasoning substrate.</span></li>
                 <li><a href="https://arxiv.org/abs/2502.20379">Multi-Agent Verification</a><span class="work-note">A fixed, domain-specific set of aspect verifiers combines complementary judgments at test time.</span></li>
                 <li><a href="https://arxiv.org/abs/2501.05707">Multiagent Finetuning: Self Improvement with Diverse Reasoning Chains</a><span class="work-note">Separate generation and critic agents are trained on different interaction data to preserve diverse reasoning chains.</span></li>
-                <li><a href="https://arxiv.org/abs/2510.05077">SLM-MUX: Orchestrating Small Language Models for Reasoning</a><span class="work-note">Pre-deployment search identifies a complementary model subset, showing why participant choice matters.</span></li>
+                <li><a href="https://arxiv.org/abs/2510.05077">SLM-MUX: Orchestrating Small Language Models for Reasoning</a><span class="work-note">Pre-deployment search fixes a complementary model subset, placing participant choice on the amortized side of the boundary.</span></li>
                 <li><a href="https://arxiv.org/abs/2606.02859">Economy of Minds</a><span class="work-note">Agents compete to act at each step while economic selection reshapes the population.</span></li>
               </ul>
             </details>
@@ -1097,15 +1093,15 @@
           <section class="essay-section" id="embodiment">
             <div class="section-label">Integration test</div>
             <h2>Why embodiment is central</h2>
-            <p>The ultimate goal of AI is to build systems that can act reliably in the physical world. Robotics is therefore the natural integration test for generalization by construction: the entire hierarchy of inference must work together while every action changes the next problem. In the coffee task, an unreachable placement leaves planning with no feasible route, a failed grasp changes the next observation, and persistent uncertainty may require a different procedure or specialist. A robot cannot infer everything from scratch before every action, but it also cannot compile away choices that an unfamiliar goal, constraint, or failure may require it to reconsider. The amortization boundary must be placed across the full system so that action remains both timely and adaptable.</p>
+            <p>The ultimate goal of AI is to build systems that can act reliably in the physical world. Robotics is therefore the natural integration test for generalization by construction: it can bring all five scopes of inference into play while every action changes the next problem. In the coffee task, an unreachable placement leaves planning with no feasible route, a failed grasp changes the next observation, and persistent uncertainty may require a different procedure or specialist. A robot cannot infer everything from scratch before every action, but it also cannot compile away choices that an unfamiliar goal, constraint, or failure may require it to reconsider. The amortization boundary must be placed across the full system so that action remains both timely and adaptable.</p>
           </section>
 
           <section class="essay-section closing" id="conclusion">
             <div class="section-label">Conclusion</div>
             <h2>Generalization as construction</h2>
-            <p>Logic- and planning-based symbolic systems preserved a separation between knowledge and inference, but relied on representations built by hand. Neural models made representations learnable from data, but often compiled away flexibility in how those representations could be used. The synthesis proposed here is to learn representations that preserve the choices inference may need to make as the current problem unfolds.</p>
-            <p>A problem can be globally unfamiliar even when the structure needed to solve it is locally familiar. If learning preserves that structure in reusable form, inference can assemble it to solve a problem whose exact solution was never encountered during training. The framework identifies five scopes at which this construction can occur: a candidate solution, the model that defines the problem, a course of action, the procedure used to solve it, or the organization of reasoners.</p>
-            <p>The boundary between training and inference can move. Inference can handle unfamiliar problems when they first arise; if parts of that computation recur, learning can later absorb them and make them fast. Generalization by construction is therefore not an argument for leaving every decision to inference. It is an argument for learning reusable representations while keeping task-dependent choices open, so that inference can combine prior knowledge with the current goal, world state, and available expertise when it encounters a task not anticipated during training.</p>
+            <p>Logic- and planning-based symbolic systems preserved a separation between knowledge and inference, but relied on representations built by hand. Neural models made representations learnable from data, but often compiled away flexibility in how that knowledge could be used. The synthesis proposed here is to learn reusable structure that preserves the choices inference may need to make as the current problem unfolds.</p>
+            <p>A problem can be globally unfamiliar even when the structure needed to solve it is locally familiar. If learning preserves that structure in reusable form, inference can assemble it to solve a problem whose exact solution was never encountered during training. The five scopes locate where this construction can occur: a candidate solution, the model that defines the problem, a course of action, the procedure used to solve it, or the organization of reasoners.</p>
+            <p>The boundary between what is fixed in advance and what is resolved through inference can move. Inference can handle unfamiliar problems when they first arise; if parts of that computation recur, learning can later absorb them and make them fast. Generalization by construction is therefore not an argument for leaving every decision to inference. It is a claim about system design: recurring structure should be made efficient without compiling away the choices that an unfamiliar goal, world state, or source of expertise may require the system to revisit. Systems should therefore be compared not only by their architecture or test-time budget, but by what they allow inference to reconfigure when the problem changes.</p>
           </section>
         </article>
       </div>
