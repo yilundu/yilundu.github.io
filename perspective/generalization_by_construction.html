@@ -118,6 +118,7 @@
       align-items: baseline;
       justify-content: space-between;
       gap: 24px;
+      border-bottom: 1px solid var(--line);
       padding: 31px 56px 24px;
     }
 
@@ -148,30 +149,6 @@
       color: var(--quiet);
       font-size: 13px;
       white-space: nowrap;
-    }
-
-    .simple-nav {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: flex-start;
-      gap: 0;
-      border-top: 1px solid var(--line);
-      border-bottom: 1px solid var(--line);
-      padding: 10px 56px;
-    }
-
-    .simple-nav a {
-      color: var(--muted);
-      font-size: 14px;
-      font-weight: 700;
-      letter-spacing: 0.01em;
-    }
-
-    .simple-nav a + a::before {
-      content: "/";
-      display: inline-block;
-      margin: 0 11px;
-      color: #bbb;
     }
 
     .main-content { padding: 52px 56px 72px; }
@@ -423,53 +400,106 @@
     .hierarchy-group + .hierarchy-group { border-top: 1px solid var(--line); }
 
     .hierarchy-family {
-      display: grid;
-      grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.3fr);
-      gap: 20px;
-      padding: 14px 0 9px;
+      padding: 18px 0 13px;
     }
 
     .essay-section .hierarchy-family h3 {
+      margin: 0 0 4px;
+      color: var(--heading);
+      font-size: 17px;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      line-height: 1.35;
+    }
+
+    .essay-section .hierarchy-family p {
       margin: 0;
-      color: var(--accent);
-      font-size: 12px;
-      font-weight: 780;
-      letter-spacing: 0.075em;
-      line-height: 1.4;
+      color: var(--quiet);
+      font-size: 13px;
+      line-height: 1.45;
+    }
+
+    .hierarchy-columns,
+    .hierarchy-row {
+      display: grid;
+      grid-template-columns: minmax(112px, 0.75fr) minmax(0, 1.1fr) minmax(0, 1.45fr);
+      gap: 0;
+      align-items: start;
+    }
+
+    .hierarchy-columns {
+      border-top: 1px solid var(--soft-line);
+      border-bottom: 1px solid var(--soft-line);
+      background: var(--surface);
+    }
+
+    .hierarchy-columns > div {
+      padding: 8px 12px 9px;
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 760;
+      letter-spacing: 0.055em;
+      line-height: 1.35;
       text-transform: uppercase;
     }
 
-    .hierarchy-family span {
-      color: var(--quiet);
-      font-size: 13px;
-      line-height: 1.45;
-    }
-
-    .hierarchy-row {
-      display: grid;
-      grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.3fr);
-      gap: 20px;
-      align-items: start;
-      border-top: 1px solid var(--soft-line);
-      padding: 13px 0 14px;
-    }
-
-    .hierarchy-object strong,
-    .hierarchy-decision strong {
-      display: block;
-      color: var(--heading);
-      font-size: 14px;
-      font-weight: 700;
-      line-height: 1.4;
-    }
-
-    .hierarchy-object span,
-    .hierarchy-decision span {
+    .hierarchy-columns small {
       display: block;
       margin-top: 2px;
       color: var(--quiet);
+      font-size: 10px;
+      font-weight: 560;
+      letter-spacing: 0;
+      text-transform: none;
+    }
+
+    .hierarchy-row + .hierarchy-row { border-top: 1px solid var(--soft-line); }
+
+    .hierarchy-columns > :not(:first-child),
+    .hierarchy-row > :not(:first-child) {
+      border-left: 1px solid var(--soft-line);
+    }
+
+    .hierarchy-scope,
+    .hierarchy-cell {
+      margin: 0;
+      padding: 14px 12px 15px;
+    }
+
+    .hierarchy-scope {
+      color: var(--heading);
+      font-size: 14px;
+      font-weight: 720;
+      line-height: 1.4;
+    }
+
+    .hierarchy-cell {
+      color: var(--quiet);
       font-size: 13px;
-      line-height: 1.45;
+      line-height: 1.47;
+    }
+
+    .hierarchy-constructed strong,
+    .hierarchy-constructed span {
+      display: block;
+    }
+
+    .hierarchy-constructed strong {
+      color: var(--heading);
+      font-size: 13.5px;
+      font-weight: 700;
+      line-height: 1.42;
+    }
+
+    .hierarchy-constructed span {
+      margin-top: 5px;
+      color: var(--quiet);
+      font-size: 12.5px;
+    }
+
+    .hierarchy-constructed b {
+      color: var(--muted);
+      font-weight: 700;
     }
 
     .level-header {
@@ -617,7 +647,6 @@
     @media (max-width: 900px) {
       .main-content { padding-inline: 42px; }
       .article-masthead { padding-inline: 42px; }
-      .simple-nav { padding-inline: 42px; }
       .article-layout { grid-template-columns: 190px minmax(0, 1fr); gap: 38px; }
     }
 
@@ -642,24 +671,45 @@
         padding: 25px 22px 21px;
       }
       .masthead-note { display: none; }
-      .simple-nav {
-        justify-content: center;
-        gap: 4px 14px;
-        padding: 7px 18px;
-      }
-      .simple-nav a { padding-block: 5px; }
-      .simple-nav a + a::before { content: none; }
       .main-content { padding: 37px 22px 52px; }
       .hero { padding-bottom: 39px; }
       .hero h1 { font-size: 38px; }
       .hero-deck { font-size: 21px; }
       .hierarchy-rail { grid-template-columns: 1fr; gap: 6px; }
+      .hierarchy-columns {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
+        clip: rect(0 0 0 0);
+        clip-path: inset(50%);
+        white-space: nowrap;
+      }
+      .hierarchy-row {
+        grid-template-columns: 1fr;
+        gap: 11px;
+        padding: 17px 0 18px;
+      }
+      .hierarchy-scope,
+      .hierarchy-cell {
+        border-left: 0 !important;
+        padding: 0;
+      }
+      .hierarchy-scope { font-size: 16px; }
+      .hierarchy-cell::before {
+        content: attr(data-label);
+        display: block;
+        margin-bottom: 3px;
+        color: var(--accent);
+        font-size: 10px;
+        font-weight: 760;
+        letter-spacing: 0.07em;
+        line-height: 1.35;
+        text-transform: uppercase;
+      }
       .level-header { grid-template-columns: 1fr; gap: 0; }
       .level-object { margin: -7px 0 15px; text-align: left; }
       .level-object span { display: inline; margin-right: 5px; }
-      .hierarchy-family,
-      .hierarchy-row { grid-template-columns: 1fr; gap: 6px; }
-      .hierarchy-decision { grid-column: auto; }
       .article-footer { padding-inline: 22px; }
     }
 
@@ -677,7 +727,7 @@
     @media print {
       body { color: #000; font-size: 11pt; }
       .page-shell { width: 100%; }
-      .simple-nav, .hierarchy-rail, .article-footer { display: none; }
+      .hierarchy-rail, .article-footer { display: none; }
       .article-masthead, .main-content { padding-inline: 0; }
       .article-layout { display: block; max-width: none; }
       .essay-section { break-inside: avoid; }
@@ -726,14 +776,6 @@
       </div>
       <span class="masthead-note">Generalizable intelligence</span>
     </header>
-
-    <nav class="simple-nav" aria-label="Site navigation">
-      <a href="../">Home</a>
-      <a href="#thesis">The thesis</a>
-      <a href="#hierarchy">The framework</a>
-      <a href="#embodiment">Embodiment</a>
-      <a href="../#publications">Publications</a>
-    </nav>
 
     <main class="main-content" id="main-content" tabindex="-1">
       <header class="hero">
@@ -835,38 +877,53 @@
 
             <div class="hierarchy-table" aria-label="Five scopes in two families">
               <section class="hierarchy-group" aria-labelledby="family-solution">
-                <div class="hierarchy-family">
+                <header class="hierarchy-family">
                   <h3 id="family-solution">Constructing the problem and its solution</h3>
-                  <span>These scopes leave open what must be constructed for the current problem: a candidate, the model that judges it, or the actions that change the world.</span>
-                </div>
-                <div class="hierarchy-rows" role="list">
-                  <div class="hierarchy-row" role="listitem">
-                    <div class="hierarchy-object"><strong>Solution inference</strong><span>Reusable structure: evaluator or distribution that guides search</span></div>
-                    <div class="hierarchy-decision"><strong>Open choice: which candidate under the fixed model?</strong><span>Inference: sample, compare, search, and refine</span></div>
+                  <p>These scopes determine what is being solved: the candidate solution, the model that defines the problem, or the actions that move the world toward the goal.</p>
+                </header>
+                <div class="hierarchy-grid" role="table" aria-label="Scopes that construct the problem and its solution">
+                  <div class="hierarchy-columns" role="row">
+                    <div role="columnheader">Inference scope</div>
+                    <div role="columnheader">Reusable structure<small>Learned in advance</small></div>
+                    <div role="columnheader">Constructed for this problem<small>Resolved at test time</small></div>
                   </div>
-                  <div class="hierarchy-row" role="listitem">
-                    <div class="hierarchy-object"><strong>Model composition</strong><span>Reusable structure: compatible factors and interfaces</span></div>
-                    <div class="hierarchy-decision"><strong>Open choice: which model defines the problem?</strong><span>Inference: select, compose, infer, then search</span></div>
+                  <div class="hierarchy-row" role="row">
+                    <div class="hierarchy-scope" role="rowheader">Solution inference</div>
+                    <div class="hierarchy-cell" role="cell" data-label="Learned in advance">An evaluator or distribution that guides search</div>
+                    <div class="hierarchy-cell hierarchy-constructed" role="cell" data-label="Constructed at test time"><strong>A candidate under the fixed model</strong><span><b>How:</b> Sample, compare, search, and refine</span></div>
                   </div>
-                  <div class="hierarchy-row" role="listitem">
-                    <div class="hierarchy-object"><strong>Action planning</strong><span>Reusable structure: action-conditioned dynamics, goals, constraints, and skills</span></div>
-                    <div class="hierarchy-decision"><strong>Open choice: which interventions reach the desired outcome?</strong><span>Inference: search consequences, act, and replan when needed</span></div>
+                  <div class="hierarchy-row" role="row">
+                    <div class="hierarchy-scope" role="rowheader">Model composition</div>
+                    <div class="hierarchy-cell" role="cell" data-label="Learned in advance">Compatible models, factors, and interfaces</div>
+                    <div class="hierarchy-cell hierarchy-constructed" role="cell" data-label="Constructed at test time"><strong>The model that defines the current problem</strong><span><b>How:</b> Select and compose factors, then search</span></div>
+                  </div>
+                  <div class="hierarchy-row" role="row">
+                    <div class="hierarchy-scope" role="rowheader">Action planning</div>
+                    <div class="hierarchy-cell" role="cell" data-label="Learned in advance">Action-conditioned dynamics, goals, constraints, and skills</div>
+                    <div class="hierarchy-cell hierarchy-constructed" role="cell" data-label="Constructed at test time"><strong>An action sequence that reaches the desired outcome</strong><span><b>How:</b> Predict consequences, search for actions, and replan as needed</span></div>
                   </div>
                 </div>
               </section>
               <section class="hierarchy-group" aria-labelledby="family-computation">
-                <div class="hierarchy-family">
+                <header class="hierarchy-family">
                   <h3 id="family-computation">Constructing the computation</h3>
-                  <span>These scopes leave open how the answer is produced: the next reasoning operation or the participating reasoners and the connections among them.</span>
-                </div>
-                <div class="hierarchy-rows" role="list">
-                  <div class="hierarchy-row" role="listitem">
-                    <div class="hierarchy-object"><strong>Procedure control</strong><span>Reusable structure: solvers, proposals, verifiers, and competence signals</span></div>
-                    <div class="hierarchy-decision"><strong>Open choice: which operation, and for how long?</strong><span>Inference: choose, allocate, verify, and stop</span></div>
+                  <p>These scopes determine how problem solving is carried out: which operation runs next and which reasoners contribute.</p>
+                </header>
+                <div class="hierarchy-grid" role="table" aria-label="Scopes that construct the computation">
+                  <div class="hierarchy-columns" role="row">
+                    <div role="columnheader">Inference scope</div>
+                    <div role="columnheader">Reusable structure<small>Learned in advance</small></div>
+                    <div role="columnheader">Constructed for this problem<small>Resolved at test time</small></div>
                   </div>
-                  <div class="hierarchy-row" role="listitem">
-                    <div class="hierarchy-object"><strong>Reasoner organization</strong><span>Reusable structure: differentiated knowledge, tools, and state</span></div>
-                    <div class="hierarchy-decision"><strong>Open choice: which reasoners, and how?</strong><span>Inference: select, assign, route, and reorganize</span></div>
+                  <div class="hierarchy-row" role="row">
+                    <div class="hierarchy-scope" role="rowheader">Procedure control</div>
+                    <div class="hierarchy-cell" role="cell" data-label="Learned in advance">Solvers, proposals, verifiers, and competence signals</div>
+                    <div class="hierarchy-cell hierarchy-constructed" role="cell" data-label="Constructed at test time"><strong>The next reasoning operation and when to stop</strong><span><b>How:</b> Choose, allocate computation, verify, and stop</span></div>
+                  </div>
+                  <div class="hierarchy-row" role="row">
+                    <div class="hierarchy-scope" role="rowheader">Reasoner organization</div>
+                    <div class="hierarchy-cell" role="cell" data-label="Learned in advance">Reasoners with differentiated knowledge, tools, and state</div>
+                    <div class="hierarchy-cell hierarchy-constructed" role="cell" data-label="Constructed at test time"><strong>The participating reasoners, their roles, and their connections</strong><span><b>How:</b> Select, assign, route information, and reorganize</span></div>
                   </div>
                 </div>
               </section>
@@ -914,7 +971,7 @@
                 <div class="level-kicker">Model composition</div>
                 <h2 aria-label="Model composition: Compose the model required by the problem">Compose the model required by the problem</h2>
               </div>
-              <div class="level-object"><span>Deferred decision</span>Which model?</div>
+              <div class="level-object"><span>Deferred decision</span>Which models?</div>
             </div>
             <p>Solution inference searches for a candidate under a fixed model. Model composition changes the model that defines this search. The current task determines which pieces of learned knowledge—such as a relation, goal, physical constraint, or reward—should constrain the answer. Inference selects, composes, or infers these factors. What composition produces is not yet an answer, but a problem-specific criterion or distribution that solution inference can search. A new task need not be reduced to an input for a monolithic predictor; it can become a new inference problem assembled from reusable knowledge.</p>
             <p>The task model used to judge those placements need not be learned as a whole for this exact kitchen scene. The robot can construct it by combining learned factors for keeping the mug upright, avoiding nearby dishes, resting it securely on the table, and leaving it within the person's reach. The complete arrangement is globally unfamiliar, but each factor expresses locally familiar structure. Generalization comes from constructing a new global model from these reusable local judgments, not from asking one model to extrapolate across the entire combination at once.</p>
@@ -1047,9 +1104,8 @@
             <div class="section-label">Conclusion</div>
             <h2>Generalization as construction</h2>
             <p>Logic- and planning-based symbolic systems preserved a separation between knowledge and inference, but relied on representations built by hand. Neural models made representations learnable from data, but often compiled away flexibility in how those representations could be used. The synthesis proposed here is to learn representations that preserve the choices inference may need to make as the current problem unfolds.</p>
-            <p>A problem can be globally unfamiliar even when the structure needed to solve it is locally familiar. If learning preserves that structure in reusable form, inference can assemble it for a problem whose exact solution was never encountered during training. Across the five scopes, what gets constructed expands: a candidate, the model defining the problem, a course of action, a problem-specific computation, or an organization of reasoners.</p>
-            <p>The boundary between training and inference is not fixed. Computation that repeatedly proves useful at test time can later be absorbed into training. <a href="https://arxiv.org/abs/2602.04770">Generative Modeling via Drifting</a> illustrates this idea by learning to perform in one step what would otherwise require iterative sampling. Inference can therefore handle unfamiliar problems first, while learning later makes recurring computation fast.</p>
-            <p>In conclusion, generalization by construction is not an argument for leaving every decision open. It is an argument for learning representations that keep the right decisions revisable until the goal, world state, resources, and available expertise are known.</p>
+            <p>A problem can be globally unfamiliar even when the structure needed to solve it is locally familiar. If learning preserves that structure in reusable form, inference can assemble it to solve a problem whose exact solution was never encountered during training. The framework identifies five scopes at which this construction can occur: a candidate solution, the model that defines the problem, a course of action, the procedure used to solve it, or the organization of reasoners.</p>
+            <p>The boundary between training and inference can move. Inference can handle unfamiliar problems when they first arise; if parts of that computation recur, learning can later absorb them and make them fast. Generalization by construction is therefore not an argument for leaving every decision to inference. It is an argument for learning reusable representations while keeping task-dependent choices open, so that inference can combine prior knowledge with the current goal, world state, and available expertise when it encounters a task not anticipated during training.</p>
           </section>
         </article>
       </div>
