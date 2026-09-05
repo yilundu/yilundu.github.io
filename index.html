@@ -541,6 +541,12 @@ a:hover {
   font-weight: 700;
 }
 
+.representative-example {
+  display: block;
+  margin-top: 5px;
+  text-wrap: pretty;
+}
+
 .research-topic-link {
   color: inherit;
 }
@@ -1185,9 +1191,9 @@ a:hover {
         <p class="bio-lead">I study how intelligent systems can learn reusable models, then compose and reason with them at inference time.</p>
         <aside class="guiding-question" aria-labelledby="guiding-question-text">
           <p class="bio-lead guiding-question-text" id="guiding-question-text"><span class="guiding-question-label">Central question:</span> What should models represent so that inference-time reasoning can solve novel problems?</p>
-          <p class="guiding-question-explanation">Classical AI designed representations to support explicit inference and planning. Modern neural networks often compile both knowledge and reasoning into their weights. This amortization is efficient for familiar problems, but can generalize poorly to novel tasks. My work seeks a modern combination: learn models that represent reusable knowledge, then search, compose, and plan with them at inference time.</p>
+          <p class="guiding-question-explanation">An unfamiliar task can be a new combination of familiar relationships. I develop learned models of these relationships—from constraints on valid solutions to predictions of how actions change the world—so that the same knowledge can be used in different problems. Inference combines the relevant models and searches for a solution that satisfies the current goals and constraints.</p>
         </aside>
-        <p>I explore this question through four interfaces between representation and inference: search over generative solution spaces, composition of reusable models, planning with world models, and reasoning through multi-agent interaction. Across these directions, a central focus of my work is building robots that can plan, adapt, and act reliably in unfamiliar environments.</p>
+        <p>Energy-based and diffusion models are central tools for learning and composing this structure. I study these ideas across generation, reasoning, and decision making, including systems that coordinate multiple models or agents. A central goal is to build robots that can combine knowledge of objects, dynamics, and skills to plan and act in unfamiliar environments.</p>
         <p class="bio-credentials">I lead the <a href="https://embodied-minds-lab.github.io/" target="_blank" rel="noreferrer noopener">Embodied Minds Lab</a> at Harvard and am a part-time research scientist at <a href="https://research.nvidia.com/person/yilun-du" target="_blank" rel="noreferrer noopener">NVIDIA Research</a>. I received my PhD from MIT EECS, advised by Leslie Kaelbling, Tomas Lozano-Pérez, and Joshua B. Tenenbaum. Before Harvard, I held research roles at OpenAI and Google DeepMind.</p>
       </section>
 
@@ -1230,26 +1236,42 @@ a:hover {
           <article class="research-card">
             <h3><a class="research-topic-link" href="#publications" data-topic-link="generative-model">Generative Inference</a></h3>
             <p class="research-division"><span><strong>Knowledge</strong>Solution spaces</span><span><strong>Reasoning</strong>Sample and refine</span></p>
-            <p>A generative model represents a space of possible solutions. At inference time, we sample from this space and refine candidate solutions. More inference steps enable more accurate results and the incorporation of new constraints.</p>
-            <p class="representative-work"><strong>Examples:</strong> <a href="https://arxiv.org/abs/1903.08689" target="_blank" rel="noreferrer noopener">deep EBMs</a>, <a href="https://energy-based-model.github.io/reduce-reuse-recycle/" target="_blank" rel="noreferrer noopener">Reduce, Reuse, Recycle</a>, and <a href="https://aakaran.github.io/reasoning_with_sampling/" target="_blank" rel="noreferrer noopener">reasoning with sampling</a>.</p>
+            <p>I develop generative models that represent spaces of possible solutions. Sampling and optimization use this learned structure to construct and revise candidates. The central question is how to learn representations that make this search reliable and allow computation to adapt to the problem.</p>
+            <p class="representative-work"><strong>Examples:</strong>
+              <span class="representative-example"><a href="https://arxiv.org/abs/1903.08689" target="_blank" rel="noreferrer noopener">Deep EBMs</a> learn energy landscapes for generation and conditional inference.</span>
+              <span class="representative-example"><a href="https://energy-based-model.github.io/reduce-reuse-recycle/" target="_blank" rel="noreferrer noopener">Reduce, Reuse, Recycle</a> develops samplers for composing pretrained diffusion models.</span>
+              <span class="representative-example"><a href="https://aakaran.github.io/reasoning_with_sampling/" target="_blank" rel="noreferrer noopener">Reasoning with Sampling</a> improves reasoning by changing how a frozen model is sampled.</span>
+            </p>
           </article>
           <article class="research-card">
             <h3><a class="research-topic-link" href="#publications" data-topic-link="reasoning">Compositional Inference</a></h3>
-            <p class="research-division"><span><strong>Knowledge</strong>Concepts and skills</span><span><strong>Reasoning</strong>Combine models</span></p>
-            <p>Different models can represent reusable concepts, constraints, or skills. At inference time, we select and compose the models needed to solve a novel task, allowing the same learned knowledge to support many different problems.</p>
-            <p class="representative-work"><strong>Examples:</strong> <a href="https://energy-based-model.github.io/Compositional-Visual-Generation-with-Composable-Diffusion-Models/" target="_blank" rel="noreferrer noopener">composable diffusion models</a>, <a href="https://diffusion-planning.github.io/" target="_blank" rel="noreferrer noopener">Diffuser</a>, and <a href="https://alexoarga.github.io/compositional_reasoning/" target="_blank" rel="noreferrer noopener">compositional energy minimization</a>.</p>
+            <p class="research-division"><span><strong>Knowledge</strong>Concepts, constraints, and skills</span><span><strong>Reasoning</strong>Compose and solve</span></p>
+            <p>I learn reusable models of concepts, constraints, and skills, then combine them to define new tasks. Inference searches for solutions that satisfy the assembled requirements together. This allows familiar learned relationships to support unfamiliar combinations, without learning a separate model for each complete task.</p>
+            <p class="representative-work"><strong>Examples:</strong>
+              <span class="representative-example"><a href="https://energy-based-model.github.io/Compositional-Visual-Generation-with-Composable-Diffusion-Models/" target="_blank" rel="noreferrer noopener">Composable diffusion models</a> combine learned concepts to generate unfamiliar combinations.</span>
+              <span class="representative-example"><a href="https://diffusion-planning.github.io/" target="_blank" rel="noreferrer noopener">Diffuser</a> reuses a trajectory model under different goals and constraints.</span>
+              <span class="representative-example"><a href="https://alexoarga.github.io/compositional_reasoning/" target="_blank" rel="noreferrer noopener">Compositional energy minimization</a> assembles subproblem energies to solve larger reasoning problems.</span>
+            </p>
           </article>
           <article class="research-card">
             <h3><a class="research-topic-link" href="#publications" data-topic-link="world-embodied">World Models &amp; Robotics</a></h3>
             <p class="research-division"><span><strong>Knowledge</strong>World dynamics</span><span><strong>Reasoning</strong>Predict and plan</span></p>
             <p>A world model predicts how an environment will evolve under different actions. Planning searches these predictions for actions that achieve a goal. This enables us to use the same model across tasks and changing environments.</p>
-            <p class="representative-work"><strong>Examples:</strong> <a href="https://universal-policy.github.io/unipi/" target="_blank" rel="noreferrer noopener">UniPi</a>, <a href="https://video-language-planning.github.io/" target="_blank" rel="noreferrer noopener">Video Language Planning</a>, and <a href="https://www.boyuan.space/large-video-planner/" target="_blank" rel="noreferrer noopener">Large Video Planner</a>.</p>
+            <p class="representative-work"><strong>Examples:</strong>
+              <span class="representative-example"><a href="https://universal-policy.github.io/unipi/" target="_blank" rel="noreferrer noopener">UniPi</a> generates video plans that can be translated into actions.</span>
+              <span class="representative-example"><a href="https://video-language-planning.github.io/" target="_blank" rel="noreferrer noopener">Video Language Planning</a> searches language and video predictions for long-horizon plans.</span>
+              <span class="representative-example"><a href="https://www.boyuan.space/large-video-planner/" target="_blank" rel="noreferrer noopener">Large Video Planner</a> uses a pretrained video model to guide robot control.</span>
+            </p>
           </article>
           <article class="research-card">
             <h3><a class="research-topic-link" href="#publications" data-topic-link="multi-agent">Multi-Agent Intelligence</a></h3>
             <p class="research-division"><span><strong>Knowledge</strong>Distributed across agents</span><span><strong>Reasoning</strong>Debate and verify</span></p>
             <p>Language models have different knowledge and capabilities. Their interaction forms an inference procedure: agents debate, verify, and refine candidate solutions or coordinate on a shared task, enabling systematic reasoning.</p>
-            <p class="representative-work"><strong>Examples:</strong> <a href="https://composable-models.github.io/llm_debate/" target="_blank" rel="noreferrer noopener">multi-agent debate</a>, <a href="https://ardalabs.ai/MultiAgentVerification/" target="_blank" rel="noreferrer noopener">multi-agent verification</a>, and <a href="https://zhentingqi.github.io/internal/projects/EoM/" target="_blank" rel="noreferrer noopener">Economy of Minds</a>.</p>
+            <p class="representative-work"><strong>Examples:</strong>
+              <span class="representative-example"><a href="https://composable-models.github.io/llm_debate/" target="_blank" rel="noreferrer noopener">Multi-agent debate</a> lets models critique and revise candidate answers.</span>
+              <span class="representative-example"><a href="https://ardalabs.ai/MultiAgentVerification/" target="_blank" rel="noreferrer noopener">Multi-agent verification</a> combines multiple verifiers to evaluate candidate solutions.</span>
+              <span class="representative-example"><a href="https://zhentingqi.github.io/internal/projects/EoM/" target="_blank" rel="noreferrer noopener">Economy of Minds</a> organizes agents through task-dependent economic interactions.</span>
+            </p>
           </article>
         </div>
         <p class="research-synthesis">I develop the broader argument connecting these directions in <a href="/perspective/generalization_by_construction.html"><em>Generalization by Construction</em></a>, a research perspective on what learning should leave open for inference. My <a href="https://yilundu.github.io/thesis.pdf" target="_blank" rel="noreferrer noopener">PhD thesis</a> and <a href="https://www.youtube.com/watch?v=7jvWDF6ZXPc" target="_blank" rel="noreferrer noopener">thesis defense</a> provide a detailed account of this view through energy-based modeling, compositional inference, and planning.</p>
