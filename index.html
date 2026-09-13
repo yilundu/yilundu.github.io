@@ -1193,7 +1193,7 @@ a:hover {
           <p class="bio-lead guiding-question-text" id="guiding-question-text"><span class="guiding-question-label">Central question:</span> What should models represent so that inference-time reasoning can solve novel problems?</p>
           <p class="guiding-question-explanation">An unfamiliar task can often be decomposed into locally familiar components. I develop learned models of these components—from constraints on valid solutions to predictions of how actions change the world—so that the same knowledge can be used in different problems. Inference combines the relevant models and searches for a solution that satisfies the current goals and constraints.</p>
         </aside>
-        <p>Energy-based and diffusion models are common tools I use for capturing and composing this structure. I study these ideas across generation, reasoning, and decision making, including systems that coordinate multiple models or agents. My central research goal is to build robots that can combine knowledge of objects, dynamics, and skills to plan and act in unfamiliar environments.</p>
+        <p>Energy-based and diffusion models are common tools I use for capturing and composing this structure. I study these ideas across generation, reasoning, and decision making, including systems that coordinate multiple models or agents. A central goal of my research is to build robots that can combine knowledge of objects, dynamics, and skills to plan and act in unfamiliar environments.</p>
         <p>I lead the <a href="https://embodied-minds-lab.github.io/" target="_blank" rel="noreferrer noopener">Embodied Minds Lab</a> at Harvard and am a part-time research scientist at <a href="https://research.nvidia.com/person/yilun-du" target="_blank" rel="noreferrer noopener">NVIDIA Research</a>. I received my PhD from MIT EECS, advised by Leslie Kaelbling, Tomas Lozano-Pérez, and Joshua B. Tenenbaum. Before Harvard, I held research roles at OpenAI and Google DeepMind.</p>
       </section>
 
@@ -1201,11 +1201,11 @@ a:hover {
         <div class="section-heading-row">
           <h2>Research</h2>
         </div>
-        <div class="research-framework" role="img" aria-label="During training, learn solution spaces, reusable models, world dynamics, and agent expertise. At inference time, use sampling, optimization, composition, and planning to solve new problems.">
+        <div class="research-framework" role="img" aria-label="During training, learn patterns and relationships shared across tasks. At inference time, use sampling, optimization, composition, and planning to solve new problems.">
           <div class="framework-stage framework-stage--training">
             <span class="framework-label">During training</span>
             <strong>Learn reusable knowledge</strong>
-            <span class="framework-detail">Solution spaces, reusable models, world dynamics, and agent expertise</span>
+            <span class="framework-detail">Patterns and relationships shared across tasks</span>
           </div>
           <div class="framework-bridge" aria-hidden="true">
             <span class="framework-bridge-label">sample&nbsp;·&nbsp;optimize&nbsp;·&nbsp;compose&nbsp;·&nbsp;plan</span>
@@ -1236,17 +1236,17 @@ a:hover {
           <article class="research-card">
             <h3><a class="research-topic-link" href="#publications" data-topic-link="generative-model">Generative Inference</a></h3>
             <p class="research-division"><span><strong>Knowledge</strong>Solution spaces</span><span><strong>Reasoning</strong>Sample and refine</span></p>
-            <p>I develop generative models that represent spaces of possible solutions. Sampling and optimization use this learned structure to construct and revise candidates. The central question is how to learn representations that make this search reliable and allow computation to adapt to the problem.</p>
+            <p>I study how to construct and refine solutions using a learned generative model. Sampling and optimization use the model to propose candidates and improve them. I develop representations and inference procedures to make this search reliable and adapt computation to the problem.</p>
             <p class="representative-work"><strong>Examples:</strong>
+              <span class="representative-example"><a href="https://aakaran.github.io/reasoning_with_sampling/" target="_blank" rel="noreferrer noopener">Reasoning with Sampling</a> improves language-model reasoning by changing the sampling procedure while keeping the model fixed.</span>
               <span class="representative-example"><a href="https://arxiv.org/abs/1903.08689" target="_blank" rel="noreferrer noopener">Deep EBMs</a> learn energy landscapes for generation and conditional inference.</span>
               <span class="representative-example"><a href="https://energy-based-model.github.io/reduce-reuse-recycle/" target="_blank" rel="noreferrer noopener">Reduce, Reuse, Recycle</a> develops samplers for composing pretrained diffusion models.</span>
-              <span class="representative-example"><a href="https://aakaran.github.io/reasoning_with_sampling/" target="_blank" rel="noreferrer noopener">Reasoning with Sampling</a> improves reasoning by changing how a frozen model is sampled.</span>
             </p>
           </article>
           <article class="research-card">
             <h3><a class="research-topic-link" href="#publications" data-topic-link="reasoning">Compositional Inference</a></h3>
             <p class="research-division"><span><strong>Knowledge</strong>Concepts, constraints, and skills</span><span><strong>Reasoning</strong>Compose and solve</span></p>
-            <p>I learn reusable models of concepts, constraints, and skills, then combine them to define new tasks. Inference searches for solutions that satisfy the assembled requirements together. This allows familiar learned relationships to support unfamiliar combinations, without learning a separate model for each complete task.</p>
+            <p>I study how to combine learned models and task requirements to define new inference problems. Models of concepts, constraints, and skills provide reusable components, while inference searches for solutions that satisfy the combined requirements. This lets us tackle new combinations without learning a separate model for each complete task.</p>
             <p class="representative-work"><strong>Examples:</strong>
               <span class="representative-example"><a href="https://energy-based-model.github.io/Compositional-Visual-Generation-with-Composable-Diffusion-Models/" target="_blank" rel="noreferrer noopener">Composable diffusion models</a> combine learned concepts to generate unfamiliar combinations.</span>
               <span class="representative-example"><a href="https://diffusion-planning.github.io/" target="_blank" rel="noreferrer noopener">Diffuser</a> reuses a trajectory model under different goals and constraints.</span>
@@ -1266,7 +1266,7 @@ a:hover {
           <article class="research-card">
             <h3><a class="research-topic-link" href="#publications" data-topic-link="multi-agent">Multi-Agent Intelligence</a></h3>
             <p class="research-division"><span><strong>Knowledge</strong>Distributed across agents</span><span><strong>Reasoning</strong>Debate and verify</span></p>
-            <p>Language models have different knowledge and capabilities. Their interaction forms an inference procedure: agents debate, verify, and refine candidate solutions or coordinate on a shared task, enabling systematic reasoning.</p>
+            <p>I study how agents built from language models can reason and work together. Agents can propose different solutions, identify errors in one another’s reasoning, and divide a task across different areas of expertise.</p>
             <p class="representative-work"><strong>Examples:</strong>
               <span class="representative-example"><a href="https://composable-models.github.io/llm_debate/" target="_blank" rel="noreferrer noopener">Multi-agent debate</a> lets models critique and revise candidate answers.</span>
               <span class="representative-example"><a href="https://ardalabs.ai/MultiAgentVerification/" target="_blank" rel="noreferrer noopener">Multi-agent verification</a> combines multiple verifiers to evaluate candidate solutions.</span>
