@@ -1,0 +1,55 @@
+{
+  "checked_on": "2026-09-24",
+  "conference": "ICLR 2020",
+  "assets": [
+    {
+      "filename": "protein.png",
+      "title": "Energy-based models for atomic-resolution protein conformations",
+      "short_label": "Energy-based models for atomic-resolution protein conformations",
+      "source_url": null,
+      "source_page": null,
+      "paper_url": "https://arxiv.org/pdf/2004.13167.pdf",
+      "alt": "Visualization for Energy-based models for atomic-resolution protein conformations",
+      "publication_id": "energy-based-models-for-atomic-resolution-protein-conformations",
+      "year": 2020,
+      "venue": "ICLR 2020",
+      "distinctions": [
+        "Spotlight"
+      ],
+      "matched_publication": true,
+      "media_type": "image",
+      "status": "local_media_bundled",
+      "source_render_checked": false,
+      "size_bytes": 199606,
+      "sha256": "0534094fe3ce50908ea21b4c3e68e7cc567ff34e86cad8be8a31d3070ae6b68d",
+      "original_path": "data/projects/protein.png",
+      "path": "visualizations/iclr2020/protein.png",
+      "conference_folder": "iclr2020"
+    },
+    {
+      "filename": "overfit.png",
+      "title": "Observational Overfitting in Reinforcement Learning",
+      "short_label": "Observational Overfitting in Reinforcement Learning",
+      "source_url": null,
+      "source_page": null,
+      "paper_url": "https://arxiv.org/pdf/1912.02975.pdf",
+      "alt": "Visualization for Observational Overfitting in Reinforcement Learning",
+      "publication_id": "observational-overfitting-in-reinforcement-learning",
+      "year": 2020,
+      "venue": "ICLR 2020",
+      "distinctions": [],
+      "matched_publication": true,
+      "media_type": "image",
+      "status": "local_media_bundled",
+      "source_render_checked": false,
+      "size_bytes": 114710,
+      "sha256": "2c178733e5f8ea1b593df26f25a51562a910941be93c35b2b2a49f2d9be69103",
+      "original_path": "data/projects/overfit.png",
+      "path": "visualizations/iclr2020/overfit.png",
+      "conference_folder": "iclr2020"
+    }
+  ],
+  "local_media_bundled": 2,
+  "local_images_bundled": 2,
+  "local_videos_bundled": 0
+}

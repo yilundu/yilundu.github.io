@@ -1,0 +1,31 @@
+{
+  "checked_on": "2026-09-24",
+  "conference": "ICLR 2021",
+  "assets": [
+    {
+      "filename": "unsupervised_3d.png",
+      "title": "Unsupervised Discovery of 3D Physical Objects from Video",
+      "short_label": "Unsupervised Discovery of 3D Physical Objects from Video",
+      "source_url": null,
+      "source_page": "https://yilundu.github.io/podnet/",
+      "paper_url": "https://arxiv.org/abs/2007.12348",
+      "alt": "Visualization for Unsupervised Discovery of 3D Physical Objects from Video",
+      "publication_id": "unsupervised-discovery-of-3d-physical-objects-from-video",
+      "year": 2021,
+      "venue": "ICLR 2021",
+      "distinctions": [],
+      "matched_publication": true,
+      "media_type": "image",
+      "status": "local_media_bundled",
+      "source_render_checked": false,
+      "size_bytes": 266214,
+      "sha256": "e1ada4bd3ac34e8159d09921efae143ca5c51b199f653717ed0f21ddcf2e0df9",
+      "original_path": "data/projects/unsupervised_3d.png",
+      "path": "visualizations/iclr2021/unsupervised_3d.png",
+      "conference_folder": "iclr2021"
+    }
+  ],
+  "local_media_bundled": 1,
+  "local_images_bundled": 1,
+  "local_videos_bundled": 0
+}

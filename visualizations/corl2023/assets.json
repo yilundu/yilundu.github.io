@@ -1,0 +1,31 @@
+{
+  "checked_on": "2026-09-24",
+  "conference": "CoRL 2023",
+  "assets": [
+    {
+      "filename": "corl23packing_preview.mp4",
+      "title": "Compositional Diffusion-Based Continuous Constraint Solvers",
+      "short_label": "Compositional Diffusion-Based Continuous Constraint Solvers",
+      "source_url": null,
+      "source_page": "https://diffusion-ccsp.github.io/",
+      "paper_url": "https://arxiv.org/abs/2309.00966",
+      "alt": "Visualization for Compositional Diffusion-Based Continuous Constraint Solvers",
+      "publication_id": "compositional-diffusion-based-continuous-constraint-solvers",
+      "year": 2023,
+      "venue": "CoRL 2023",
+      "distinctions": [],
+      "matched_publication": true,
+      "media_type": "video",
+      "status": "local_media_bundled",
+      "source_render_checked": false,
+      "size_bytes": 453539,
+      "sha256": "1fecf204e35f4582a1dbd39fbbdebfe952af0c6089c493e66a8ee0134821cbc4",
+      "original_path": "data/projects/corl23packing_preview.mp4",
+      "path": "visualizations/corl2023/corl23packing_preview.mp4",
+      "conference_folder": "corl2023"
+    }
+  ],
+  "local_media_bundled": 1,
+  "local_images_bundled": 0,
+  "local_videos_bundled": 1
+}

@@ -1,0 +1,53 @@
+{
+  "checked_on": "2026-09-24",
+  "conference": "NeurIPS 2024",
+  "assets": [
+    {
+      "filename": "ftl-igm-robot_preview.mp4",
+      "title": "Few-Shot Task Learning through Inverse Generative Modeling",
+      "short_label": "Few-Shot Task Learning through Inverse Generative Modeling",
+      "source_url": null,
+      "source_page": "https://avivne.github.io/ftl-igm/",
+      "paper_url": "https://arxiv.org/abs/2411.04987",
+      "alt": "Visualization for Few-Shot Task Learning through Inverse Generative Modeling",
+      "publication_id": "few-shot-task-learning-through-inverse-generative-modeling",
+      "year": 2024,
+      "venue": "NeurIPS 2024",
+      "distinctions": [],
+      "matched_publication": true,
+      "media_type": "video",
+      "status": "local_media_bundled",
+      "source_render_checked": false,
+      "size_bytes": 106300,
+      "sha256": "74a6b5adc983a2b7877ecc939408f73694bd29eee40fc1759445a03576507a71",
+      "original_path": "data/projects/ftl-igm-robot_preview.mp4",
+      "path": "visualizations/neurips2024/ftl-igm-robot_preview.mp4",
+      "conference_folder": "neurips2024"
+    },
+    {
+      "filename": "diffusion_forcing.png",
+      "title": "Diffusion Forcing: Next-token Prediction Meets Full-Sequence Diffusion",
+      "short_label": "Diffusion Forcing: Next-token Prediction Meets Full-Sequence Diffusion",
+      "source_url": null,
+      "source_page": "https://boyuan.space/diffusion-forcing/",
+      "paper_url": "https://arxiv.org/abs/2407.01392",
+      "alt": "Visualization for Diffusion Forcing: Next-token Prediction Meets Full-Sequence Diffusion",
+      "publication_id": "diffusion-forcing-next-token-prediction-meets-full-sequence-diffusion",
+      "year": 2024,
+      "venue": "NeurIPS 2024",
+      "distinctions": [],
+      "matched_publication": true,
+      "media_type": "image",
+      "status": "local_media_bundled",
+      "source_render_checked": false,
+      "size_bytes": 38120,
+      "sha256": "bf38eb84e6500fb2fd2caf2b691dc7725e96005cce03b823e67f933b9aa4dd48",
+      "original_path": "data/projects/diffusion_forcing.png",
+      "path": "visualizations/neurips2024/diffusion_forcing.png",
+      "conference_folder": "neurips2024"
+    }
+  ],
+  "local_media_bundled": 2,
+  "local_images_bundled": 1,
+  "local_videos_bundled": 1
+}

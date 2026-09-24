@@ -1,0 +1,53 @@
+{
+  "checked_on": "2026-09-24",
+  "conference": "CoRL 2026",
+  "assets": [
+    {
+      "filename": "lvp.mp4",
+      "title": "Large Video Planner Enables Generalizable Robot Control",
+      "short_label": "Large Video Planner Enables Generalizable Robot Control",
+      "source_url": null,
+      "source_page": "https://www.boyuan.space/large-video-planner/",
+      "paper_url": "https://arxiv.org/abs/2512.15840",
+      "alt": "Visualization for Large Video Planner Enables Generalizable Robot Control",
+      "publication_id": "large-video-planner-enables-generalizable-robot-control",
+      "year": 2026,
+      "venue": "CoRL 2026",
+      "distinctions": [],
+      "matched_publication": true,
+      "media_type": "video",
+      "status": "local_media_bundled",
+      "source_render_checked": false,
+      "size_bytes": 670638,
+      "sha256": "bff391e285ebc4ccacbd6fcb77d498f42c7c0c72e53a7aae90f07797fa936b78",
+      "original_path": "data/projects/lvp.mp4",
+      "path": "visualizations/corl2026/lvp.mp4",
+      "conference_folder": "corl2026"
+    },
+    {
+      "filename": "dreamzero.png",
+      "title": "DreamZero: World Action Models are Zero-shot Policies",
+      "short_label": "DreamZero: World Action Models are Zero-shot Policies",
+      "source_url": null,
+      "source_page": "https://dreamzero0.github.io/",
+      "paper_url": "https://dreamzero0.github.io/DreamZero.pdf",
+      "alt": "Visualization for DreamZero: World Action Models are Zero-shot Policies",
+      "publication_id": "dreamzero-world-action-models-are-zero-shot-policies",
+      "year": 2026,
+      "venue": "CoRL 2026",
+      "distinctions": [],
+      "matched_publication": true,
+      "media_type": "image",
+      "status": "local_media_bundled",
+      "source_render_checked": false,
+      "size_bytes": 818313,
+      "sha256": "e651f701504df6b9ed7385e7b51d88ffe6c73a2f5d4cadd132be6c45fd3469e2",
+      "original_path": "data/projects/dreamzero.png",
+      "path": "visualizations/corl2026/dreamzero.png",
+      "conference_folder": "corl2026"
+    }
+  ],
+  "local_media_bundled": 2,
+  "local_images_bundled": 1,
+  "local_videos_bundled": 1
+}

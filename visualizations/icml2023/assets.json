@@ -1,0 +1,55 @@
+{
+  "checked_on": "2026-09-24",
+  "conference": "ICML 2023",
+  "assets": [
+    {
+      "filename": "reduce_reuse_recycle.mp4",
+      "title": "Reduce, Reuse, Recycle: Compositional Generation with Energy-Based Diffusion Models and MCMC",
+      "short_label": "Reduce, Reuse, Recycle: Compositional Generation with Energy-Based Diffusion Models and MCMC",
+      "source_url": null,
+      "source_page": "https://energy-based-model.github.io/reduce-reuse-recycle/",
+      "paper_url": "https://arxiv.org/abs/2302.11552",
+      "alt": "Visualization for Reduce, Reuse, Recycle: Compositional Generation with Energy-Based Diffusion Models and MCMC",
+      "publication_id": "reduce-reuse-recycle-compositional-generation-with-energy-based-diffusio",
+      "year": 2023,
+      "venue": "ICML 2023",
+      "distinctions": [],
+      "matched_publication": true,
+      "media_type": "video",
+      "status": "local_media_bundled",
+      "source_render_checked": false,
+      "size_bytes": 184188,
+      "sha256": "0fcc671d66a27fcf384e4677d8735a27c30b0241ff0ff94f579d8f7f1df990c6",
+      "original_path": "data/projects/reduce_reuse_recycle.mp4",
+      "path": "visualizations/icml2023/reduce_reuse_recycle.mp4",
+      "conference_folder": "icml2023"
+    },
+    {
+      "filename": "relational_potentials.png",
+      "title": "Inferring Relational Potentials in Interacting Systems",
+      "short_label": "Inferring Relational Potentials in Interacting Systems",
+      "source_url": null,
+      "source_page": "https://energy-based-model.github.io/interaction-potentials/",
+      "paper_url": "https://arxiv.org/abs/2310.14466",
+      "alt": "Visualization for Inferring Relational Potentials in Interacting Systems",
+      "publication_id": "inferring-relational-potentials-in-interacting-systems",
+      "year": 2023,
+      "venue": "ICML 2023",
+      "distinctions": [
+        "Oral"
+      ],
+      "matched_publication": true,
+      "media_type": "image",
+      "status": "local_media_bundled",
+      "source_render_checked": false,
+      "size_bytes": 111250,
+      "sha256": "7f8882bd4629a60d13a2e5b6f4af160e64bdefd4880a696135352f0d3990c915",
+      "original_path": "data/projects/relational_potentials.png",
+      "path": "visualizations/icml2023/relational_potentials.png",
+      "conference_folder": "icml2023"
+    }
+  ],
+  "local_media_bundled": 2,
+  "local_images_bundled": 1,
+  "local_videos_bundled": 1
+}

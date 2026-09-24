@@ -1,0 +1,31 @@
+{
+  "checked_on": "2026-09-24",
+  "conference": "JAIR 2025",
+  "assets": [
+    {
+      "filename": "lfv.png",
+      "title": "Towards Generalist Robot Learning from Internet Video: A Survey",
+      "short_label": "Towards Generalist Robot Learning from Internet Video: A Survey",
+      "source_url": null,
+      "source_page": null,
+      "paper_url": "https://www.jair.org/index.php/jair/article/view/17400/27192",
+      "alt": "Visualization for Towards Generalist Robot Learning from Internet Video: A Survey",
+      "publication_id": "towards-generalist-robot-learning-from-internet-video-a-survey",
+      "year": 2025,
+      "venue": "JAIR 2025",
+      "distinctions": [],
+      "matched_publication": true,
+      "media_type": "image",
+      "status": "local_media_bundled",
+      "source_render_checked": false,
+      "size_bytes": 218369,
+      "sha256": "4e9d7639a132045594e69ffeeb6220ca0754837ccb9aa8a29f09196e9a10b140",
+      "original_path": "data/projects/lfv.png",
+      "path": "visualizations/jair2025/lfv.png",
+      "conference_folder": "jair2025"
+    }
+  ],
+  "local_media_bundled": 1,
+  "local_images_bundled": 1,
+  "local_videos_bundled": 0
+}

@@ -1,0 +1,31 @@
+{
+  "checked_on": "2026-09-24",
+  "conference": "ACL 2026",
+  "assets": [
+    {
+      "filename": "dice_roll.png",
+      "title": "Large Language Models Are Bad Dice Players: LLMs Struggle to Generate Random Numbers from Statistical Distributions",
+      "short_label": "Large Language Models Are Bad Dice Players: LLMs Struggle to Generate Random Numbers from Statistical Distributions",
+      "source_url": null,
+      "source_page": null,
+      "paper_url": "https://arxiv.org/pdf/2601.05414.pdf",
+      "alt": "Visualization for Large Language Models Are Bad Dice Players: LLMs Struggle to Generate Random Numbers from Statistical Distributions",
+      "publication_id": "large-language-models-are-bad-dice-players-llms-struggle-to-generate-ran",
+      "year": 2026,
+      "venue": "ACL 2026",
+      "distinctions": [],
+      "matched_publication": true,
+      "media_type": "image",
+      "status": "local_media_bundled",
+      "source_render_checked": false,
+      "size_bytes": 255687,
+      "sha256": "59d91dd41b44fb05d2d51f69078a0c1e3d653cf9639aa20e2e8b77737ee99112",
+      "original_path": "data/projects/dice_roll.png",
+      "path": "visualizations/acl2026/dice_roll.png",
+      "conference_folder": "acl2026"
+    }
+  ],
+  "local_media_bundled": 1,
+  "local_images_bundled": 1,
+  "local_videos_bundled": 0
+}

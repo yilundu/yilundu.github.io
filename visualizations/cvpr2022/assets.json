@@ -1,0 +1,31 @@
+{
+  "checked_on": "2026-09-24",
+  "conference": "CVPR 2022",
+  "assets": [
+    {
+      "filename": "kubric_preview.mp4",
+      "title": "Kubric: A Scalable Dataset Generator",
+      "short_label": "Kubric: A Scalable Dataset Generator",
+      "source_url": null,
+      "source_page": "https://kubric.readthedocs.io/en/latest/",
+      "paper_url": "https://arxiv.org/pdf/2203.03570.pdf",
+      "alt": "Visualization for Kubric: A Scalable Dataset Generator",
+      "publication_id": "kubric-a-scalable-dataset-generator",
+      "year": 2022,
+      "venue": "CVPR 2022",
+      "distinctions": [],
+      "matched_publication": true,
+      "media_type": "video",
+      "status": "local_media_bundled",
+      "source_render_checked": false,
+      "size_bytes": 108422,
+      "sha256": "95a4c9344aba71e9fe0f9b1a50d8138de42145df147578483fdb9e002cb61dab",
+      "original_path": "data/projects/kubric_preview.mp4",
+      "path": "visualizations/cvpr2022/kubric_preview.mp4",
+      "conference_folder": "cvpr2022"
+    }
+  ],
+  "local_media_bundled": 1,
+  "local_images_bundled": 0,
+  "local_videos_bundled": 1
+}

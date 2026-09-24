@@ -1,0 +1,31 @@
+{
+  "checked_on": "2026-09-24",
+  "conference": "ICML 2019",
+  "assets": [
+    {
+      "filename": "task_agnostic.png",
+      "title": "Task-Agnostic Dynamics Priors for Deep Reinforcement Learning",
+      "short_label": "Task-Agnostic Dynamics Priors for Deep Reinforcement Learning",
+      "source_url": null,
+      "source_page": null,
+      "paper_url": "https://arxiv.org/pdf/1905.04819.pdf",
+      "alt": "Visualization for Task-Agnostic Dynamics Priors for Deep Reinforcement Learning",
+      "publication_id": "task-agnostic-dynamics-priors-for-deep-reinforcement-learning",
+      "year": 2019,
+      "venue": "ICML 2019",
+      "distinctions": [],
+      "matched_publication": true,
+      "media_type": "image",
+      "status": "local_media_bundled",
+      "source_render_checked": false,
+      "size_bytes": 62673,
+      "sha256": "ca9ab05343eb63432c33d2bdee741a3037ad5939b65acb9436375813383ef506",
+      "original_path": "data/projects/task_agnostic.png",
+      "path": "visualizations/icml2019/task_agnostic.png",
+      "conference_folder": "icml2019"
+    }
+  ],
+  "local_media_bundled": 1,
+  "local_images_bundled": 1,
+  "local_videos_bundled": 0
+}

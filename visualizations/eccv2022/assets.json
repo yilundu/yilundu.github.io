@@ -1,0 +1,31 @@
+{
+  "checked_on": "2026-09-24",
+  "conference": "ECCV 2022",
+  "assets": [
+    {
+      "filename": "teaser_glide.mp4",
+      "title": "Compositional Visual Generation with Composable Diffusion Models",
+      "short_label": "Compositional Visual Generation with Composable Diffusion Models",
+      "source_url": null,
+      "source_page": "https://energy-based-model.github.io/Compositional-Visual-Generation-with-Composable-Diffusion-Models/",
+      "paper_url": "https://arxiv.org/pdf/2206.01714.pdf",
+      "alt": "Visualization for Compositional Visual Generation with Composable Diffusion Models",
+      "publication_id": "compositional-visual-generation-with-composable-diffusion-models",
+      "year": 2022,
+      "venue": "ECCV 2022",
+      "distinctions": [],
+      "matched_publication": true,
+      "media_type": "video",
+      "status": "local_media_bundled",
+      "source_render_checked": false,
+      "size_bytes": 1777469,
+      "sha256": "7e1fd598d60de7cb26813239aaa7ffe33cd0088290a1c6926cae653291494373",
+      "original_path": "data/projects/teaser_glide.mp4",
+      "path": "visualizations/eccv2022/teaser_glide.mp4",
+      "conference_folder": "eccv2022"
+    }
+  ],
+  "local_media_bundled": 1,
+  "local_images_bundled": 0,
+  "local_videos_bundled": 1
+}

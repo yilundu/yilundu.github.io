@@ -1,0 +1,53 @@
+{
+  "checked_on": "2026-09-24",
+  "conference": "CoRL 2022",
+  "assets": [
+    {
+      "filename": "rndf_bowl_bottle_preview.mp4",
+      "title": "SE(3)-Equivariant Relational Rearrangement with Neural Descriptor Fields",
+      "short_label": "SE(3)-Equivariant Relational Rearrangement with Neural Descriptor Fields",
+      "source_url": null,
+      "source_page": "https://anthonysimeonov.github.io/r-ndf/",
+      "paper_url": "https://arxiv.org/abs/2211.09786",
+      "alt": "Visualization for SE(3)-Equivariant Relational Rearrangement with Neural Descriptor Fields",
+      "publication_id": "se-3-equivariant-relational-rearrangement-with-neural-descriptor-fields",
+      "year": 2022,
+      "venue": "CoRL 2022",
+      "distinctions": [],
+      "matched_publication": true,
+      "media_type": "video",
+      "status": "local_media_bundled",
+      "source_render_checked": false,
+      "size_bytes": 252797,
+      "sha256": "e2ee89086eb067b9112281ca016650e8a5d53f313d978c19e0cafc392dd973a6",
+      "original_path": "data/projects/rndf_bowl_bottle_preview.mp4",
+      "path": "visualizations/corl2022/rndf_bowl_bottle_preview.mp4",
+      "conference_folder": "corl2022"
+    },
+    {
+      "filename": "MIRA_03.png",
+      "title": "MIRA: Mental Imagery for Robotic Affordances",
+      "short_label": "MIRA: Mental Imagery for Robotic Affordances",
+      "source_url": null,
+      "source_page": "https://yenchenlin.me/mira/",
+      "paper_url": "https://openreview.net/forum?id=AmPeAFzU3a4",
+      "alt": "Visualization for MIRA: Mental Imagery for Robotic Affordances",
+      "publication_id": "mira-mental-imagery-for-robotic-affordances",
+      "year": 2022,
+      "venue": "CoRL 2022",
+      "distinctions": [],
+      "matched_publication": true,
+      "media_type": "image",
+      "status": "local_media_bundled",
+      "source_render_checked": false,
+      "size_bytes": 107022,
+      "sha256": "fbf0f8f0dba6133978a501770faf9905bafe7347fe09456310e21bee11587dd7",
+      "original_path": "data/projects/MIRA_03.png",
+      "path": "visualizations/corl2022/MIRA_03.png",
+      "conference_folder": "corl2022"
+    }
+  ],
+  "local_media_bundled": 2,
+  "local_images_bundled": 1,
+  "local_videos_bundled": 1
+}

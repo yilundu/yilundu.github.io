@@ -1,0 +1,31 @@
+{
+  "checked_on": "2026-09-24",
+  "conference": "CVPR 2025",
+  "assets": [
+    {
+      "filename": "3dmem.png",
+      "title": "3D-Mem: 3D Scene Memory for Embodied Exploration and Reasoning",
+      "short_label": "3D-Mem: 3D Scene Memory for Embodied Exploration and Reasoning",
+      "source_url": null,
+      "source_page": "https://embodied-agi.cs.umass.edu/3dmem/",
+      "paper_url": "https://www.arxiv.org/abs/2411.17735",
+      "alt": "Visualization for 3D-Mem: 3D Scene Memory for Embodied Exploration and Reasoning",
+      "publication_id": "3d-mem-3d-scene-memory-for-embodied-exploration-and-reasoning",
+      "year": 2025,
+      "venue": "CVPR 2025",
+      "distinctions": [],
+      "matched_publication": true,
+      "media_type": "image",
+      "status": "local_media_bundled",
+      "source_render_checked": false,
+      "size_bytes": 324147,
+      "sha256": "7dff2fcc4ee4d9c8710153823c9564143f8268874c0fc6aca5c80a67d627c9d7",
+      "original_path": "data/projects/3dmem.png",
+      "path": "visualizations/cvpr2025/3dmem.png",
+      "conference_folder": "cvpr2025"
+    }
+  ],
+  "local_media_bundled": 1,
+  "local_images_bundled": 1,
+  "local_videos_bundled": 0
+}

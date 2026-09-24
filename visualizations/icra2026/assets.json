@@ -1,0 +1,53 @@
+{
+  "checked_on": "2026-09-24",
+  "conference": "ICRA 2026",
+  "assets": [
+    {
+      "filename": "dmpc.png",
+      "title": "Flexible Locomotion Learning with Diffusion Model Predictive Control",
+      "short_label": "Flexible Locomotion Learning with Diffusion Model Predictive Control",
+      "source_url": null,
+      "source_page": "https://flexible-diffusion-mpc.github.io/",
+      "paper_url": "https://arxiv.org/abs/2510.04234",
+      "alt": "Visualization for Flexible Locomotion Learning with Diffusion Model Predictive Control",
+      "publication_id": "flexible-locomotion-learning-with-diffusion-model-predictive-control",
+      "year": 2026,
+      "venue": "ICRA 2026",
+      "distinctions": [],
+      "matched_publication": true,
+      "media_type": "image",
+      "status": "local_media_bundled",
+      "source_render_checked": false,
+      "size_bytes": 288011,
+      "sha256": "106baeb32b00ce42f24f35b5284a64c0329af6875b6879a6a0603a63c2c9afe9",
+      "original_path": "data/projects/dmpc.png",
+      "path": "visualizations/icra2026/dmpc.png",
+      "conference_folder": "icra2026"
+    },
+    {
+      "filename": "policy_consensus.png",
+      "title": "Multi-Modal Manipulation via Multi-Modal Policy Consensus",
+      "short_label": "Multi-Modal Manipulation via Multi-Modal Policy Consensus",
+      "source_url": null,
+      "source_page": "https://policyconsensus.github.io/",
+      "paper_url": "https://arxiv.org/abs/2509.23468",
+      "alt": "Visualization for Multi-Modal Manipulation via Multi-Modal Policy Consensus",
+      "publication_id": "multi-modal-manipulation-via-multi-modal-policy-consensus",
+      "year": 2026,
+      "venue": "ICRA 2026",
+      "distinctions": [],
+      "matched_publication": true,
+      "media_type": "image",
+      "status": "local_media_bundled",
+      "source_render_checked": false,
+      "size_bytes": 251039,
+      "sha256": "c672879392a6c74c9bc18d1977201016ec814b2a6e62335caf6c9424c50a6da8",
+      "original_path": "data/projects/policy_consensus.png",
+      "path": "visualizations/icra2026/policy_consensus.png",
+      "conference_folder": "icra2026"
+    }
+  ],
+  "local_media_bundled": 2,
+  "local_images_bundled": 2,
+  "local_videos_bundled": 0
+}

@@ -1,0 +1,31 @@
+{
+  "checked_on": "2026-09-24",
+  "conference": "Thesis 2024",
+  "assets": [
+    {
+      "filename": "thumbnail_dissertation.png",
+      "title": "Learning Generalizable Systems by Learning Composable Energy Landscapes",
+      "short_label": "Learning Generalizable Systems by Learning Composable Energy Landscapes",
+      "source_url": null,
+      "source_page": null,
+      "paper_url": null,
+      "alt": "Visualization for Learning Generalizable Systems by Learning Composable Energy Landscapes",
+      "publication_id": "learning-generalizable-systems-by-learning-composable-energy-landscapes",
+      "year": 2024,
+      "venue": "PhD Thesis 2024",
+      "distinctions": [],
+      "matched_publication": true,
+      "media_type": "image",
+      "status": "local_media_bundled",
+      "source_render_checked": false,
+      "size_bytes": 4836,
+      "sha256": "e7063df50715d841101e30fd69849ceb54f088f50f37cef9b04d2b5a61da3e26",
+      "original_path": "data/projects/thumbnail_dissertation.png",
+      "path": "visualizations/thesis2024/thumbnail_dissertation.png",
+      "conference_folder": "thesis2024"
+    }
+  ],
+  "local_media_bundled": 1,
+  "local_images_bundled": 1,
+  "local_videos_bundled": 0
+}

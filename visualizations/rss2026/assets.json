@@ -1,0 +1,33 @@
+{
+  "checked_on": "2026-09-24",
+  "conference": "RSS 2026",
+  "assets": [
+    {
+      "filename": "oat.png",
+      "title": "OAT: Ordered Action Tokenization",
+      "short_label": "OAT: Ordered Action Tokenization",
+      "source_url": null,
+      "source_page": "https://ordered-action-tokenization.github.io/",
+      "paper_url": "https://arxiv.org/abs/2602.04215",
+      "alt": "Visualization for OAT: Ordered Action Tokenization",
+      "publication_id": "oat-ordered-action-tokenization",
+      "year": 2026,
+      "venue": "RSS 2026",
+      "distinctions": [
+        "Outstanding Paper Finalist"
+      ],
+      "matched_publication": true,
+      "media_type": "image",
+      "status": "local_media_bundled",
+      "source_render_checked": false,
+      "size_bytes": 98436,
+      "sha256": "eba85a8df12fc5664809ec6c2221fcc7e6de1ca9c7d019ad9badcb0438de189f",
+      "original_path": "data/projects/oat.png",
+      "path": "visualizations/rss2026/oat.png",
+      "conference_folder": "rss2026"
+    }
+  ],
+  "local_media_bundled": 1,
+  "local_images_bundled": 1,
+  "local_videos_bundled": 0
+}

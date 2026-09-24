@@ -1,0 +1,31 @@
+{
+  "checked_on": "2026-09-24",
+  "conference": "CoRL 2019",
+  "assets": [
+    {
+      "filename": "ebm_plan.png",
+      "title": "Model Based Planning with Energy Based Models",
+      "short_label": "Model Based Planning with Energy Based Models",
+      "source_url": null,
+      "source_page": null,
+      "paper_url": "https://arxiv.org/pdf/1909.06878.pdf",
+      "alt": "Visualization for Model Based Planning with Energy Based Models",
+      "publication_id": "model-based-planning-with-energy-based-models",
+      "year": 2019,
+      "venue": "CoRL 2019",
+      "distinctions": [],
+      "matched_publication": true,
+      "media_type": "image",
+      "status": "local_media_bundled",
+      "source_render_checked": false,
+      "size_bytes": 39559,
+      "sha256": "eadaff8df65ad3392815cc03cf0970588275bb605d45d3054dc5312c3e1669a7",
+      "original_path": "data/projects/ebm_plan.png",
+      "path": "visualizations/corl2019/ebm_plan.png",
+      "conference_folder": "corl2019"
+    }
+  ],
+  "local_media_bundled": 1,
+  "local_images_bundled": 1,
+  "local_videos_bundled": 0
+}

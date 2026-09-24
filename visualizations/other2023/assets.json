@@ -1,0 +1,53 @@
+{
+  "checked_on": "2026-09-24",
+  "conference": "Other 2023",
+  "assets": [
+    {
+      "filename": "unsup_discovery.m4v",
+      "title": "Unsupervised Compositional Concepts Discovery with Text-to-Image Generative Models",
+      "short_label": "Unsupervised Compositional Concepts Discovery with Text-to-Image Generative Models",
+      "source_url": null,
+      "source_page": "https://energy-based-model.github.io/unsupervised-concept-discovery/",
+      "paper_url": "https://arxiv.org/abs/2306.05357",
+      "alt": "Visualization for Unsupervised Compositional Concepts Discovery with Text-to-Image Generative Models",
+      "publication_id": "unsupervised-compositional-concepts-discovery-with-text-to-image-generat",
+      "year": 2023,
+      "venue": null,
+      "distinctions": [],
+      "matched_publication": true,
+      "media_type": "video",
+      "status": "local_media_bundled",
+      "source_render_checked": false,
+      "size_bytes": 453276,
+      "sha256": "eb92c03c9b9381b180b5880304a61e201200290148aa55b38ab361b5b9bdc7d1",
+      "original_path": "data/projects/unsup_discovery.m4v",
+      "path": "visualizations/other2023/unsup_discovery.m4v",
+      "conference_folder": "other2023"
+    },
+    {
+      "filename": "fmdm.png",
+      "title": "Foundation Models for Decision Making: Problems, Methods, and Opportunities",
+      "short_label": "Foundation Models for Decision Making: Problems, Methods, and Opportunities",
+      "source_url": null,
+      "source_page": null,
+      "paper_url": "https://arxiv.org/abs/2303.04129",
+      "alt": "Visualization for Foundation Models for Decision Making: Problems, Methods, and Opportunities",
+      "publication_id": "foundation-models-for-decision-making-problems-methods-and-opportunities",
+      "year": 2023,
+      "venue": null,
+      "distinctions": [],
+      "matched_publication": true,
+      "media_type": "image",
+      "status": "local_media_bundled",
+      "source_render_checked": false,
+      "size_bytes": 262444,
+      "sha256": "061f289b37d1406c995b7ec615cf563e64e3fcacac6e7f24343386f30bc63a67",
+      "original_path": "data/projects/fmdm.png",
+      "path": "visualizations/other2023/fmdm.png",
+      "conference_folder": "other2023"
+    }
+  ],
+  "local_media_bundled": 2,
+  "local_images_bundled": 1,
+  "local_videos_bundled": 1
+}

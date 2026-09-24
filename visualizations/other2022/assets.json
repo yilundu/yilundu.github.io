@@ -1,0 +1,53 @@
+{
+  "checked_on": "2026-09-24",
+  "conference": "Other 2022",
+  "assets": [
+    {
+      "filename": "lm_design.png",
+      "title": "Language Models Generalize Beyond Natural Proteins",
+      "short_label": "Language Models Generalize Beyond Natural Proteins",
+      "source_url": null,
+      "source_page": null,
+      "paper_url": "https://www.biorxiv.org/content/10.1101/2022.12.21.521521v1",
+      "alt": "Visualization for Language Models Generalize Beyond Natural Proteins",
+      "publication_id": "language-models-generalize-beyond-natural-proteins",
+      "year": 2022,
+      "venue": null,
+      "distinctions": [],
+      "matched_publication": true,
+      "media_type": "image",
+      "status": "local_media_bundled",
+      "source_render_checked": false,
+      "size_bytes": 331299,
+      "sha256": "4e162a886ef2652abbf98c0cb03d10c06ef08affa14a948a29e05028eaec8969",
+      "original_path": "data/projects/lm_design.png",
+      "path": "visualizations/other2022/lm_design.png",
+      "conference_folder": "other2022"
+    },
+    {
+      "filename": "22_sed.png",
+      "title": "Self-conditioned Embedding Diffusion for Text Generation",
+      "short_label": "Self-conditioned Embedding Diffusion for Text Generation",
+      "source_url": null,
+      "source_page": null,
+      "paper_url": "https://arxiv.org/abs/2211.04236",
+      "alt": "Visualization for Self-conditioned Embedding Diffusion for Text Generation",
+      "publication_id": "self-conditioned-embedding-diffusion-for-text-generation",
+      "year": 2022,
+      "venue": null,
+      "distinctions": [],
+      "matched_publication": true,
+      "media_type": "image",
+      "status": "local_media_bundled",
+      "source_render_checked": false,
+      "size_bytes": 107346,
+      "sha256": "4b2ca62e192c4bef491826a1bef314adc65bc0311510e33bc78b576cc779b090",
+      "original_path": "data/projects/22_sed.png",
+      "path": "visualizations/other2022/22_sed.png",
+      "conference_folder": "other2022"
+    }
+  ],
+  "local_media_bundled": 2,
+  "local_images_bundled": 2,
+  "local_videos_bundled": 0
+}

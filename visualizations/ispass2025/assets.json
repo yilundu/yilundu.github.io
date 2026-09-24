@@ -1,0 +1,31 @@
+{
+  "checked_on": "2026-09-24",
+  "conference": "ISPASS 2025",
+  "assets": [
+    {
+      "filename": "embodied_system.png",
+      "title": "Generative AI in Embodied Systems: System-Level Analysis of Performance, Efficiency and Scalability",
+      "short_label": "Generative AI in Embodied Systems: System-Level Analysis of Performance, Efficiency and Scalability",
+      "source_url": null,
+      "source_page": null,
+      "paper_url": "https://arxiv.org/pdf/2504.18945",
+      "alt": "Visualization for Generative AI in Embodied Systems: System-Level Analysis of Performance, Efficiency and Scalability",
+      "publication_id": "generative-ai-in-embodied-systems-system-level-analysis-of-performance-e",
+      "year": 2025,
+      "venue": "ISPASS 2025",
+      "distinctions": [],
+      "matched_publication": true,
+      "media_type": "image",
+      "status": "local_media_bundled",
+      "source_render_checked": false,
+      "size_bytes": 114283,
+      "sha256": "f339e2129d17a86eef2bc2899e209a3290752fa65a177f3f7ab09c8308bc1de1",
+      "original_path": "data/projects/embodied_system.png",
+      "path": "visualizations/ispass2025/embodied_system.png",
+      "conference_folder": "ispass2025"
+    }
+  ],
+  "local_media_bundled": 1,
+  "local_images_bundled": 1,
+  "local_videos_bundled": 0
+}

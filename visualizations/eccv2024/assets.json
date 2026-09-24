@@ -1,0 +1,31 @@
+{
+  "checked_on": "2026-09-24",
+  "conference": "ECCV 2024",
+  "assets": [
+    {
+      "filename": "multirl.png",
+      "title": "Large-scale Reinforcement Learning for Diffusion Models",
+      "short_label": "Large-scale Reinforcement Learning for Diffusion Models",
+      "source_url": null,
+      "source_page": "https://pinterest.github.io/atg-research/rl-diffusion/",
+      "paper_url": "https://arxiv.org/abs/2401.12244",
+      "alt": "Visualization for Large-scale Reinforcement Learning for Diffusion Models",
+      "publication_id": "large-scale-reinforcement-learning-for-diffusion-models",
+      "year": 2024,
+      "venue": "ECCV 2024",
+      "distinctions": [],
+      "matched_publication": true,
+      "media_type": "image",
+      "status": "local_media_bundled",
+      "source_render_checked": false,
+      "size_bytes": 444379,
+      "sha256": "4a0856ca3b1ebbeb924692672a67775fa3a12407c174c34554f5ca808daad463",
+      "original_path": "data/projects/multirl.png",
+      "path": "visualizations/eccv2024/multirl.png",
+      "conference_folder": "eccv2024"
+    }
+  ],
+  "local_media_bundled": 1,
+  "local_images_bundled": 1,
+  "local_videos_bundled": 0
+}

@@ -1,0 +1,39 @@
+{
+  "checked_on": "2026-09-24",
+  "conference": "CVPR 2020",
+  "assets": [
+    {
+      "filename": "p3i.jpg",
+      "title": "Perspective Plane Program Induction from a Single Image",
+      "short_label": "Perspective Plane Program Induction from a Single Image",
+      "source_url": null,
+      "source_page": "https://github.com/42x00/p3i",
+      "paper_url": "https://jiajunwu.com/papers/p3i_cvpr.pdf",
+      "alt": "Visualization for Perspective Plane Program Induction from a Single Image",
+      "publication_id": null,
+      "year": 2020,
+      "venue": "CVPR 2020",
+      "distinctions": [],
+      "matched_publication": false,
+      "media_type": "image",
+      "status": "local_media_bundled",
+      "source_render_checked": false,
+      "size_bytes": 21493,
+      "sha256": "59e13723a94c2ca3103cd53fe35e7cc4c9f8f41c4c70d260f8f0834956546d61",
+      "original_path": "data/projects/p3i.jpg",
+      "identified_publication": true,
+      "outside_current_publication_list": true,
+      "match_evidence": "The distinctive strawberry-mice image and Regularity Inference / Perspective Correction labels match the P3I paper first-page figure and description (Figure 1; strawberry mice, triangular lattice). The official implementation repository states the full title and CVPR 2020 venue. This is an unused extra asset for a paper outside the current publication list; the paper author list does not include Yilun Du.",
+      "identification_sources": [
+        "https://jiajunwu.com/papers/p3i_cvpr.pdf",
+        "https://github.com/42x00/p3i",
+        "https://openaccess.thecvf.com/content_CVPR_2020/papers/Li_Perspective_Plane_Program_Induction_From_a_Single_Image_CVPR_2020_paper.pdf"
+      ],
+      "path": "visualizations/cvpr2020/p3i.jpg",
+      "conference_folder": "cvpr2020"
+    }
+  ],
+  "local_media_bundled": 1,
+  "local_images_bundled": 1,
+  "local_videos_bundled": 0
+}

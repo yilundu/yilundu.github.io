@@ -1,0 +1,81 @@
+{
+  "checked_on": "2026-09-24",
+  "conference": "CoLLA 2022",
+  "assets": [
+    {
+      "filename": "continual2.png",
+      "title": "Energy-Based Models for Continual Learning",
+      "short_label": "Energy-Based Models for Continual Learning",
+      "source_url": null,
+      "source_page": "https://energy-based-model.github.io/Energy-Based-Models-for-Continual-Learning/",
+      "paper_url": "https://arxiv.org/pdf/2011.12216.pdf",
+      "alt": "Visualization for Energy-Based Models for Continual Learning",
+      "publication_id": "energy-based-models-for-continual-learning",
+      "year": 2022,
+      "venue": "CoLLA 2022",
+      "distinctions": [
+        "Oral"
+      ],
+      "matched_publication": true,
+      "media_type": "image",
+      "status": "local_media_bundled",
+      "source_render_checked": false,
+      "size_bytes": 569251,
+      "sha256": "478a3d867a0a731d32ac0f18f1eec298ba9f78452b3d8f1b4b4375d541463c99",
+      "original_path": "data/projects/continual2.png",
+      "path": "visualizations/colla2022/continual2.png",
+      "conference_folder": "colla2022"
+    },
+    {
+      "filename": "continual.png",
+      "title": "Energy-Based Models for Continual Learning",
+      "short_label": "Energy-Based Models for Continual Learning",
+      "source_url": null,
+      "source_page": "https://energy-based-model.github.io/Energy-Based-Models-for-Continual-Learning/",
+      "paper_url": "https://arxiv.org/pdf/2011.12216.pdf",
+      "alt": "Alternate media for Energy-Based Models for Continual Learning",
+      "publication_id": "energy-based-models-for-continual-learning",
+      "year": 2022,
+      "venue": "CoLLA 2022",
+      "distinctions": [
+        "Oral"
+      ],
+      "matched_publication": true,
+      "media_type": "image",
+      "status": "local_media_bundled",
+      "source_render_checked": false,
+      "size_bytes": 286560,
+      "sha256": "d8b499587676c6ffaf2555f69da78872f133797efb3ce773e9c83ce8be12c317",
+      "original_path": "data/projects/continual.png",
+      "alternate_media": true,
+      "match_evidence": "Visual inspection shows identical EBM after task9 and EBM after task10 similarity matrices; the extra image also includes SBC comparison panels.",
+      "path": "visualizations/colla2022/continual.png",
+      "conference_folder": "colla2022"
+    },
+    {
+      "filename": "infinite_clustering.png",
+      "title": "Streaming Inference for Infinite Non-Stationary Clustering",
+      "short_label": "Streaming Inference for Infinite Non-Stationary Clustering",
+      "source_url": null,
+      "source_page": null,
+      "paper_url": "https://arxiv.org/abs/2205.01212",
+      "alt": "Visualization for Streaming Inference for Infinite Non-Stationary Clustering",
+      "publication_id": "streaming-inference-for-infinite-non-stationary-clustering",
+      "year": 2022,
+      "venue": "CoLLA 2022",
+      "distinctions": [],
+      "matched_publication": true,
+      "media_type": "image",
+      "status": "local_media_bundled",
+      "source_render_checked": false,
+      "size_bytes": 208509,
+      "sha256": "757a99ff4ab707d16fa08441fe6b74c9f614695cde4e81cc847f1745120cc5e4",
+      "original_path": "data/projects/infinite_clustering.png",
+      "path": "visualizations/colla2022/infinite_clustering.png",
+      "conference_folder": "colla2022"
+    }
+  ],
+  "local_media_bundled": 3,
+  "local_images_bundled": 3,
+  "local_videos_bundled": 0
+}

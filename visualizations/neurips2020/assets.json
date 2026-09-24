@@ -1,0 +1,33 @@
+{
+  "checked_on": "2026-09-24",
+  "conference": "NeurIPS 2020",
+  "assets": [
+    {
+      "filename": "compositional.png",
+      "title": "Compositional Visual Generation and Inference with Energy Based Models",
+      "short_label": "Compositional Visual Generation and Inference with Energy Based Models",
+      "source_url": null,
+      "source_page": "https://energy-based-model.github.io/compositional-generation-inference/",
+      "paper_url": "https://arxiv.org/pdf/2004.06030.pdf",
+      "alt": "Visualization for Compositional Visual Generation and Inference with Energy Based Models",
+      "publication_id": "compositional-visual-generation-and-inference-with-energy-based-models",
+      "year": 2020,
+      "venue": "NeurIPS 2020",
+      "distinctions": [
+        "Spotlight"
+      ],
+      "matched_publication": true,
+      "media_type": "image",
+      "status": "local_media_bundled",
+      "source_render_checked": false,
+      "size_bytes": 126273,
+      "sha256": "f9d0f822bb73ea97f0091465703295bca4b13b264695f5ccd91ffa2abe50d1c7",
+      "original_path": "data/projects/compositional.png",
+      "path": "visualizations/neurips2020/compositional.png",
+      "conference_folder": "neurips2020"
+    }
+  ],
+  "local_media_bundled": 1,
+  "local_images_bundled": 1,
+  "local_videos_bundled": 0
+}

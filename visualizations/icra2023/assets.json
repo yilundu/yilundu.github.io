@@ -1,0 +1,53 @@
+{
+  "checked_on": "2026-09-24",
+  "conference": "ICRA 2023",
+  "assets": [
+    {
+      "filename": "lndf_preview.mp4",
+      "title": "Local Neural Descriptor Fields: Locally Conditioned Object Representations for Manipulation",
+      "short_label": "Local Neural Descriptor Fields: Locally Conditioned Object Representations for Manipulation",
+      "source_url": null,
+      "source_page": "https://elchun.github.io/lndf/",
+      "paper_url": "https://arxiv.org/abs/2302.03573",
+      "alt": "Visualization for Local Neural Descriptor Fields: Locally Conditioned Object Representations for Manipulation",
+      "publication_id": "local-neural-descriptor-fields-locally-conditioned-object-representation",
+      "year": 2023,
+      "venue": "ICRA 2023",
+      "distinctions": [],
+      "matched_publication": true,
+      "media_type": "video",
+      "status": "local_media_bundled",
+      "source_render_checked": false,
+      "size_bytes": 294914,
+      "sha256": "ee577a6b1b8ca49341a39f618a13a012626957c87d8c6dad68edce1e881c5c30",
+      "original_path": "data/projects/lndf_preview.mp4",
+      "path": "visualizations/icra2023/lndf_preview.mp4",
+      "conference_folder": "icra2023"
+    },
+    {
+      "filename": "move_preview.mp4",
+      "title": "Visibility-Aware Navigation Among Movable Objects",
+      "short_label": "Visibility-Aware Navigation Among Movable Objects",
+      "source_url": null,
+      "source_page": null,
+      "paper_url": "https://arxiv.org/abs/2212.02671",
+      "alt": "Visualization for Visibility-Aware Navigation Among Movable Objects",
+      "publication_id": "visibility-aware-navigation-among-movable-objects",
+      "year": 2023,
+      "venue": "ICRA 2023",
+      "distinctions": [],
+      "matched_publication": true,
+      "media_type": "video",
+      "status": "local_media_bundled",
+      "source_render_checked": false,
+      "size_bytes": 99985,
+      "sha256": "2656907ae40aec7e7fcfd95c05f8895a4d7f3ad66f1e1c9cc29333ce48ec4e0e",
+      "original_path": "data/projects/move_preview.mp4",
+      "path": "visualizations/icra2023/move_preview.mp4",
+      "conference_folder": "icra2023"
+    }
+  ],
+  "local_media_bundled": 2,
+  "local_images_bundled": 0,
+  "local_videos_bundled": 2
+}

@@ -1,0 +1,31 @@
+{
+  "checked_on": "2026-09-24",
+  "conference": "AAMAS 2020",
+  "assets": [
+    {
+      "filename": "neuralmmo.png",
+      "title": "Neural MMO: A massively multiplayer game environment for intelligent agents",
+      "short_label": "Neural MMO: A massively multiplayer game environment for intelligent agents",
+      "source_url": null,
+      "source_page": null,
+      "paper_url": "https://arxiv.org/abs/2001.12004",
+      "alt": "Visualization for Neural MMO: A massively multiplayer game environment for intelligent agents",
+      "publication_id": "neural-mmo-a-massively-multiplayer-game-environment-for-intelligent-agen",
+      "year": 2019,
+      "venue": "AAMAS 2020 Extended Abstract",
+      "distinctions": [],
+      "matched_publication": true,
+      "media_type": "image",
+      "status": "local_media_bundled",
+      "source_render_checked": false,
+      "size_bytes": 385277,
+      "sha256": "d265ea90bca90321ecbb74f1a01730eedaae88611b0502193b43d7f9726123db",
+      "original_path": "data/projects/neuralmmo.png",
+      "path": "visualizations/aamas2020/neuralmmo.png",
+      "conference_folder": "aamas2020"
+    }
+  ],
+  "local_media_bundled": 1,
+  "local_images_bundled": 1,
+  "local_videos_bundled": 0
+}

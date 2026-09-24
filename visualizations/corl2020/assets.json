@@ -1,0 +1,31 @@
+{
+  "checked_on": "2026-09-24",
+  "conference": "CoRL 2020",
+  "assets": [
+    {
+      "filename": "3d_manip.png",
+      "title": "A Long Horizon Planning Framework for Manipulating Rigid Pointcloud Objects",
+      "short_label": "A Long Horizon Planning Framework for Manipulating Rigid Pointcloud Objects",
+      "source_url": null,
+      "source_page": null,
+      "paper_url": "https://arxiv.org/pdf/2011.08177.pdf",
+      "alt": "Visualization for A Long Horizon Planning Framework for Manipulating Rigid Pointcloud Objects",
+      "publication_id": "a-long-horizon-planning-framework-for-manipulating-rigid-pointcloud-obje",
+      "year": 2020,
+      "venue": "CoRL 2020",
+      "distinctions": [],
+      "matched_publication": true,
+      "media_type": "image",
+      "status": "local_media_bundled",
+      "source_render_checked": false,
+      "size_bytes": 189222,
+      "sha256": "f6bd86dad0bc6f760d0ee3d596eb9689d4f410e0cfe1b2e58071b4c57e87f47c",
+      "original_path": "data/projects/3d_manip.png",
+      "path": "visualizations/corl2020/3d_manip.png",
+      "conference_folder": "corl2020"
+    }
+  ],
+  "local_media_bundled": 1,
+  "local_images_bundled": 1,
+  "local_videos_bundled": 0
+}

@@ -1,0 +1,31 @@
+{
+  "checked_on": "2026-09-24",
+  "conference": "ICRA 2022",
+  "assets": [
+    {
+      "filename": "ndf_preview.mp4",
+      "title": "Neural Descriptor Fields: SE(3)-Equivariant Object Representations for Manipulation",
+      "short_label": "Neural Descriptor Fields: SE(3)-Equivariant Object Representations for Manipulation",
+      "source_url": null,
+      "source_page": "https://yilundu.github.io/ndf/",
+      "paper_url": "https://arxiv.org/abs/2112.05124",
+      "alt": "Visualization for Neural Descriptor Fields: SE(3)-Equivariant Object Representations for Manipulation",
+      "publication_id": "neural-descriptor-fields-se-3-equivariant-object-representations-for-man",
+      "year": 2022,
+      "venue": "ICRA 2022",
+      "distinctions": [],
+      "matched_publication": true,
+      "media_type": "video",
+      "status": "local_media_bundled",
+      "source_render_checked": false,
+      "size_bytes": 218091,
+      "sha256": "d0aebeddcf8c6bb362c5c3becd7811827e83338bf04253c30716d2272454e6f8",
+      "original_path": "data/projects/ndf_preview.mp4",
+      "path": "visualizations/icra2022/ndf_preview.mp4",
+      "conference_folder": "icra2022"
+    }
+  ],
+  "local_media_bundled": 1,
+  "local_images_bundled": 0,
+  "local_videos_bundled": 1
+}

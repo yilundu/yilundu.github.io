@@ -1,0 +1,59 @@
+{
+  "checked_on": "2026-09-24",
+  "conference": "NeurIPS 2019",
+  "assets": [
+    {
+      "filename": "igebm.mp4",
+      "title": "Implicit Generation and Generalization with Energy Based Models",
+      "short_label": "Implicit Generation and Generalization with Energy Based Models",
+      "source_url": null,
+      "source_page": "https://sites.google.com/view/igebm",
+      "paper_url": "https://arxiv.org/pdf/1903.08689.pdf",
+      "alt": "Visualization for Implicit Generation and Generalization with Energy Based Models",
+      "publication_id": "implicit-generation-and-generalization-with-energy-based-models",
+      "year": 2019,
+      "venue": "NeurIPS 2019",
+      "distinctions": [
+        "Spotlight"
+      ],
+      "matched_publication": true,
+      "media_type": "video",
+      "status": "local_media_bundled",
+      "source_render_checked": false,
+      "size_bytes": 644506,
+      "sha256": "5ac2b5c6dd3e638351f9934221fd9e42cb78e1685985374650fb7697de008892",
+      "original_path": "data/projects/igebm.mp4",
+      "path": "visualizations/neurips2019/igebm.mp4",
+      "conference_folder": "neurips2019"
+    },
+    {
+      "filename": "ebm.png",
+      "title": "Implicit Generation and Generalization with Energy Based Models",
+      "short_label": "Implicit Generation and Generalization with Energy Based Models",
+      "source_url": null,
+      "source_page": "https://sites.google.com/view/igebm",
+      "paper_url": "https://arxiv.org/pdf/1903.08689.pdf",
+      "alt": "Alternate media for Implicit Generation and Generalization with Energy Based Models",
+      "publication_id": "implicit-generation-and-generalization-with-energy-based-models",
+      "year": 2019,
+      "venue": "NeurIPS 2019",
+      "distinctions": [
+        "Spotlight"
+      ],
+      "matched_publication": true,
+      "media_type": "image",
+      "status": "local_media_bundled",
+      "source_render_checked": false,
+      "size_bytes": 106250,
+      "sha256": "c17a30a6d1a27d39d7b4d63aa9a7745cd2f954bdd4379fabe3716ea5404d2b2a",
+      "original_path": "data/projects/ebm.png",
+      "alternate_media": true,
+      "match_evidence": "Visual inspection shows the Implicit Generation and Generalization with Energy-Based Models training schematic: replay buffer, Langevin dynamics, maximum-likelihood objective, and image training data.",
+      "path": "visualizations/neurips2019/ebm.png",
+      "conference_folder": "neurips2019"
+    }
+  ],
+  "local_media_bundled": 2,
+  "local_images_bundled": 1,
+  "local_videos_bundled": 1
+}

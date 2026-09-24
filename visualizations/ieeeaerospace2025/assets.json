@@ -1,0 +1,31 @@
+{
+  "checked_on": "2026-09-24",
+  "conference": "IEEE Aerospace 2025",
+  "assets": [
+    {
+      "filename": "trajdiffuser.png",
+      "title": "Compositional Diffusion Models for Powered Descent Trajectory Generation with Flexible Constraints",
+      "short_label": "Compositional Diffusion Models for Powered Descent Trajectory Generation with Flexible Constraints",
+      "source_url": null,
+      "source_page": null,
+      "paper_url": "https://arxiv.org/abs/2410.04261",
+      "alt": "Visualization for Compositional Diffusion Models for Powered Descent Trajectory Generation with Flexible Constraints",
+      "publication_id": "compositional-diffusion-models-for-powered-descent-trajectory-generation",
+      "year": 2025,
+      "venue": "IEEE Aerospace 2025",
+      "distinctions": [],
+      "matched_publication": true,
+      "media_type": "image",
+      "status": "local_media_bundled",
+      "source_render_checked": false,
+      "size_bytes": 221014,
+      "sha256": "231fd418d7dde7c3867f886403b7746df7d511bfdbd9e432df09eed43f84d131",
+      "original_path": "data/projects/trajdiffuser.png",
+      "path": "visualizations/ieeeaerospace2025/trajdiffuser.png",
+      "conference_folder": "ieeeaerospace2025"
+    }
+  ],
+  "local_media_bundled": 1,
+  "local_images_bundled": 1,
+  "local_videos_bundled": 0
+}

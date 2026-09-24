@@ -1,0 +1,31 @@
+{
+  "checked_on": "2026-09-24",
+  "conference": "CoLM 2025",
+  "assets": [
+    {
+      "filename": "mav.png",
+      "title": "Multi-Agent Verification: Scaling Test-Time Compute with Multiple Verifiers",
+      "short_label": "Multi-Agent Verification: Scaling Test-Time Compute with Multiple Verifiers",
+      "source_url": null,
+      "source_page": "https://ardalabs.ai/MultiAgentVerification/",
+      "paper_url": "https://arxiv.org/abs/2502.20379",
+      "alt": "Visualization for Multi-Agent Verification: Scaling Test-Time Compute with Multiple Verifiers",
+      "publication_id": "multi-agent-verification-scaling-test-time-compute-with-multiple-verifie",
+      "year": 2025,
+      "venue": "CoLM 2025",
+      "distinctions": [],
+      "matched_publication": true,
+      "media_type": "image",
+      "status": "local_media_bundled",
+      "source_render_checked": false,
+      "size_bytes": 63293,
+      "sha256": "8c35f6c5b471237bf35725f63ab7b51755decde3e85dc238472910bf1753c516",
+      "original_path": "data/projects/mav.png",
+      "path": "visualizations/colm2025/mav.png",
+      "conference_folder": "colm2025"
+    }
+  ],
+  "local_media_bundled": 1,
+  "local_images_bundled": 1,
+  "local_videos_bundled": 0
+}

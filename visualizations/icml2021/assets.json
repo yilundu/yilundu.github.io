@@ -1,0 +1,31 @@
+{
+  "checked_on": "2026-09-24",
+  "conference": "ICML 2021",
+  "assets": [
+    {
+      "filename": "cd.png",
+      "title": "Improved Contrastive Divergence Training of Energy Based Models",
+      "short_label": "Improved Contrastive Divergence Training of Energy Based Models",
+      "source_url": null,
+      "source_page": "https://energy-based-model.github.io/improved-contrastive-divergence/",
+      "paper_url": "https://arxiv.org/pdf/2012.01316.pdf",
+      "alt": "Visualization for Improved Contrastive Divergence Training of Energy Based Models",
+      "publication_id": "improved-contrastive-divergence-training-of-energy-based-models",
+      "year": 2021,
+      "venue": "ICML 2021",
+      "distinctions": [],
+      "matched_publication": true,
+      "media_type": "image",
+      "status": "local_media_bundled",
+      "source_render_checked": false,
+      "size_bytes": 266952,
+      "sha256": "62992888175683cf42fa3cc3d2e4c51428b025150fd8ce6ee82eb83d03d65471",
+      "original_path": "data/projects/cd.png",
+      "path": "visualizations/icml2021/cd.png",
+      "conference_folder": "icml2021"
+    }
+  ],
+  "local_media_bundled": 1,
+  "local_images_bundled": 1,
+  "local_videos_bundled": 0
+}
