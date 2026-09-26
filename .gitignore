@@ -1,2 +1,6 @@
 *~
 .DS_Store
+# Jekyll build output (GitHub Pages builds the site itself)
+_site/
+.sass-cache/
+.jekyll-cache/

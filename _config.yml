@@ -1,0 +1,6 @@
+# Used only by the legacy Jekyll pages (/blog and the 2016–17 posts), which were
+# rendering with a blank title, empty header and broken avatar. The homepage and
+# project pages are plain HTML files without front matter, so they are unaffected.
+name: Yilun Du
+description: Assistant Professor of Computer Science at Harvard
+avatar: /images/yilun8_avatar.jpg
