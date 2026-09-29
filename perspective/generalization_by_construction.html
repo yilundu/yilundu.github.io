@@ -8,7 +8,13 @@
   <meta name="theme-color" content="#ffffff">
   <meta name="description" content="Yilun Du's research perspective on generalization by construction: what learning should leave open for inference.">
   <meta name="author" content="Yilun Du">
+  <meta name="citation_title" content="Generalization by Construction">
+  <meta name="citation_author" content="Du, Yilun">
+  <meta name="citation_author_institution" content="Harvard University">
+  <meta name="citation_publication_date" content="2026/08/29">
+  <meta name="citation_pdf_url" content="https://yilundu.github.io/perspective/generalization_by_construction.pdf">
   <link rel="canonical" href="https://yilundu.github.io/perspective/generalization_by_construction.html">
+  <link rel="alternate" type="application/pdf" href="generalization_by_construction.pdf" title="PDF version">
   <link rel="icon" href="../static/img/favicon.ico">
   <meta property="og:type" content="article">
   <meta property="article:published_time" content="2026-08-29">
@@ -725,6 +731,86 @@
       .rail-link::before { transition: none; }
     }
 
+    .hero-pdf {
+      display: inline-block;
+      margin-left: 12px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 0 10px;
+      color: var(--link);
+      font-size: 13px;
+      font-weight: 650;
+      line-height: 1.75;
+    }
+
+    .hero-pdf:hover {
+      border-color: var(--accent);
+      text-decoration: none;
+    }
+
+    .citation-section { margin-top: 44px; }
+
+    .citation-block .citation-text {
+      margin: 2px 0 12px;
+      color: var(--text);
+      font-size: 15px;
+      line-height: 1.55;
+    }
+
+    .citation-actions {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 8px;
+    }
+
+    .citation-pdf {
+      font-size: 14px;
+      font-weight: 650;
+    }
+
+    .copy-bibtex {
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: var(--content-bg);
+      padding: 2px 12px;
+      color: var(--link);
+      cursor: pointer;
+      font: inherit;
+      font-size: 13px;
+      font-weight: 650;
+    }
+
+    .copy-bibtex:hover { border-color: var(--accent); }
+
+    .bibtex {
+      margin: 0 0 18px;
+      overflow-x: auto;
+      border: 1px solid var(--soft-line);
+      border-radius: 6px;
+      background: var(--surface);
+      padding: 14px 16px;
+      color: var(--text);
+      font: 12.5px/1.6 ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+      tab-size: 2;
+      white-space: pre-wrap;
+      overflow-wrap: anywhere;
+    }
+
+    .visually-hidden {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+      clip: rect(0 0 0 0);
+      white-space: nowrap;
+    }
+
+    @media print {
+      .hero-pdf, .citation-actions { display: none; }
+    }
+
     @media print {
       body { color: #000; font-size: 11pt; }
       .page-shell { width: 100%; }
@@ -763,7 +849,12 @@
       "embodied intelligence",
       "multi-agent intelligence",
       "energy-based models"
-    ]
+    ],
+    "encoding": {
+      "@type": "MediaObject",
+      "contentUrl": "https://yilundu.github.io/perspective/generalization_by_construction.pdf",
+      "encodingFormat": "application/pdf"
+    }
   }
   </script>
 </head>
@@ -783,7 +874,7 @@
       <header class="hero">
         <h1>Generalization by Construction</h1>
         <p class="hero-deck">What learning should leave open for inference</p>
-        <p class="hero-date"><time datetime="2026-08-29">August 29, 2026</time></p>
+        <p class="hero-date"><time datetime="2026-08-29">August 29, 2026</time><a class="hero-pdf" href="generalization_by_construction.pdf">PDF</a></p>
 
         <div class="hero-opening">
           <p>The ultimate goal of artificial intelligence is to build systems that can act effectively in situations they have never seen before. This is especially important in robotics, where a robot will face new environments, objects, constraints, and goals. The dominant approach is to collect ever-larger datasets and train neural policies end to end to map observations directly to behavior. Yet these policies often struggle in unfamiliar settings, and it is practically impossible to gather examples covering the open-ended range of situations a robot may encounter.</p>
@@ -851,7 +942,7 @@
           <section class="essay-section" id="thesis">
             <div class="section-label">The thesis</div>
             <h2>Blending amortization and inference</h2>
-            <p>I call this division of work between learning and inference the <strong>amortization boundary</strong>. Learning can amortize recurring decisions by building reusable rules that respond to new inputs without searching over alternatives each time. Inference can use learned models to compare and revise possible solutions for the current problem. For example, a robot can use a learned policy to choose a grasp directly, or use a learned model to evaluate several possible grasps before choosing one. The boundary marks which choices are resolved by a learned rule and which remain open to problem-specific search, selection, or refinement. Here, <strong>inference</strong> refers to this latter process.</p>
+            <p>I call this division of work between learning and inference the <strong>amortization boundary</strong>. Learning can <a href="https://gershmanlab.com/pubs/GershmanGoodman14.pdf">amortize recurring decisions</a> by building reusable rules that respond to new inputs without searching over alternatives each time. Inference can use learned models to compare and revise possible solutions for the current problem. For example, a robot can use a learned policy to choose a grasp directly, or use a learned model to evaluate several possible grasps before choosing one. The boundary marks which choices are resolved by a learned rule and which remain open to problem-specific search, selection, or refinement. Here, <strong>inference</strong> refers to this latter process.</p>
 
             <p>The boundary trades computation for flexibility. Repeated search wastes computation when a learned rule can already make the decision reliably. If a new goal or constraint falls outside what a learned rule can handle, the system needs a way to reconsider its decisions. The aim is therefore not to maximize inference, but to leave open the choices whose values cannot safely be determined in advance.</p>
 
@@ -859,7 +950,7 @@
 
             <p>Model composition moves another choice to the inference side of the boundary. Rather than learning the criterion for each task as a whole, the system learns reusable factors for individual goals, constraints, or relationships. Because each factor depends on a narrower part of the problem, inference can recombine them to construct criteria for tasks not seen during training. Such a separation enables effective generalization to novel combinations of local relationships, dynamics, and goals.</p>
 
-            <p>Program specialization offers a useful analogy for the amortization boundary. A programmer can compile known assumptions into an efficient executable, while retaining a higher-level program in which those assumptions can be revised. A direct neural policy resembles an aggressively specialized executable. It is fast to run, but hard to adapt when a new problem violates its compiled assumptions. An energy function or world model can preserve a higher-level description of possible solutions or futures that sampling, optimization, or planning specializes for the current problem.</p>
+            <p><a href="https://doi.org/10.1023/A:1010095604496">Program specialization</a> offers a useful analogy for the amortization boundary. A programmer can compile known assumptions into an efficient executable, while retaining a higher-level program in which those assumptions can be revised. A direct neural policy resembles an aggressively specialized executable. It is fast to run, but hard to adapt when a new problem violates its compiled assumptions. An energy function or world model can preserve a higher-level description of possible solutions or futures that sampling, optimization, or planning specializes for the current problem.</p>
 
             <p>The representation of a task also determines how much of the problem can be resolved through inference. A planner does not need to search over every motor command. Instead, it can search over task-relevant states, subgoals, or trajectories while learned skills handle familiar local transitions. A well-engineered representation enables effective inference and generalization.</p>
 
@@ -946,8 +1037,8 @@
               <div class="level-object"><span>Deferred decision</span>Which candidate?</div>
             </div>
             <p>In solution inference, learning provides an evaluator that scores proposed solutions. Given the current problem, a sampler or optimizer uses this evaluator to compare candidates and revise them toward a better solution. The evaluator remains fixed during this search, while the candidate changes.</p>
-            <p>A major advantage of solution inference is that verification is often easier than generation. In the coffee task, a direct predictor must produce a suitable placement from the kitchen scene. An evaluator can judge familiar properties of a proposed placement, such as stability and reachability, without learning how to produce the placement itself. A model that learns these simpler judgments can generalize better to unfamiliar scenes than one trained to predict a complete solution. Search uses them to construct a placement for the current scene.</p>
-            <p>An <a href="https://energy-based-model.github.io/">energy-based model</a> is one way to implement solution inference. A neural network learns an energy landscape over the space of possible solutions, assigning low energy to correct candidates. <a href="https://arxiv.org/abs/1903.08689">Langevin dynamics</a> performs inference by iteratively refining a sample along the negative energy gradient while adding random noise. By varying the number of sampling steps, we can trade off sample quality against computation time. We can initialize inference either from random noise or from a generated proposal. We can also adapt inference to satisfy specific constraints and obtain desired solutions. For instance, we can implement image inpainting by fixing the values of observed pixels and letting inference generate the rest of the image.</p>
+            <p>A major advantage of solution inference is that <a href="https://doi.org/10.1145/800157.805047">verification is often easier than generation</a>. In the coffee task, a direct predictor must produce a suitable placement from the kitchen scene. An evaluator can judge familiar properties of a proposed placement, such as stability and reachability, without learning how to produce the placement itself. A model that learns these simpler judgments can generalize better to unfamiliar scenes than one trained to predict a complete solution. Search uses them to construct a placement for the current scene.</p>
+            <p>An <a href="https://energy-based-model.github.io/">energy-based model</a> is one way to implement solution inference. A neural network learns an energy landscape over the space of possible solutions, <a href="http://yann.lecun.com/exdb/publis/pdf/lecun-06.pdf">assigning low energy to correct candidates</a>. <a href="https://arxiv.org/abs/1903.08689">Langevin dynamics</a> performs inference by iteratively refining a sample along the negative energy gradient while adding random noise. By varying the number of sampling steps, we can trade off sample quality against computation time. We can initialize inference either from random noise or from a generated proposal. We can also adapt inference to satisfy specific constraints and obtain desired solutions. For instance, we can implement image inpainting by fixing the values of observed pixels and letting inference generate the rest of the image.</p>
             <p>This formulation also lets a model spend more computation on harder reasoning problems. In <a href="https://arxiv.org/abs/2206.15448">iterative reasoning through energy minimization</a>, each optimization step revises a candidate answer under a learned energy function. A model trained to predict shortest-path distances on graphs with up to ten nodes achieves lower error on fifteen-node graphs than the feedforward and iterative baselines tested. The verifier–generator analysis shows how recognizing a solution can require far less computation than constructing one.</p>
             <p>A language model can also be used in this way. The negative log probability it assigns to a candidate sequence acts as an energy. We can then perform solution inference through <a href="https://arxiv.org/abs/2510.14901">iterative sampling</a> that favors lower-energy responses. This procedure substantially improves reasoning performance over ordinary sampling from the base language model. On several reasoning tasks, it performs comparably to versions of the same models finetuned with reinforcement learning, without any additional training.</p>
             <p>The effectiveness of this search depends on how training shapes the geometry of the energy landscape. A <a href="https://arxiv.org/abs/2406.11179">sequence of landscapes</a> can guide inference from broad, smooth basins toward sharper constraints, helping the solver approach a solution before resolving its finer details. <a href="https://arxiv.org/abs/2510.02300">Equilibrium Matching</a> instead learns a single smoothed energy landscape for optimization.</p>
@@ -1103,13 +1194,33 @@
             <p>The ultimate goal of artificial intelligence is to build systems that generalize reliably to unfamiliar situations. Generalization as construction offers a way to solve globally unfamiliar problems by breaking them down into simpler, locally familiar parts. Learning captures recurring structure in the environment, while inference uses it to construct a solution for the current problem.</p>
             <p>As a robot repeatedly interacts with its environment, learning can absorb the parts of problem solving that recur. A behavior first constructed through planning can become a reusable skill, and a useful sequence of reasoning operations can become a learned procedure. These learned skills and procedures give inference new pieces to combine, allowing later problems to be solved without repeating every step of the original search. The amortization boundary can then move with experience. The robot can solve familiar problems faster and use what it has learned to construct solutions to increasingly complex ones.</p>
           </section>
+
+          <section class="citation-section" aria-label="Citation">
+            <details class="selected-work citation-block" id="cite">
+              <summary>Cite this essay</summary>
+              <p class="citation-text">Yilun Du. <em>Generalization by Construction</em>. yilundu.github.io, August 2026. <a href="https://yilundu.github.io/perspective/generalization_by_construction.html">https://yilundu.github.io/perspective/generalization_by_construction.html</a></p>
+              <div class="citation-actions">
+                <a class="citation-pdf" href="generalization_by_construction.pdf">PDF</a>
+                <button type="button" class="copy-bibtex" data-copy-target="bibtex">Copy BibTeX</button>
+              </div>
+              <pre class="bibtex" id="bibtex"><code>@article{du2026generalization,
+  title   = {{Generalization by Construction}},
+  author  = {Du, Yilun},
+  journal = {yilundu.github.io},
+  year    = {2026},
+  month   = aug,
+  url     = {https://yilundu.github.io/perspective/generalization_by_construction.html}
+}</code></pre>
+              <span class="visually-hidden" id="copy-status" aria-live="polite"></span>
+            </details>
+          </section>
         </article>
       </div>
     </main>
 
     <footer class="article-footer">
       <span>© 2026 Yilun Du</span>
-      <span class="footer-links"><a href="../">Home</a><a href="../#publications">Publications</a></span>
+      <span class="footer-links"><a href="../">Home</a><a href="../#publications">Publications</a><a href="generalization_by_construction.pdf">PDF</a></span>
     </footer>
   </div>
 
@@ -1150,6 +1261,36 @@
       window.addEventListener("scroll", scheduleUpdate, { passive: true });
       window.addEventListener("resize", scheduleUpdate);
       updateCurrent();
+    })();
+  </script>
+  <script>
+    (() => {
+      const button = document.querySelector(".copy-bibtex");
+      const status = document.getElementById("copy-status");
+      if (!button) return;
+      const source = document.getElementById(button.dataset.copyTarget);
+      const label = button.textContent;
+      const show = (text) => {
+        button.textContent = text;
+        if (status) status.textContent = text;
+        window.setTimeout(() => { button.textContent = label; }, 2000);
+      };
+      const selectSource = () => {
+        const range = document.createRange();
+        range.selectNodeContents(source);
+        const selection = window.getSelection();
+        selection.removeAllRanges();
+        selection.addRange(range);
+      };
+      button.addEventListener("click", async () => {
+        try {
+          await navigator.clipboard.writeText(source.textContent);
+          show("Copied");
+        } catch (error) {
+          selectSource();
+          show("Text selected. Press Ctrl+C or \u2318C to copy");
+        }
+      });
     })();
   </script>
 </body>
