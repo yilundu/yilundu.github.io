@@ -1187,12 +1187,12 @@ a:hover {
     <main id="main-content" class="main-content">
       <section class="content-section bio-section" id="about">
         <h2 class="sr-only">About Yilun Du</h2>
-        <p class="bio-lead">I study how intelligent systems can learn reusable models, then compose and reason with them at inference time.</p>
+        <p class="bio-lead">We study how intelligent systems can learn reusable models, then compose and reason with them at inference time.</p>
         <aside class="guiding-question" aria-labelledby="guiding-question-text">
           <p class="bio-lead guiding-question-text" id="guiding-question-text"><span class="guiding-question-label">Central question:</span> What should models represent so that inference-time reasoning can solve novel problems?</p>
-          <p class="guiding-question-explanation">An unfamiliar task can often be decomposed into locally familiar components. I develop learned models of these components—from constraints on valid solutions to predictions of how actions change the world—so that the same knowledge can be used in different problems. Inference combines the relevant models and searches for a solution that satisfies the current goals and constraints.</p>
+          <p class="guiding-question-explanation">Unfamiliar tasks can often be decomposed into locally familiar pieces. We develop learned models of these components—from constraints on valid solutions to predictions of how actions change the world—so that the same knowledge can be adapted and used to solve different, unseen problems. We use inference as a tool to combine relevant models and search for solutions that satisfy and are consistent across models.</p>
         </aside>
-        <p>Energy-based and diffusion models are common tools I use for capturing and composing this structure. I study these ideas across generation, reasoning, and decision making, including systems that coordinate multiple models or agents. A central goal of my research is to build robots that can combine knowledge of objects, dynamics, and skills to plan and act in unfamiliar environments.</p>
+        <p>Energy-based and diffusion models are common tools we have used in the past for capturing and composing this structure. We have studied these ideas across generation, reasoning, and decision making, including systems that coordinate multiple models or agents. A central goal of my research is to build robots that can combine knowledge of objects, dynamics, and skills to plan and act in unfamiliar environments.</p>
         <p>I lead the <a href="https://embodied-minds-lab.github.io/" target="_blank" rel="noreferrer noopener">Embodied Minds Lab</a> at Harvard and am a part-time research scientist at <a href="https://research.nvidia.com/person/yilun-du" target="_blank" rel="noreferrer noopener">NVIDIA Research</a>. I received my PhD from MIT EECS, advised by Leslie Kaelbling, Tomas Lozano-Pérez, and Joshua B. Tenenbaum. Before Harvard, I held research roles at OpenAI and Google DeepMind.</p>
       </section>
 
@@ -1235,7 +1235,7 @@ a:hover {
           <article class="research-card">
             <h3><a class="research-topic-link" href="#publications" data-topic-link="generative-model">Generative Inference</a></h3>
             <p class="research-division"><span><strong>Knowledge</strong>Solution spaces</span><span><strong>Reasoning</strong>Sample and refine</span></p>
-            <p>I study how to construct and refine solutions using a learned generative model. Sampling and optimization use the model to propose candidates and improve them. I develop representations and inference procedures to make this search reliable and adapt computation to the problem.</p>
+            <p>We study how to construct and refine solutions using a learned generative model. Sampling and optimization use the model to propose candidates and improve them. I develop representations and inference procedures to make this search reliable and adapt computation to the problem.</p>
             <p class="representative-work"><strong>Examples:</strong>
               <span class="representative-example"><a href="https://aakaran.github.io/reasoning_with_sampling/" target="_blank" rel="noreferrer noopener">Reasoning with Sampling</a> improves language-model reasoning by changing the sampling procedure while keeping the model fixed.</span>
               <span class="representative-example"><a href="https://arxiv.org/abs/1903.08689" target="_blank" rel="noreferrer noopener">Deep EBMs</a> learn energy landscapes for generation and conditional inference.</span>
@@ -1245,7 +1245,7 @@ a:hover {
           <article class="research-card">
             <h3><a class="research-topic-link" href="#publications" data-topic-link="reasoning">Compositional Inference</a></h3>
             <p class="research-division"><span><strong>Knowledge</strong>Concepts, constraints, and skills</span><span><strong>Reasoning</strong>Compose and solve</span></p>
-            <p>I study how to combine learned models and task requirements to define new inference problems. Models of concepts, constraints, and skills provide reusable components, while inference searches for solutions that satisfy the combined requirements. This lets us tackle new combinations without learning a separate model for each complete task.</p>
+            <p>We study how to combine learned models and task requirements to define new inference problems. Models of concepts, constraints, and skills provide reusable components, while inference searches for solutions that satisfy the combined requirements. This lets us tackle new combinations without learning a separate model for each complete task.</p>
             <p class="representative-work"><strong>Examples:</strong>
               <span class="representative-example"><a href="https://energy-based-model.github.io/Compositional-Visual-Generation-with-Composable-Diffusion-Models/" target="_blank" rel="noreferrer noopener">Composable diffusion models</a> combine learned concepts to generate unfamiliar combinations.</span>
               <span class="representative-example"><a href="https://diffusion-planning.github.io/" target="_blank" rel="noreferrer noopener">Diffuser</a> reuses a trajectory model under different goals and constraints.</span>
@@ -1255,7 +1255,7 @@ a:hover {
           <article class="research-card">
             <h3><a class="research-topic-link" href="#publications" data-topic-link="world-embodied">World Models &amp; Robotics</a></h3>
             <p class="research-division"><span><strong>Knowledge</strong>World dynamics</span><span><strong>Reasoning</strong>Predict and plan</span></p>
-            <p>I study how robots can use learned world models to plan and act in unfamiliar environments. These models predict the consequences of possible actions, while planning searches for actions that achieve the current goal. This lets robots reuse the same knowledge across tasks and adjust their behavior as goals and environments change.</p>
+            <p>We study how robots can use learned world models to plan and act in unfamiliar environments. These models predict the consequences of possible actions, while planning searches for actions that achieve the current goal. This lets robots reuse the same knowledge across tasks and adjust their behavior as goals and environments change.</p>
             <p class="representative-work"><strong>Examples:</strong>
               <span class="representative-example"><a href="https://universal-policy.github.io/unipi/" target="_blank" rel="noreferrer noopener">UniPi</a> generates video plans that can be translated into actions.</span>
               <span class="representative-example"><a href="https://video-language-planning.github.io/" target="_blank" rel="noreferrer noopener">Video Language Planning</a> searches language and video predictions for long-horizon plans.</span>
@@ -1265,7 +1265,7 @@ a:hover {
           <article class="research-card">
             <h3><a class="research-topic-link" href="#publications" data-topic-link="multi-agent">Multi-Agent Intelligence</a></h3>
             <p class="research-division"><span><strong>Knowledge</strong>Distributed across agents</span><span><strong>Reasoning</strong>Debate and verify</span></p>
-            <p>I study multiagent computation as a way to scale language-model intelligence. Rather than relying only on stronger individual models or longer reasoning traces, we train complementary agents and organize how they explore, verify, and combine solutions. The central question is how additional collective computation can produce capabilities beyond those of individual models.</p>
+            <p>We study multiagent computation as a way to scale language-model intelligence. Rather than relying only on stronger individual models or longer reasoning traces, we train complementary agents and organize how they explore, verify, and combine solutions. The central question is how additional collective computation can produce capabilities beyond those of individual models.</p>
             <p class="representative-work"><strong>Examples:</strong>
               <span class="representative-example"><a href="https://composable-models.github.io/llm_debate/" target="_blank" rel="noreferrer noopener">Multi-agent debate</a> lets models critique and revise candidate answers.</span>
               <span class="representative-example"><a href="https://ardalabs.ai/MultiAgentVerification/" target="_blank" rel="noreferrer noopener">Multi-agent verification</a> combines multiple verifiers to evaluate candidate solutions.</span>
